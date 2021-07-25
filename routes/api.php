@@ -14,6 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+// API ROUTES
+
+
+//DOCUMENTS
+
+Route::get('/documents/{id}',"App\Http\Controllers\DocumentController@show");
+
+
+
+
+
+
+
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

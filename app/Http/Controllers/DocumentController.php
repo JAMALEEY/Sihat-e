@@ -45,18 +45,19 @@ class DocumentController extends Controller
         if ($request->hasFile('file')) {
 
             $request->validate([
-                'image' => 'mimes:jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
+                'file' => 'mimes:jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
             ]);
 
             // Save the file locally in the storage/public/ folder under a new folder named /product
-            $request->file->store('product', 'public');
+            $request->file->store('document', 'public');
 
             // Store the record, using the new file hashname which will be it's new filename identity.
-            $product = new Document([
+            $document = new Document([
                 "name" => $request->get('name'),
-                "file_path" => $request->file->hashName()
+                "file_path" => $request->file->hashName(),
+                "patient_id" => 1     // Patient ID  we will get it with session
             ]);
-            $product->save(); // Finally, save the record.
+            $document->save(); // Finally, save the record.
         }
 
         return view('Patient.index');
@@ -72,6 +73,19 @@ class DocumentController extends Controller
     public function show($id)
     {
         //
+        $document = Document::find($id);
+
+        // return view('patient.index',['document' => $document]);
+
+
+        return $document;   // TEST POSTMAN API
+
+
+
+
+
+
+
     }
 
     /**

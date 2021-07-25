@@ -17,8 +17,10 @@ class CreateDocumentsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('file_path');
-            $table->int('patient_id');
+            $table->integer('patient_id');
+            $table->string('status')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
