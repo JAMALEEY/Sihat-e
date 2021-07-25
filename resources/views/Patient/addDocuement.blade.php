@@ -1,30 +1,49 @@
-<h1>Add Document Patient</h1>
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <title>Laravel</title>
 
-<form action="{{Route('/add_document')}}" method="post">
-@csrf
-
-<label for="">Nom</label>
-<input type="text" name="" id="">
-
-
-<input type="hidden" name="patient_id" value="{{Session('user_id')}}">
-
-
-
-{{-- Ajout du multi file ici --}}
-
-<label for="">Documents</label>
-<input type="file" name="" id="">
-
-
-<label for="">Description</label>
-<input type="text" name="" id="">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
 
 
+    <style>
+        body {
+            font-family: 'Nunito';
+        }
+    </style>
+</head>
+<body>
+<!-- if validation in the controller fails, show the errors -->
+@if ($errors->any())
+   <div class="alert alert-danger">
+     <ul>
+     @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+     @endforeach
+     </ul>
+   </div>
+@endif
 
+<div>
 
-
-
+<form action="{{ route('documents.store') }}" method="post" enctype="multipart/form-data" class="form-control">
+        <!-- Add CSRF Token -->
+        @csrf
+    <div class="form-group form-control">
+        <label>Documents</label>
+        <input type="text" class="form-control" name="name" required>
+    </div>
+    <div class="form-group form-control">
+        <input type="file" name="file" required>
+    </div>
+    <button type="submit">Submit</button>
 </form>
+
+</div>
+</body>
+</html>
