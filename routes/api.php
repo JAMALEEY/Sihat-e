@@ -22,12 +22,12 @@ use App\Http\Controllers\DocumentController;
 Route::post('/register',[AuthController::class,'register']);
 
 //Protected routes-Only authenticated users can have access to protected routes//
-Route::group(['middleware' => ['auth:sanctum','header']], function () {
+Route::group(['middleware' => ['header']], function () {    //'auth:sanctum',
     Route::resource('documents', DocumentController::class);
 
     Route::resource('patients', PatientController::class);
 
-    Route::resource('Doctors', DoctorController::class);
+    Route::resource('doctors', DoctorController::class);
 
 
 });

@@ -14,14 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
-//ressourcefull route ???
+// //ressourcefull route ???
 
-Route::resource('documents', DocumentController::class);;
+// Route::resource('documents', DocumentController::class);;
 
 
-Route::get('/patient/show/{id}',[DocumentController::class , 'show']);
+// Route::get('/patient/show/{id}',[DocumentController::class , 'show']);
+
+
+Route::view('/{path?}', 'app');

@@ -16,9 +16,10 @@ class DoctorController extends Controller
     {
         //
 
-        $Doctors = Doctor::all();
-
-        return view('Doctor.index', compact('Doctors'));
+        // $Doctors = Doctor::all();
+        $token = csrf_token();
+        // return view('Doctor.index', compact('Doctors'));
+        return $token;
     }
 
     /**
