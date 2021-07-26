@@ -1,6 +1,6 @@
 <h1>INDEX</h1>
 
-<img src="{{$document->file_path}}" alt="">
+<img src="{{storage_path('app\public\document') .  $document->file_path}}" alt="">
 
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Document;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DocumentController extends Controller
 {
@@ -15,7 +16,7 @@ class DocumentController extends Controller
     public function index()
     {
         //
-        return view('patient.adddocuement');
+        return view('patient.index');
     }
 
     /**
@@ -60,6 +61,9 @@ class DocumentController extends Controller
             $document->save(); // Finally, save the record.
         }
 
+
+        // return Document::create($request->all());   //shortcut
+
         return view('Patient.index');
 
     }
@@ -73,12 +77,16 @@ class DocumentController extends Controller
     public function show($id)
     {
         //
-        $document = Document::find($id);
+
+
+        $document = Document::find(2);
+
+        $url = Storage::url("$document->file_path");
 
         // return view('patient.index',['document' => $document]);
 
 
-        return $document;   // TEST POSTMAN API
+        return view('Patient.index',['document' => $document]);   // TEST POSTMAN API
 
 
 

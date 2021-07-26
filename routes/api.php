@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PatientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,11 +21,11 @@ use Illuminate\Support\Facades\Route;
 
 //DOCUMENTS
 
-Route::get('/documents/{id}',"App\Http\Controllers\DocumentController@show");
+// Route::get('/documents/{id}',"App\Http\Controllers\DocumentController@show");
 
 
 
-
+Route::resource('patients', PatientController::class);
 
 
 

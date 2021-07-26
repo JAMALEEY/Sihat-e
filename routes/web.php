@@ -22,3 +22,6 @@ Route::get('/', function () {
 //ressourcefull route ???
 
 Route::resource('documents', DocumentController::class);;
+
+
+Route::get('/patient/show/{id}',[DocumentController::class , 'show']);
