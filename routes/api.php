@@ -2,7 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\DocumentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,16 +19,18 @@ use App\Http\Controllers\PatientController;
 */
 
 
-// API ROUTES
+Route::post('/register',[AuthController::class,'register']);
+
+//Protected routes-Only authenticated users can have access to protected routes//
+Route::group(['middleware' => ['auth:sanctum','header']], function () {
+    Route::resource('documents', DocumentController::class);
+
+    Route::resource('patients', PatientController::class);
+
+    Route::resource('Doctors', DoctorController::class);
 
 
-//DOCUMENTS
-
-// Route::get('/documents/{id}',"App\Http\Controllers\DocumentController@show");
-
-
-
-Route::resource('patients', PatientController::class);
+});
 
 
 

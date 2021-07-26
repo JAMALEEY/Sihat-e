@@ -15,6 +15,9 @@ class PatientController extends Controller
     public function index()
     {
         //
+        $Patients = Patient::all();
+
+        return $Patients;
     }
 
     /**
@@ -25,6 +28,7 @@ class PatientController extends Controller
     public function create()
     {
         //
+        return view('patient.');  // ajout de la view
     }
 
     /**
@@ -53,6 +57,8 @@ class PatientController extends Controller
     public function show($id)
     {
         //
+        $Patient_show = Patient::find($id);
+        return $Patient_show;
     }
 
     /**
@@ -106,4 +112,10 @@ class PatientController extends Controller
         //
         return Patient::where('name','like','%'.$name.'%')->get();
     }
+
+
+    public function getAllPatients() {
+        $Patients = Patient::get()->toJson(JSON_PRETTY_PRINT);
+        return response($Patients, 200);
+      }
 }

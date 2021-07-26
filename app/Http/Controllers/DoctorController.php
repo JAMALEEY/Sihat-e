@@ -15,6 +15,10 @@ class DoctorController extends Controller
     public function index()
     {
         //
+
+        $Doctors = Doctor::all();
+
+        return view('Doctor.index', compact('Doctors'));
     }
 
     /**
@@ -53,6 +57,7 @@ class DoctorController extends Controller
     public function show($id)
     {
         //
+
     }
 
     /**
@@ -106,4 +111,11 @@ class DoctorController extends Controller
         //
         return Doctor::where('name','like','%'.$name.'%')->get();
     }
+
+
+
+    public function getAllDoctors() {
+        $Doctors = Doctor::get()->toJson(JSON_PRETTY_PRINT);
+        return response($Doctors, 200);
+      }
 }
