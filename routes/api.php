@@ -21,6 +21,12 @@ use App\Http\Controllers\DocumentController;
 
 Route::post('/register',[AuthController::class,'register']);
 
+Route::get('/token', function (Request $request){
+$token = $request->session()->token();
+$token = csrf_token();
+return $token;
+});
+
 //Protected routes-Only authenticated users can have access to protected routes//
 Route::group(['middleware' => ['header']], function () {    //'auth:sanctum',
     Route::resource('documents', DocumentController::class);
