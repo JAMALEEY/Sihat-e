@@ -14,7 +14,8 @@ class DrugsController extends Controller
      */
     public function index()
     {
-        //
+        $drugs = drugs::all();
+        return $drugs;
     }
 
     /**
@@ -36,26 +37,35 @@ class DrugsController extends Controller
     public function store(Request $request)
     {
         //
+$request->validate([
+'name' => 'required',
+'description' => 'required',
+]);
+
+return drugs::create($request->all());
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\data\drugs  $drugs
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show(drugs $drugs)
+    public function show($id)
     {
         //
+        $drug = drugs::findOrfail($id);
+        return $drug;
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\data\drugs  $drugs
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(drugs $drugs)
+    public function edit($id)
     {
         //
     }
@@ -64,22 +74,27 @@ class DrugsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\data\drugs  $drugs
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, drugs $drugs)
+    public function update(Request $request, $id)
     {
         //
+$drug_update = drugs::findOrFail($id);
+$drug_update->update($request->all());
+return $drug_update;
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\data\drugs  $drugs
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(drugs $drugs)
+    public function destroy($id)
     {
         //
+        return drugs::destroy($id);
     }
 }

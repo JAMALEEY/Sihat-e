@@ -17,9 +17,8 @@ class CreateDiabetesTable extends Migration
             $table->bigInteger('id')->autoIncrement()->unsigned();
             $table->string('diabetes_type', 255);
             $table->string('description', 255);
-            $table->timestamp('created_at')->nullable(true);
-            $table->timestamp('updated_at')->nullable(true);
-            $table->timestamp('deleted_at')->nullable(true);
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

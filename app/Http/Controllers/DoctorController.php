@@ -17,9 +17,9 @@ class DoctorController extends Controller
         //
 
         // $Doctors = Doctor::all();
-        $token = csrf_token();
+        
         // return view('Doctor.index', compact('Doctors'));
-        return $token;
+
     }
 
     /**
