@@ -14,7 +14,14 @@ class UserFactory extends Factory
      * @var string
      */
     protected $model = User::class;
-
+    
+    public function run()
+{
+    User::factory()
+            ->count(50)
+            ->hasPosts(1)
+            ->create();
+}
     /**
      * Define the model's default state.
      *
@@ -44,4 +51,7 @@ class UserFactory extends Factory
             ];
         });
     }
+
+
+
 }

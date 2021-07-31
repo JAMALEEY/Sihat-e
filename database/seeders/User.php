@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
-class PatientSeeder extends Seeder
+class User extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,7 +16,6 @@ class PatientSeeder extends Seeder
      */
     public function run()
     {
-        //
         DB::table('users')->insert([
             'name' => Str::random(10),
             'email' => Str::random(10).'@gmail.com',
