@@ -37,7 +37,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+          $request->validate([
+
+
+// oublie pas les autres field
+
+        ]);
+        return User::create($request->all());
     }
 
     /**

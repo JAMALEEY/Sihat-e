@@ -15,8 +15,7 @@ class PatientController extends Controller
     public function index()
     {
         //
-        $Patients = Patient::all();
-
+        $Patients =  Patient::all();
         return $Patients;
     }
 
