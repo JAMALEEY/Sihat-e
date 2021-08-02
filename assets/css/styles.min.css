@@ -116,7 +116,7 @@ main {
 #signInMain {
   background-image: linear-gradient(117deg, #7bd860 39.2%, #fff 156.2%);
 }
-img {
+#signInImg {
   border-radius: 50px;
 }
 .card.o-hidden {
