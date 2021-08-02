@@ -838,7 +838,6 @@ i.fa.fa-spinner.fa-spin.fa-5x.fa-fw {
   background-color: #fff;
   outline: 0;
   box-shadow: none;
-  border-color: #3cd5d9;
 }
 .fb-login {
   color: #fff;
@@ -1006,6 +1005,71 @@ a:hover {
   margin: 0 7px;
   font-size: 18px;
 }
+
+  /* MEDECIN SIGNUP */
+
+  #orMS{
+  margin-bottom: 0px;padding-left: 10px;padding-right: 10px;font-weight: 400;color: #193638;font-family: Poppins, sans-serif;
+  }
+
+  #boubouhBlur{
+    height: 100vh;width: 100vw;
+  }
+
+  #boubouhImg{
+    width: 105%;height: 100%; border-radius: 40px;
+  }
+
+  #rowImgBoubouh{
+    height: 82vh;width: 54vw; margin-right: -15px; margin-left: -48px;
+  }
+
+  .already{
+    font-size: 12px;color: #193638;
+  }
+
+  #signupMedBtn{
+    outline: 0;border: none;background: rgb(60,213,217);
+  }
+
+  #sMagreed{
+    color: #193638;font-size: 12px;text-shadow: 0px 0px 20px #ffffff;filter: blur(0px) brightness(138%) contrast(200%);
+  }
+
+  .already:hover{
+  color: #193638;
+  }
+
+
+
+  #signupMedTitle{
+    font-size: 37px;color: #193638;font-family: Poppins, sans-serif;border-style: none;border-color: #ffffff;padding: 25px;
+  }
+
+  #sigMedForm{
+    width: 509px;height: 716px;margin: 0px;padding: 64px;padding-top: 14px;
+  }
+
+  #leftCardSinMed{
+    height: 75vh;background: rgb(255,255,255);
+  }
+
+  #leftCardSinMedRow{
+    height: 75vh;width: 44vw; padding-bottom: 20px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   .back-imagia,
   .front-imagia {
@@ -1024,4 +1088,5 @@ a:hover {
     visibility: visible;
   }
 
+ 
 }

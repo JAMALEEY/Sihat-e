@@ -18,10 +18,10 @@
         <section id="medecinSingUpsSection">
             <div class="col">
                 <div class="d-flex align-items-xl-center">
-                    <div class="row" style="height: 75vh;width: 44vw; padding-bottom: 20px;">
-                        <div class="col-xl-11 offset-xl-2" style="height: 75vh;background: rgb(255,255,255);">
-                            <form class="labo" method="post" style="width: 509px;height: 716px;margin: 0px;padding: 64px;padding-top: 14px;">
-                                <h2 class="text-center" style="font-size: 37px;color: #193638;font-family: Poppins, sans-serif;border-style: none;border-color: #ffffff;padding: 25px;"><strong>Créer</strong>&nbsp;un compte.</h2>
+                    <div id="leftCardSinMedRow" class="row" >
+                        <div id="leftCardSinMed" class="col-xl-11 offset-xl-2" >
+                            <form id="sigMedForm" method="post" >
+                                <h2 id="signupMedTitle" class="text-center" ><strong>Créer</strong>&nbsp;un compte.</h2>
                             </br>
                                 <div class="form-group"><input class="form-control" type="email" id="emailInputMedecin" name="email" placeholder="Email"></div>
                                 <div class="form-group"><input class="form-control" type="password" id="passwordInputMedecin" name="password" placeholder="Mot de passe">
@@ -29,13 +29,18 @@
                                 <div class="form-group"><input class="form-control" type="password" id="repasswordInputMedecin" name="password-repeat" placeholder="Retapez le mot de passe">
                                 </div>
                                 <div class="form-group">
-                                    <p style="font-family: Poppins, sans-serif;color: #193638;font-size: 12px;text-shadow: 0px 0px 20px #ffffff;filter: blur(0px) brightness(138%) contrast(200%);">En continuant,&nbsp;j'accepte les conditions et la politique de confidentialité.</p>
+                                    <p id="sMagreed">En continuant,&nbsp;j'accepte les conditions et la politique de confidentialité.</p>
                                 </div>
-                                <div class="form-group"><button class="btn btn-primary btn-block" type="submit" style="outline: 0;border: none;background: rgb(60,213,217);">Créér un compte</button></div><a class="already" href="#" style="font-family: Poppins, sans-serif;font-size: 12px;color: #193638;">Vous avez déjà un compte ? Connectez-vous ici.<br>
+                                
+                                <button id="signupMedBtn" class="btn btn-primary btn-block" type="submit" >Créér un compte
+                                </button>
+                                
+                                <a class="already" href="#" >Vous avez déjà un compte ? Connectez-vous ici. </a>
+                                <br><br><br><br>
                                 <div id="medecinSignUpSeperator" class="d-flex flex-row align-items-center login-box-seperator-container">
                                     <div class="login-box-seperator"></div>
                                     <div class="login-box-seperator-text">
-                                        <p style="margin-bottom: 0px;padding-left: 10px;padding-right: 10px;font-weight: 400;color: #193638;font-family: Poppins, sans-serif;/*text-shadow: 0px 0px 20px rgb(0,0,0);*/">ou</p>
+                                        <p id="orMS">ou</p>
                                     </div>
                                     <div class="login-box-seperator"></div>
                                 </div>
@@ -58,13 +63,13 @@
                             </form>
                         </div>
                     </div>
-                    <div class="row" style="height: 82vh;width: 54vw; margin-right: -15px; margin-left: -48px;">
-                        <div class="col-xl-12 offset-xl-0"><img src="/assets/img/boubouh.jpg?h=94afadff87f99b0362c66fa1d8138018" style="width: 105%;height: 100%; border-radius: 40px;"></div>
+                    <div class="row" id="rowImgBoubouh">
+                        <div class="col-xl-12 offset-xl-0"><img id="boubouhImg" src="/assets/img/boubouh.jpg?h=94afadff87f99b0362c66fa1d8138018" ></div>
                     </div>
                 </div>
             </div>
         </section>
-        <div class="d-xl-flex justify-content-xl-end"><img src="/assets/img/boubouhblur.jpg?h=16825968e33482a3d090386ce951499f" style="height: 100vh;width: 100vw;"></div>
+        <div class="d-xl-flex justify-content-xl-end"><img id="boubouhBlur" src="/assets/img/boubouhblur.jpg?h=16825968e33482a3d090386ce951499f" ></div>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
