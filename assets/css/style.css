@@ -1,9 +1,9 @@
 *{
-  font-family: Poppins;
-  margin: 0;
-  padding: 0;
+    padding: 0px;
+    margin: 0px;
+    font-family: Poppins, sans-serif;
+    color: #193638;
 }
-
 .video-background-holder {
   position: relative;
   background-color: #000;
@@ -121,9 +121,6 @@ main {
 }
 #signInMain {
   background-image: linear-gradient(117deg, #7bd860 39.2%, #fff 156.2%);
-}
-#signInImg {
-  border-radius: 50px;
 }
 .card.o-hidden {
   border-radius: 74px;
@@ -389,7 +386,14 @@ main {
   transform: rotate(-19deg);
   opacity: 0.2;
 }
-
+body,
+html {
+  font-family: Poppins;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  min-height: 100%;
+}
 .loading-icon {
   height: 100%;
   min-height: 100%;
@@ -425,18 +429,6 @@ i.fa.fa-spinner.fa-spin.fa-5x.fa-fw {
   border: none;
   border-bottom: 1px solid #e0e0e0;
 }
-.login-box-content {
-  padding: 20px 20px 10px;
-  background-color: #fff;
-}
-.social-login-link {
-  text-decoration: none;
-  color: #fff;
-  margin-top: 10px;
-}
-.fb-login {
-  background-color: #1a538a;
-}
 .gp-login {
   background-color: #db4437;
   margin-top: 10px;
@@ -446,7 +438,8 @@ i.fa.fa-spinner.fa-spin.fa-5x.fa-fw {
   color: #fff;
   font-size: 18px;
 }
-.box-shadow {
+.box-shadow,
+.fb-login.box-shadow {
   box-shadow: 0 2px 2px 0 rgba(41, 48, 59, 0.24),
     0 0 2px 0 rgba(41, 48, 59, 0.12);
   border-radius: 5px;
@@ -823,6 +816,62 @@ i.fa.fa-spinner.fa-spin.fa-5x.fa-fw {
     height: 360px;
   }
 }
+#medecinSingUpsSection {
+  display: flex;
+  flex-direction: row;
+  z-index: 1;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0);
+}
+#emailInputMedecin:focus,
+#passwordInputMedecin,
+#repasswordInputMedecin {
+  color: #495057;
+  background-color: #fff;
+  outline: 0;
+  box-shadow: none;
+  border-color: #3cd5d9;
+}
+.fb-login {
+  color: #fff;
+  background-color: #1a538a;
+  font-family: Poppins, sans-serif;
+}
+a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+.fa.fa-facebook,
+.fa.fa-google {
+  margin-left: 0;
+  padding-right: 20px;
+  padding-left: 22px;
+  width: 56px;
+  color: #fff;
+  text-decoration: none;
+  background-color: transparent;
+}
+.social-login-link {
+  color: #fff;
+  text-decoration: none;
+  background-color: transparent;
+  margin: 4px;
+}
+.gp-login.box-shadow {
+  background-color: #db4437;
+  border-radius: 5px;
+}
+.login-box-content {
+  padding-top: 24px;
+}
 .card-section-imagia {
   padding: 60px 0 30px;
   background: #f1f1f1;
@@ -974,7 +1023,4 @@ i.fa.fa-spinner.fa-spin.fa-5x.fa-fw {
     visibility: visible;
   }
 
- 
-
-  
 }

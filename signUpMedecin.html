@@ -3,37 +3,43 @@
 
 <head>
     <meta charset="utf-8">
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>signUpMedecin</title>
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./assets/css/styles.min.css">
+    <title>Inscription en tant que medecin.</title>
+    <!-- 
+        Bootstrap Dependency -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!-- Css Dependency -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    
 </head>
 
 <body>
-    <main style="width: 100vw;height: 100vh;">
+    <main>
         <section id="medecinSingUpsSection">
             <div class="col">
-                <div id="bgimgMedecinSignUp" class="d-flex align-items-xl-center">
-                    <div class="row" style="height: 70vh;width: 44vw;/*background-color: black;*/">
-                        <div class="col-xl-11 offset-xl-2" style="height: 100%;background: rgb(255,255,255);">
-                            <form method="post" style="width: 509px;height: 716px;margin: 0px;padding: 80px 60px;padding-top: 42px;">
+                <div class="d-flex align-items-xl-center">
+                    <div class="row" style="height: 75vh;width: 44vw; padding-bottom: 20px;">
+                        <div class="col-xl-11 offset-xl-2" style="height: 75vh;background: rgb(255,255,255);">
+                            <form class="labo" method="post" style="width: 509px;height: 716px;margin: 0px;padding: 64px;padding-top: 14px;">
                                 <h2 class="text-center" style="font-size: 37px;color: #193638;font-family: Poppins, sans-serif;border-style: none;border-color: #ffffff;padding: 25px;"><strong>Créer</strong>&nbsp;un compte.</h2>
+                                what
+                                hy
+                            </br>
                                 <div class="form-group"><input class="form-control" type="email" id="emailInputMedecin" name="email" placeholder="Email"></div>
-                                <div class="form-group"><input class="form-control" type="password" id="passwordInputMedecin" name="password" placeholder="Mot de passe"></div>
-                                <div class="form-group"><input class="form-control" type="password" id="repasswordInputMedecin" name="password-repeat" placeholder="Retapez le mot de passe"></div>
+                                <div class="form-group"><input class="form-control" type="password" id="passwordInputMedecin" name="password" placeholder="Mot de passe">
+                                </div>
+                                <div class="form-group"><input class="form-control" type="password" id="repasswordInputMedecin" name="password-repeat" placeholder="Retapez le mot de passe">
+                                </div>
                                 <div class="form-group">
                                     <p style="font-family: Poppins, sans-serif;color: #193638;font-size: 12px;text-shadow: 0px 0px 20px #ffffff;filter: blur(0px) brightness(138%) contrast(200%);">En continuant,&nbsp;j'accepte les conditions et la politique de confidentialité.</p>
                                 </div>
-                                <div class="form-group"><button class="btn btn-primary btn-block" type="submit" style="outline: 0;border: none;background: rgb(60,213,217);">Créér un compte</button></div><a class="already" href="#" style="font-family: Poppins, sans-serif;font-size: 12px;color: #193638;"><br>Vous avez déjà un compte ? Connectez-vous ici.<br></a>
-                                <div class="d-flex flex-row align-items-center login-box-seperator-container" style="padding-top: 19px;">
-                                    <div class="login-box-seperator" style="width: 200px;box-shadow: 0px 0px 0px 1px rgb(13,205,184);"></div>
+                                <div class="form-group"><button class="btn btn-primary btn-block" type="submit" style="outline: 0;border: none;background: rgb(60,213,217);">Créér un compte</button></div><a class="already" href="#" style="font-family: Poppins, sans-serif;font-size: 12px;color: #193638;">Vous avez déjà un compte ? Connectez-vous ici.<br>
+                                <div id="medecinSignUpSeperator" class="d-flex flex-row align-items-center login-box-seperator-container">
+                                    <div class="login-box-seperator"></div>
                                     <div class="login-box-seperator-text">
                                         <p style="margin-bottom: 0px;padding-left: 10px;padding-right: 10px;font-weight: 400;color: #193638;font-family: Poppins, sans-serif;/*text-shadow: 0px 0px 20px rgb(0,0,0);*/">ou</p>
                                     </div>
-                                    <div class="login-box-seperator" style="width: 200px;box-shadow: 0px 0px 0px 1px rgb(13,205,184);"></div>
+                                    <div class="login-box-seperator"></div>
                                 </div>
                                 <div class="d-xl-flex flex-column login-box-content" style="/*background: rgba(255,255,255,0);*//*padding: 10px 20px;*//*background-color: #ffffff;*//*padding-top: 20px;*/">
                                     <div class="d-xl-flex fb-login box-shadow"><a class="d-flex flex-row align-items-center social-login-link" href="#" style="font-family: Poppins;font-size: 16px;"><i class="fa fa-facebook"></i>Connectez-vous avec Facebook</a></div><span style="height: 10px;"></span>
@@ -42,16 +48,18 @@
                             </form>
                         </div>
                     </div>
-                    <div class="row" style="height: 75vh;width: 50vw;/*background-color: black;*/">
-                        <div class="col-xl-12 offset-xl-0" style="border-radius: 20px;/*background-color: yellow;*/"><img src="./assets/img/boubouh.jpg" style="border-radius: 20px;width: 105%;height: 100%;box-shadow: 0px 0px 7px rgba(0,0,0,0.31);"></div>
+                    <div class="row" style="height: 82vh;width: 54vw; margin-right: -15px; margin-left: -48px;">
+                        <div class="col-xl-12 offset-xl-0"><img src="/assets/img/boubouh.jpg?h=94afadff87f99b0362c66fa1d8138018" style="width: 105%;height: 100%; border-radius: 40px;"></div>
                     </div>
                 </div>
             </div>
         </section>
-        <div  class="d-xl-flex justify-content-xl-end"><img src="./assets/img/boubouhblur.jpg" style="height: 100vh;width: 100vw;"></div>
+        <div class="d-xl-flex justify-content-xl-end"><img src="/assets/img/boubouhblur.jpg?h=16825968e33482a3d090386ce951499f" style="height: 100vh;width: 100vw;"></div>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
+    <script src="/assets/js/script.min.js?h=4b0d09d80c183a7599ab50e2cdae29d5"></script>
 </body>
 
 </html>
