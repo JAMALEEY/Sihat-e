@@ -1,3 +1,9 @@
+*{
+  font-family: Poppins;
+  margin: 0;
+  padding: 0;
+}
+
 .video-background-holder {
   position: relative;
   background-color: #000;
@@ -383,14 +389,7 @@ main {
   transform: rotate(-19deg);
   opacity: 0.2;
 }
-body,
-html {
-  font-family: Poppins;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  min-height: 100%;
-}
+
 .loading-icon {
   height: 100%;
   min-height: 100%;
@@ -974,4 +973,8 @@ i.fa.fa-spinner.fa-spin.fa-5x.fa-fw {
     z-index: 5;
     visibility: visible;
   }
+
+ 
+
+  
 }
