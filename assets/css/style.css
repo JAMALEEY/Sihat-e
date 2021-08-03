@@ -12,6 +12,10 @@
     overflow-x: hidden;
 }
 
+#iconContainer{
+  padding-top: 200px;
+}
+
 .video-background-holder {
   position: relative;
   background-color: #000;
