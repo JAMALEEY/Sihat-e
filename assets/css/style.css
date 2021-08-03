@@ -283,20 +283,17 @@ color: var(--light);font-family: Alatsi, sans-serif;
 
 #signInImgDr{
   border-radius: 40px;
-  height: 100vh;
+  height: 90vh;
   
 }
 
-/* #cardDocSignIn{
-  width: 100vw;
+ #cardDocSignIn{
   height: 100vh;
-} */
-
-
-#signInImgDr{
-  border-radius: 40px;
 }
 
+#cardSignInDoc #p5{
+  width: 370px;
+}
 
 #signInMainDoc {
   position: relative;
