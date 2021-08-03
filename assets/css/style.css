@@ -148,6 +148,36 @@ font-family: Alatsi, sans-serif;color: rgb(31,132,64);border-color: rgb(255,255,
 {color: rgb(255,255,255);}
 
 
+.back-image img {
+  transform: scaleX(-1);transform: rotate(X-1);transition: -1;height: 100%;position: absolute;width: 100%;opacity: 0.20;border-radius: 49px;
+}
+
+#rowImgBack{
+  width: 100%;height: 100%;
+}
+
+#backImgContainer{
+  padding: 36px;margin: 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .video-background-holder {
