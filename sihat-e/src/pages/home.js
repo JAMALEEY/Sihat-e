@@ -4,18 +4,31 @@ const Home = () => {
     return(
         <>
 <div>
-  <div>
-    <h1 className="text-uppercase">La révolution au bout des<br /><span>DOIGTS !</span></h1>
-  </div>
-  <a className="col-xl-12" id="arrowDownAnimation" role="button" href="#choixSection">  
-    <h1 className="text-center bounce animated infinite"> Go !</h1>
-  </a><div className="col"><a className="col-xl-12" id="arrowDownAnimation" role="button" href="#choixSection">
-      <div id="arrowDownBtnIndex" className="d-xl-flex justify-content-xl-center align-items-xl-center">
-        <i className="fa fa-angle-double-down bounce animated infinite animated">
-        </i>
+  <header className="header-blue">
+    <div className="container">
+      <div className="row">
+        <div className="col-md-6 col-xl-5" id="iconContainer">
+          <div className="d-xl-flex my-auto justify-content-xl-center align-items-xl-center">
+            <img className="img-fluid d-xl-flex mx-auto justify-content-xl-center align-items-xl-center pulse animated infinite" src="/assets/img/Sicon.png" />
+          </div>
+        </div>
+        <div id="heroHeader" className="col-md-6 col-xl-6 offset-xl-0 d-xl-flex justify-content-xl-center align-items-xl-center">
+          <div>
+            <h1 className="text-uppercase">La révolution au bout des<br /><span>DOIGTS !</span></h1>
+          </div>
+        </div>
+        <a className="col-xl-12" id="arrowDownAnimation" role="button" href="#choixSection">  
+          <h1 className="text-center bounce animated infinite"> Go !</h1>
+        </a><div className="col"><a className="col-xl-12" id="arrowDownAnimation" role="button" href="#choixSection">
+            <div id="arrowDownBtnIndex" className="d-xl-flex justify-content-xl-center align-items-xl-center">
+              <i className="fa fa-angle-double-down bounce animated infinite animated">
+              </i>
+            </div>
+          </a>
+        </div>
       </div>
-    </a>
-  </div>
+    </div>
+  </header>
   <main>
     <div className="containerIndex">
       <div className="row">
@@ -170,6 +183,7 @@ const Home = () => {
     {/* third section end */}
   </main>
 </div>
+
 
         </>
     )
