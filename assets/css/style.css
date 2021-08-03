@@ -287,6 +287,66 @@ color: var(--light);font-family: Alatsi, sans-serif;
   
 }
 
+#cardDocSignIn{
+  width: 100vw;
+  height: 100vh;
+}
+
+
+#signInImgDr{
+  border-radius: 40px;
+}
+
+
+#signInMainDoc {
+  position: relative;
+  background-image: url("../img/img2Blur.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.card.o-hidden {
+  border-radius: 74px;
+}
+#loginBtnDoc {
+  background: #0dcdb8;
+}
+.containerDoc #exampleInputEmail {
+  color: #495057;
+  background-color: #fff;
+  outline: 0;
+}
+
+.containerDoc #exampleInputEmail:focus {
+  border-color: #4fcec3;
+  outline-style: none;
+  box-shadow: none;
+}
+
+.containerDoc #exampleInputPassword:focus {
+  border-color: #4fcec3;
+  outline-style: none;
+  box-shadow: none;
+}
+
+#loginBtnDoc {
+  border: none;
+  background-color: #4fcec3;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
