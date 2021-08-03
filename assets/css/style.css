@@ -97,9 +97,57 @@ font-family: Alatsi, sans-serif;color: rgb(31,132,64);border-color: rgb(255,255,
 
 
 
+
 #choixSection {
   background-image: radial-gradient( circle farthest-corner at 10% 20%, rgb(55,181,170) 0%, rgb(74,241,227) 90% );
 }
+
+#choixSection h1{
+  color: rgb(255,255,255);
+}
+
+#choixSection h2{
+  font-family: Poppins, sans-serif;color: rgb(0,120,39);}
+
+.card-container-image{
+  width: 635.984px;height: 467px;margin: 0px;padding: 28px;
+}
+
+#choixSection .front-image-left{
+  background: rgba(63,208,196,0.22);border-radius: 23px;
+}
+
+
+#choixSection .front-image-left #patientImgLeft{
+  height: 243px;
+}
+
+#choixSection .front-image-left #patientImgLeft img
+{position: absolute;margin: 0px;width: 320px;}
+
+
+#choixSection .front-image-left .content-image {
+  color: rgb(255,255,255);
+}
+
+.content-image {
+  color: rgb(255,255,255);
+}
+
+.content-image h1
+{font-size: 23px;font-family: Poppins, sans-serif;}
+
+.content-image p
+{color: #193638;font-family: Poppins, sans-serif;font-size: 14.4px;
+}
+
+.footer-image span
+{color: rgb(255,253,253);}
+
+.footer-image i
+{color: rgb(255,255,255);}
+
+
 
 
 .video-background-holder {
@@ -418,7 +466,7 @@ main {
   display: inline-block;
   z-index: 1;
 }
-.card-imagia .cover-imagia img,
+.card-image .cover-image img,
 .header-blue .phone-mockup img.device {
   width: 100%;
   height: auto;
@@ -932,36 +980,36 @@ a:hover {
 .login-box-content {
   padding-top: 24px;
 }
-.card-section-imagia {
+.card-section-image {
   padding: 60px 0 30px;
   background: #f1f1f1;
 }
-.card-section-imagia > h1 {
+.card-section-image > h1 {
   font-size: 48px;
   text-align: center;
   margin: 0 0 10px;
 }
-.card-section-imagia > h2 {
+.card-section-image > h2 {
   font-size: 24px;
   text-align: center;
   margin: 0 0 60px;
   color: #aaa;
   text-transform: uppercase;
 }
-.card-container-imagia {
+.card-container-image {
   -webkit-perspective: 1500px;
   -moz-perspective: 1500px;
   -o-perspective: 1500px;
   perspective: 1500px;
   margin-bottom: 30px;
 }
-.card-container-imagia:hover .card-imagia {
+.card-container-image:hover .card-image {
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
   -o-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
-.card-imagia {
+.card-image {
   -webkit-transition: -webkit-transform 0.5s;
   -moz-transition: -moz-transform 0.5s;
   -o-transition: -o-transform 0.5s;
@@ -972,8 +1020,8 @@ a:hover {
   transform-style: preserve-3d;
   position: relative;
 }
-.back-imagia,
-.front-imagia {
+.back-image,
+.front-image-left {
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -o-backface-visibility: hidden;
@@ -985,29 +1033,30 @@ a:hover {
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
   padding-bottom: 46px;
 }
-.front-imagia {
+.front-image-left {
   z-index: 2;
 }
-.back-imagia {
+.back-image {
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
   -o-transform: rotateY(180deg);
   transform: rotateY(180deg);
   z-index: 3;
+  background: rgba(63,208,196,0.22);border-radius: 23px;
 }
-.back-imagia,
-.card-container-imagia,
-.front-imagia {
+.back-image,
+.card-container-image,
+.front-image-left {
   width: 100%;
   height: 420px;
   border-radius: 4px;
 }
-.card-imagia .cover-imagia {
+.card-image .cover-image {
   height: 120px;
   overflow: hidden;
   border-radius: 4px 4px 0 0;
 }
-.card-imagia .cover-imagia.cover-gradient {
+.card-image .cover-image.cover-gradient {
   background: #fff;
   background-image: radial-gradient(
     circle at 50% 100%,
@@ -1017,7 +1066,7 @@ a:hover {
     #036ead 100%
   );
 }
-.card-imagia .user-imagia {
+.card-image .user-image {
   border-radius: 50%;
   display: block;
   height: 130px;
@@ -1025,34 +1074,34 @@ a:hover {
   overflow: hidden;
   width: 120px;
 }
-.card-imagia .user-imagia img {
+.card-image .user-image img {
   background: #fff;
   border: 5px solid #fff;
   width: 100%;
 }
-.card-imagia .content-imagia {
+.card-image .content-image {
   background-color: rgba(0, 0, 0, 0);
   box-shadow: none;
   padding: 10px 20px 20px;
 }
-.content-back-imagia {
+.content-back-image {
   display: flex;
   align-items: center;
   height: 100%;
 }
-.card-imagia .name-imagia {
+.card-image .name-image {
   font-size: 22px;
   line-height: 26px;
   margin: 0;
   text-align: center;
   text-transform: capitalize;
 }
-.card-imagia .subtitle-imagia {
+.card-image .subtitle-image {
   color: #aaa;
   text-align: center;
   margin-bottom: 15px;
 }
-.card-imagia .footer-imagia {
+.card-image .footer-image {
   width: 100%;
   color: #aaa;
   padding: 10px 0;
@@ -1061,7 +1110,7 @@ a:hover {
   bottom: 0;
   border-top: 1px solid #eee;
 }
-.card-imagia .footer-imagia .social-imagia a {
+.card-image .footer-image .social-image a {
   margin: 0 7px;
   font-size: 18px;
 }
@@ -1237,19 +1286,19 @@ font-family: Poppins, sans-serif;color: #193638;font-size: 17px;text-shadow: 0px
 }
 
 /* @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-  .back-imagia,
-  .front-imagia {
+  .back-image,
+  .front-image-left {
     -ms-backface-visibility: visible;
     backface-visibility: visible;
   }
-  .back-imagia {
+  .back-image {
     visibility: hidden;
     -ms-transition: all 0.2s cubic-bezier(0.92, 0.01, 0.83, 0.67);
   }
-  .front-imagia {
+  .front-image-left {
     z-index: 4;
   }
-  .card-container-imagia:hover .back-imagia {
+  .card-container-image:hover .back-image {
     z-index: 5;
     visibility: visible;
   }
