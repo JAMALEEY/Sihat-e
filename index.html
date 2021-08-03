@@ -37,6 +37,7 @@
         <header class="header-blue">
             <div class="container">
                 <div class="row">
+
                     <div class="col-md-6 col-xl-5" id="iconContainer">
                         <div class="d-xl-flex my-auto justify-content-xl-center align-items-xl-center">
                             <img class="img-fluid d-xl-flex mx-auto justify-content-xl-center align-items-xl-center pulse animated infinite" src="/assets/img/Sicon.png" >
@@ -48,15 +49,15 @@
                             <h1 class="text-uppercase" >La révolution au bout des<br><span>DOIGTS !</span></h1>
                         </div>
                     </div>
-                    <div id="arrowDownAnimation" class="col-xl-12" >
+
+                    <a class="col-xl-12" id="arrowDownAnimation" role="button" href="#choixSection">  
                         <h1 class="text-center bounce animated infinite"> Go !</h1>
-                    </div>
-                    <div class="col">
+                        <div class="col">
                         <div id="arrowDownBtnIndex" class="d-xl-flex justify-content-xl-center align-items-xl-center">
-                            <a class="btn btn-link btn-circle" role="button" href="#choix">
                                 <i class="fa fa-angle-double-down bounce animated infinite animated">
                                 </i>
-                            </a>
+                        </div>
+                    </a>
                         </div>
                     </div>
                 </div>
@@ -205,18 +206,23 @@
             <!-- Section two end  -->
 
             <section id="section2" class="newsletter-subscribe" >
-                <div class="container" style="height: 477px;">
+                <div class="container">
                     <div class="intro">
-                        <h2 class="text-monospace text-center" style="color: var(--light);font-family: Alatsi, sans-serif;"><strong>Pas d'intérêt pour le moment ?</strong></h2>
-                        <p class="text-center" style="font-family: Poppins, sans-serif;color: rgb(53,69,83);text-shadow: 0px 0px 16px rgb(255,255,255);">Restons en contact pour recevoir les nouveautés, <br>mises à jour et offres spéciales dans votre boîte E-mail. </p>
+                        <h2 class="text-monospace text-center" ><strong>Pas d'intérêt pour le moment ?</strong></h2>
+                        <p class="text-center" >Restons en contact pour recevoir les nouveautés, <br>mises à jour et offres spéciales dans votre boîte E-mail. </p>
                     </div>
-                    <div class="d-xl-flex justify-content-xl-end align-items-xl-center" style="padding-left: 0px;padding-right: 143px;"><img class="d-xl-flex swing animated infinite" src="/assets/img/papperPlane.png" style="animation-duration: 7s;"></div>
-                    <div class="d-xl-flex justify-content-xl-center align-items-xl-center" style="height: 132px;width: 1108px;">
-                        <form class="form-inline d-xl-flex justify-content-xl-center align-items-xl-center" method="post" style="z-index: 1;position: absolute;margin: 0px 0px 0px;margin-top: 156px;width: 429.109px;margin-left: 17px;">
-                            <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Votre E-mail" style="border-radius: 3px;border: 1px solid rgb(82,207,196) ;"></div>
-                            <div class="form-group"><button class="btn btn-primary" type="submit" style="/*background: black!important;*/background: rgb(79,206,195)!important;border-radius: 3x;border: 1px solid rgb(255,255,255) ;"><strong>Je m'abonne</strong></button></div>
+                    <div id="papperPlaneContainer" class="d-xl-flex justify-content-xl-end align-items-xl-center">
+                        <img class="d-xl-flex swing animated infinite" src="/assets/img/papperPlane.png" >
+                    </div>
+                    <div id="envlpContainer" class="d-xl-flex justify-content-xl-center align-items-xl-center" >
+                        <form class="form-inline d-xl-flex justify-content-xl-center align-items-xl-center" method="post" >
+                            <div class="form-group">
+                                <input class="form-control" type="email" name="email" placeholder="Votre E-mail" >
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="submit"><strong>Je m'abonne</strong></button></div>
                         </form>
-                        <img id="" src="/assets/img/letternewsletter.png" >
+                        <img id="nwsltrimg" src="/assets/img/letternewsletter.png" >
                     </div>
                 </div>
 

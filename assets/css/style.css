@@ -163,6 +163,7 @@ font-family: Alatsi, sans-serif;color: rgb(31,132,64);border-color: rgb(255,255,
 
 .back-image #creercptsihate {
   position: relative;width: 240px;
+  padding: 8px;
 }
 
 .back-image #shakeimg {
@@ -174,16 +175,22 @@ font-family: Alatsi, sans-serif;color: rgb(31,132,64);border-color: rgb(255,255,
 }
 
 .back-image #loginsihatecontainer
-{text-align: center;padding: 8px;}
+{text-align: center;padding: 6px;position: relative;width: 240px}
 
 
-.back-image #loginsihatecontainer
-{position: relative;width: 240px}
 
 
 .back-image #loginsihate
 {position: relative;width: 240px;
 }
+
+
+#backImgContainer {
+  padding: 12px;
+  margin: 0px;
+  
+}
+
 
 /* second card choice */ 
 
@@ -197,7 +204,7 @@ font-family: Alatsi, sans-serif;color: rgb(31,132,64);border-color: rgb(255,255,
 }
 
 #backImgContainer2{
-  padding: 36px;margin: 0px;
+  padding: 20px;margin: 0px;
 }
 
 .back-image2 #creercptsihate2 {
@@ -213,11 +220,7 @@ font-family: Alatsi, sans-serif;color: rgb(31,132,64);border-color: rgb(255,255,
 }
 
 .back-image2 #loginsihatecontainer2
-{text-align: center;padding: 8px;}
-
-
-.back-image2 #loginsihatecontainer2
-{position: relative;width: 240px}
+{text-align: center;padding: 6px; position: relative;width: 240px}
 
 
 .back-image2 #loginsihate2
@@ -231,11 +234,49 @@ font-family: Alatsi, sans-serif;color: rgb(31,132,64);border-color: rgb(255,255,
 
 #footer #smContainer {color: rgb(55,181,170);margin: 15px;padding: 0px;}
 
-#section2
+#section2{
+  background: linear-gradient(175deg, #52D1C6 0%, rgb(149,227,220) 50%, white);
+}
+
+#section2 .container {
+  height: 477px;
+}
+
+#section2 .container h2{
+color: var(--light);font-family: Alatsi, sans-serif;
+}
+
+#section2 .container p
+{font-family: Poppins, sans-serif;color: rgb(53,69,83);text-shadow: 0px 0px 16px rgb(255,255,255);}
+
+#section2 .container #papperPlaneContainer
+{padding-left: 0px;padding-right: 143px;}
+
+#section2 .container #papperPlaneContainer img
+{animation-duration: 7s;}
+
+#section2 .container #envlpContainer
+{height: 132px;width: 1108px;}
+
+#section2 .container #envlpContainer form
+{z-index: 1;position: absolute;margin: 0px 0px 0px;margin-top: 156px;width: 429.109px;margin-left: 17px;}
 
 
+#section2 .container #envlpContainer input
+{border-radius: 3px;border: 1px solid rgb(82,207,196) ;}
+
+#section2 .container #envlpContainer button
+{background: rgb(79,206,195)!important;border-radius: 3x;border: 1px solid rgb(255,255,255);
+}
+
+#nwsltrimg{ position: absolute;
+    width: 625px;
+    height: 380.25px;}
 
 
+    #smContainer i {
+      color: rgb(55,181,170);
+    }
 
 
 
