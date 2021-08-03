@@ -185,7 +185,7 @@ font-family: Alatsi, sans-serif;color: rgb(31,132,64);border-color: rgb(255,255,
 {position: relative;width: 240px;
 }
 
-/* */ 
+/* second card choice */ 
 
 
 .back-image2 #flipimg2 {
@@ -225,12 +225,13 @@ font-family: Alatsi, sans-serif;color: rgb(31,132,64);border-color: rgb(255,255,
 }
 
 
+#footer
+{margin: 0px;height: 126px;}
 
 
+#footer #smContainer {color: rgb(55,181,170);margin: 15px;padding: 0px;}
 
-
-
-
+#section2
 
 
 
