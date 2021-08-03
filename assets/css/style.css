@@ -16,6 +16,59 @@
   padding-top: 200px;
 }
 
+img #sicon{
+  width: 400px;
+  height: 400px;
+}
+
+#heroHeader {
+  padding-top: 224px;
+}
+
+#heroHeader h1 {
+  font-size: 72px;
+}
+
+#heroHeader span {
+  color: rgb(255,255,255);
+
+}
+
+#arrowDownAnimation{
+  animation-duration: 5px;margin: 0px;padding-top: 81px;
+}
+
+#arrowDownAnimation h1{
+  animation-duration: 5s;
+  color: rgba(255,255,255,0.74);
+  font-family: Alatsi, sans-serif;
+  font-size: 31px;
+  animation-duration: 5px;
+}
+
+#arrowDownBtnIndex a{
+  width: 45;height: 45;padding-top: 0px;padding-bottom: 0px;
+
+}
+
+#arrowDownBtnIndex i {
+  width: 45;height: 45;font-size: 135px;text-align: center;color: rgba(255,255,255,0.64);animation-duration: 5s;
+}
+
+main .containerIndex {
+  height: 70vh;margin: 0px;padding: 0px;width: 100vw;
+}
+
+main .containerIndex .row {
+  background-image: radial-gradient( circle farthest-corner at 10% 20%, rgb(55,181,170) 0%, rgb(74,241,227) 90% );width: 100vw;margin: 0px;padding-top: 0px;height: 100vh;
+}
+
+
+
+
+
+
+
 .video-background-holder {
   position: relative;
   background-color: #000;
@@ -193,7 +246,7 @@ main {
     #52d1c6 100%
   );
   padding-bottom: 80px;
-  font-family: "Source Sans Pro", sans-serif;
+  width: 100vw;
 }
 .header-blue .navbar {
   background: 0 0;
@@ -1150,7 +1203,7 @@ font-family: Poppins, sans-serif;color: #193638;font-size: 17px;text-shadow: 0px
   transform: scaleX(-1);
 }
 
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+/* @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   .back-imagia,
   .front-imagia {
     -ms-backface-visibility: visible;
@@ -1169,4 +1222,4 @@ font-family: Poppins, sans-serif;color: #193638;font-size: 17px;text-shadow: 0px
   }
 
  
-}
+} */
