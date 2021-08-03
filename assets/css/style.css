@@ -1079,12 +1079,56 @@ a:hover {
 z-index: 1;position: absolute;width: 100vw;height: 100vh;
 }
 
+#divForm{
+  width: 100vw;height: 100vh;
+}
 
 
+#formSingUpPatient {
+  background: rgba(196,233,229,0.39);width: 509px;height: 716px;border-radius: 20px;margin: 0px;padding: 80px 60px;padding-top: 42px;
+}
+
+.allowpatientform{
+font-family: Poppins, sans-serif;color: #193638;font-size: 17px;text-shadow: 0px 0px 20px #ffffff;filter: blur(0px) brightness(138%) contrast(200%);
+}
+
+#btnpatientsignup{
+  background: rgb(13,205,184);font-family: Poppins, sans-serif;
+}
+#alreadysignedpatient{
+  font-family: Poppins, sans-serif;font-size: 15px;color: rgb(0,0,0);text-shadow: 0px 0px 20px rgb(13,205,184);
+}
 
 
+#login-box-seperator-left{
+  box-shadow: 0px 0px 0px 1px rgb(13,205,184);
+}
 
 
+#login-box-seperator-right{
+  box-shadow: 0px 0px 0px 1px rgb(13,205,184);
+}
+
+.login-box-seperator-text > p{
+  margin-bottom: 0px;padding-left: 10px;padding-right: 10px;font-weight: 400;color: rgb(255,255,255);font-family: Poppins, sans-serif;text-shadow: 0px 0px 20px rgb(0,0,0);
+}
+
+
+#fbcon {margin-left:0px;padding-right:20px;padding-left:22px;width:56px;
+}
+
+#cardPatientSignUp{
+  background: rgba(255,0,0,0); padding: 0px; margin: 0px;
+  height: 512px;
+}
+
+#carousel-1{ 
+  z-index: -1;
+}
+
+#lastImgPatientSingup{
+  transform: scaleX(-1);
+}
 
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
   .back-imagia,
