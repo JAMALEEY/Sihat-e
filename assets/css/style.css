@@ -184,6 +184,51 @@ font-family: Alatsi, sans-serif;color: rgb(31,132,64);border-color: rgb(255,255,
 {position: relative;width: 240px;
 }
 
+/* */ 
+
+
+.back-image2 #flipimg2 {
+  transform: scaleX(-1);transform: rotate(X-1);transition: -1;height: 100%;position: absolute;width: 100%;opacity: 0.20;border-radius: 49px;
+}
+
+#rowImgBack2{
+  width: 100%;height: 100%;
+}
+
+#backImgContainer2{
+  padding: 36px;margin: 0px;
+}
+
+.back-image2 #creercptsihate2 {
+  position: relative;width: 240px;
+}
+
+.back-image2 #shakeimg2 {
+  position: absolute;
+  padding-top: 0px;
+  margin-top: -49px;
+  animation-duration: 15s;
+  margin-left: 183px;
+}
+
+.back-image2 #loginsihatecontainer2
+{text-align: center;padding: 8px;}
+
+
+.back-image2 #loginsihatecontainer2
+{position: relative;width: 240px}
+
+
+.back-image2 #loginsihate2
+{position: relative;width: 240px;
+}
+
+
+
+
+
+
+
 
 
 
@@ -1062,7 +1107,7 @@ a:hover {
   transform-style: preserve-3d;
   position: relative;
 }
-.back-image,
+.back-image, .back-image2,
 .front-image-left {
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
@@ -1078,7 +1123,7 @@ a:hover {
 .front-image-left {
   z-index: 2;
 }
-.back-image {
+.back-image, .back-image2 {
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
   -o-transform: rotateY(180deg);
@@ -1086,7 +1131,7 @@ a:hover {
   z-index: 3;
   background: rgba(63,208,196,0.22);border-radius: 23px;
 }
-.back-image,
+.back-image, .back-image2,
 .card-container-image,
 .front-image-left {
   width: 100%;
