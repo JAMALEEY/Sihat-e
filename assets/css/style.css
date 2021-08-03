@@ -148,7 +148,7 @@ font-family: Alatsi, sans-serif;color: rgb(31,132,64);border-color: rgb(255,255,
 {color: rgb(255,255,255);}
 
 
-.back-image img {
+.back-image #flipimg {
   transform: scaleX(-1);transform: rotate(X-1);transition: -1;height: 100%;position: absolute;width: 100%;opacity: 0.20;border-radius: 49px;
 }
 
@@ -160,17 +160,29 @@ font-family: Alatsi, sans-serif;color: rgb(31,132,64);border-color: rgb(255,255,
   padding: 36px;margin: 0px;
 }
 
+.back-image #creercptsihate {
+  position: relative;width: 240px;
+}
+
+.back-image #shakeimg {
+  position: absolute;
+  padding-top: 0px;
+  margin-top: -49px;
+  animation-duration: 15s;
+  margin-left: 183px;
+}
+
+.back-image #loginsihatecontainer
+{text-align: center;padding: 8px;}
 
 
+.back-image #loginsihatecontainer
+{position: relative;width: 240px}
 
 
-
-
-
-
-
-
-
+.back-image #loginsihate
+{position: relative;width: 240px;
+}
 
 
 
