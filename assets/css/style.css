@@ -282,7 +282,8 @@ color: var(--light);font-family: Alatsi, sans-serif;
 /* signIn Dr */
 
 #signInImgDr{
-  border-radius: 40px;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
   height: 90vh;
   
 }
