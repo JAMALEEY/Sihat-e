@@ -4,6 +4,14 @@
     font-family: Poppins, sans-serif;
     color: #193638;
 }
+
+/* index cSS*/
+
+#indexSihate {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 .video-background-holder {
   position: relative;
   background-color: #000;
