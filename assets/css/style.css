@@ -279,6 +279,24 @@ color: var(--light);font-family: Alatsi, sans-serif;
     }
 
 
+/* signIn Dr */
+
+#signInImgDr{
+  border-radius: 40px;
+  height: 100vh;
+  
+}
+
+
+
+
+
+
+
+
+
+
+
 
 .video-background-holder {
   position: relative;
@@ -1303,7 +1321,6 @@ a:hover {
 
 #signInImg{
   border-radius: 40px;
-  
 }
 
 
