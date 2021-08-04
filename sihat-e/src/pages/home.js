@@ -6,7 +6,7 @@ import {Field, reduxForm} from 'redux-form';
 
 
 
-            const newLetterForm = ({}) => {
+            const newsLetterForm = ({}) => {
               return (
                 <>
                 <form className="form-inline d-xl-flex justify-content-xl-center align-items-xl-center" method="post">
@@ -21,8 +21,10 @@ import {Field, reduxForm} from 'redux-form';
               
             }
 
+            
 
-            const Home = () => { 
+
+            const Home = (props) => { 
                 return(
                     <>
             <div>
@@ -179,7 +181,9 @@ import {Field, reduxForm} from 'redux-form';
                       <img className="d-xl-flex swing animated infinite" src="/assets/img/papperPlane.png" />
                     </div>
                     <div id="envlpContainer" className="d-xl-flex justify-content-xl-center align-items-xl-center">
-                        <Field component={newLetterForm} />
+                      <form onSubmit={props.handleSubmit(onSubmit)} >
+                        <Field component={newsLetterForm} /> 
+                      </form>
                       <img id="nwsltrimg" src="/assets/img/letternewsletter.png" />
                     </div>
                   </div>
