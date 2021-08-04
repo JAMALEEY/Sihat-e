@@ -5,13 +5,12 @@ import {Field, reduxForm} from 'redux-form';
 
 
 
-
-            const newsLetterForm = ({}) => {
+               // the formProps object contains onChange and value properties 
+            const newsLetterForm = ({input}) => {
               return (
                 <>
-                
                         <div className="form-group">
-                          <input className="form-control" type="email" name="email" placeholder="Votre E-mail" />
+                          <input onChange={input.onChange} value={input.value}   className="form-control" type="email" name="email" placeholder="Votre E-mail" />
                         </div>
                         <div className="form-group">
                           <button className="btn btn-primary" type="submit"><strong>Je m'abonne</strong></button></div>
@@ -22,13 +21,12 @@ import {Field, reduxForm} from 'redux-form';
             }
 
 
-
             const Home = (props) => { 
 
                 
-            const onSubmit = (formValues) => {
-              props.newsLetterForm(formValues)
-            }
+            // const onSubmit = ({formValues}) => {
+            //   props.newsLetterForm(formValues)
+            // }
 
                 return(
                     <>
@@ -186,8 +184,9 @@ import {Field, reduxForm} from 'redux-form';
                       <img className="d-xl-flex swing animated infinite" src="/assets/img/papperPlane.png" />
                     </div>
                     <div id="envlpContainer" className="d-xl-flex justify-content-xl-center align-items-xl-center">
-                      <form className="form-inline d-xl-flex justify-content-xl-center align-items-xl-center" method="post" onSubmit={props.handleSubmit(onSubmit)}>
-                        <Field component={newsLetterForm} /> 
+                      {/* onSubmit={props.handleSubmit(onSubmit)} */}
+                      <form className="form-inline d-xl-flex justify-content-xl-center align-items-xl-center" method="post" >
+                        <Field name="email" component={newsLetterForm} /> 
                       </form>
                       <img id="nwsltrimg" src="/assets/img/letternewsletter.png" />
                     </div>
@@ -215,6 +214,7 @@ import {Field, reduxForm} from 'redux-form';
                 )
             }
 
+         
             // the reduxFrom will return a function in which the Home component will be called reason why we passed it in as a parameter 
             // the reduxForm accept a signe parameter (form) and the value of it shoud be the reason why we created the form ...
 export default reduxForm({
