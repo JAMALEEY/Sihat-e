@@ -1579,3 +1579,12 @@ width: 386px;font-family: Poppins, sans-serif;}
 #rowDashboardUpload form {
   border-radius: 25px;width: 704.984px;
 }
+
+
+
+/* the newsletter validation popup style */
+.bs-example{
+    margin: 13px;
+    padding-bottom: 30px;
+    text-align: center;
+    }

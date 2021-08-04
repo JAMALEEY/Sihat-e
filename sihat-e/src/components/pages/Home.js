@@ -10,7 +10,19 @@ import {  createNewsletterEmail } from '../../actions'
               if (touched && error) {
                 return(
                   <>
-                  <div> &#9888; {error} </div>
+                  <div className="bs-example"> 
+                  <div className="alert alert-warning alert-dismissible fade show">
+                      <strong> &#9888; Attention &#9888; </strong> 
+                      {error} 
+                  </div>
+                    </div>
+
+                  {/* <div className="alert alert-warning alert-dismissible fade show"> <span className="danger"> <strong> &#9888; Attention &#9888;</strong> </span>  
+                  {error} 
+                  </div>
+                  <button type="button" class="close" data-dismiss="alert">&times;</button> */}
+                  
+                  
                   </>
                 )
 
@@ -241,11 +253,14 @@ import {  createNewsletterEmail } from '../../actions'
               // if the user didnt put the Email
                 if (!formValues.email) {
                   // we return an object with an error msg inside of it (in case of no errors we return empty object)
-                  errors.email =  'Attention ⚠ : SVP remplissez le champ d\'Email'
+                  errors.email =  'SVP remplissez le champ d\'Email '
                 }
-                // else if (formValues.email !== /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/) {
-                //   errors.email = 'Attention ⚠ : SVP rentrez un Email valide'
-                // }
+                
+                else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formValues.email)){
+                  errors.email =  ' L\'adresse email est invalide !' 
+                }
+                
+                
                 return errors;
             };
             
