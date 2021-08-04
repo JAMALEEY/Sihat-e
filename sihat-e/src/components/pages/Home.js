@@ -56,6 +56,8 @@ import {  createNewsletterEmail } from '../../actions'
               // /to avoid prop undefined I moved my onSubmit helper inside the component since its a callback function that should be binded to the component itself !!!
               const onSubmit = (formValues) => {
               props.createNewsletterEmail(formValues)
+              
+
             }
 
                 return(

@@ -12,5 +12,13 @@ export const createNewsletterEmail = (formValues) => {
         type: 'CREATE_NEWSLETTER',
         payload: response.data
     })
+    if (response.status == 422) {
+        dispatch ({
+        type: 'DUPLICATED_NEWSLETTER',
+        payload: response.data.errors.email
+
+    })
+        
     };   
+}
 }
