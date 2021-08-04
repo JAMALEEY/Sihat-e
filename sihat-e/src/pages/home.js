@@ -6,7 +6,7 @@ import {Field, reduxForm} from 'redux-form';
 
 
                // the formProps object contains onChange and value key values pairs  which we gonna pass them to the input elements (as properties)
-            const newsLetterForm = ({input}) => {
+            const newsLetterForm = ({input, meta}) => {
               return (
                 <>
                         <div className="form-group">
@@ -14,6 +14,7 @@ import {Field, reduxForm} from 'redux-form';
                         </div>
                         <div className="form-group">
                           <button className="btn btn-primary" type="submit"><strong>Je m'abonne</strong></button></div>
+                          <div> &#9888; {meta.error} </div>
 
                 </>
               )
@@ -25,7 +26,6 @@ import {Field, reduxForm} from 'redux-form';
               console.log(formValues)
             }
 
-            // Form vlaidation using reduxForm :
 
 
 
@@ -221,17 +221,22 @@ import {Field, reduxForm} from 'redux-form';
                 )
             }
 
-         
-            // the reduxFrom will return a function in which the Home component will be called reason why we passed it in as a parameter 
-            // the reduxForm accept a signe parameter (form) and the value of it shoud be the reason why we created the form ...
-
             // we Define also our Validation function called with a form values object, because this is what we are trying to look if its valide or not
             const validate = (formValues) => {
+              const errors = {};
               // check if the user filled the form (if theres no form value)
               // if the user didnt put the Email
-                if (!formValues.email)
+                if (!formValues.email) {
+                  // we return an object with an error msg inside of it (in case of no errors we return empty object)
+                  errors.email =  'Attention ⚠ : SVP remplissez le champ d\'Email'
+                }
+                return errors;
             };
-
+            
+            // the reduxFrom will return a function in which the Home component will be called reason why we passed it in as a parameter 
+            // the reduxForm accept a signe parameter (form) and the value of it shoud be the reason why we created the form ...
+            // we pass in the function that we created so we can check the form validation to the reduxForm function helper 
             export default reduxForm({
-              form: 'newsletter'
+              form: 'newsletter',
+              validate
             })(Home);
