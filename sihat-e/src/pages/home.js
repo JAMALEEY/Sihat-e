@@ -3,9 +3,19 @@ import {Field, reduxForm} from 'redux-form';
 // the Field argument is a component that we gonna work with while the reduxForm is a function that works similarly as connect funnction mmake sure we call action creator and get a form data ...
 
 
+          // in order to centralize my errors in one place I use a helper function called errorsHelper
+            const errorsHelper = ({error, touched}) => {
+              // si l'utillisateur touche l'input field et qu'il ne propose pas un email valide un erreur se produirera
+              if (touched && error) {
+                return(
+                  <>
+                  <div> &#9888; {error} </div>
+                  </>
+                )
 
-
-               // the formProps object contains onChange and value key values pairs  which we gonna pass them to the input elements (as properties)
+              }
+            }
+            
             const newsLetterForm = ({input, meta}) => {
               return (
                 <>
@@ -14,7 +24,7 @@ import {Field, reduxForm} from 'redux-form';
                         </div>
                         <div className="form-group">
                           <button className="btn btn-primary" type="submit"><strong>Je m'abonne</strong></button></div>
-                          <div> &#9888; {meta.error} </div>
+                          {errorsHelper(meta)}
 
                 </>
               )
@@ -229,6 +239,9 @@ import {Field, reduxForm} from 'redux-form';
                 if (!formValues.email) {
                   // we return an object with an error msg inside of it (in case of no errors we return empty object)
                   errors.email =  'Attention ⚠ : SVP remplissez le champ d\'Email'
+                }
+                else if (formValues.email !== /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/) {
+                  errors.email = 'Attention ⚠ : SVP rentrez un Email valide'
                 }
                 return errors;
             };
