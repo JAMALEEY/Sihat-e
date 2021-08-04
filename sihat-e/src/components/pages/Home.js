@@ -34,7 +34,7 @@ import {  createNewsletterEmail } from '../../actions'
 
             // my function helper so that I cant handle submit we gonna pass in formValues as an argument because it contains informations coming from the onSubmit function more precisally the handleSubmit callback function
             const onSubmit = (formValues) => {
-              console.log(formValues)
+              props.createNewsletterEmail(formValues)
             }
 
 
@@ -254,3 +254,6 @@ import {  createNewsletterEmail } from '../../actions'
               form: 'newsletter',
               validate
             })(Home);
+
+            //  we gonna pass in mapStateToProps and the action Creator
+            export default connect(null, {createNewsletterEmail})(formWrapper);
