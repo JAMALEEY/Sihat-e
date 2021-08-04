@@ -227,7 +227,9 @@ import {Field, reduxForm} from 'redux-form';
 
             // we Define also our Validation function called with a form values object, because this is what we are trying to look if its valide or not
             const validate = (formValues) => {
-                
+              // check if the user filled the form (if theres no form value)
+              // if the user didnt put the Email
+                if (!formValues.email)
             };
 
             export default reduxForm({
