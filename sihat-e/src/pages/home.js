@@ -25,7 +25,9 @@ import {Field, reduxForm} from 'redux-form';
               console.log(formValues)
             }
 
-            // Form vlaidation using reduxForm
+            // Form vlaidation using reduxForm :
+
+
 
 
             const Home = (props) => { 
@@ -222,6 +224,12 @@ import {Field, reduxForm} from 'redux-form';
          
             // the reduxFrom will return a function in which the Home component will be called reason why we passed it in as a parameter 
             // the reduxForm accept a signe parameter (form) and the value of it shoud be the reason why we created the form ...
-export default reduxForm({
-  form: 'newsletter'
-})(Home);
+
+            // we Define also our Validation function called with a form values object, because this is what we are trying to look if its valide or not
+            const validate = (formValues) => {
+                
+            };
+
+            export default reduxForm({
+              form: 'newsletter'
+            })(Home);
