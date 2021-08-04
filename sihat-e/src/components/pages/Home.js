@@ -1,7 +1,8 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
 // the Field argument is a component that we gonna work with while the reduxForm is a function that works similarly as connect funnction mmake sure we call action creator and get a form data ...
-
+import {  connect } from 'react-redux';
+import {  createNewsletterEmail } from '../../actions'
 
           // in order to centralize my errors in one place I use a helper function called errorsHelper
             const errorsHelper = ({error, touched}) => {
@@ -249,7 +250,7 @@ import {Field, reduxForm} from 'redux-form';
             // the reduxFrom will return a function in which the Home component will be called reason why we passed it in as a parameter 
             // the reduxForm accept a signe parameter (form) and the value of it shoud be the reason why we created the form ...
             // we pass in the function that we created so we can check the form validation to the reduxForm function helper 
-            export default reduxForm({
+            const formWrapper = reduxForm({
               form: 'newsletter',
               validate
             })(Home);

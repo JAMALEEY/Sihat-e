@@ -1,6 +1,6 @@
 // in order to make requests over our newsletter API we take an instance of this API using axios to apply actions creators on it
 import newsletterapi from "../Apis/newsletterapi";
-import home from "../pages/Home";
+import home from "../components/pages/Home";
 
 
 // new action creator to handle newletter api:
