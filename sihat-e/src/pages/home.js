@@ -5,12 +5,12 @@ import {Field, reduxForm} from 'redux-form';
 
 
 
-               // the formProps object contains onChange and value properties 
+               // the formProps object contains onChange and value key values pairs  which we gonna pass them to the input elements (as properties)
             const newsLetterForm = ({input}) => {
               return (
                 <>
                         <div className="form-group">
-                          <input onChange={input.onChange} value={input.value}   className="form-control" type="email" name="email" placeholder="Votre E-mail" />
+                          <input {...input} onChange={input.onChange} value={input.value}   className="form-control" type="email" name="email" placeholder="Votre E-mail" />
                         </div>
                         <div className="form-group">
                           <button className="btn btn-primary" type="submit"><strong>Je m'abonne</strong></button></div>
@@ -20,13 +20,15 @@ import {Field, reduxForm} from 'redux-form';
               
             }
 
+            // my function helper so that I cant handle submit we gonna pass in formValues as an argument because it contains informations coming from the onSubmit function more precisally the handleSubmit callback function
+            const onSubmit = (formValues) => {
+              console.log(formValues)
+              
+            }
+
 
             const Home = (props) => { 
 
-                
-            // const onSubmit = ({formValues}) => {
-            //   props.newsLetterForm(formValues)
-            // }
 
                 return(
                     <>
@@ -184,8 +186,10 @@ import {Field, reduxForm} from 'redux-form';
                       <img className="d-xl-flex swing animated infinite" src="/assets/img/papperPlane.png" />
                     </div>
                     <div id="envlpContainer" className="d-xl-flex justify-content-xl-center align-items-xl-center">
-                      {/* onSubmit={props.handleSubmit(onSubmit)} */}
-                      <form className="form-inline d-xl-flex justify-content-xl-center align-items-xl-center" method="post" >
+
+                      {/* we pass a onSubmit function so we can take the props of onSuubmit to handle form validation for example even if we dont need of an onSubmit function helper outide the input since redux form will ensure all of the actions such as preventDefault and stuff we pass in handleSubmit since its a redux form object ensuring all what we've said and the mosst important thing is the value of the input after submit for example ... */}
+                      
+                      <form className="form-inline d-xl-flex justify-content-xl-center align-items-xl-center" method="post" onSubmit={props.handleSubmit(onSubmit)} >
                         <Field name="email" component={newsLetterForm} /> 
                       </form>
                       <img id="nwsltrimg" src="/assets/img/letternewsletter.png" />
