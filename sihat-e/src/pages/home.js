@@ -23,8 +23,9 @@ import {Field, reduxForm} from 'redux-form';
             // my function helper so that I cant handle submit we gonna pass in formValues as an argument because it contains informations coming from the onSubmit function more precisally the handleSubmit callback function
             const onSubmit = (formValues) => {
               console.log(formValues)
-              
             }
+
+            // Form vlaidation using reduxForm
 
 
             const Home = (props) => { 
@@ -188,7 +189,7 @@ import {Field, reduxForm} from 'redux-form';
                     <div id="envlpContainer" className="d-xl-flex justify-content-xl-center align-items-xl-center">
 
                       {/* we pass a onSubmit function so we can take the props of onSuubmit to handle form validation for example even if we dont need of an onSubmit function helper outide the input since redux form will ensure all of the actions such as preventDefault and stuff we pass in handleSubmit since its a redux form object ensuring all what we've said and the mosst important thing is the value of the input after submit for example ... */}
-                      
+
                       <form className="form-inline d-xl-flex justify-content-xl-center align-items-xl-center" method="post" onSubmit={props.handleSubmit(onSubmit)} >
                         <Field name="email" component={newsLetterForm} /> 
                       </form>
