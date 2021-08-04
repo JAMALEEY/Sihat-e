@@ -1,1 +1,1 @@
-DON'T RAD ME !
+DON'T READ ME !
