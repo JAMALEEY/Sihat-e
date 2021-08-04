@@ -9,22 +9,27 @@ import {Field, reduxForm} from 'redux-form';
             const newsLetterForm = ({}) => {
               return (
                 <>
-                <form className="form-inline d-xl-flex justify-content-xl-center align-items-xl-center" method="post">
+                
                         <div className="form-group">
                           <input className="form-control" type="email" name="email" placeholder="Votre E-mail" />
                         </div>
                         <div className="form-group">
                           <button className="btn btn-primary" type="submit"><strong>Je m'abonne</strong></button></div>
-                </form>
+
                 </>
               )
               
             }
 
-            
 
 
             const Home = (props) => { 
+
+                
+            const onSubmit = (formValues) => {
+              props.newsLetterForm(formValues)
+            }
+
                 return(
                     <>
             <div>
@@ -181,7 +186,7 @@ import {Field, reduxForm} from 'redux-form';
                       <img className="d-xl-flex swing animated infinite" src="/assets/img/papperPlane.png" />
                     </div>
                     <div id="envlpContainer" className="d-xl-flex justify-content-xl-center align-items-xl-center">
-                      <form onSubmit={props.handleSubmit(onSubmit)} >
+                      <form className="form-inline d-xl-flex justify-content-xl-center align-items-xl-center" method="post" onSubmit={props.handleSubmit(onSubmit)}>
                         <Field component={newsLetterForm} /> 
                       </form>
                       <img id="nwsltrimg" src="/assets/img/letternewsletter.png" />
