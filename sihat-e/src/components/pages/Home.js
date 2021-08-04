@@ -243,9 +243,9 @@ import {  createNewsletterEmail } from '../../actions'
                   // we return an object with an error msg inside of it (in case of no errors we return empty object)
                   errors.email =  'Attention ⚠ : SVP remplissez le champ d\'Email'
                 }
-                else if (formValues.email !== /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/) {
-                  errors.email = 'Attention ⚠ : SVP rentrez un Email valide'
-                }
+                // else if (formValues.email !== /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/) {
+                //   errors.email = 'Attention ⚠ : SVP rentrez un Email valide'
+                // }
                 return errors;
             };
             
