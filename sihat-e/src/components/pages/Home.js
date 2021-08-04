@@ -33,16 +33,18 @@ import {  createNewsletterEmail } from '../../actions'
             }
 
             // my function helper so that I cant handle submit we gonna pass in formValues as an argument because it contains informations coming from the onSubmit function more precisally the handleSubmit callback function
-            const onSubmit = (formValues) => {
-              props.createNewsletterEmail(formValues)
-            }
 
+            
 
 
 
 
             const Home = (props) => { 
 
+              // /to avoid prop undefined I moved my onSubmit helper inside the component since its a callback function that should be binded to the component itself !!!
+              const onSubmit = (formValues) => {
+              props.createNewsletterEmail(formValues)
+            }
 
                 return(
                     <>
