@@ -4,6 +4,7 @@
 
 // Im gonna use userService object so that I can export all the service methods that contains backend api calls :  
 import config from 'config';
+// Ill import the authHeader that will give me possibility to work with the Api using unique token (user)
 import { authHeader } from '../helpers';
 
     export const userService = {
