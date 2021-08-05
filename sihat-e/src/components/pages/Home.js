@@ -1,6 +1,7 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
-
+// import link to avoid anchor tags 
+import {Link} from 'react-router-dom';
 // the Field argument is a component that we gonna work with while the reduxForm is a function that works similarly as connect funnction mmake sure we call action creator and get a form data ...
 import {  connect } from 'react-redux';
 import {  createNewsletterEmail } from '../../actions'
