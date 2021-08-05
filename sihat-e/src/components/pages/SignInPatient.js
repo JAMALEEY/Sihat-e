@@ -4,13 +4,60 @@ import {    connect } from 'react-redux';
 import {Field, reduxForm} from 'redux-form';
 
 
-import {    login  } from '../../actions/user.actions'
+import {    createLogin  } from '../../actions'
 
 
 
 
 
 
+
+                const renderInput = ({input, meta}) => {
+                    return (
+                    <>
+
+                    <div className="form-group">
+
+                            <input {...input} className="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Votre Email Address..." name="email" onChange={input.onChange} value={input.value} />
+
+                    </div>
+</>
+                    )
+                }
+const renderInputPassword = ({input, meta}) => {
+                    return (
+                    <>
+                    <div className="form-group">
+                            <input {...input}className="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Votre Mot De Passe..." name="password" onChange={input.onChange} value={input.value}  />
+                            
+                    </div>
+
+                        
+                        
+                        
+
+                    </>
+                    );
+                };
+   
+
+
+        // const handleChange = () => {
+        // setName({value});
+        // }
+
+        // const handleSubmit = (username, password) => {
+        //     // props.createPatient(formValues)
+        //     //  onSubmit={props.handleSubmit(onSubmit)}
+       
+
+        // setSubmited(  true );
+        // setUsername (props.state)
+        // setPassword (props.state)
+        // if (username && password) {
+        //     props.login(username, password);
+        // }
+        // }
 
 
 
@@ -19,11 +66,16 @@ import {    login  } from '../../actions/user.actions'
 
     const SignInPatient = (props) => {
 
-        const [username, setUsername] = useState('');
-        const [password, setPassword] = useState('');
-        const [submited, setSubmited] = useState(false);
-        const [name, setName] = useState();
-        const [value, setValue] = useState();
+            const onSubmit = (formValues) => {
+            props.createLogin(formValues)
+            console.log(formValues)
+            }
+
+        // const [username, setUsername] = useState('');
+        // const [password, setPassword] = useState('');
+        // const [submited, setSubmited] = useState(false);
+        // const [name, setName] = useState();
+        // const [value, setValue] = useState();
 
 
 
@@ -53,9 +105,9 @@ import {    login  } from '../../actions/user.actions'
                   </div>
                   <form id="userFormSignIn" className="user" method="post" onSubmit={props.handleSubmit(onSubmit)} >
 
- <Field component={renderInput} />
-   
-
+                    <Field name="email" component={renderInput} />
+                    <Field name="password" component={renderInputPassword} />
+                    
                     {/* <div className="form-group">
                       <input className="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Votre Email Address..." name="email" onChange={handleChange} value={username} />
                     </div>
@@ -131,21 +183,21 @@ import {    login  } from '../../actions/user.actions'
 
     }
 
-    const mapStateToProps = (state) => {
-        return {
-            logginIn : state.authentication
-        };
-    }
+    // const mapStateToProps = (state) => {
+    //     return {
+    //         logginIn : state.authentication
+    //     };
+    // }
 
-    const actionCreators = {
-    login: login
-};
+//     const actionCreators = {
+//     createLogin: createLogin
+// };
 
 const formWrapper = reduxForm({
-              form: 'signIn',
+            form: 'signIn',
             })(SignInPatient);
 
         export default connect(
-            mapStateToProps,
-            {actionCreators}
+            null,
+            {createLogin}
             )(formWrapper);

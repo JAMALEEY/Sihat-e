@@ -22,3 +22,15 @@ export const createNewsletterEmail = (formValues) => {
     };   
 }
 }
+
+
+export const createLogin = (formValues) => {
+    return async ( dispatch ) => {
+        const response = await newsletterapi.post('/login', formValues);
+
+    dispatch ({
+        type: 'CREATE_LOGIN',
+        payload: response.data
+    })
+}
+}

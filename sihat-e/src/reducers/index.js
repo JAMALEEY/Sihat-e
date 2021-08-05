@@ -8,8 +8,7 @@ import { combineReducers } from "redux";
 
     // I pass in a parameter (form) of a value (reducer) so that I can let redux-form allow the reducer automatization
 export default combineReducers ({
-    form: newsletterReducer,
-    form: signIn
+    form: newsletterReducer, signIn
 });
 
 
