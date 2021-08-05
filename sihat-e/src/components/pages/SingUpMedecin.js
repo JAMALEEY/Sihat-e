@@ -1,8 +1,6 @@
 import React from 'react';
 
-    const SignInMedecin = () => {
-
-
+    const SignUpMedecin = () => {
 
 
             return(
@@ -10,7 +8,8 @@ import React from 'react';
         
         </>
     )
-    
-    }
 
-    export default SignInMedecin;
+
+    }   
+
+    export default SignUpMedecin;
