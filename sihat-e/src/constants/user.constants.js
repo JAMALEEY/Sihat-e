@@ -1,3 +1,8 @@
+
+// in this user constants object we have the redux user action types that can be dispatched in the react application, 
+
+// every async actions that perform http requests involve a request followed by a success or error response, so each of these three steps is represented by a redux action.
+
 export const userConstants = {
     REGISTER_REQUEST: 'USERS_REGISTER_REQUEST',
     REGISTER_SUCCESS: 'USERS_REGISTER_SUCCESS',
