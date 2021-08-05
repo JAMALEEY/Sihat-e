@@ -1,6 +1,6 @@
 // I use the redux users reducer to handle the users section of the application state which is used by the HomePage to display a list of users and enable deleting of users.
 
-import { userConstants } from '../_constants';
+import { userConstants } from '../constants';
 
     export function users(state = {}, action) {
     switch (action.type) {
@@ -11,6 +11,7 @@ import { userConstants } from '../_constants';
         case userConstants.GETALL_SUCCESS:
         return {
             items: action.users
+            // which mean if the action type === 'USERS_GETALL_SUCCESS' fetch the users
         };
         case userConstants.GETALL_FAILURE:
         return { 
