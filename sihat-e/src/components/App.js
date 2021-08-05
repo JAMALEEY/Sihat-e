@@ -39,7 +39,7 @@ const  App = (props) => {
     <Switch>
       {/* IF THE USER TYPED GIBRISH REDIRECT TO HOME PAGE */}
       <PrivateRoute exact path="/" />
-                                <Route exact path="/Home" component={Home} />
+                                <Route path="/Home" exact component={Home} />
                                 <Route path="/dashboardPatient" exact component={DashboardPatient}/>
                                 <Route path="/loginMedecin" exact component={SignInMedecin} />
                                 <Route path="/registerPatient" exact component={SignUpPatient} />

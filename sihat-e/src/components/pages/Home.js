@@ -1,5 +1,7 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
+// Routes
+import {  BrowserRouter, Route} from 'react-router-dom';
 // import link to avoid anchor tags 
 import {Link} from 'react-router-dom';
 // the Field argument is a component that we gonna work with while the reduxForm is a function that works similarly as connect funnction mmake sure we call action creator and get a form data ...
@@ -50,75 +52,11 @@ import {  createNewsletterEmail } from '../../actions'
             // my function helper so that I cant handle submit we gonna pass in formValues as an argument because it contains informations coming from the onSubmit function more precisally the handleSubmit callback function
 
             
-
-
-
-
-            const Home = (props, response) => { 
-
-              // /to avoid prop undefined I moved my onSubmit helper inside the component since its a callback function that should be binded to the component itself !!!
-              const onSubmit = (formValues) => {
-              props.createNewsletterEmail(formValues)
-              
-
-            }
-
-                return(
-                    <>
-            <div>
-              <header className="header-blue">
-                <div className="container">
-                  <div className="row">
-                    <div className="col-md-6 col-xl-5" id="iconContainer">
-                      <div className="d-xl-flex my-auto justify-content-xl-center align-items-xl-center">
-                        <img className="img-fluid d-xl-flex mx-auto justify-content-xl-center align-items-xl-center pulse animated infinite" src="/assets/img/Sicon.png" />
-                      </div>
-                    </div>
-                    <div id="heroHeader" className="col-md-6 col-xl-6 offset-xl-0 d-xl-flex justify-content-xl-center align-items-xl-center">
-                      <div>
-                        <h1 className="text-uppercase">La révolution au bout des<br /><span>DOIGTS !</span></h1>
-                      </div>
-                    </div>
-                    <a className="col-xl-12" id="arrowDownAnimation" role="button" href="#choixSection">  
-                      <h1 className="text-center bounce animated infinite"> Go !</h1>
-                    </a><div className="col"><a className="col-xl-12" id="arrowDownAnimation" role="button" href="#choixSection">
-                        <div id="arrowDownBtnIndex" className="d-xl-flex justify-content-xl-center align-items-xl-center">
-                          <i className="fa fa-angle-double-down bounce animated infinite animated">
-                          </i>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </header>
-              <main>
-                <div className="containerIndex">
-                  <div className="row">
-                    <div id="intro" className="col-md-6 col-xl-5 offset-xl-5">
-                      <div id="introContainer"><img src="/assets/img/sihatetelemedecine.png" /></div>
-                    </div>
-                    <div id="introHeadingContainer" className="col-md-6 col-xl-6 offset-xl-2 d-xl-flex">
-                      <article>
-                        <h1 className="text-uppercase text-center">
-                          <br />
-                          <strong>VOTRE SANTé</strong>
-                          <br />
-                          <span>Notre mission</span>
-                        </h1>
-                        <p>
-                          <strong>Améliorer la vie des marocains</strong>
-                          <br />
-                          <strong>en plaçant la santé&nbsp;au centre&nbsp;</strong>
-                          <br />
-                          <strong>de la transformation digitale.</strong>
-                          <br />
-                        </p>
-                      </article>
-                    </div>
-                  </div>
-                </div>
-                {/* first section end */}
-                <section id="choixSection" className="card-section-image">
+            const secondSection = () => {
+              return (
+                <>
+                <div>
+                  <section id="choixSection" className="card-section-image">
                   <h1>LOREM IPSUM</h1>
                   <h2>LOREM IPSUMA&nbsp;LOREM IPSUMALOREM IPSUMA<br /><br /></h2>
                   <div className="row d-xl-flex">
@@ -155,9 +93,10 @@ import {  createNewsletterEmail } from '../../actions'
                                 </a>
                               </div>
                               <div id="loginsihatecontainer" className="col-xl-5 offset-xl-1">
-                                <a href="./pages/signIn.html">
+                                {/* the syntax is to instead of href sauf que ça prends pathName non pas fichier namedans architecture */}
+                                <Link to="/loginPatient">
                                   <img id="loginsihate" data-bss-hover-animate="pulse" src="/assets/img/loginsihate.png" type="button" />
-                                </a>
+                                </Link>
                               </div>
                             </div>
                           </div>
@@ -208,6 +147,81 @@ import {  createNewsletterEmail } from '../../actions'
                   </div>
                 </section>
                 {/* Section two end  */}
+                </div>
+                </>
+              )
+            }
+
+
+
+            const Home = (props, response) => { 
+
+              // /to avoid prop undefined I moved my onSubmit helper inside the component since its a callback function that should be binded to the component itself !!!
+              const onSubmit = (formValues) => {
+              props.createNewsletterEmail(formValues)
+              
+
+            }
+
+                return(
+                    <>
+            <div>
+              <header className="header-blue">
+                <div className="container">
+                  <div className="row">
+                    <div className="col-md-6 col-xl-5" id="iconContainer">
+                      <div className="d-xl-flex my-auto justify-content-xl-center align-items-xl-center">
+                        <img className="img-fluid d-xl-flex mx-auto justify-content-xl-center align-items-xl-center pulse animated infinite" src="/assets/img/Sicon.png" />
+                      </div>
+                    </div>
+                    <div id="heroHeader" className="col-md-6 col-xl-6 offset-xl-0 d-xl-flex justify-content-xl-center align-items-xl-center">
+                      <div>
+                        <h1 className="text-uppercase">La révolution au bout des<br /><span>DOIGTS !</span></h1>
+                      </div>
+                    </div>
+                    <Link className="col-xl-12" id="arrowDownAnimation" role="button" to="/secondSection">  
+                      <h1 className="text-center bounce animated infinite"> Go !</h1>
+                    </Link><div className="col"><a className="col-xl-12" id="arrowDownAnimation" role="button" href="#choixSection">
+                        <div id="arrowDownBtnIndex" className="d-xl-flex justify-content-xl-center align-items-xl-center">
+                          <i className="fa fa-angle-double-down bounce animated infinite animated">
+                          </i>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </header>
+              <main>
+                <div className="containerIndex">
+                  <div className="row">
+                    <div id="intro" className="col-md-6 col-xl-5 offset-xl-5">
+                      <div id="introContainer"><img src="/assets/img/sihatetelemedecine.png" /></div>
+                    </div>
+                    <div id="introHeadingContainer" className="col-md-6 col-xl-6 offset-xl-2 d-xl-flex">
+                      <article>
+                        <h1 className="text-uppercase text-center">
+                          <br />
+                          <strong>VOTRE SANTé</strong>
+                          <br />
+                          <span>Notre mission</span>
+                        </h1>
+                        <p>
+                          <strong>Améliorer la vie des marocains</strong>
+                          <br />
+                          <strong>en plaçant la santé&nbsp;au centre&nbsp;</strong>
+                          <br />
+                          <strong>de la transformation digitale.</strong>
+                          <br />
+                        </p>
+                      </article>
+                    </div>
+                  </div>
+                </div>
+                {/* first section end */}
+                
+                <secondSection />
+                <Route path="/secondSection" exact component={secondSection} />
+
                 {/* newsLetter */}
                 <section id="section2" className="newsletter-subscribe">
                   <div className="container">
