@@ -9,3 +9,7 @@ import { combineReducers } from "redux";
 export default combineReducers ({
     form: newsletterReducer
 });
+
+
+
+// nb : each reducer updates a different part of the application state in response to dispatched redux actions.
