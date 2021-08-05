@@ -9,7 +9,7 @@ export const PrivateRoute = ({ component: Component, ...rest }) => (
         // if true renders riyte component
             ? <Component {...props} />
             // else redirect
-            : <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
+            : <Redirect to={{ pathname: '/Home', state: { from: props.location } }} />
     )} />
     // (Bypassable raison pourlaquelle on opte pour JWT dans Sihat-e)
 )
