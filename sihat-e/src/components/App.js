@@ -21,6 +21,7 @@ import { connect } from 'react-redux';
 // Actions Dependencies 
 // in order to work with cleaAlerts function that clear actions on location change
 import { alertActions } from '../actions/alert.actions';
+import DashboardPatient from './pages/DashboardPatient';
 
 
 const  App = (props) => {
@@ -38,6 +39,7 @@ const  App = (props) => {
     <Switch>
       {/* <PrivateRoute exact path="/" component={Home} /> */}
       <Route exact path="/" component={Home} />
+                                <Route path="/dashboardPatient" exact component={DashboardPatient}/>
                                 <Route path="/loginMedecin" exact component={SignInMedecin} />
                                 <Route path="/registerPatient" exact component={SignUpPatient} />
                                 <Route path="/loginPatient" exact component={SignInPatient} />

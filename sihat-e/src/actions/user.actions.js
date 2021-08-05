@@ -1,7 +1,7 @@
-import { userConstants } from '../constants';
-import { userService } from '../services';
-import { alertActions } from './';
-import { history } from '../helpers';
+import { userConstants } from '../constants/user.constants';
+import { userService } from '../services/user.service';
+import { alertActions } from './alert.actions';
+import { history } from '../helpers/history';
 
 // Redux action creators for actions related to users. 
 export const userActions = {
@@ -51,7 +51,7 @@ function register(user) {
             .then(
                 user => { 
                     dispatch(success());
-                    history.push('/login');
+                    history.push('/DashboardPatient');
                     dispatch(alertActions.success('Registration successful'));
                 },
                 error => {

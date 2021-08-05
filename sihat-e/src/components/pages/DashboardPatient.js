@@ -1,6 +1,18 @@
-    import React from 'react';
+    import React, { useEffect } from 'react';
+    import { Link } from 'react-router-dom';
+    import { connect } from 'react-redux';
 
-    const DashboardPatient = () => {
+    // Actions
+    import { userActions  } from '../../actions/user.actions';
+
+    const DashboardPatient = (props) => {
+        const actionCreators = {
+    getUsers: userActions.getAll,
+    deleteUser: userActions.delete
+}
+        useEffect(() => {  
+            props.getUsers();
+        },[])
 
 
         return(
