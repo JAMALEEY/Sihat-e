@@ -5,7 +5,7 @@
 // Im gonna use userService object so that I can export all the service methods that contains backend api calls :  
 import {config} from '../webpack.config';
 // Ill import the authHeader that will give me possibility to work with the Api using unique token (user)
-import { authHeader } from '../helpers/auth-header';
+// import { authHeader } from '../helpers/auth-header';
  
     // In the login method the service accepts two arguments username and password it sends request using post and uses headers so it can store iformation about the type of returned data
 export const userService = () => {
@@ -24,6 +24,7 @@ export const userService = () => {
 
             return user;
         });
+        
     }
 
     
@@ -45,4 +46,5 @@ export const userService = () => {
         return data;
     });
     }
+    login();
 }
