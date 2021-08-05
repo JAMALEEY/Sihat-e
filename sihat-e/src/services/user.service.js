@@ -7,6 +7,10 @@ import config from 'config';
 // Ill import the authHeader that will give me possibility to work with the Api using unique token (user)
 import { authHeader } from '../helpers';
 
+
+
+
+    //  I centralized all the methods that I created below so that I visualize them better and easily exportable 
     export const userService = {
     login,
     logout,
@@ -16,3 +20,41 @@ import { authHeader } from '../helpers';
     update,
     delete: _delete
 };
+
+    // In the login method the service accepts two arguments username and password it sends request using post and uses headers so it can store iformation about the type of returned data
+
+    function login(username, password) {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+    };
+
+    return fetch(`${config.apiUrl}/login`, requestOptions)
+        .then(handleResponse)
+        .then(user => {
+            // store user details and jwt token in local storage to keep user logged in between page refreshes
+            localStorage.setItem('user', JSON.stringify(user));
+
+            return user;
+        });
+    }
+
+    
+    function handleResponse(response) {
+    return response.text().then(text => {
+        const data = text && JSON.parse(text);
+        if (!response.ok) {
+            if (response.status === 401) {
+                // auto logout if 401 response returned from api
+                logout();
+                location.reload(true);
+            }
+
+            const error = (data && data.message) || response.statusText;
+            return Promise.reject(error);
+        }
+
+        return data;
+    });
+    }
