@@ -1,21 +1,23 @@
-    import React, { useEffect } from 'react';
+    import React, { useEffect, useState } from 'react';
     import { Link } from 'react-router-dom';
     import { connect } from 'react-redux';
 
     // Actions
-    import { userActions  } from '../../actions/user.actions';
+    import {login, getAll, deleter} from '../../actions/user.actions' 
 
     const DashboardPatient = (props) => {
+        const [user, setUser] = useState({props});
+        const [users, setUsers] = useState({props});
         const actionCreators = {
-    getUsers: userActions.getAll,
-    deleteUser: userActions.delete
+    getUsers: getAll,
+    deleteUser: deleter
 }
         useEffect(() => {  
             props.getUsers();
         },[])
 
-
         return(
+
                 <>
                 <div>
                     <div className="row" id="navRow">
@@ -303,5 +305,14 @@
 
         
     }
+    const mapStateToProps = state => {
+        return {
+            user: Object.values(state.user), 
+            users: Object.values(state.users)
+        };
+};
 
-        export default DashboardPatient;
+        export default connect(
+            mapStateToProps,
+            {login}
+            )(DashboardPatient);

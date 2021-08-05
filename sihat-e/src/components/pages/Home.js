@@ -36,7 +36,8 @@ import {  createNewsletterEmail } from '../../actions'
                           <input {...input} onChange={input.onChange} value={input.value}   className="form-control" type="email" name="email" placeholder="Votre E-mail" />
                         </div>
                         <div className="form-group">
-                          <button className="btn btn-primary" type="submit"><strong>Je m'abonne</strong></button></div>
+                          <button className="btn btn-primary" type="submit"><strong>Je m'abonne</strong></button>
+                        </div>
                           {errorsHelper(meta)}
 
                 </>

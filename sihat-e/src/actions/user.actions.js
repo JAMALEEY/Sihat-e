@@ -4,16 +4,16 @@ import { alertActions } from './alert.actions';
 import { history } from '../helpers/history';
 
 // Redux action creators for actions related to users. 
-export const userActions = {
-    login,
-    logout,
-    register,
-    getAll,
-    delete: _delete
-};
+// export const userActions = () => {
+//     login,
+//     logout,
+//     register,
+//     getAll,
+//     delete: _delete
+// };
 
 // dispatching LOGIN_REQUEST 
-function login(username, password) {
+export const login = (username, password) => {
     return dispatch => {
         dispatch(request({ username }));
 // calls the async tasks (action creator functions)
@@ -66,7 +66,7 @@ function register(user) {
     function failure(error) { return { type: userConstants.REGISTER_FAILURE, error } }
 }
 
-function getAll() {
+export const getAll = () => {
     return dispatch => {
         dispatch(request());
 
@@ -83,7 +83,7 @@ function getAll() {
 }
 
 // prefixed function name with underscore because delete is a reserved word in javascript
-function _delete(id) {
+export const deleter = (id) => {
     return dispatch => {
         dispatch(request(id));
 
