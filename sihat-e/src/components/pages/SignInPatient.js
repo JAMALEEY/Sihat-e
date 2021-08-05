@@ -6,6 +6,17 @@ import {Field, reduxForm} from 'redux-form';
 
 import {    login  } from '../../actions/user.actions'
 
+
+
+
+
+
+
+
+
+
+
+
     const SignInPatient = (props) => {
 
         const [username, setUsername] = useState('');
@@ -15,44 +26,6 @@ import {    login  } from '../../actions/user.actions'
         const [value, setValue] = useState();
 
 
-
-const renderInput = ({input, meta}) => {
-        return (
-        <>
-
-             <div className="form-group">
-                      <input {...input} className="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Votre Email Address..." name="email" onChange={input.onChange} value={username} />
-                    </div>
-                    <div className="form-group">
-                      <input className="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Votre Mot De Passe..." name="password" onChange={input.onChange} value={password}  />
-                    </div>
-
-        </>
-        );
-    };
-
-
-
-        const handleChange = () => {
-        setName({value});
-        }
-
-        const handleSubmit = (username, password) => {
-            // props.createPatient(formValues)
-            //  onSubmit={props.handleSubmit(onSubmit)}
-        const onSubmit = (formValues) => {
-              props.createNewsletterEmail(formValues)
-              
-
-            }
-
-        setSubmited(  true );
-        setUsername (props.state)
-        setPassword (props.state)
-        if (username && password) {
-            props.login(username, password);
-        }
-        }
 
         return(
         <>
