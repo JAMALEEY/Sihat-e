@@ -1,7 +1,7 @@
 // too manage the registration section of the application state
 
 
-import { userConstants } from '../_constants';
+import { userConstants } from '../constants';
 
     export function registration(state = {}, action) {
     switch (action.type) {
