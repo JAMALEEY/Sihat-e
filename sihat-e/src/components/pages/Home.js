@@ -1,7 +1,5 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
-// Routes
-import {  BrowserRouter, Route} from 'react-router-dom';
 // import link to avoid anchor tags 
 import {Link} from 'react-router-dom';
 // the Field argument is a component that we gonna work with while the reduxForm is a function that works similarly as connect funnction mmake sure we call action creator and get a form data ...
@@ -52,11 +50,75 @@ import {  createNewsletterEmail } from '../../actions'
             // my function helper so that I cant handle submit we gonna pass in formValues as an argument because it contains informations coming from the onSubmit function more precisally the handleSubmit callback function
 
             
-            const secondSection = () => {
-              return (
-                <>
-                <div>
-                  <section id="choixSection" className="card-section-image">
+
+
+
+
+            const Home = (props, response) => { 
+
+              // /to avoid prop undefined I moved my onSubmit helper inside the component since its a callback function that should be binded to the component itself !!!
+              const onSubmit = (formValues) => {
+              props.createNewsletterEmail(formValues)
+              
+
+            }
+
+                return(
+                    <>
+            <div>
+              <header className="header-blue">
+                <div className="container">
+                  <div className="row">
+                    <div className="col-md-6 col-xl-5" id="iconContainer">
+                      <div className="d-xl-flex my-auto justify-content-xl-center align-items-xl-center">
+                        <img className="img-fluid d-xl-flex mx-auto justify-content-xl-center align-items-xl-center pulse animated infinite" src="/assets/img/Sicon.png" />
+                      </div>
+                    </div>
+                    <div id="heroHeader" className="col-md-6 col-xl-6 offset-xl-0 d-xl-flex justify-content-xl-center align-items-xl-center">
+                      <div>
+                        <h1 className="text-uppercase">La révolution au bout des<br /><span>DOIGTS !</span></h1>
+                      </div>
+                    </div>
+                    <a className="col-xl-12" id="arrowDownAnimation" role="button" href="#choixSection">  
+                      <h1 className="text-center bounce animated infinite"> Go !</h1>
+                    </a><div className="col"><a className="col-xl-12" id="arrowDownAnimation" role="button" href="#choixSection">
+                        <div id="arrowDownBtnIndex" className="d-xl-flex justify-content-xl-center align-items-xl-center">
+                          <i className="fa fa-angle-double-down bounce animated infinite animated">
+                          </i>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </header>
+              <main>
+                <div className="containerIndex">
+                  <div className="row">
+                    <div id="intro" className="col-md-6 col-xl-5 offset-xl-5">
+                      <div id="introContainer"><img src="/assets/img/sihatetelemedecine.png" /></div>
+                    </div>
+                    <div id="introHeadingContainer" className="col-md-6 col-xl-6 offset-xl-2 d-xl-flex">
+                      <article>
+                        <h1 className="text-uppercase text-center">
+                          <br />
+                          <strong>VOTRE SANTé</strong>
+                          <br />
+                          <span>Notre mission</span>
+                        </h1>
+                        <p>
+                          <strong>Améliorer la vie des marocains</strong>
+                          <br />
+                          <strong>en plaçant la santé&nbsp;au centre&nbsp;</strong>
+                          <br />
+                          <strong>de la transformation digitale.</strong>
+                          <br />
+                        </p>
+                      </article>
+                    </div>
+                  </div>
+                </div>
+                {/* first section end */}
+                <section id="choixSection" className="card-section-image">
                   <h1>LOREM IPSUM</h1>
                   <h2>LOREM IPSUMA&nbsp;LOREM IPSUMALOREM IPSUMA<br /><br /></h2>
                   <div className="row d-xl-flex">
@@ -88,9 +150,9 @@ import {  createNewsletterEmail } from '../../actions'
                             <img id="flipimg" className="img-fluid d-xl-flex" src="/assets/img/patientsheroheader.png" />
                             <div id="rowImgBack" className="row d-flex d-xl-flex flex-row justify-content-center justify-content-xl-center align-items-xl-center">
                               <div id="backImgContainer" className="col-xl-5 offset-xl-0">
-                                <a href="./pages/signUpPatient.html"><img id="creercptsihate" data-bss-hover-animate="pulse" src="/assets/img/creercptsihate.png" type="button" />
+                                <Link to="/registerPatient"><img id="creercptsihate" data-bss-hover-animate="pulse" src="/assets/img/creercptsihate.png" type="button" />
                                   <img id="shakeimg" className="shake animated infinite" src="/assets/img/handsihate.png" />
-                                </a>
+                                </Link>
                               </div>
                               <div id="loginsihatecontainer" className="col-xl-5 offset-xl-1">
                                 {/* the syntax is to instead of href sauf que ça prends pathName non pas fichier namedans architecture */}
@@ -129,15 +191,15 @@ import {  createNewsletterEmail } from '../../actions'
                             <img id="flipimg2" className="img-fluid d-xl-flex" src="/assets/img/medecinesihate.png" />
                             <div id="rowImgBack2" className="row d-flex d-xl-flex flex-row justify-content-center justify-content-xl-center align-items-xl-center">
                               <div id="backImgContainer2" className="col-xl-5 offset-xl-0">
-                                <a href="./pages/signUpMedecin.html">
+                                <Link to="registerMedecin">
                                   <img id="creercptsihate2" data-bss-hover-animate="pulse" src="/assets/img/creercptsihate.png" type="button" />
                                   <img id="shakeimg2" className="shake animated infinite" src="/assets/img/handsihate.png" />
-                                </a>
+                                </Link>
                               </div>
                               <div id="loginsihatecontainer2" className="col-xl-5 offset-xl-1">
-                                <a href="./pages/signInMedecin">
+                                <Link to="/loginMedecin">
                                   <img id="loginsihate2" data-bss-hover-animate="pulse" src="/assets/img/loginsihate.png" type="button" />
-                                </a>
+                                </Link>
                               </div>
                             </div>
                           </div>
@@ -147,81 +209,6 @@ import {  createNewsletterEmail } from '../../actions'
                   </div>
                 </section>
                 {/* Section two end  */}
-                </div>
-                </>
-              )
-            }
-
-
-
-            const Home = (props, response) => { 
-
-              // /to avoid prop undefined I moved my onSubmit helper inside the component since its a callback function that should be binded to the component itself !!!
-              const onSubmit = (formValues) => {
-              props.createNewsletterEmail(formValues)
-              
-
-            }
-
-                return(
-                    <>
-            <div>
-              <header className="header-blue">
-                <div className="container">
-                  <div className="row">
-                    <div className="col-md-6 col-xl-5" id="iconContainer">
-                      <div className="d-xl-flex my-auto justify-content-xl-center align-items-xl-center">
-                        <img className="img-fluid d-xl-flex mx-auto justify-content-xl-center align-items-xl-center pulse animated infinite" src="/assets/img/Sicon.png" />
-                      </div>
-                    </div>
-                    <div id="heroHeader" className="col-md-6 col-xl-6 offset-xl-0 d-xl-flex justify-content-xl-center align-items-xl-center">
-                      <div>
-                        <h1 className="text-uppercase">La révolution au bout des<br /><span>DOIGTS !</span></h1>
-                      </div>
-                    </div>
-                    <Link className="col-xl-12" id="arrowDownAnimation" role="button" to="/secondSection">  
-                      <h1 className="text-center bounce animated infinite"> Go !</h1>
-                    </Link><div className="col"><a className="col-xl-12" id="arrowDownAnimation" role="button" href="#choixSection">
-                        <div id="arrowDownBtnIndex" className="d-xl-flex justify-content-xl-center align-items-xl-center">
-                          <i className="fa fa-angle-double-down bounce animated infinite animated">
-                          </i>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </header>
-              <main>
-                <div className="containerIndex">
-                  <div className="row">
-                    <div id="intro" className="col-md-6 col-xl-5 offset-xl-5">
-                      <div id="introContainer"><img src="/assets/img/sihatetelemedecine.png" /></div>
-                    </div>
-                    <div id="introHeadingContainer" className="col-md-6 col-xl-6 offset-xl-2 d-xl-flex">
-                      <article>
-                        <h1 className="text-uppercase text-center">
-                          <br />
-                          <strong>VOTRE SANTé</strong>
-                          <br />
-                          <span>Notre mission</span>
-                        </h1>
-                        <p>
-                          <strong>Améliorer la vie des marocains</strong>
-                          <br />
-                          <strong>en plaçant la santé&nbsp;au centre&nbsp;</strong>
-                          <br />
-                          <strong>de la transformation digitale.</strong>
-                          <br />
-                        </p>
-                      </article>
-                    </div>
-                  </div>
-                </div>
-                {/* first section end */}
-                
-                <secondSection />
-                <Route path="/secondSection" exact component={secondSection} />
-
                 {/* newsLetter */}
                 <section id="section2" className="newsletter-subscribe">
                   <div className="container">
@@ -245,13 +232,13 @@ import {  createNewsletterEmail } from '../../actions'
                   {/* footer start */}
                   <footer id="footer" className="footer-basic">
                     <ul className="list-inline">
-                      <li className="list-inline-item"><a href="#">Home</a></li>
-                      <li className="list-inline-item"><a href="#">Services</a></li>
-                      <li className="list-inline-item"><a href="#">About</a></li>
-                      <li className="list-inline-item"><a href="#">Terms</a></li>
-                      <li className="list-inline-item"><a href="#">Privacy Policy</a></li>
+                      <li className="list-inline-item"><Link to="#">Home</Link></li>
+                      <li className="list-inline-item"><Link to="#">Services</Link></li>
+                      <li className="list-inline-item"><Link to="#">About</Link></li>
+                      <li className="list-inline-item"><Link to="#">Terms</Link></li>
+                      <li className="list-inline-item"><Link to="#">Privacy Policy</Link></li>
                     </ul>
-                    <div id="smContainer" className="d-flex d-xl-flex flex-row justify-content-center align-items-center justify-content-xl-center social"><a href="#"><i className="icon ion-social-instagram" /></a><a href="#"><i className="icon ion-social-snapchat" /></a><a href="#"><i className="icon ion-social-twitter" /></a><a href="#"><i className="icon ion-social-facebook" /></a></div>
+                    <div id="smContainer" className="d-flex d-xl-flex flex-row justify-content-center align-items-center justify-content-xl-center social"><Link to="#"><i className="icon ion-social-instagram" /></Link><Link to="#"><i className="icon ion-social-snapchat" /></Link><Link to="#"><i className="icon ion-social-twitter" /></Link><Link to="#"><i className="icon ion-social-facebook" /></Link></div>
                     <p className="copyright">Sihat-e © 2021</p>
                   </footer>
                   {/* footer end */}
