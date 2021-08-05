@@ -3,10 +3,12 @@
 // I created the User.service.js file so that I can handle Api in relation with user data, 
 
 // Im gonna use userService object so that I can export all the service methods that contains backend api calls :  
-import {config} from '../webpack.config';
+// import {config} from '../webpack.config';
 // Ill import the authHeader that will give me possibility to work with the Api using unique token (user)
 // import { authHeader } from '../helpers/auth-header';
- 
+
+
+
     // In the login method the service accepts two arguments username and password it sends request using post and uses headers so it can store iformation about the type of returned data
 export const userService = () => {
     function login(username, password) {
@@ -16,7 +18,9 @@ export const userService = () => {
         body: JSON.stringify({ username, password })
     };
 
-    return fetch(`${config.apiUrl}/login`, requestOptions)
+    return fetch(`${JSON.stringify({
+            apiUrl: 'http://127.0.0.1:8000/api'
+        }).apiUrl}/login`, requestOptions)
         .then(handleResponse)
         .then(user => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
