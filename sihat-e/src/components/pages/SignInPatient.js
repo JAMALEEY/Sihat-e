@@ -14,6 +14,25 @@ import {    login  } from '../../actions/user.actions'
         const [name, setName] = useState();
         const [value, setValue] = useState();
 
+
+
+const renderInput = ({input, meta}) => {
+        return (
+        <>
+
+             <div className="form-group">
+                      <input {...input} className="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Votre Email Address..." name="email" onChange={input.onChange} value={username} />
+                    </div>
+                    <div className="form-group">
+                      <input className="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Votre Mot De Passe..." name="password" onChange={input.onChange} value={password}  />
+                    </div>
+
+        </>
+        );
+    };
+
+
+
         const handleChange = () => {
         setName({value});
         }
@@ -21,7 +40,11 @@ import {    login  } from '../../actions/user.actions'
         const handleSubmit = (username, password) => {
             // props.createPatient(formValues)
             //  onSubmit={props.handleSubmit(onSubmit)}
-        
+        const onSubmit = (formValues) => {
+              props.createNewsletterEmail(formValues)
+              
+
+            }
 
         setSubmited(  true );
         setUsername (props.state)
@@ -55,10 +78,10 @@ import {    login  } from '../../actions/user.actions'
                   <div className="text-center">
                     <h4 className="text-dark mb-4">Connectez-vous !</h4>
                   </div>
-                  <form id="userFormSignIn" className="user">
+                  <form id="userFormSignIn" className="user" method="post" onSubmit={props.handleSubmit(onSubmit)} >
 
- <Field name="email" component={renderInput} />
-  <Field name="password" component={renderInput} />
+ <Field component={renderInput} />
+   
 
                     {/* <div className="form-group">
                       <input className="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Votre Email Address..." name="email" onChange={handleChange} value={username} />
@@ -127,21 +150,6 @@ import {    login  } from '../../actions/user.actions'
 
 
 
-const renderInput = ({input, meta}) => {
-        return (
-        <>
-
-             <div className="form-group">
-                      <input {...input} className="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Votre Email Address..." name="email" onChange={input.onChange} value={username} />
-                    </div>
-                    <div className="form-group">
-                      <input className="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Votre Mot De Passe..." name="password" onChange={input.onChange} value={password}  />
-                    </div>
-
-        </>
-        );
-    };
-
 
 
 
@@ -167,4 +175,4 @@ const formWrapper = reduxForm({
         export default connect(
             mapStateToProps,
             {actionCreators}
-            )(SignInPatient);
+            )(formWrapper);
