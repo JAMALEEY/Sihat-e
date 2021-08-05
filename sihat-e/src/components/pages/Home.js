@@ -51,7 +51,7 @@ import {  createNewsletterEmail } from '../../actions'
 
 
 
-            const Home = (props) => { 
+            const Home = (props, response) => { 
 
               // /to avoid prop undefined I moved my onSubmit helper inside the component since its a callback function that should be binded to the component itself !!!
               const onSubmit = (formValues) => {
@@ -256,18 +256,27 @@ import {  createNewsletterEmail } from '../../actions'
                 if (!formValues.email) {
                   // we return an object with an error msg inside of it (in case of no errors we return empty object)
                   errors.email =  'SVP remplissez le champ d\'Email '
-                }
-                
-                else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formValues.email)){
+                }  else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formValues.email)){
                   errors.email =  ' L\'adresse email est invalide !' 
                 }
                 
+                // if(baseURL.endswith('/newsletter') &&  opts.method === 'POST') {
+                //   let newEmail = JSON.parse(opts.body);
+
+                //   let duplicatedEmail = emails.filter(email => {return email.email === newEmail.email; }).length;
+                //   if(duplicatedEmail) {
+                //     reject('Email" '+ newEmail.email +' "is already taken');
+                //     return;
+                //   }
+                // }
+               
                 
                 return errors;
             };
+
             
             // the reduxFrom will return a function in which the Home component will be called reason why we passed it in as a parameter 
-            // the reduxForm accept a signe parameter (form) and the value of it shoud be the reason why we created the form ...
+            // the reduxForm accept a signe parameter (form) and the value of it should be the reason why we created the form ...
             // we pass in the function that we created so we can check the form validation to the reduxForm function helper 
             const formWrapper = reduxForm({
               form: 'newsletter',
