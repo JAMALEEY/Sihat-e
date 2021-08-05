@@ -6,7 +6,7 @@ import { combineReducers } from "redux";
 
 
 
-    // I pass in a parameter (form) of a value (reducer) so that I can let redux-form allow the reducer automatization
+    // I pass in a parameter (form) of a value (reducer that I renamed to newsletterReducer) so that I can let redux-form allow the reducer flow automatization 
 export default combineReducers ({
     form: newsletterReducer, signIn
 });

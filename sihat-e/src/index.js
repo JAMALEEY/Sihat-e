@@ -13,9 +13,13 @@ const store = createStore(
     composeEnhancers(applyMiddleware(reduxThunk))
 );
 
+// We wrapp the App in the <Provider /> component from the react-redux library to make the global redux store available throughout the application. (more precisely )
+
 ReactDOM.render(
     <Provider store={store}>
         <App />
     </Provider>,
     document.querySelector('#root')
 )
+
+présision

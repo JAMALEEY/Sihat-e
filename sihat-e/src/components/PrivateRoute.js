@@ -6,7 +6,7 @@ export const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route {...rest} render={props => (
         // checks if the user is logged in is by checking that there is a user object in local storage.
         localStorage.getItem('user')
-        // if true renders riyte component
+        // if true renders route component
             ? <Component {...props} />
             // else redirect
             : <Redirect to={{ pathname: '/Home', state: { from: props.location } }} />

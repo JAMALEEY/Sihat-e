@@ -1,13 +1,8 @@
-    import React, { useEffect, useState } from 'react';
-import {    Link  } from 'react-router-dom';
-import {    connect } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import {  Link  } from 'react-router-dom';
+import {  connect } from 'react-redux';
+import {  createLogin  } from '../../actions';
 import {Field, reduxForm} from 'redux-form';
-
-
-import {  createLogin  } from '../../actions'
-
-
-
 
 
 
@@ -31,6 +26,7 @@ import {  createLogin  } from '../../actions'
                     )
                 }
 
+
                 const renderInputPassword = ({input, meta}) => {
                     return (
                       <>
@@ -50,41 +46,13 @@ import {  createLogin  } from '../../actions'
                 };
 
 
-        // const handleChange = () => {
-        // setName({value});
-        // }
+                // My Functionnal Component :
+                const SignInPatient = (props) => {
 
-        // const handleSubmit = (username, password) => {
-        //     // props.createPatient(formValues)
-        //     //  onSubmit={props.handleSubmit(onSubmit)}
-       
-
-        // setSubmited(  true );
-        // setUsername (props.state)
-        // setPassword (props.state)
-        // if (username && password) {
-        //     props.login(username, password);
-        // }
-        // }
-
-
-
-
-
-
-    const SignInPatient = (props) => {
-
-            const onSubmit = (formValues) => {
-            props.createLogin(formValues)
-            console.log(formValues)
-            }
-
-        // const [username, setUsername] = useState('');
-        // const [password, setPassword] = useState('');
-        // const [submited, setSubmited] = useState(false);
-        // const [name, setName] = useState();
-        // const [value, setValue] = useState();
-
+                    const onSubmit = (formValues) => {
+                      props.createLogin(formValues)
+                      
+                    }
 
 
     return(

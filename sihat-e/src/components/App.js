@@ -38,23 +38,21 @@ const  App = (props) => {
     <Router history={history}> 
     <Switch>
       {/* IF THE USER TYPED GIBRISH REDIRECT TO HOME PAGE */}
-      <PrivateRoute exact path="/" />
+      <PrivateRoute exact path="/dashboardPatient" exact component={DashboardPatient}/>
                                 <Route path="/Home" exact component={Home} />
-                                <Route path="/dashboardPatient" exact component={DashboardPatient}/>
                                 <Route path="/loginMedecin" exact component={SignInMedecin} />
                                 <Route path="/registerPatient" exact component={SignUpPatient} />
-                                <Route path="/loginPatient" exact component={SignInPatient} />
+                                <Route path="/loginPatient" exact component={SignInPatient} render={DashboardPatient} />
                                 <Route path="/registerMedecin" exact component={SignUpMedecin} />
                                 <Redirect from="*" to="/" />
     </Switch>
     </Router>
     </BrowserRouter>
     </>
+    // we used the <Router /> and <Switch /> components from react-router-dom for leveraging client-side routing.
   );
 }
 
-// const actionCreators = {
-//     clearAlerts: alertActions.clear
-// };
+// We wrap all the child components in the <Provider /> component from the react-redux library to make the global redux store available throughout the application.
 
 export default App;
