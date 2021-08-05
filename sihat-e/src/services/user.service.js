@@ -6,11 +6,11 @@
 // import {config} from '../webpack.config';
 // Ill import the authHeader that will give me possibility to work with the Api using unique token (user)
 // import { authHeader } from '../helpers/auth-header';
-
-
-
+ 
     // In the login method the service accepts two arguments username and password it sends request using post and uses headers so it can store iformation about the type of returned data
+    
 export const userService = () => {
+    
     function login(username, password) {
     const requestOptions = {
         method: 'POST',
@@ -18,7 +18,7 @@ export const userService = () => {
         body: JSON.stringify({ username, password })
     };
 
-    return fetch(`${JSON.stringify({
+    return fetch(`${ JSON.stringify({
             apiUrl: 'http://127.0.0.1:8000/api'
         }).apiUrl}/login`, requestOptions)
         .then(handleResponse)
