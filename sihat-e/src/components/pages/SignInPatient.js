@@ -16,11 +16,6 @@ import {Field, reduxForm} from 'redux-form';
                             {error} 
                         </div>
                           </div>
-
-                        {/* <div className="alert alert-warning alert-dismissible fade show"> <span className="danger"> <strong> &#9888; Attention &#9888;</strong> </span>  
-                        {error} 
-                        </div>
-                        <button type="button" class="close" data-dismiss="alert">&times;</button> */}
                         
                         
                         </>
@@ -32,6 +27,7 @@ import {Field, reduxForm} from 'redux-form';
                 const renderInput = ({input, meta}) => {
                     return (
                       <>
+                       {errorsHelper(meta)}
                           <div className="form-group">
                               <input 
                                 {...input} className="form-control form-control-user" 
@@ -44,6 +40,7 @@ import {Field, reduxForm} from 'redux-form';
                                 value={input.value} 
                               />
                           </div>
+
                       </>
                     )
                 }
@@ -168,22 +165,21 @@ import {Field, reduxForm} from 'redux-form';
         </div>
       </>
     )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
+                
+            // we Define also our Validation function called with a form values object, because this is what we are trying to look if its valide or not
+            const validate = (formValues) => {
+              const errors = {};
+              // check if the user filled the form (if theres no form value)
+              // if the user didnt put the Email
+                if (!formValues.email) {
+                  // we return an object with an error msg inside of it (in case of no errors we return empty object)
+                  errors.email =  'SVP remplissez le champ d\'Email '
+                }  else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formValues.email)){
+                  errors.email =  ' L\'adresse email est invalide !' 
+                }
+                return errors;
+            };
 
     // const mapStateToProps = (state) => {
     //     return {
@@ -197,6 +193,7 @@ import {Field, reduxForm} from 'redux-form';
 
 const formWrapper = reduxForm({
             form: 'signIn',
+            validate
             })(SignInPatient);
 
         export default connect(

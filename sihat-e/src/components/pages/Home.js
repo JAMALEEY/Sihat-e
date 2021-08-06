@@ -280,7 +280,8 @@ import {  createNewsletterEmail, isLogin } from '../../actions'
                 }  else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formValues.email)){
                   errors.email =  ' L\'adresse email est invalide !' 
                 }
-                
+                return errors;
+            };
                 // if(baseURL.endswith('/newsletter') &&  opts.method === 'POST') {
                 //   let newEmail = JSON.parse(opts.body);
 
@@ -290,12 +291,7 @@ import {  createNewsletterEmail, isLogin } from '../../actions'
                 //     return;
                 //   }
                 // }
-               
-                
-                return errors;
-            };
 
-            
             // the reduxFrom will return a function in which the Home component will be called reason why we passed it in as a parameter 
             // the reduxForm accept a signe parameter (form) and the value of it should be the reason why we created the form ...
             // we pass in the function that we created so we can check the form validation to the reduxForm function helper 
