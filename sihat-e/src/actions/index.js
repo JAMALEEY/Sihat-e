@@ -23,25 +23,25 @@ export const createNewsletterEmail = (formValues) => {
 }
 }
 
-export const createLogin = (formValues, error) => {
-    return async ( dispatch ) => {
-        const response = await newsletterapi.post('/login', formValues);
+        export const createLogin = (formValues, error) => {
+            return async ( dispatch ) => {
+                const response = await newsletterapi.post('/login', formValues);
 
-    dispatch ({
-        type: 'CREATE_LOGIN',
-        payload: response.data
-    })
-    
-    if (response.data) {
+            dispatch ({
+                type: 'CREATE_LOGIN',
+                payload: response.data
+            })
+            
+            if (response.data) {
 
-        if(response.status === 200) {
-            console.log('kayn')
+                if(response.status === 200) {
+                    console.log('kayn')
+                }
+
+                }
+
         }
-
         }
-
-}
-}
 
 
 export const fetchLoginMsg = () => {
