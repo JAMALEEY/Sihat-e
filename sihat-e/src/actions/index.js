@@ -60,6 +60,11 @@ export const createNewsletterEmail = (formValues) => {
                     localStorage.setItem(TOKEN_KEY, response.data.token);
                     history.push('/dashboardPatient')
                     
+                } else if(response.status === 401) {
+                     dispatch ({
+                        type: 'UNAU',
+                        payload: response.data
+                    })
                 }
 
                 }

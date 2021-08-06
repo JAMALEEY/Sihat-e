@@ -27,7 +27,7 @@ import {Field, reduxForm} from 'redux-form';
                 const renderInput = ({input, meta}) => {
                     return (
                       <>
-                       {errorsHelper(meta)}
+                        {errorsHelper(meta)}
                           <div className="form-group">
                               <input 
                                 {...input} className="form-control form-control-user" 
@@ -177,6 +177,9 @@ import {Field, reduxForm} from 'redux-form';
                   errors.email =  'SVP remplissez le champ d\'Email '
                 }  else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formValues.email)){
                   errors.email =  ' L\'adresse email est invalide !' 
+                }
+                  else if (formValues === 401){
+                  errors.email =  ' Votre E-mail / mot de passe est incorrects. ' 
                 }
                 return errors;
             };
