@@ -42,15 +42,6 @@ export const createNewsletterEmail = (formValues) => {
 }
 }
 
-      export const isLogin = (TOKEN_KEY) => {
-    if (localStorage.getItem(TOKEN_KEY)) {
-        console.log(TOKEN_KEY);
-        return true;
-    }
-
-    return false;
-}
-
 
         export const createLogin = (formValues, token) => {
             // async function dispatch = redux thunk en rgos
@@ -65,9 +56,10 @@ export const createNewsletterEmail = (formValues) => {
             if (response.data) {
 
                 if(response.status === 200) {
+                    
                     localStorage.setItem(TOKEN_KEY, response.data.token);
                     history.push('/dashboardPatient')
-                    isLogin()
+                    
                 }
 
                 }
@@ -75,7 +67,15 @@ export const createNewsletterEmail = (formValues) => {
         }
         }
 
-  
+                
+            export const isLogin = () => {
+            if (localStorage.getItem(TOKEN_KEY)) {
+                return true;
+            }
+
+            return false;
+        }
+
 
 
 export const logout = () => {

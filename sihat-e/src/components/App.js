@@ -21,8 +21,8 @@ import { connect } from 'react-redux';
 // in order to work with cleaAlerts function that clear actions on location change
 
 import DashboardPatient from './pages/DashboardPatient';
-import PrivateRoute from '../helpers/PrivateRoute';
-import PublicRoute from '../helpers/PublicRoute';
+import PrivateRoute from './pages/PrivateRoute';
+import PublicRoute from './pages/PublicRoute';
 
 
 

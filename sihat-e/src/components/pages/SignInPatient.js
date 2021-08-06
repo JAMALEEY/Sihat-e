@@ -49,9 +49,9 @@ import {Field, reduxForm} from 'redux-form';
                 // My Functionnal Component :
                 
                 const SignInPatient = (props) => {
-                    const [email, setEmail] = useState("");
-                    const [password, setPassword] = useState("");
-                    const [error, setError] = useState("");
+                    // const [email, setEmail] = useState("");
+                    // const [password, setPassword] = useState("");
+                    // const [error, setError] = useState("");
 
                     const onSubmit = (formValues) => {
                       props.createLogin(formValues)

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {Field, reduxForm} from 'redux-form';
 // import link to avoid anchor tags 
 import {Link} from 'react-router-dom';
 // the Field argument is a component that we gonna work with while the reduxForm is a function that works similarly as connect funnction mmake sure we call action creator and get a form data ...
 import {  connect } from 'react-redux';
-import {  createNewsletterEmail } from '../../actions'
+import {  createNewsletterEmail, isLogin } from '../../actions'
 
           // in order to centralize my errors in one place I use a helper function called errorsHelper
             const errorsHelper = ({error, touched}) => {
@@ -54,14 +54,31 @@ import {  createNewsletterEmail } from '../../actions'
 
 
 
-            const Home = (props, response) => { 
+            const Home = (props) => { 
+
+
+              
+              const [isLogin, setIsLogin] =  useState({});
+                useEffect(() => {
+                    setIsLogin(isLogin);
+                  
+
+                  });
+                
+              
+              // setIsLogin(isLogin())
 
               // /to avoid prop undefined I moved my onSubmit helper inside the component since its a callback function that should be binded to the component itself !!!
               const onSubmit = (formValues) => {
               props.createNewsletterEmail(formValues)
-              
+              }
 
-            }
+              // handleLogout = () => {
+              //   logout();
+              //   this.setState({
+              //   isLogin: false
+              //   })
+              // }
 
                 return(
                     <>
