@@ -1,10 +1,29 @@
 // in order to make requests over our newsletter API we take an instance of this API using axios to apply actions creators on it
 import newsletterapi from "../Apis/newsletterapi";
-import { SIGN_IN, SIGN_OUT, CREATE_NEWSLETTER, CREATE_PATIENT, CREATE_MEDECIN, FETCH_PATIENT, FETCH_MEDECIN, DELETE_PATIENT, DELETE_MEDECIN } from './types';
+import { SIGN_IN, SIGN_OUT, CREATE_NEWSLETTER, CREATE_PATIENT, CREATE_MEDECIN, FETCH_PATIENT, FETCH_MEDECIN, DELETE_PATIENT, DELETE_MEDECIN, TOKEN_KEY } from './types';
 import history from "../helpers/history";
 
 // new action creator to handle newletter api:
 // this is goign to be called with a list of all those different values that we entered into our form as an argument to our action creator (an asynch action creator necessite a reduxThunk)
+
+
+
+
+// export const signIn = token => {
+//   return {
+//     type: SIGN_IN,
+//     payload: token
+//   };
+// };
+
+
+
+// export const login = () => {
+//     localStorage.setItem(TOKEN_KEY, 'TestLogin');
+// }
+
+
+
 export const createNewsletterEmail = (formValues) => {
     return async ( dispatch ) => {
         const response = await newsletterapi.post('/newsletter', formValues);
@@ -23,6 +42,16 @@ export const createNewsletterEmail = (formValues) => {
 }
 }
 
+      export const isLogin = (TOKEN_KEY) => {
+    if (localStorage.getItem(TOKEN_KEY)) {
+        console.log(TOKEN_KEY);
+        return true;
+    }
+
+    return false;
+}
+
+
         export const createLogin = (formValues, token) => {
             // async function dispatch = redux thunk en rgos
             return async ( dispatch ) => {
@@ -36,13 +65,26 @@ export const createNewsletterEmail = (formValues) => {
             if (response.data) {
 
                 if(response.status === 200) {
-                    history.push(/)
+                    localStorage.setItem(TOKEN_KEY, response.data.token);
+                    history.push('/dashboardPatient')
+                    isLogin()
                 }
 
                 }
 
         }
         }
+
+  
+
+
+export const logout = () => {
+    localStorage.removeItem(TOKEN_KEY);
+}
+
+
+
+
 
 
 export const fetchLoginMsg = () => {

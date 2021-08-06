@@ -21,6 +21,8 @@ import { connect } from 'react-redux';
 // in order to work with cleaAlerts function that clear actions on location change
 
 import DashboardPatient from './pages/DashboardPatient';
+import PrivateRoute from '../helpers/PrivateRoute';
+import PublicRoute from '../helpers/PublicRoute';
 
 
 
@@ -38,12 +40,12 @@ const  App = (props) => {
     <Router history={history}> 
     <Switch>
       {/* IF THE USER TYPED GIBRISH REDIRECT TO HOME PAGE */}
-      <PrivateRoute path="/dashboardPatient" exact component={DashboardPatient}/>
-                                <Route path="/" exact component={Home} />
-                                <Route path="/loginMedecin" exact component={SignInMedecin} />
-                                <Route path="/registerPatient" exact component={SignUpPatient} />
-                                <Route path="/loginPatient" exact component={SignInPatient} />
-                                <Route path="/registerMedecin" exact component={SignUpMedecin} />
+                <PrivateRoute component={DashboardPatient} path="/dashboardPatient" exact />
+                                <PublicRoute  restricted={false}  path="/" exact component={Home} />
+                                <PublicRoute path="/loginMedecin" exact component={SignInMedecin} />
+                                <PublicRoute path="/registerPatient" exact component={SignUpPatient} />
+                                <PublicRoute restricted={true}  path="/loginPatient" exact component={SignInPatient} />
+                                <PublicRoute path="/registerMedecin" exact component={SignUpMedecin} />
                                 <Redirect from="*" to="/" />
     </Switch>
     </Router>

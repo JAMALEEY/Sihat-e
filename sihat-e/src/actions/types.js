@@ -7,3 +7,4 @@ export const FETCH_PATIENT = 'FETCH_PATIENT';
 export const FETCH_MEDECIN = 'FETCH_MEDECIN';
 export const DELETE_PATIENT = 'DELETE_PATIENT';
 export const DELETE_MEDECIN = 'DELETE_MEDECIN'; 
+export const TOKEN_KEY = 'TOKEN';
