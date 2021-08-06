@@ -1,6 +1,7 @@
-    import React, { useEffect, useState } from 'react';
-    import { Link } from 'react-router-dom';
-    import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
 
     // Actions
     // import {login, getAll, deleter} from '../../actions/user.actions' 
@@ -305,14 +306,5 @@
 
         
     }
-    const mapStateToProps = state => {
-        return {
-            user: Object.values(state.user), 
-            users: Object.values(state.users)
-        };
-};
-
-        export default connect(
-            mapStateToProps,
-            {login}
-            )(DashboardPatient);
+            export default connect(({ isAuthUser }) => ({ isAuthUser }))(DashboardPatient
+);
