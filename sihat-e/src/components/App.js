@@ -11,7 +11,6 @@ import SignInMedecin from './pages/SignInMedecin';
 import SignInPatient from './pages/SignInPatient';
 import SignUpMedecin from './pages/SingUpMedecin';
 import SignUpPatient from './pages/SignUpPatient';
-import { PrivateRoute } from './PrivateRoute';
 // Helpers Dependencies 
 import history  from '../helpers/history';
 // Routing Dependencies 
@@ -20,9 +19,9 @@ import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 // Actions Dependencies 
 // in order to work with cleaAlerts function that clear actions on location change
-import { alertActions } from '../actions/alert.actions';
+
 import DashboardPatient from './pages/DashboardPatient';
-import AuthRoute from './AuthRoute';
+
 
 
 const  App = (props) => {
@@ -39,12 +38,12 @@ const  App = (props) => {
     <Router history={history}> 
     <Switch>
       {/* IF THE USER TYPED GIBRISH REDIRECT TO HOME PAGE */}
-      <PrivateRoute exact path="/dashboardPatient" exact component={DashboardPatient}/>
+      <Route exact path="/dashboardPatient" exact component={DashboardPatient}/>
                                 <Route path="/Home" exact component={Home} />
-                                <AuthRoute path="/loginMedecin" exact component={SignInMedecin} />
-                                <AuthRoute path="/registerPatient" exact component={SignUpPatient} />
-                                <AuthRoute path="/loginPatient" exact component={SignInPatient} render={DashboardPatient} />
-                                <AuthRoute path="/registerMedecin" exact component={SignUpMedecin} />
+                                <Route path="/loginMedecin" exact component={SignInMedecin} />
+                                <Route path="/registerPatient" exact component={SignUpPatient} />
+                                <Route path="/loginPatient" exact component={SignInPatient} render={DashboardPatient} />
+                                <Route path="/registerMedecin" exact component={SignUpMedecin} />
                                 <Redirect from="*" to="/" />
     </Switch>
     </Router>
