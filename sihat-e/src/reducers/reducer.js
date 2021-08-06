@@ -25,3 +25,15 @@
 //       return state;
 //   }
 // };
+import {
+    SIGN_IN, SIGN_OUT, CREATE_NEWSLETTER, CREATE_PATIENT, CREATE_MEDECIN, FETCH_PATIENT, FETCH_MEDECIN, DELETE_PATIENT, DELETE_MEDECIN
+} from '../actions/types'
+
+export default (state = {}, action) => {
+    switch (action.type) {
+        case SIGN_IN:
+            return 
+        default:
+            return state;
+    }
+}

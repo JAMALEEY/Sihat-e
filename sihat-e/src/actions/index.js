@@ -17,9 +17,8 @@ export const createNewsletterEmail = (formValues) => {
         dispatch ({
         type: 'DUPLICATED_NEWSLETTER',
         payload: response.data.errors.email
-
-    })
         
+    })
     };   
 }
 }

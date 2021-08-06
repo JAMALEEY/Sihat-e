@@ -38,8 +38,8 @@ const  App = (props) => {
     <Router history={history}> 
     <Switch>
       {/* IF THE USER TYPED GIBRISH REDIRECT TO HOME PAGE */}
-      <Route exact path="/dashboardPatient" exact component={DashboardPatient}/>
-                                <Route path="/Home" exact component={Home} />
+      {/* <Route path="/dashboardPatient" exact component={DashboardPatient}/> */}
+                                <Route path="/" exact component={Home} />
                                 <Route path="/loginMedecin" exact component={SignInMedecin} />
                                 <Route path="/registerPatient" exact component={SignUpPatient} />
                                 <Route path="/loginPatient" exact component={SignInPatient} render={DashboardPatient} />
