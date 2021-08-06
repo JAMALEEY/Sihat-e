@@ -52,7 +52,7 @@ img #sicon{
 }
 
 #arrowDownBtnIndex i {
-  width: 45;height: 45;font-size: 135px;text-align: center;color: rgba(255,255,255,0.64);animation-duration: 5s;
+  width: 45;height: 45;font-size: 90px;text-align: center;color: rgba(255,255,255,0.64);animation-duration: 5s;
 }
 
 main .containerIndex {
@@ -1579,3 +1579,19 @@ width: 386px;font-family: Poppins, sans-serif;}
 #rowDashboardUpload form {
   border-radius: 25px;width: 704.984px;
 }
+
+
+
+/* the newsletter validation popup style */
+.bs-example{
+    margin: 13px;
+    padding-bottom: 30px;
+    text-align: center;
+    }
+
+
+
+
+    .fab{
+      color: white;
+    }

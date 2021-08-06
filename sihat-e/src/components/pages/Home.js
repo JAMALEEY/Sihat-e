@@ -1,7 +1,10 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
+// import link to avoid anchor tags 
+import {Link} from 'react-router-dom';
 // the Field argument is a component that we gonna work with while the reduxForm is a function that works similarly as connect funnction mmake sure we call action creator and get a form data ...
-
+import {  connect } from 'react-redux';
+import {  createNewsletterEmail } from '../../actions'
 
           // in order to centralize my errors in one place I use a helper function called errorsHelper
             const errorsHelper = ({error, touched}) => {
@@ -9,7 +12,19 @@ import {Field, reduxForm} from 'redux-form';
               if (touched && error) {
                 return(
                   <>
-                  <div> &#9888; {error} </div>
+                  <div className="bs-example"> 
+                  <div className="alert alert-warning alert-dismissible fade show">
+                      <strong> &#9888; Attention &#9888; </strong> 
+                      {error} 
+                  </div>
+                    </div>
+
+                  {/* <div className="alert alert-warning alert-dismissible fade show"> <span className="danger"> <strong> &#9888; Attention &#9888;</strong> </span>  
+                  {error} 
+                  </div>
+                  <button type="button" class="close" data-dismiss="alert">&times;</button> */}
+                  
+                  
                   </>
                 )
 
@@ -23,7 +38,8 @@ import {Field, reduxForm} from 'redux-form';
                           <input {...input} onChange={input.onChange} value={input.value}   className="form-control" type="email" name="email" placeholder="Votre E-mail" />
                         </div>
                         <div className="form-group">
-                          <button className="btn btn-primary" type="submit"><strong>Je m'abonne</strong></button></div>
+                          <button className="btn btn-primary" type="submit"><strong>Je m'abonne</strong></button>
+                        </div>
                           {errorsHelper(meta)}
 
                 </>
@@ -32,16 +48,20 @@ import {Field, reduxForm} from 'redux-form';
             }
 
             // my function helper so that I cant handle submit we gonna pass in formValues as an argument because it contains informations coming from the onSubmit function more precisally the handleSubmit callback function
-            const onSubmit = (formValues) => {
-              console.log(formValues)
+
+            
+
+
+
+
+            const Home = (props, response) => { 
+
+              // /to avoid prop undefined I moved my onSubmit helper inside the component since its a callback function that should be binded to the component itself !!!
+              const onSubmit = (formValues) => {
+              props.createNewsletterEmail(formValues)
+              
+
             }
-
-
-
-
-
-            const Home = (props) => { 
-
 
                 return(
                     <>
@@ -130,14 +150,15 @@ import {Field, reduxForm} from 'redux-form';
                             <img id="flipimg" className="img-fluid d-xl-flex" src="/assets/img/patientsheroheader.png" />
                             <div id="rowImgBack" className="row d-flex d-xl-flex flex-row justify-content-center justify-content-xl-center align-items-xl-center">
                               <div id="backImgContainer" className="col-xl-5 offset-xl-0">
-                                <a href="./pages/signUpPatient.html"><img id="creercptsihate" data-bss-hover-animate="pulse" src="/assets/img/creercptsihate.png" type="button" />
+                                <Link to="/registerPatient"><img id="creercptsihate" data-bss-hover-animate="pulse" src="/assets/img/creercptsihate.png" type="button" />
                                   <img id="shakeimg" className="shake animated infinite" src="/assets/img/handsihate.png" />
-                                </a>
+                                </Link>
                               </div>
                               <div id="loginsihatecontainer" className="col-xl-5 offset-xl-1">
-                                <a href="./pages/signIn.html">
+                                {/* the syntax is to instead of href sauf que ça prends pathName non pas fichier namedans architecture */}
+                                <Link to="/loginPatient">
                                   <img id="loginsihate" data-bss-hover-animate="pulse" src="/assets/img/loginsihate.png" type="button" />
-                                </a>
+                                </Link>
                               </div>
                             </div>
                           </div>
@@ -170,15 +191,15 @@ import {Field, reduxForm} from 'redux-form';
                             <img id="flipimg2" className="img-fluid d-xl-flex" src="/assets/img/medecinesihate.png" />
                             <div id="rowImgBack2" className="row d-flex d-xl-flex flex-row justify-content-center justify-content-xl-center align-items-xl-center">
                               <div id="backImgContainer2" className="col-xl-5 offset-xl-0">
-                                <a href="./pages/signUpMedecin.html">
+                                <Link to="registerMedecin">
                                   <img id="creercptsihate2" data-bss-hover-animate="pulse" src="/assets/img/creercptsihate.png" type="button" />
                                   <img id="shakeimg2" className="shake animated infinite" src="/assets/img/handsihate.png" />
-                                </a>
+                                </Link>
                               </div>
                               <div id="loginsihatecontainer2" className="col-xl-5 offset-xl-1">
-                                <a href="./pages/signInMedecin">
+                                <Link to="/loginMedecin">
                                   <img id="loginsihate2" data-bss-hover-animate="pulse" src="/assets/img/loginsihate.png" type="button" />
-                                </a>
+                                </Link>
                               </div>
                             </div>
                           </div>
@@ -211,13 +232,13 @@ import {Field, reduxForm} from 'redux-form';
                   {/* footer start */}
                   <footer id="footer" className="footer-basic">
                     <ul className="list-inline">
-                      <li className="list-inline-item"><a href="#">Home</a></li>
-                      <li className="list-inline-item"><a href="#">Services</a></li>
-                      <li className="list-inline-item"><a href="#">About</a></li>
-                      <li className="list-inline-item"><a href="#">Terms</a></li>
-                      <li className="list-inline-item"><a href="#">Privacy Policy</a></li>
+                      <li className="list-inline-item"><Link to="#">Home</Link></li>
+                      <li className="list-inline-item"><Link to="#">Services</Link></li>
+                      <li className="list-inline-item"><Link to="#">About</Link></li>
+                      <li className="list-inline-item"><Link to="#">Terms</Link></li>
+                      <li className="list-inline-item"><Link to="#">Privacy Policy</Link></li>
                     </ul>
-                    <div id="smContainer" className="d-flex d-xl-flex flex-row justify-content-center align-items-center justify-content-xl-center social"><a href="#"><i className="icon ion-social-instagram" /></a><a href="#"><i className="icon ion-social-snapchat" /></a><a href="#"><i className="icon ion-social-twitter" /></a><a href="#"><i className="icon ion-social-facebook" /></a></div>
+                    <div id="smContainer" className="d-flex d-xl-flex flex-row justify-content-center align-items-center justify-content-xl-center social"><Link to="#"><i className="icon ion-social-instagram" /></Link><Link to="#"><i className="icon ion-social-snapchat" /></Link><Link to="#"><i className="icon ion-social-twitter" /></Link><Link to="#"><i className="icon ion-social-facebook" /></Link></div>
                     <p className="copyright">Sihat-e © 2021</p>
                   </footer>
                   {/* footer end */}
@@ -238,18 +259,33 @@ import {Field, reduxForm} from 'redux-form';
               // if the user didnt put the Email
                 if (!formValues.email) {
                   // we return an object with an error msg inside of it (in case of no errors we return empty object)
-                  errors.email =  'Attention ⚠ : SVP remplissez le champ d\'Email'
+                  errors.email =  'SVP remplissez le champ d\'Email '
+                }  else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formValues.email)){
+                  errors.email =  ' L\'adresse email est invalide !' 
                 }
-                else if (formValues.email !== /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/) {
-                  errors.email = 'Attention ⚠ : SVP rentrez un Email valide'
-                }
+                
+                // if(baseURL.endswith('/newsletter') &&  opts.method === 'POST') {
+                //   let newEmail = JSON.parse(opts.body);
+
+                //   let duplicatedEmail = emails.filter(email => {return email.email === newEmail.email; }).length;
+                //   if(duplicatedEmail) {
+                //     reject('Email" '+ newEmail.email +' "is already taken');
+                //     return;
+                //   }
+                // }
+               
+                
                 return errors;
             };
+
             
             // the reduxFrom will return a function in which the Home component will be called reason why we passed it in as a parameter 
-            // the reduxForm accept a signe parameter (form) and the value of it shoud be the reason why we created the form ...
+            // the reduxForm accept a signe parameter (form) and the value of it should be the reason why we created the form ...
             // we pass in the function that we created so we can check the form validation to the reduxForm function helper 
-            export default reduxForm({
+            const formWrapper = reduxForm({
               form: 'newsletter',
               validate
             })(Home);
+
+            //  we gonna pass in mapStateToProps and the action Creator
+            export default connect(null, {createNewsletterEmail})(formWrapper);
