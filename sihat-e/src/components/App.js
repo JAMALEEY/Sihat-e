@@ -29,7 +29,7 @@ const  App = (props) => {
     // the history variable helper that we created from the built in function to enable redirecting users from outside React components ...
     // history.listen((location, action) => {
             // clear alert on location change
-    //         props.clearAlerts();
+    //         props.clearAlerts(); 
     // });
   return (
     <>
@@ -38,11 +38,11 @@ const  App = (props) => {
     <Router history={history}> 
     <Switch>
       {/* IF THE USER TYPED GIBRISH REDIRECT TO HOME PAGE */}
-      {/* <Route path="/dashboardPatient" exact component={DashboardPatient}/> */}
+      <PrivateRoute path="/dashboardPatient" exact component={DashboardPatient}/>
                                 <Route path="/" exact component={Home} />
                                 <Route path="/loginMedecin" exact component={SignInMedecin} />
                                 <Route path="/registerPatient" exact component={SignUpPatient} />
-                                <Route path="/loginPatient" exact component={SignInPatient} render={DashboardPatient} />
+                                <Route path="/loginPatient" exact component={SignInPatient} />
                                 <Route path="/registerMedecin" exact component={SignUpMedecin} />
                                 <Redirect from="*" to="/" />
     </Switch>

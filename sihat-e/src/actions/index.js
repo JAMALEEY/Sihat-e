@@ -1,7 +1,7 @@
 // in order to make requests over our newsletter API we take an instance of this API using axios to apply actions creators on it
 import newsletterapi from "../Apis/newsletterapi";
 import { SIGN_IN, SIGN_OUT, CREATE_NEWSLETTER, CREATE_PATIENT, CREATE_MEDECIN, FETCH_PATIENT, FETCH_MEDECIN, DELETE_PATIENT, DELETE_MEDECIN } from './types';
-
+import history from "../helpers/history";
 
 // new action creator to handle newletter api:
 // this is goign to be called with a list of all those different values that we entered into our form as an argument to our action creator (an asynch action creator necessite a reduxThunk)
@@ -17,7 +17,7 @@ export const createNewsletterEmail = (formValues) => {
         dispatch ({
         type: 'DUPLICATED_NEWSLETTER',
         payload: response.data.errors.email
-        
+
     })
     };   
 }
@@ -36,7 +36,7 @@ export const createNewsletterEmail = (formValues) => {
             if (response.data) {
 
                 if(response.status === 200) {
-                    console.log('kayn')
+                    history.push(/)
                 }
 
                 }
