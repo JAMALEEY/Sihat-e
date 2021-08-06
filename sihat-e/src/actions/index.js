@@ -1,5 +1,5 @@
 // in order to make requests over our newsletter API we take an instance of this API using axios to apply actions creators on it
-import newsletterapi from "../Apis/newsletterapi";
+import api from "../Apis/api";
 import { SIGN_IN, SIGN_OUT, CREATE_NEWSLETTER, CREATE_PATIENT, CREATE_MEDECIN, FETCH_PATIENT, FETCH_MEDECIN, DELETE_PATIENT, DELETE_MEDECIN, TOKEN_KEY } from './types';
 import history from "../helpers/history";
 
@@ -26,7 +26,7 @@ import history from "../helpers/history";
 
 export const createNewsletterEmail = (formValues) => {
     return async ( dispatch ) => {
-        const response = await newsletterapi.post('/newsletter', formValues);
+        const response = await api.post('/newsletter', formValues);
 
     dispatch ({
         type: CREATE_NEWSLETTER ,
@@ -46,32 +46,30 @@ export const createNewsletterEmail = (formValues) => {
         export const createLogin = (formValues, token) => {
             // async function dispatch = redux thunk en rgos
             return async ( dispatch ) => {
-                const response = await newsletterapi.post('/login', formValues);
+                const response = await api.post('/login', formValues);
 
             dispatch ({
                 type: SIGN_IN,
                 payload: response.data
             })
             
-            if (response.data) {
+                if (response.data) {
 
-                if(response.status === 200) {
-                    
-                    localStorage.setItem(TOKEN_KEY, response.data.token);
-                    history.push('/dashboardPatient')
-                    
-                } else if(response.status === 401) {
-                     dispatch ({
-                        type: 'UNAU',
-                        payload: response.data
-                    })
+                    if(response.data.status == 401) {
+                        alert('tst')
+                    } 
+                    else {
+                        console.log(response.data)
+                        localStorage.setItem(TOKEN_KEY, response.data.token);
+                        history.push('/dashboardPatient')
+                    //    
+                    // 
+
+                    }
+
                 }
-
-                }
-
         }
         }
-
                 
             export const isLogin = () => {
             if (localStorage.getItem(TOKEN_KEY)) {
@@ -94,7 +92,7 @@ export const logout = () => {
 
 export const fetchLoginMsg = () => {
     return async ( dispatch ) => {
-        const response = await newsletterapi.get('/');
+        const response = await api.get('/');
 
     dispatch ({
         type: 'CREATE_LOGIN',

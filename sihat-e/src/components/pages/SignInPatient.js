@@ -77,6 +77,18 @@ import {Field, reduxForm} from 'redux-form';
                       
                     }
 
+                    const [items, setItems] = useState([]);
+                    const [errorMessage, setErrorMessage] = useState('');
+                    useEffect(()=>{
+                      axios.get('http://127.0.0.1:8000/api')
+                      .then(response => {
+                          setItems(response.data);
+                      })
+                      .catch(err => {
+                          setErrorMessage(err.message)
+                      });
+                  }, [])
+
 
     return(
         <>
