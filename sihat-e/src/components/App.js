@@ -13,9 +13,9 @@ import SignUpMedecin from './pages/SingUpMedecin';
 import SignUpPatient from './pages/SignUpPatient';
 import { PrivateRoute } from './PrivateRoute';
 // Helpers Dependencies 
-import { history } from '../helpers/history';
+import history  from '../helpers/history';
 // Routing Dependencies 
-import { BrowserRouter, Router, Route, Switch, Redirect } from 'react-router-dom';
+import { Router, Route, Switch, Redirect } from 'react-router-dom';
 // Connection dependencie 
 import { connect } from 'react-redux';
 // Actions Dependencies 
@@ -35,7 +35,6 @@ const  App = (props) => {
   return (
     <>
     {/* to listen to history for changes to the URL ill be using BrowserRouter */}
-    <BrowserRouter>
     {/* the history keeps track of the adress bar in the browser */}
     <Router history={history}> 
     <Switch>
@@ -49,7 +48,6 @@ const  App = (props) => {
                                 <Redirect from="*" to="/" />
     </Switch>
     </Router>
-    </BrowserRouter>
     </>
     // we used the <Router /> and <Switch /> components from react-router-dom for leveraging client-side routing.
   );
