@@ -1,6 +1,6 @@
 // in order to make requests over our newsletter API we take an instance of this API using axios to apply actions creators on it
 import newsletterapi from "../Apis/newsletterapi";
-import { SIGN_IN, SIGN_OUT } from './types';
+import { SIGN_IN, SIGN_OUT, CREATE_NEWSLETTER } from './types';
 
 
 // new action creator to handle newletter api:
@@ -10,7 +10,7 @@ export const createNewsletterEmail = (formValues) => {
         const response = await newsletterapi.post('/newsletter', formValues);
 
     dispatch ({
-        type: 'CREATE_NEWSLETTER',
+        type: CREATE_NEWSLETTER ,
         payload: response.data
     })
     if (response.status == 422) {
@@ -25,6 +25,7 @@ export const createNewsletterEmail = (formValues) => {
 }
 
         export const createLogin = (formValues, token) => {
+            // async function dispatch = redux thunk en rgos
             return async ( dispatch ) => {
                 const response = await newsletterapi.post('/login', formValues);
 
