@@ -1,3 +1,9 @@
 export const SIGN_IN = 'SIGN_IN';
 export const SIGN_OUT = 'SIGN_OUT';
 export const CREATE_NEWSLETTER = 'CREATE_NEWSLETTER';
+export const CREATE_PATIENT = 'CREATE_PATIENT';
+export const CREATE_MEDECIN = 'CREATE_MEDECIN';
+export const FETCH_PATIENT = 'FETCH_PATIENT';
+export const FETCH_MEDECIN = 'FETCH_MEDECIN';
+export const DELETE_PATIENT = 'DELETE_PATIENT';
+export const DELETE_MEDECIN = 'DELETE_MEDECIN';
