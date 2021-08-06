@@ -1,6 +1,6 @@
 // in order to make requests over our newsletter API we take an instance of this API using axios to apply actions creators on it
 import newsletterapi from "../Apis/newsletterapi";
-import { SIGN_IN, SIGN_OUT, CREATE_NEWSLETTER } from './types';
+import { SIGN_IN, SIGN_OUT, CREATE_NEWSLETTER, CREATE_PATIENT, CREATE_MEDECIN, FETCH_PATIENT, FETCH_MEDECIN, DELETE_PATIENT, DELETE_MEDECIN } from './types';
 
 
 // new action creator to handle newletter api:
