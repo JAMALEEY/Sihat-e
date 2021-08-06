@@ -4,7 +4,29 @@ import {  connect } from 'react-redux';
 import {  createLogin  } from '../../actions';
 import {Field, reduxForm} from 'redux-form';
 
+                          // in order to centralize my errors in one place I use a helper function called errorsHelper
+                const errorsHelper = ({error, touched}) => {
+                    // si l'utillisateur touche l'input field et qu'il ne propose pas un email valide un erreur se produirera
+                    if (touched && error) {
+                      return(
+                        <>
+                        <div className="bs-example"> 
+                        <div className="alert alert-warning alert-dismissible fade show">
+                            <strong> &#9888; Attention &#9888; </strong> 
+                            {error} 
+                        </div>
+                          </div>
 
+                        {/* <div className="alert alert-warning alert-dismissible fade show"> <span className="danger"> <strong> &#9888; Attention &#9888;</strong> </span>  
+                        {error} 
+                        </div>
+                        <button type="button" class="close" data-dismiss="alert">&times;</button> */}
+                        
+                        
+                        </>
+                      )
+                    }
+                }
 
 
                 const renderInput = ({input, meta}) => {
