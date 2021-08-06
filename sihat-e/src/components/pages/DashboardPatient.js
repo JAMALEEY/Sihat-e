@@ -3,18 +3,18 @@
     import { connect } from 'react-redux';
 
     // Actions
-    import {login, getAll, deleter} from '../../actions/user.actions' 
+    // import {login, getAll, deleter} from '../../actions/user.actions' 
 
     const DashboardPatient = (props) => {
-        const [user, setUser] = useState({props});
-        const [users, setUsers] = useState({props});
-        const actionCreators = {
-    getUsers: getAll,
-    deleteUser: deleter
-}
-        useEffect(() => {  
-            props.getUsers();
-        },[])
+//         const [user, setUser] = useState({props});
+//         const [users, setUsers] = useState({props});
+//         const actionCreators = {
+//     getUsers: getAll,
+//     deleteUser: deleter
+// }
+//         useEffect(() => {  
+//             props.getUsers();
+//         },[])
 
         return(
 

@@ -34,8 +34,9 @@ const  App = (props) => {
     // });
   return (
     <>
+    {/* to listen to history for changes to the URL ill be using BrowserRouter */}
     <BrowserRouter>
-    
+    {/* the history keeps track of the adress bar in the browser */}
     <Router history={history}> 
     <Switch>
       {/* IF THE USER TYPED GIBRISH REDIRECT TO HOME PAGE */}
