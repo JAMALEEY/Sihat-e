@@ -1,5 +1,6 @@
 // in order to make requests over our newsletter API we take an instance of this API using axios to apply actions creators on it
 import newsletterapi from "../Apis/newsletterapi";
+import { SIGN_IN, SIGN_OUT } from './types';
 
 
 // new action creator to handle newletter api:
@@ -23,12 +24,12 @@ export const createNewsletterEmail = (formValues) => {
 }
 }
 
-        export const createLogin = (formValues, error) => {
+        export const createLogin = (formValues, token) => {
             return async ( dispatch ) => {
                 const response = await newsletterapi.post('/login', formValues);
 
             dispatch ({
-                type: 'CREATE_LOGIN',
+                type: SIGN_IN,
                 payload: response.data
             })
             
