@@ -227,7 +227,7 @@ import Test from './Test';
                 }  else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formValues.email)){
                   errors.email =  ' L\'adresse email est invalide !' 
                 }
-                  else if ( state.selectedSong.error === "UnAuthorised"){
+                  else if (  state.selectedSong.error === "UnAuthorised"){
                   errors.email =  '   Votre E-mail / mot de passe est incorrects réessayer svp. ' 
                 }
                 return errors;
@@ -245,7 +245,7 @@ import Test from './Test';
 
 
 const mapStateToProps = (state) => {
-  console.log(state);
+
   return state;
 };
 

@@ -57,12 +57,13 @@ export const createNewsletterEmail = (formValues) => {
                 if (response.data) {
 
                     if(response.data.status == 200) {
+                        
                         localStorage.setItem(TOKEN_KEY, response.data.token);
                         history.push('/dashboardPatient')
 
                     } 
-                    else {
-                        
+                    else if (response.data.status == 401) {
+                        // console.log(response.data.status)
                     //    
                     // 
                     
