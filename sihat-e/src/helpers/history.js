@@ -1,3 +1,4 @@
+// react router dom allows us to work with history/
 import createHistory from 'history/createBrowserHistory';
 
 export default createHistory();

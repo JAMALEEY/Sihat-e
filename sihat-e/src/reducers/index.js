@@ -3,19 +3,72 @@ import { reducer as newsletterReducer } from "redux-form";
 import { reducer as signIn } from "redux-form";
 // To manage my multiple reducers to be one single reducer ill use CombineReducers that takes parameters with what ill call inside my project
 import { combineReducers } from "redux";
-
-// import { apiRequest } from "../actions/api";
 import { LOGIN } from "../actions/auth";
+import reducer from './reducer';
+import { SIGN_IN } from "../actions/types";
 
 
 import axios from "axios";
-// import { API_REQUEST, apiError, apiSuccess } from "../actions/api";
+
+
+
+
+const selectedSongReducer = (selectedSong = null, action) => {
+    if (action.type === SIGN_IN) {
+        return action.payload;
+    } return selectedSong;
+};
 
 
     // I pass in a parameter (form) of a value (reducer that I renamed to newsletterReducer) so that I can let redux-form allow the reducer flow automatization 
 export default combineReducers ({
-    form: newsletterReducer, signIn
+    form: newsletterReducer, signIn,
+    signIn: reducer,
+    selectedSong: selectedSongReducer
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import { apiRequest } from "../actions/api";
+
+
+
+// import { API_REQUEST, apiError, apiSuccess } from "../actions/api";
 
 
 

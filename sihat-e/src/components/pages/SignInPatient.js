@@ -3,13 +3,33 @@ import {  Link  } from 'react-router-dom';
 import {  connect } from 'react-redux';
 import {  createLogin  } from '../../actions';
 import {Field, reduxForm} from 'redux-form';
+import axios from 'axios';
+import Test from './Test';
 
-
+                          // in order to centralize my errors in one place I use a helper function called errorsHelper
+                const errorsHelper = ({error, touched}) => {
+                    // si l'utillisateur touche l'input field et qu'il ne propose pas un email valide un erreur se produirera
+                    if (touched && error ) {
+                      return(
+                        <>
+                        <div className="bs-example"> 
+                        <div className="alert alert-warning alert-dismissible fade show">
+                            <strong> &#9888; Attention &#9888; </strong> 
+                            {error} 
+                        </div>
+                          </div>
+                        
+                        
+                        </>
+                      )
+                    }
+                }
 
 
                 const renderInput = ({input, meta}) => {
                     return (
                       <>
+                        {errorsHelper(meta)}
                           <div className="form-group">
                               <input 
                                 {...input} className="form-control form-control-user" 
@@ -22,10 +42,10 @@ import {Field, reduxForm} from 'redux-form';
                                 value={input.value} 
                               />
                           </div>
+
                       </>
                     )
                 }
-
 
                 const renderInputPassword = ({input, meta}) => {
                     return (
@@ -48,15 +68,42 @@ import {Field, reduxForm} from 'redux-form';
 
                 // My Functionnal Component :
                 
-                const SignInPatient = (props) => {
-                    const [email, setEmail] = useState("");
-                    const [password, setPassword] = useState("");
-                    const [error, setError] = useState("");
+                const SignInPatient = (props, state) => {
 
-                    const onSubmit = (formValues) => {
-                      props.createLogin(formValues)
-                      
+                  useEffect(()=>{
+                  props.createLogin(props.response)
+                  }, [])
+
+  //                   const arender = () => {
+  //   if (props.createLogin(reponse)) {
+  //     return <div>{props.response.data.error}</div>;
+  //   } else {
+
+  //   return <div>{props.response}</div>;
+  // }
+  //                   }
+
+
+                    // const [email, setEmail] = useState("");
+                    // const [password, setPassword] = useState("");
+                    // const [error, setError] = useState("");
+
+                    const onSubmit = (formValues, state) => {
+                      props.createLogin()
+
                     }
+
+                  //   const [items, setItems] = useState([]);
+                  //   const [errorMessage, setErrorMessage] = useState('');
+                  //   useEffect((formValues)=>{
+                  //     axios.post('http://127.0.0.1:8000/api/login')
+                  //     .then(response => {
+                  //         setItems(response.data);
+                  //     })
+                  //     .catch(err => {
+                  //         setErrorMessage(err.message)
+                  //     });
+                  // }, [])
 
 
     return(
@@ -83,9 +130,13 @@ import {Field, reduxForm} from 'redux-form';
                   <div className="text-center">
                     <h4 className="text-dark mb-4">Connectez-vous !</h4>
                   </div>
-                  <form id="userFormSignIn" className="user" method="post" onSubmit={props.handleSubmit(onSubmit)} >
+                    {/* {renderUsedMail} */}
+                  {/* {arender()} */}
+                  {/* { errorMessage &&
+                    <h3 className="error"> { errorMessage } </h3> } */}
+                  <form id="userFormSignIn" className="user" method="post" onSubmit={props.handleSubmit(onSubmit) } >
 
-                    <Field name="email" component={renderInput} />
+                    <Field name="email" component={renderInput}  />
                     <Field name="password" component={renderInputPassword} />
                     
                     {/* <div className="form-group">
@@ -105,7 +156,8 @@ import {Field, reduxForm} from 'redux-form';
                                   </div>
                                 </div>
                               </div>
-                              <button className="btn btn-primary btn-block text-white btn-user" id="loginBtn" type="submit">
+                              
+                              <button className="btn btn-primary btn-block text-white btn-user" id="loginBtn" type="submit" >
                                 Se connecter
                               </button>
                               <hr />
@@ -146,22 +198,40 @@ import {Field, reduxForm} from 'redux-form';
         </div>
       </>
     )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
+
+
+
+
+
+
+    const approve = (state) => {
+              const issues = {};
+              if (state.selectedSong.error){
+                  issues.email =  '   Votre E-mail / mot de passe est incorrects réessayer svp. ' 
+                }
+                return issues;
+            };
+
+
+
+                
+            // we Define also our Validation function called with a form values object, because this is what we are trying to look if its valide or not
+            const validate = (formValues, state) => {
+              const errors = {};
+              // check if the user filled the form (if theres no form value)
+              // if the user didnt put the Email
+                if (!formValues.email) {
+                  // we return an object with an error msg inside of it (in case of no errors we return empty object)
+                  errors.email =  'SVP remplissez le champ d\'Email '
+                }  else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formValues.email)){
+                  errors.email =  ' L\'adresse email est invalide !' 
+                }
+                  else if (  state.selectedSong.error === "UnAuthorised"){
+                  errors.email =  '   Votre E-mail / mot de passe est incorrects réessayer svp. ' 
+                }
+                return errors;
+            };
 
     // const mapStateToProps = (state) => {
     //     return {
@@ -173,11 +243,20 @@ import {Field, reduxForm} from 'redux-form';
 //     createLogin: createLogin
 // };
 
+
+const mapStateToProps = (state) => {
+
+  return state;
+};
+
+
 const formWrapper = reduxForm({
             form: 'signIn',
+            validate,
+            approve
             })(SignInPatient);
 
         export default connect(
-            null,
+            mapStateToProps,
             {createLogin}
             )(formWrapper);

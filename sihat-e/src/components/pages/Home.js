@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {Field, reduxForm} from 'redux-form';
 // import link to avoid anchor tags 
 import {Link} from 'react-router-dom';
 // the Field argument is a component that we gonna work with while the reduxForm is a function that works similarly as connect funnction mmake sure we call action creator and get a form data ...
 import {  connect } from 'react-redux';
-import {  createNewsletterEmail } from '../../actions'
+import {  createNewsletterEmail, isLogin } from '../../actions'
 
           // in order to centralize my errors in one place I use a helper function called errorsHelper
             const errorsHelper = ({error, touched}) => {
@@ -54,14 +54,31 @@ import {  createNewsletterEmail } from '../../actions'
 
 
 
-            const Home = (props, response) => { 
+            const Home = (props) => { 
+
+
+              
+              const [isLogin, setIsLogin] =  useState({});
+                useEffect(() => {
+                    setIsLogin(isLogin);
+                  
+
+                  });
+                
+              
+              // setIsLogin(isLogin())
 
               // /to avoid prop undefined I moved my onSubmit helper inside the component since its a callback function that should be binded to the component itself !!!
               const onSubmit = (formValues) => {
               props.createNewsletterEmail(formValues)
-              
+              }
 
-            }
+              // handleLogout = () => {
+              //   logout();
+              //   this.setState({
+              //   isLogin: false
+              //   })
+              // }
 
                 return(
                     <>
@@ -263,7 +280,8 @@ import {  createNewsletterEmail } from '../../actions'
                 }  else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formValues.email)){
                   errors.email =  ' L\'adresse email est invalide !' 
                 }
-                
+                return errors;
+            };
                 // if(baseURL.endswith('/newsletter') &&  opts.method === 'POST') {
                 //   let newEmail = JSON.parse(opts.body);
 
@@ -273,12 +291,7 @@ import {  createNewsletterEmail } from '../../actions'
                 //     return;
                 //   }
                 // }
-               
-                
-                return errors;
-            };
 
-            
             // the reduxFrom will return a function in which the Home component will be called reason why we passed it in as a parameter 
             // the reduxForm accept a signe parameter (form) and the value of it should be the reason why we created the form ...
             // we pass in the function that we created so we can check the form validation to the reduxForm function helper 
