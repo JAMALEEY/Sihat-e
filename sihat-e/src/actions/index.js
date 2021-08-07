@@ -69,6 +69,7 @@ export const createNewsletterEmail = (formValues) => {
                     } 
                     else if (response.status == 200 && response.data.status === "401") {
                         console.log(response.data.status)
+                        return
                     //    
                     // 
                     

@@ -13,9 +13,9 @@ import axios from "axios";
 
 
 
-const selectedSongReducer = (selectedSong = null, action) => {
-    if (action.type === SIGN_IN) {
-        return action.payload;
+const selectedSongReducer = (selectedSong = [], action) => {
+    if (action.type === 'SIGN_IN') {
+        return [...selectedSong, action.payload  ];
     } return selectedSong;
 };
 
@@ -23,7 +23,7 @@ const selectedSongReducer = (selectedSong = null, action) => {
     // I pass in a parameter (form) of a value (reducer that I renamed to newsletterReducer) so that I can let redux-form allow the reducer flow automatization 
 export default combineReducers ({
     form: newsletterReducer, signIn,
-    signIn: reducer,
+    // signIn: reducer,
     selectedSong: selectedSongReducer
 });
 
