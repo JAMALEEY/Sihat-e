@@ -56,14 +56,19 @@ export const createNewsletterEmail = (formValues) => {
             
                 if (response.data) {
 
-                    if(response.data.status == 200) {
+                    if(response.status == 200 && response.data.token) {
+                                localStorage.setItem(TOKEN_KEY, response.data.token);
+                                history.push('/dashboardPatient')
+                            // const tokenify = () => {
+                            //     localStorage.setItem(TOKEN_KEY, response.data.token);
+                            //     history.push('/dashboardPatient')
+                            // };
+                            // setTimeout(tokenify, 2000);
                         
-                        localStorage.setItem(TOKEN_KEY, response.data.token);
-                        history.push('/dashboardPatient')
 
                     } 
-                    else if (response.data.status == 401) {
-                        // console.log(response.data.status)
+                    else if (response.status == 200 && response.data.status === "401") {
+                        console.log(response.data.status)
                     //    
                     // 
                     

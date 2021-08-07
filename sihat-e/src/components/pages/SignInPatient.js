@@ -70,10 +70,7 @@ import Test from './Test';
                 
                 const SignInPatient = (props, state) => {
 
-                  useEffect(()=>{
-                  props.createLogin(props.response)
-                  }, [])
-
+                  
   //                   const arender = () => {
   //   if (props.createLogin(reponse)) {
   //     return <div>{props.response.data.error}</div>;
@@ -89,8 +86,7 @@ import Test from './Test';
                     // const [error, setError] = useState("");
 
                     const onSubmit = (formValues, state) => {
-                      props.createLogin()
-
+                      props.createLogin(formValues)
                     }
 
                   //   const [items, setItems] = useState([]);
@@ -134,7 +130,7 @@ import Test from './Test';
                   {/* {arender()} */}
                   {/* { errorMessage &&
                     <h3 className="error"> { errorMessage } </h3> } */}
-                  <form id="userFormSignIn" className="user" method="post" onSubmit={props.handleSubmit(onSubmit) } >
+                  <form id="userFormSignIn" className="user" method="post" onSubmit={props.handleSubmit(onSubmit)} >
 
                     <Field name="email" component={renderInput}  />
                     <Field name="password" component={renderInputPassword} />
@@ -205,13 +201,13 @@ import Test from './Test';
 
 
 
-    const approve = (state) => {
-              const issues = {};
-              if (state.selectedSong.error){
-                  issues.email =  '   Votre E-mail / mot de passe est incorrects réessayer svp. ' 
-                }
-                return issues;
-            };
+    // const approve = (state) => {
+    //           const issues = {};
+    //           if (state.selectedSong.error){
+    //               issues.email =  '   Votre E-mail / mot de passe est incorrects réessayer svp. ' 
+    //             }
+    //             return issues;
+    //         };
 
 
 
@@ -227,9 +223,9 @@ import Test from './Test';
                 }  else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formValues.email)){
                   errors.email =  ' L\'adresse email est invalide !' 
                 }
-                  else if (  state.selectedSong.error === "UnAuthorised"){
-                  errors.email =  '   Votre E-mail / mot de passe est incorrects réessayer svp. ' 
-                }
+                //   else if (  state.selectedSong.error === "UnAuthorised"){
+                //   errors.email =  '   Votre E-mail / mot de passe est incorrects réessayer svp. ' 
+                // }
                 return errors;
             };
 
@@ -245,18 +241,19 @@ import Test from './Test';
 
 
 const mapStateToProps = (state) => {
-
   return state;
 };
 
+export default reduxForm({ form: 'signIn', validate})(connect(mapStateToProps, {createLogin})(SignInPatient))
 
-const formWrapper = reduxForm({
-            form: 'signIn',
-            validate,
-            approve
-            })(SignInPatient);
 
-        export default connect(
-            mapStateToProps,
-            {createLogin}
-            )(formWrapper);
+// const formWrapper = reduxForm({
+//             form: 'signIn',
+//             validate,
+//             // approve
+//             })(SignInPatient);
+
+//         export default connect(
+//             mapStateToProps,
+//             {createLogin}
+//             )(formWrapper);
