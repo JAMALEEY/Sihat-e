@@ -237,10 +237,10 @@ import Test from './Test';
                               <hr />
                             </form>
                             <div className="text-center" id="signInForgo">
-                              <a className="small" href="forgot-password.html">J'ai oublié mon mot de passe !</a>
+                              <Link className="small" to="./registerPatient">J'ai oublié mon mot de passe !</Link>
                             </div>
                             <div className="text-center" id="signInForgo">
-                              <a className="small" href="./signUpPatient.html">Je crée mon compte !</a>
+                              <Link className="small" to="./registerPatient">Je crée mon compte ! </Link>
                             </div>
                           </div>
                         </div>
