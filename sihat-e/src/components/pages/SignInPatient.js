@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {  Link  } from 'react-router-dom';
 import {  connect } from 'react-redux';
 import {  createLogin  } from '../../actions';
-import {Field, reduxForm} from 'redux-form';
+import {Field, formValueSelector, reduxForm} from 'redux-form';
 import axios from 'axios';
 import Test from './Test';
 
@@ -12,8 +12,10 @@ import Test from './Test';
                     if (touched && error ) {
                       return(
                         <>
-                        <div className="bs-example"> 
-                        <div className="alert alert-warning alert-dismissible fade show">
+                        {/* <div className="bs-example"> 
+                        <div className="alert alert-warning alert-dismissible fade show"> */}
+                        <div className='taken'>
+                          <div>
                             <strong> &#9888; Attention &#9888; </strong> 
                             {error} 
                         </div>
@@ -68,7 +70,24 @@ import Test from './Test';
 
                 // My Functionnal Component :
                 
-                const SignInPatient = (props, state) => {
+                const SignInPatient = (props) => {
+
+
+                  let checkIfTaken = ''
+                  if ( props.selectedSong.length === 1 && validate(false)){
+                    checkIfTaken = 
+                      <>
+                      <div className="taken"> 
+                            <strong> &#9888; 
+                            Incorrects E-mail / mot de passe !
+                            &#9888; </strong>  
+                      </div>
+                      </>
+                    
+                    // <h5 className="taken">Incorrects E-mail / mot de passe !</h5>
+                  } else {
+                    checkIfTaken = ''
+                  }
 
                   
   //                   const arender = () => {
@@ -80,14 +99,53 @@ import Test from './Test';
   // }
   //                   }
 
+  
 
                     // const [email, setEmail] = useState("");
                     // const [password, setPassword] = useState("");
                     // const [error, setError] = useState("");
 
-                    const onSubmit = (formValues, state) => {
+                    const onSubmit = (formValues) => {
                       props.createLogin(formValues)
                     }
+
+                    // const dodo = (state) => {
+                    //   if (state.selectedSong.status === '401'){
+                    //       console.log('   Votre E-mail / mot de passe est incorrects réessayer svp. ' )  
+                    // }}
+                //         const bobo = ({error, touched}) => {
+                //           if (touched && error ) {
+                //       return(
+                //         <>
+                //         <h5>
+                //           wili
+                //         </h5>
+                //         </>
+                //       )
+                // }}}
+                    // const chihaja = () => {
+                    //   state.selectedSong.status = null
+                    // }
+
+
+
+
+                  
+                  // errors.email =  'Votre E-mail / mot de passe est incorrects réessayer svp. ' 
+
+    // const toro = () => {
+      // console.log(props.selectedSong)
+// if ( props.selectedSong.length === 1){
+// const greet = function(){
+//           console.log('wech')
+// };
+// setTimeout(greet, 2000);
+
+
+                  
+                  // errors.email =  'Votre E-mail / mot de passe est incorrects réessayer svp. ' 
+    //             }
+    // }
 
                   //   const [items, setItems] = useState([]);
                   //   const [errorMessage, setErrorMessage] = useState('');
@@ -126,14 +184,16 @@ import Test from './Test';
                   <div className="text-center">
                     <h4 className="text-dark mb-4">Connectez-vous !</h4>
                   </div>
+
                     {/* {renderUsedMail} */}
                   {/* {arender()} */}
                   {/* { errorMessage &&
                     <h3 className="error"> { errorMessage } </h3> } */}
                   <form id="userFormSignIn" className="user" method="post" onSubmit={props.handleSubmit(onSubmit)} >
-
+                    {checkIfTaken}
                     <Field name="email" component={renderInput}  />
                     <Field name="password" component={renderInputPassword} />
+                    
                     
                     {/* <div className="form-group">
                       <input className="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Votre Email Address..." name="email" onChange={handleChange} value={username} />
@@ -148,12 +208,13 @@ import Test from './Test';
                                 <div className="custom-control custom-checkbox small">
                                   <div className="form-check">
                                     <input className="form-check-input custom-control-input" type="checkbox" id="formCheck-1" />
+                                    <br></br>
                                     <label className="form-check-label custom-control-label" htmlFor="formCheck-1">Se souvenir de moi</label>
                                   </div>
                                 </div>
                               </div>
                               
-                              <button className="btn btn-primary btn-block text-white btn-user" id="loginBtn" type="submit" >
+                              <button className="btn btn-primary btn-block text-white btn-user" id="loginBtn" type="submit"    >
                                 Se connecter
                               </button>
                               <hr />
@@ -176,10 +237,10 @@ import Test from './Test';
                               <hr />
                             </form>
                             <div className="text-center" id="signInForgo">
-                              <a className="small" href="forgot-password.html">J'ai oublié mon mot de passe !</a>
+                              <Link className="small" to="./registerPatient">J'ai oublié mon mot de passe !</Link>
                             </div>
                             <div className="text-center" id="signInForgo">
-                              <a className="small" href="./signUpPatient.html">Je crée mon compte !</a>
+                              <Link className="small" to="./registerPatient">Je crée mon compte ! </Link>
                             </div>
                           </div>
                         </div>
@@ -198,9 +259,6 @@ import Test from './Test';
 
 
 
-
-
-
     // const approve = (state) => {
     //           const issues = {};
     //           if (state.selectedSong.error){
@@ -210,39 +268,37 @@ import Test from './Test';
     //         };
 
 
+const mapStateToProps = (state) => {
+  return {selectedSong: state.selectedSong}
+};
 
                 
             // we Define also our Validation function called with a form values object, because this is what we are trying to look if its valide or not
-            const validate = (formValues, state) => {
+            const validate = (formValues) => {
               const errors = {};
               // check if the user filled the form (if theres no form value)
               // if the user didnt put the Email
                 if (!formValues.email) {
                   // we return an object with an error msg inside of it (in case of no errors we return empty object)
-                  errors.email =  'SVP remplissez le champ d\'Email '
+                  errors.email =  'Remplissez le champ d\'Email '
                 }  else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formValues.email)){
                   errors.email =  ' L\'adresse email est invalide !' 
                 }
+                // } else if ( props.selectedSong.length === 1){
+                // errors.email =  '   Votre E-mail / mot de passe est incorrects réessayer svp. ' 
+                // }
+                // else if ( state.selectedSong.status === '401' && mamak){
+                //   console.log('wech')
+                  // errors.email =  'Votre E-mail / mot de passe est incorrects réessayer svp. ' 
+                // }
+
                 //   else if (  state.selectedSong.error === "UnAuthorised"){
                 //   errors.email =  '   Votre E-mail / mot de passe est incorrects réessayer svp. ' 
                 // }
                 return errors;
             };
 
-    // const mapStateToProps = (state) => {
-    //     return {
-    //         logginIn : state.authentication
-    //     };
-    // }
 
-//     const actionCreators = {
-//     createLogin: createLogin
-// };
-
-
-const mapStateToProps = (state) => {
-  return state;
-};
 
 export default reduxForm({ form: 'signIn', validate})(connect(mapStateToProps, {createLogin})(SignInPatient))
 

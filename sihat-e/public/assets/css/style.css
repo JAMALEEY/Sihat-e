@@ -7,6 +7,9 @@
 
 /* index cSS*/
 
+
+
+
 #indexSihate {
     max-width: 100%;
     overflow-x: hidden;
@@ -1583,15 +1586,34 @@ width: 386px;font-family: Poppins, sans-serif;}
 
 
 /* the newsletter validation popup style */
-.bs-example{
-    margin: 13px;
-    padding-bottom: 30px;
+.taken {
+    margin: 20px;
+    font-size: 14px;
+    color: #cc6b6b;
+    background-color: #faffb1ba;
     text-align: center;
-    }
+}
+
+.alert {
+    height: 57px;
+    position: relative;
+    padding: 4px;
+    border: 1px solid transparent;
+    border-radius: 2.25rem;
+}
+
+.bs-example {
+  margin: 13px;
+    text-align: center;
+  padding-bottom: none;
+}
+.alert-dismissible {
+    padding-right: none;
+}
 
 
 
-
+/* font awesome icon */
     .fab{
       color: white;
     }
