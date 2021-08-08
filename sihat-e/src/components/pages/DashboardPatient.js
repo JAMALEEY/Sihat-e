@@ -2,26 +2,28 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {  logout  } from '../../actions'
-import { TOKEN_KEY } from "../../actions/types";
+import axios from "axios";
+
 
 
 
     const DashboardPatient = ({logout}) => {
-
-
-        useEffect(
-            () => {
-                const myConfig = {
-                    header: {
-                        Authorization: 'Bearer ' + localStorage.getItem(TOKEN_KEY)
-                    }
-                }
-                console.log(myConfig)
-            },[]
-        )
+// console.log(headers)
+        // useEffect(
+        //     () => {
+        //         const myConfig = {
+        //             header: {
+        //                 Authorization: 'Bearer ' + localStorage.getItem(TOKEN_KEY)
+        //             }
+        //         }
+        //         console.log(myConfig)
+        //     },[]
+        // )
 
         const patientDashboarLogout = (onClick) => {
+            // console.log()
             logout()
+            
         }
 
         return(
