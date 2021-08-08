@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import {  logout  } from '../../actions'
 
 
 
-    const DashboardPatient = (props) => {
+    const DashboardPatient = ({logout}) => {
 //         const [user, setUser] = useState({props});
 //         const [users, setUsers] = useState({props});
 //         const actionCreators = {
@@ -305,5 +306,5 @@ import { connect } from "react-redux";
 
         
     }
-            export default connect(({ isAuthUser }) => ({ isAuthUser }))(DashboardPatient
-);
+    const 
+            export default connect(mapStateToProps, {logout})(DashboardPatient);

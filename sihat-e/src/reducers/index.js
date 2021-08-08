@@ -34,7 +34,8 @@ export default combineReducers ({
     form: newsletterReducer, signIn, signUpPatientState,
     // signIn: reducer,
     signInResponse: signInResponseReducer,
-    signUpPatienStatet: signUpPatientReducer
+    signUpPatienStatet: signUpPatientReducer,
+    logoutReducer: logout
 });
 
 

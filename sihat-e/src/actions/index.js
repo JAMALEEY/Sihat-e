@@ -96,6 +96,7 @@ export const logout = () => {
                 type: SIGN_OUT,
                 payload: response.data
             });
+            history.push('/');
     
 }
 }
