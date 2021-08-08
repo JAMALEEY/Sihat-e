@@ -8,8 +8,6 @@
 /* index cSS*/
 
 
-
-
 #indexSihate {
     max-width: 100%;
     overflow-x: hidden;
@@ -1520,6 +1518,7 @@ font-family: Poppins, sans-serif;color: #193638;font-size: 17px;text-shadow: 0px
 /* dashboard patient */
 #navRow{
 padding: 0px;margin: 0px;width: 100vw;height: 100vh;
+overflow-x: hidden;
 }
 
 #leftMenuContainer{
@@ -1575,7 +1574,7 @@ padding: 0px;margin: 0px;width: 100vw;height: 100vh;
 
 #btnFormDashboard{
   background: rgb(158,248,196);font-family: Poppins, sans-serif;color: rgb(72,139,118);border-radius: 18px;
-  margin-top: 61px;
+  margin-top: -40px;
 }
 
 #birthDate{

@@ -274,11 +274,16 @@ import axios from "axios";
                     <form className="custom-form">
                         <h1 className="d-xl-flex align-items-xl-start">A propos</h1>
                         <div className="form-row form-group">
-                        <div className="col-sm-4 col-xl-12 label-column"><label className="col-form-label d-xl-flex align-items-xl-start" htmlFor="name-input-field"><strong>Nom &amp; prénom :</strong></label></div>
+                        <div className="col-sm-4 col-xl-12 label-column"><label className="col-form-label d-xl-flex align-items-xl-start" htmlFor="name-input-field"><strong>Prénom :</strong></label></div>
                         <div className="col-sm-6 col-xl-7 input-column"><input className="form-control" type="text" /></div>
                         </div>
                         <div className="form-row form-group">
-                        <div className="col-sm-4 col-xl-12 label-column"><label className="col-form-label d-xl-flex align-items-xl-start" htmlFor="name-input-field"><strong>E-mail :</strong></label></div>
+                        <div className="col-sm-4 col-xl-12 label-column"><label className="col-form-label d-xl-flex align-items-xl-start" htmlFor="name-input-field"><strong>Nom :</strong></label></div>
+                        <div className="col-sm-6 col-xl-7 input-column"><input className="form-control" type="text" /></div>
+                        </div>
+                        
+                        <div className="form-row form-group">
+                        <div className="col-sm-4 col-xl-12 label-column"><label className="col-form-label d-xl-flex align-items-xl-start" htmlFor="name-input-field"><strong>Adresse :</strong></label></div>
                         <div className="col-sm-6 col-xl-7 input-column"><input className="form-control" type="text" /></div>
                         </div>
                         <div className="form-row form-group">
@@ -300,7 +305,7 @@ import axios from "axios";
                             </fieldset>
                             </div>{/* End: Bootstrap 4's Custom Radios & Checkboxes */}
                         </div>
-                        </div><button id="btnFormDashboard" className="btn btn-light d-xl-flex align-items-xl-start submit-button" type="button">Enregistrer</button>
+                        </div><button id="btnFormDashboard" className="btn btn-light align-items-xl-start submit-button" type="button">Enregistrer</button>
                     </form>
                     </div>
                 </div>{/* End: Pretty Registration Form */}
