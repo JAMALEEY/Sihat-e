@@ -36,7 +36,7 @@ export default combineReducers ({
     // signIn: reducer,
     signInResponse: signInResponseReducer,
     signUpPatienStatet: signUpPatientReducer,
-    logoutReducer: logout
+    logout: logoutReducer
 });
 
 

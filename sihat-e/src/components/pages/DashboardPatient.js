@@ -8,7 +8,7 @@ import {  logout  } from '../../actions'
     const DashboardPatient = ({logout}) => {
 
         const patientDashboarLogout = (onClick) => {
-            logout(onClick)
+            logout()
         }
 
         return(
