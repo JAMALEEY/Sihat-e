@@ -32,7 +32,7 @@ import axios from "axios";
         <div className="col-md-6 col-xl-2 offset-xl-0" id="leftMenuContainer">
             <div id="logoNavContainer">
             <div className="d-flex d-xl-flex flex-row justify-content-between align-items-center justify-content-xl-center align-items-xl-center" id="headingNavContainer">
-                <div className="d-flex d-xl-flex justify-content-xl-center align-items-xl-center" id="logoDashboard"><img src="../sihat-e/public/assets/img/Sicon.png" /></div>
+                <div className="d-flex d-xl-flex justify-content-xl-center align-items-xl-center" id="logoDashboard"> <img src="/assets/img/Sicon.png" /></div>
                 <h1>MON COMPTE<span><br /><strong>ACCUEIL</strong><br /><br /><br /></span></h1>
             </div>
             </div>

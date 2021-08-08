@@ -877,12 +877,12 @@ i.fa.fa-spinner.fa-spin.fa-5x.fa-fw {
   outline: 0 !important;
 }
 .register-form form.custom-form {
-  padding: 55px;
-  box-sizing: border-box;
-  background-color: #fff;
-  font: bold 14px sans-serif;
-  text-align: center;
-  color: #333;
+padding: 70px;
+    box-sizing: border-box;
+    font: bold 14px sans-serif;
+    text-align: center;
+    color: #333;
+    width: 56vw;
 }
 @media (max-width: 400px) {
   .register-form form.custom-form {
@@ -943,7 +943,7 @@ i.fa.fa-spinner.fa-spin.fa-5x.fa-fw {
   color: #fff;
   font-weight: 700;
   box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
-  padding: 14px 22px;
+  padding: 14px 56px;
   border: 0;
   margin: 30px;
   outline: 0;
@@ -1565,7 +1565,8 @@ padding: 0px;margin: 0px;width: 100vw;height: 100vh;
 }
 
 #formCardContainer{
-  width: 37vw;height: 80vh;border-radius: 20px;margin: 50px;box-shadow: 0px 0px 7px rgb(207,207,207);background: rgb(255,255,255);border-style: none;
+  border-radius: 60px;
+  width: 37vw;height: 80vh;margin: 50px;box-shadow: 0px 0px 7px rgb(207,207,207);background: rgb(255,255,255);border-style: none;
 }
 
 .custom-form h1 {
@@ -1574,6 +1575,7 @@ padding: 0px;margin: 0px;width: 100vw;height: 100vh;
 
 #btnFormDashboard{
   background: rgb(158,248,196);font-family: Poppins, sans-serif;color: rgb(72,139,118);border-radius: 18px;
+  margin-top: 61px;
 }
 
 #birthDate{
