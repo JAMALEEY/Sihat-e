@@ -6,15 +6,10 @@ import {  logout  } from '../../actions'
 
 
     const DashboardPatient = ({logout}) => {
-//         const [user, setUser] = useState({props});
-//         const [users, setUsers] = useState({props});
-//         const actionCreators = {
-//     getUsers: getAll,
-//     deleteUser: deleter
-// }
-//         useEffect(() => {  
-//             props.getUsers();
-//         },[])
+
+        const patientDashboarLogout = (onClick) => {
+            logout()
+        }
 
         return(
 
@@ -306,5 +301,7 @@ import {  logout  } from '../../actions'
 
         
     }
-    const 
+    const mapStateToProps = (state) => {
+        return {logout: state.logout}
+    }
             export default connect(mapStateToProps, {logout})(DashboardPatient);

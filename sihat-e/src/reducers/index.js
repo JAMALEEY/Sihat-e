@@ -2,6 +2,7 @@
 import { reducer as newsletterReducer } from "redux-form";
 import { reducer as signIn } from "redux-form";
 import { reducer as signUpPatientState } from "redux-form";
+import { reducer as logout } from "redux-form";
 // To manage my multiple reducers to be one single reducer ill use CombineReducers that takes parameters with what ill call inside my project
 import { combineReducers } from "redux";
 import reducer from './reducer';
