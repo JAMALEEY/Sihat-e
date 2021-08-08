@@ -1,8 +1,8 @@
 // in order to make requests over our newsletter API we take an instance of this API using axios to apply actions creators on it
-import api from "../Apis/api";
+// import api from "../Apis/api";
 import { SIGN_IN, SIGN_OUT, CREATE_NEWSLETTER, CREATE_PATIENT, CREATE_MEDECIN, FETCH_PATIENT, FETCH_MEDECIN, DELETE_PATIENT, DELETE_MEDECIN, TOKEN_KEY } from './types';
 import history from "../helpers/history";
-import axios from "axios";
+import api from '../Apis/api'
 
 
 // new action creator to handle newletter api:
@@ -69,8 +69,8 @@ export const createNewsletterEmail = (formValues) => {
                 if (response.data) {
                     if(response.status == 200 && response.data.token) {
                         localStorage.setItem(TOKEN_KEY, response.data.token);
+                        console.log(localStorage)
                         history.push('/dashboardPatient')
-
                     } else if (response.status == 200 && response.data.status === "401") {
                             console.log(response.data.status)
                             return
@@ -95,12 +95,14 @@ export const logout = () => {
 
 
     return async ( dispatch ) => {
-            const config = {
-                headers:{
-                    Authorization: 'Bearer ' + localStorage.getItem(TOKEN_KEY)
-                }
-            }
-            const response = await api.get('/logout', config);
+            // const config = {
+            //     headers:{
+            //         Authorization: 'Bearer ' + localStorage.getItem(TOKEN_KEY)
+            //     }
+            // }
+            // localStorage.setItem(TOKEN_KEY, response.data.token);
+
+            const response = await api.get('/logout');
             localStorage.clear();
             history.push('/');
             dispatch ({
