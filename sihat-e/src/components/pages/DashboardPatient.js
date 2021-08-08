@@ -25,19 +25,17 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
                 <>
                     {   errorsHelper(meta)    }
                     <div className="col-sm-6 col-xl-7 input-column">
+                        <div className="form-row form-group">
                         <label className="col-form-label d-xl-flex align-items-xl-start">{label}</label>
-                        <input  
-                        {...input} className="form-control" 
-                        autoComplete="off"
+                        <input {...input} autoComplete="off" 
+                        className="form-control"
+                        autocomplete='nope' 
                         placeholder={placeholder} 
                         onChange={input.onChange} 
                         value={input.value} 
                         name={name}
-                        // type="first_name" 
-                        // id="first_name" 
-                        // aria-describedby="first_name" 
-                        // name="first_name" 
                         />
+                        </div>
                     </div>  
                 </>
             )
@@ -300,21 +298,25 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
                 {/* Start: Pretty Registration Form */}
                 <div className="row register-form">
                     <div className="col-md-8 col-xl-10 offset-md-2 offset-xl-0">
-                    <form className="custom-form">
+                    <form className="custom-form" >
                         <h1 className="d-xl-flex align-items-xl-start">A propos</h1>
-                        <div className="form-row form-group">
-
+                        {/* Prénom */}
                         <Field name="first_name" component={renderInput} label="Prénom" placeholder="Votre prénom" />
-                        </div>
-                        <div className="form-row form-group">
+                        {/* Nom */}
+                        <Field name="last_name" component={renderInput} label="Nom" placeholder="Votre Nom" />
+                        {/* Adresse */}
+                        <Field name="adress" component={renderInput} label="Adresse" placeholder="Votre Adresse" />
+
+
+                        {/* <div className="form-row form-group">
                         <div className="col-sm-4 col-xl-12 label-column"><label className="col-form-label d-xl-flex align-items-xl-start" htmlFor="name-input-field"><strong>Nom :</strong></label></div>
-                        <div className="col-sm-6 col-xl-7 input-column"><input className="form-control" type="text" /></div>
+                        <div className="col-sm-6 col-xl-7 input-column"><input  className="form-control" type="text" /></div>
                         </div>
                         
                         <div className="form-row form-group">
                         <div className="col-sm-4 col-xl-12 label-column"><label className="col-form-label d-xl-flex align-items-xl-start" htmlFor="name-input-field"><strong>Adresse :</strong></label></div>
-                        <div className="col-sm-6 col-xl-7 input-column"><input className="form-control" type="text" /></div>
-                        </div>
+                        <div className="col-sm-6 col-xl-7 input-column"><input autoComplete="off"  className="form-control" type="text" /></div>
+                        </div> */}
                         <div className="form-row form-group">
                         <div className="col-sm-4 col-xl-12 label-column">
                             <label className="col-form-label d-xl-flex align-items-xl-start" htmlFor="name-input-field"> 
