@@ -1,9 +1,86 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import { reduxForm } from 'redux-form';
+import {Field, formValueSelector, reduxForm} from 'redux-form';
+
 import { signUpPatient } from '../../actions';
 
-    const SignUpPatient = () => {
+
+              const errorsHelper = ({error, touched}) => {
+                    // si l'utillisateur touche l'input field et qu'il ne propose pas un email valide un erreur se produirera
+                    if (touched && error ) {
+                      return(
+                        <>
+                        {/* <div className="bs-example"> 
+                        <div className="alert alert-warning alert-dismissible fade show"> */}
+                        <div className='taken'>
+                          <div>
+                            <strong> &#9888; Attention &#9888; </strong> 
+                            {error} 
+                        </div>
+                          </div>
+                        
+                        
+                        </>
+                      )
+                    }
+                }
+
+                const renderInput = ({input, meta}) => {
+                    return (
+                      <>
+                        {errorsHelper(meta)}
+                          <div className="form-group">
+                              <input 
+                                {...input} className="form-control form-control-user" 
+                                type="email" 
+                                id="exampleInputEmail" 
+                                aria-describedby="emailHelp" 
+                                placeholder="Votre Email Address..." 
+                                name="email" 
+                                onChange={input.onChange} 
+                                value={input.value} 
+                              />
+                          </div>
+
+                      </>
+                    )
+                }
+
+                const renderInputPassword = ({input, meta}) => {
+                    return (
+                      <>
+                    <div className="form-group">
+                        <input 
+                          {...input} className="form-control form-control-user" 
+                          type="password" 
+                          id="exampleInputPassword" 
+                          placeholder="Votre Mot De Passe..."
+                          name="password" 
+                          onChange={input.onChange} 
+                          value={input.value}
+                      />
+                    </div>
+                      </>
+                    );
+                };
+                const renderInputPasswordcheck = ({input, meta}) => {
+                    return (
+                      <>
+                    <div className="form-group">
+                        <input 
+                          {...input} className="form-control form-control-user" 
+                          type="password" 
+                          id="exampleInputPassword2" 
+                          placeholder="Votre Mot De Passe..."
+                          name="password" 
+                          onChange={input.onChange} 
+                          value={input.value}
+                      />
+                    </div>
+                      </>
+                    );
+                };
+    const SignUpPatient = ({handleSubmit, signUpPatient}) => {
 
         
             const onSubmit = (formValues) => {
@@ -18,9 +95,12 @@ import { signUpPatient } from '../../actions';
                 <div id="divForm" className="d-flex d-xl-flex justify-content-xl-center align-items-xl-center">
                 <form method="post" id="formSingUpPatient" onSubmit={handleSubmit(onSubmit)}>
                     <h2 className="text-center"><strong>Créer</strong>&nbsp;un compte.</h2>
-                    <div className="form-group"><input className="form-control" type="email" name="email" placeholder="Email" /></div>
+                    <Field name="email" component={renderInput}  />
+                    <Field name="password" component={renderInputPassword} />
+                    <Field name="passwordcheck" component={renderInputPasswordcheck} />
+{/*                     
                     <div className="form-group"><input className="form-control" type="password" name="password" placeholder="Mot de passe" /></div>
-                    <div className="form-group"><input className="form-control" type="password" name="password-repeat" placeholder="Retapez le mot de passe" /></div>
+                    <div className="form-group"><input className="form-control" type="password" name="password-repeat" placeholder="Retapez le mot de passe" /></div> */}
                     <div className="form-group">
                     <p className="allowpatientform">En continuant,&nbsp;j'accepte les conditions et la politique de confidentialité.</p>
                     </div>
@@ -56,12 +136,19 @@ import { signUpPatient } from '../../actions';
     )
 
     }
+                const validate = (formValues) => {
+              const errors = {};
+                if (!formValues.email) {
+                  errors.email =  'Remplissez le champ d\'Email '
+                }  else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formValues.email)){
+                  errors.email =  ' L\'adresse email est invalide !' 
+                }
+                return errors;
+            };
     
-    const mapStateToProps = (  state  ) => {
-        return {signUpPatient = state.signUpPatient}
-    }
-    const signUpPatientForm = reduxForm ({
-        form: 'signUpPatient'
-    })(SignUpPatient);
-    // connect map state with action creator {signUpPatient}
-    export default connect(mapStateToProps, {signUpPatient})(signUpPatientForm);
+    const mapStateToProps = (state) => {
+        return {signUpPatient: state.signUpPatientState}
+    };
+
+
+    export default reduxForm({ form: 'signUpPatient', validate})(connect(mapStateToProps, {signUpPatient})(SignUpPatient))

@@ -1,16 +1,17 @@
 // I import reducer from the redux-form library so that this reducer manage automatically the states inside the reduxStore
 import { reducer as newsletterReducer } from "redux-form";
 import { reducer as signIn } from "redux-form";
+import { reducer as signUpPatientState } from "redux-form";
 // To manage my multiple reducers to be one single reducer ill use CombineReducers that takes parameters with what ill call inside my project
 import { combineReducers } from "redux";
 import reducer from './reducer';
 import { SIGN_IN, CREATE_PATIENT} from "../actions/types";
 
 
-const signUpPatientReducer = (signUpPatient = {}, action) => {
+const signUpPatientReducer = (signUpPatientState = {}, action) => {
     if (action.type === CREATE_PATIENT) {
-        return [...signUpPatient, action.payload  ];
-    } return signUpPatient;
+        return {...signUpPatientState, [action.payload]: action.payload }
+    } return signUpPatientState;
 };
 
 
@@ -23,10 +24,10 @@ const signInResponseReducer = (signInResponse = {}, action) => {
 
     // I pass in a parameter (form) of a value (reducer that I renamed to newsletterReducer) so that I can let redux-form allow the reducer flow automatization 
 export default combineReducers ({
-    form: newsletterReducer, signIn, signUpPatient,
+    form: newsletterReducer, signIn, signUpPatientState,
     // signIn: reducer,
     signInResponse: signInResponseReducer,
-    signUpPatient: signUpPatientReducer
+    signUpPatienStatet: signUpPatientReducer
 });
 
 
