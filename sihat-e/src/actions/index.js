@@ -52,7 +52,6 @@ import api from '../Apis/api'
                 if (response.data) {
                     if(response.status == 200 && response.data.token) {
                         localStorage.setItem(TOKEN_KEY, response.data.token);
-                        console.log(localStorage)
                         history.push('/dashboardPatient')
                     } else if (response.status == 200 && response.data.status === "401") {
                             console.log(response.data.status)
@@ -96,7 +95,7 @@ import api from '../Apis/api'
 
         export const createAbout = (formValues) => {
             return async (dispatch) => {
-                const response = await api.post('/patients'), {...formValues}
+                const response = await api.post('/patients', {...formValues});
                 dispatch ({
                     type: CREATE_ABOUT,
                     payload: response.data

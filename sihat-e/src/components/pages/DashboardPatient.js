@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import {  logout  } from '../../actions'
+import {  logout, createAbout  } from '../../actions'
 import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
-import {createTest} from '../../actions'
+
 
 
         const errorsHelper = ({error, touched}) => {
@@ -44,15 +44,15 @@ import {createTest} from '../../actions'
             )
         }
 
-    const DashboardPatient = ({logout}) => {
+        const DashboardPatient = ({logout, handleSubmit, createAbout}) => {
 
-        const patientDashboarLogout = () => {
-            logout()
-        }
+            const patientDashboarLogout = () => {
+                logout()
+            }
 
-        const onSubmit = (formValues) => {
-            createTest(formValues)
-        }
+            const onSubmit = (formValues) => {
+                createAbout(formValues)
+            }
 
 
         return(
@@ -371,4 +371,4 @@ import {createTest} from '../../actions'
     const mapStateToProps = (state) => {
         return {logout: state.logout}
     }
-            export default connect(mapStateToProps, {logout})(formWrapper);
+            export default connect(mapStateToProps, {logout, createAbout})(formWrapper);
