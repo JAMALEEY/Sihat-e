@@ -93,7 +93,7 @@ export const logout = () => {
      return async ( dispatch ) => {
                 const response = await api.post('/logout');
             dispatch ({
-                type: SIGN_IN,
+                type: SIGN_OUT,
                 payload: response.data
             });
     
