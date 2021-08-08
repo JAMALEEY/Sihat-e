@@ -356,19 +356,18 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
     }
 
 
-    const validate = (formValues) => {
-        const errors = {};
+
+    const mapStateToProps = (state) => {
+        return {
+            logout: state.logout,
+            createAbout: state.createAbout
+        }
     }
-
-
 
 
     const formWrapper = reduxForm({
         form: 'dashboardPatientForm',
-        validate
+        reducer: 'createAbout'
     })(DashboardPatient)
 
-    const mapStateToProps = (state) => {
-        return {logout: state.logout}
-    }
             export default connect(mapStateToProps, {logout, createAbout})(formWrapper);
