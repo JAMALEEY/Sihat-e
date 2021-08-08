@@ -46,7 +46,7 @@ export const createNewsletterEmail = (formValues) => {
 
             return async (  dispatch  ) => {
                 const response = await api.post('/register', formValues)
-                const {patientToken} = localStorage.setItem(TOKEN_KEY, response.data.token);
+                localStorage.setItem(TOKEN_KEY, response.data.token);
                     dispatch ({
                         type: CREATE_PATIENT,
                         payload: response.data
