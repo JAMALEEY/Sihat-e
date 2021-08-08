@@ -9,4 +9,4 @@ import { TOKEN_KEY } from '../actions/types';
         }
     )
 
-    axios.defaults.header.common['Authorization'] = 'Bearer ' + localStorage.getItem(TOKEN_KEY);
+axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem(TOKEN_KEY);
