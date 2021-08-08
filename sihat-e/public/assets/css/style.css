@@ -1038,7 +1038,7 @@ i.fa.fa-spinner.fa-spin.fa-5x.fa-fw {
 .sidebar.sidebar-default .category-content .nav li > a:focus,
 .sidebar.sidebar-default .category-content .nav li > a:hover,
 .sidebar.sidebar-default .category-content .nav li > a[aria-expanded="true"] {
-  background-color: #75f0cd;
+  background-color: #6CEFCE;
 }
 .sidebar .category-content {
   position: relative;
@@ -1555,7 +1555,9 @@ padding: 0px;margin: 0px;width: 100vw;height: 100vh;
 }
 
 #rightNavContainer {
-  height: 10%;width: 100%;/*border-radius: 10px;*/background: linear-gradient(106.1deg, rgba(69,242,143,0.52) 10.2%, rgba(14,228,175,0.61) 83.6%)
+  height: 10%;width: 100%;
+  background-color: #6CEFCE;
+  /* background: linear-gradient(106.1deg, rgba(69,242,143,0.52) 10.2%, rgba(14,228,175,0.61) 83.6%) */
 }
 
 #rightNavContainer2{
