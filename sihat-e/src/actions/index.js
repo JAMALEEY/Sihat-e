@@ -90,8 +90,8 @@ export const createNewsletterEmail = (formValues) => {
 
 
 export const logout = () => {
-    return async ( dispatch ) => {
-            const response = await api.post('/logout');
+     return async ( dispatch ) => {
+                const response = await api.post('/logout');
             dispatch ({
                 type: SIGN_OUT,
             });
