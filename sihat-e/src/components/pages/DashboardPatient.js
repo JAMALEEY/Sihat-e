@@ -20,10 +20,8 @@ import axios from "axios";
         //     },[]
         // )
 
-        const patientDashboarLogout = (onClick) => {
-            // console.log()
+        const patientDashboarLogout = () => {
             logout()
-            
         }
 
         return(
@@ -257,7 +255,9 @@ import axios from "axios";
                     <li className="nav-item dropdown no-arrow">
                         <div className="nav-item dropdown no-arrow"><a aria-expanded="false" data-toggle="dropdown" className="dropdown-toggle nav-link" href="#"><span className="d-none d-lg-inline mr-2 text-gray-600 small">Valerie Luna</span><img className="border rounded-circle img-profile" src="avatars/avatar1.jpeg" /></a>
                         <div className="dropdown-menu shadow dropdown-menu-right animated--grow-in"><a className="dropdown-item" href="#"><i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400" />&nbsp;Profile</a><a className="dropdown-item" href="#"><i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400" />&nbsp;Settings</a><a className="dropdown-item" href="#"><i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400" />&nbsp;Activity log</a>
-                            <div className="dropdown-divider" /><a className="dropdown-item" href="#"><i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400" onClick={patientDashboarLogout} />&nbsp;Logout</a>
+                            <div className="dropdown-divider"  />
+                            <a className="dropdown-item" href="#" onClick={patientDashboarLogout} >
+                                <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"/>&nbsp;Logout</a>
 
                         </div>
                         </div>

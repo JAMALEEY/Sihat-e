@@ -2,7 +2,7 @@
 import api from "../Apis/api";
 import { SIGN_IN, SIGN_OUT, CREATE_NEWSLETTER, CREATE_PATIENT, CREATE_MEDECIN, FETCH_PATIENT, FETCH_MEDECIN, DELETE_PATIENT, DELETE_MEDECIN, TOKEN_KEY } from './types';
 import history from "../helpers/history";
-
+import axios from "axios";
 
 
 // new action creator to handle newletter api:
@@ -91,9 +91,17 @@ export const createNewsletterEmail = (formValues) => {
 
 
 export const logout = () => {
+
+
+
     return async ( dispatch ) => {
-            const response = await api.get('/logout');
-            localStorage.clear()
+            const config = {
+                headers:{
+                    Authorization: 'Bearer ' + localStorage.getItem(TOKEN_KEY)
+                }
+            }
+            const response = await api.get('/logout', config);
+            localStorage.clear();
             history.push('/');
             dispatch ({
                 type: SIGN_OUT,

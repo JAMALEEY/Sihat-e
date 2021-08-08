@@ -9,7 +9,7 @@ import reduxThunk from 'redux-thunk';
 import axios from 'axios';
 import {TOKEN_KEY} from './actions/types'
 
-axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem(TOKEN_KEY);
+
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
