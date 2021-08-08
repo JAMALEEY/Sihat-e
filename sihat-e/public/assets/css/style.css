@@ -316,6 +316,8 @@ color: var(--light);font-family: Alatsi, sans-serif;
   outline: 0;
 }
 
+
+
 #containerDoc #exampleInputEmail:focus {
   border-color: #4fcec3;
   outline-style: none;

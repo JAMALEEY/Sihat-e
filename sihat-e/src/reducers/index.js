@@ -7,16 +7,16 @@ import reducer from './reducer';
 import { SIGN_IN, CREATE_PATIENT} from "../actions/types";
 
 
-const signUpPatientReducer = (signUpPatient = [], action) => {
+const signUpPatientReducer = (signUpPatient = {}, action) => {
     if (action.type === CREATE_PATIENT) {
         return [...signUpPatient, action.payload  ];
     } return signUpPatient;
 };
 
 
-const signInResponseReducer = (signInResponse = [], action) => {
+const signInResponseReducer = (signInResponse = {}, action) => {
     if (action.type === SIGN_IN) {
-        return [...signInResponse, action.payload  ];
+        return {...signInResponse, [action.payload]: action.payload  };
     } return signInResponse;
 };
 
