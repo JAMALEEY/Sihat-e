@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import {Field, formValueSelector, reduxForm} from 'redux-form';
-
+import {Link} from 'react-router-dom';
 import { signUpPatient } from '../../actions';
 
 
@@ -104,7 +104,7 @@ import { signUpPatient } from '../../actions';
                     <div className="form-group">
                     <p className="allowpatientform">En continuant,&nbsp;j'accepte les conditions et la politique de confidentialité.</p>
                     </div>
-                    <div className="form-group"><button className="btn btn-primary btn-block" type="submit" id="btnpatientsignup">Créér un compte</button></div><a className="already" href="./signIn.html" id="alreadysignedpatient"><br />Vous avez déjà un compte ? Connectez-vous ici.<br /></a>
+                    <div className="form-group"><button className="btn btn-primary btn-block" type="submit" id="btnpatientsignup">Créér un compte</button></div><Link className="already" to="./loginPatient" id="alreadysignedpatient"><br />Vous avez déjà un compte ? Connectez-vous ici.<br /></Link>
                     <div className="d-flex flex-row align-items-center login-box-seperator-container">
                     <div className="login-box-seperator" id="login-box-seperator-left" />
                     <div className="login-box-seperator-text">
