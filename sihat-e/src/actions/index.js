@@ -1,6 +1,6 @@
 // in order to make requests over our newsletter API we take an instance of this API using axios to apply actions creators on it
 // import api from "../Apis/api";
-import { SIGN_IN, SIGN_OUT, CREATE_NEWSLETTER, CREATE_PATIENT, CREATE_MEDECIN, FETCH_PATIENT, FETCH_MEDECIN, DELETE_PATIENT, DELETE_MEDECIN, TOKEN_KEY, CREATE_TEST } from './types';
+import { SIGN_IN, SIGN_OUT, CREATE_NEWSLETTER, CREATE_PATIENT, CREATE_MEDECIN, FETCH_PATIENT, FETCH_MEDECIN, DELETE_PATIENT, DELETE_MEDECIN, TOKEN_KEY, CREATE_ABOUT } from './types';
 import history from "../helpers/history";
 import api from '../Apis/api'
 
@@ -93,4 +93,14 @@ import api from '../Apis/api'
         }
         }
 
+
+        export const createAbout = (formValues) => {
+            return async (dispatch) => {
+                const response = await api.post('/patients'), {...formValues}
+                dispatch ({
+                    type: CREATE_ABOUT,
+                    payload: response.data
+                })
+            }
+        }
 
