@@ -13,10 +13,10 @@ import axios from "axios";
 
 
 
-const selectedSongReducer = (selectedSong = [], action) => {
+const signInResponseReducer = (signInResponse = [], action) => {
     if (action.type === 'SIGN_IN') {
-        return [...selectedSong, action.payload  ];
-    } return selectedSong;
+        return [...signInResponse, action.payload  ];
+    } return signInResponse;
 };
 
 
@@ -24,7 +24,7 @@ const selectedSongReducer = (selectedSong = [], action) => {
 export default combineReducers ({
     form: newsletterReducer, signIn,
     // signIn: reducer,
-    selectedSong: selectedSongReducer
+    signInResponse: signInResponseReducer
 });
 
 

@@ -70,11 +70,11 @@ import Test from './Test';
 
                 // My Functionnal Component :
                 
-                const SignInPatient = (props) => {
+                const SignInPatient = ({signInResponse, createLogin, handleSubmit}) => {
 
 
                   let checkIfTaken = ''
-                  if ( props.selectedSong.length === 1 && validate(false)){
+                  if ( signInResponse.length === 1 && validate(false)){
                     checkIfTaken = 
                       <>
                       <div className="taken"> 
@@ -106,11 +106,11 @@ import Test from './Test';
                     // const [error, setError] = useState("");
 
                     const onSubmit = (formValues) => {
-                      props.createLogin(formValues)
+                      createLogin(formValues)
                     }
 
                     // const dodo = (state) => {
-                    //   if (state.selectedSong.status === '401'){
+                    //   if (state.signInResponse.status === '401'){
                     //       console.log('   Votre E-mail / mot de passe est incorrects réessayer svp. ' )  
                     // }}
                 //         const bobo = ({error, touched}) => {
@@ -124,7 +124,7 @@ import Test from './Test';
                 //       )
                 // }}}
                     // const chihaja = () => {
-                    //   state.selectedSong.status = null
+                    //   state.signInResponse.status = null
                     // }
 
 
@@ -134,8 +134,8 @@ import Test from './Test';
                   // errors.email =  'Votre E-mail / mot de passe est incorrects réessayer svp. ' 
 
     // const toro = () => {
-      // console.log(props.selectedSong)
-// if ( props.selectedSong.length === 1){
+      // console.log(props.signInResponse)
+// if ( props.signInResponse.length === 1){
 // const greet = function(){
 //           console.log('wech')
 // };
@@ -189,7 +189,7 @@ import Test from './Test';
                   {/* {arender()} */}
                   {/* { errorMessage &&
                     <h3 className="error"> { errorMessage } </h3> } */}
-                  <form id="userFormSignIn" className="user" method="post" onSubmit={props.handleSubmit(onSubmit)} >
+                  <form id="userFormSignIn" className="user" method="post" onSubmit={handleSubmit(onSubmit)} >
                     {checkIfTaken}
                     <Field name="email" component={renderInput}  />
                     <Field name="password" component={renderInputPassword} />
@@ -261,7 +261,7 @@ import Test from './Test';
 
     // const approve = (state) => {
     //           const issues = {};
-    //           if (state.selectedSong.error){
+    //           if (state.signInResponse.error){
     //               issues.email =  '   Votre E-mail / mot de passe est incorrects réessayer svp. ' 
     //             }
     //             return issues;
@@ -269,7 +269,7 @@ import Test from './Test';
 
 
 const mapStateToProps = (state) => {
-  return {selectedSong: state.selectedSong}
+  return {signInResponse: state.signInResponse}
 };
 
                 
