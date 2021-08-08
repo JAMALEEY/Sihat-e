@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 
-    // Actions
-    // import {login, getAll, deleter} from '../../actions/user.actions' 
 
     const DashboardPatient = (props) => {
 //         const [user, setUser] = useState({props});

@@ -2,7 +2,7 @@
 import api from "../Apis/api";
 import { SIGN_IN, SIGN_OUT, CREATE_NEWSLETTER, CREATE_PATIENT, CREATE_MEDECIN, FETCH_PATIENT, FETCH_MEDECIN, DELETE_PATIENT, DELETE_MEDECIN, TOKEN_KEY } from './types';
 import history from "../helpers/history";
-import Test from '../components/pages/Test';
+
 
 // new action creator to handle newletter api:
 // this is goign to be called with a list of all those different values that we entered into our form as an argument to our action creator (an asynch action creator necessite a reduxThunk)
@@ -42,7 +42,11 @@ export const createNewsletterEmail = (formValues) => {
     };   
 }
 }
-
+        export const signUpPatient = (formValues, token) => {
+            return async (  dispatch  ) => {
+                const response = await api.post('/register')
+            }
+        }
 
 
         export const createLogin = (formValues, token) => {
@@ -55,37 +59,26 @@ export const createNewsletterEmail = (formValues) => {
             });
             
                 if (response.data) {
-
                     if(response.status == 200 && response.data.token) {
-                                localStorage.setItem(TOKEN_KEY, response.data.token);
-                                history.push('/dashboardPatient')
-                            // const tokenify = () => {
-                            //     localStorage.setItem(TOKEN_KEY, response.data.token);
-                            //     history.push('/dashboardPatient')
-                            // };
-                            // setTimeout(tokenify, 2000);
-                        
+                        localStorage.setItem(TOKEN_KEY, response.data.token);
+                        history.push('/dashboardPatient')
 
-                    } 
-                    else if (response.status == 200 && response.data.status === "401") {
-                        console.log(response.data.status)
-                        return
-                    //    
-                    // 
-                    
+                    } else if (response.status == 200 && response.data.status === "401") {
+                            console.log(response.data.status)
+                            return
                     }
 
                 }
-        }
+            }
         }
                 
             export const isLogin = () => {
-            if (localStorage.getItem(TOKEN_KEY)) {
-                return true;
-            }
+                if (localStorage.getItem(TOKEN_KEY)) {
+                    return true;
+                }
 
-            return false;
-        }
+                return false;
+            }
 
 
 

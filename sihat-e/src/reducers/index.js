@@ -3,7 +3,6 @@ import { reducer as newsletterReducer } from "redux-form";
 import { reducer as signIn } from "redux-form";
 // To manage my multiple reducers to be one single reducer ill use CombineReducers that takes parameters with what ill call inside my project
 import { combineReducers } from "redux";
-import { LOGIN } from "../actions/auth";
 import reducer from './reducer';
 import { SIGN_IN } from "../actions/types";
 

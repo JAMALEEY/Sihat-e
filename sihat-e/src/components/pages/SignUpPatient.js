@@ -2,7 +2,6 @@ import React from 'react';
 
     const SignUpPatient = () => {
 
-        
         return(
         <>
             <div>
@@ -33,7 +32,7 @@ import React from 'react';
                 </div>
             </section>
                             {/* end first section */}
-                            
+
                             {/* caroussel start */}
             <div className="carousel slide carousel-fade" data-ride="carousel" id="carousel-1">
                 <div id="carousContainer" className="carousel-inner">
