@@ -2,23 +2,52 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {  logout  } from '../../actions'
-import axios from "axios";
+import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
+
+
+        const errorsHelper = ({     error, touched      }) => {
+            if (    touched && error    ) {
+                return (
+                    <>
+                        <div className='taken'>
+                            <div>
+                                <strong> &#9888; Attention &#9888; </strong> 
+                                {error} 
+                            </div>
+                        </div>
+                    </>
+                )
+            }
+        }
+
+        const renderInput = ({input, meta, label, placeholder, props, name}) => {
+            return (
+                <>
+                    {   errorsHelper(meta)    }
+                    <div className="col-sm-6 col-xl-7 input-column">
+                        <label className="col-form-label d-xl-flex align-items-xl-start">{label}</label>
+                        <input  
+                        {...input} className="form-control" 
+                        autoComplete="off"
+                        placeholder={placeholder} 
+                        onChange={input.onChange} 
+                        value={input.value} 
+                        name={name}
+                        // type="first_name" 
+                        // id="first_name" 
+                        // aria-describedby="first_name" 
+                        // name="first_name" 
+                        />
+                    </div>  
+                </>
+            )
+        }
+
 
 
 
 
     const DashboardPatient = ({logout}) => {
-// console.log(headers)
-        // useEffect(
-        //     () => {
-        //         const myConfig = {
-        //             header: {
-        //                 Authorization: 'Bearer ' + localStorage.getItem(TOKEN_KEY)
-        //             }
-        //         }
-        //         console.log(myConfig)
-        //     },[]
-        // )
 
         const patientDashboarLogout = () => {
             logout()
@@ -274,8 +303,8 @@ import axios from "axios";
                     <form className="custom-form">
                         <h1 className="d-xl-flex align-items-xl-start">A propos</h1>
                         <div className="form-row form-group">
-                        <div className="col-sm-4 col-xl-12 label-column"><label className="col-form-label d-xl-flex align-items-xl-start" htmlFor="name-input-field"><strong>Prénom :</strong></label></div>
-                        <div className="col-sm-6 col-xl-7 input-column"><input className="form-control" type="text" /></div>
+
+                        <Field name="first_name" component={renderInput} label="Prénom" placeholder="Votre prénom" />
                         </div>
                         <div className="form-row form-group">
                         <div className="col-sm-4 col-xl-12 label-column"><label className="col-form-label d-xl-flex align-items-xl-start" htmlFor="name-input-field"><strong>Nom :</strong></label></div>
@@ -321,7 +350,21 @@ import axios from "axios";
 
         
     }
+
+
+    const validate = (formValues) => {
+        const errors = {};
+    }
+
+
+
+
+    const formWrapper = reduxForm({
+        form: 'dashboardPatientForm',
+        validate
+    })(DashboardPatient)
+
     const mapStateToProps = (state) => {
         return {logout: state.logout}
     }
-            export default connect(mapStateToProps, {logout})(DashboardPatient);
+            export default connect(mapStateToProps, {logout})(formWrapper);
