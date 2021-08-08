@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { TOKEN_KEY } from '../actions/types';
 
 
     export default axios.create(
@@ -7,3 +8,5 @@ import axios from 'axios';
             baseURL: 'http://127.0.0.1:8000/api'
         }
     )
+
+    axios.defaults.header.common['Authorization'] = 'Bearer ' + localStorage.getItem(TOKEN_KEY);
