@@ -5,13 +5,20 @@ import { reducer as signUpPatientState } from "redux-form";
 // To manage my multiple reducers to be one single reducer ill use CombineReducers that takes parameters with what ill call inside my project
 import { combineReducers } from "redux";
 import reducer from './reducer';
-import { SIGN_IN, CREATE_PATIENT} from "../actions/types";
+import { SIGN_IN, CREATE_PATIENT, SIGN_OUT} from "../actions/types";
 
 
 const signUpPatientReducer = (signUpPatientState = {}, action) => {
     if (action.type === CREATE_PATIENT) {
         return {...signUpPatientState, [action.payload]: action.payload }
     } return signUpPatientState;
+};
+
+
+const logoutReducer = (logout = {}, action) => {
+    if (action.type === SIGN_OUT) {
+        return {...logout, [action.payload]: action.payload }
+    } return logout;
 };
 
 

@@ -90,7 +90,14 @@ export const createNewsletterEmail = (formValues) => {
 
 
 export const logout = () => {
-    localStorage.removeItem(TOKEN_KEY);
+     return async ( dispatch ) => {
+                const response = await api.post('/logout');
+            dispatch ({
+                type: SIGN_IN,
+                payload: response.data
+            });
+    
+}
 }
 
 
