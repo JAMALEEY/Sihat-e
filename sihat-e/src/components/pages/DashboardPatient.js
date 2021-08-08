@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {  logout  } from '../../actions'
 import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
+import {createTest} from '../../actions'
 
 
         const errorsHelper = ({error, touched}) => {
@@ -43,29 +44,16 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
             )
         }
 
-
-        const renderRadioChoice = ({input, meta, className, type, id, name, label, checked}) => {
-            return(
-                <>
-                {errorsHelper(meta)}
-                <div className="form-row form-group">
-
-                        <div className="col-sm-6 input-column"> 
-
-                    <div className="custom-control custom-radio">
-                        <input {...input} type={type} checked={checked} id={id} className={className} name={name} />
-                        <label className="custom-control-label" htmlFor="customRadio2">{label}</label>
-                    </div>
-                </div>
-                        </div>
-                </>
-            )
-        }
     const DashboardPatient = ({logout}) => {
 
         const patientDashboarLogout = () => {
             logout()
         }
+
+        const onSubmit = (formValues) => {
+            createTest(formValues)
+        }
+
 
         return(
 
@@ -317,7 +305,7 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
                 {/* Start: Pretty Registration Form */}
                 <div className="row register-form">
                     <div className="col-md-8 col-xl-10 offset-md-2 offset-xl-0">
-                    <form className="custom-form" >
+                    <form className="custom-form"  onSubmit={handleSubmit(onSubmit)} >
                         <h1 className="d-xl-flex align-items-xl-start">A propos</h1>
                         {/* Prénom */}
                         <Field className="form-control" name="first_name" component={renderInput} label="Prénom :" placeholder="Votre prénom" />
@@ -328,16 +316,27 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
                         {/* Date de Naissance */}
                         <Field className="form-control date" name="birth_day" component={renderInput} label="Date de naissance :" id="birthDate" type="date" />
 
-                        <div className="col-sm-4 col-xl-7 label-column">
-                            <label className="col-form-label d-xl-flex align-items-xl-start" >Genre :</label>
+                        <div className="form-row form-group">
+                        <div className="col-sm-4 col-xl-7 label-column"><label className="col-form-label d-xl-flex align-items-xl-start" htmlFor="pawssword-input-field">Genre :</label>
                         </div>
+                        <div className="col-sm-6 input-column">
+                            
+                            {/* Start: Bootstrap 4's Custom Radios & Checkboxes */}
+                            <div>
+                            <fieldset>
+                                <legend />
+                                <div className="custom-control custom-radio">
+                                    <input type="radio" id="customRadio1" className="custom-control-input" name="customRadio" defaultChecked />
+                                    <label className="custom-control-label" htmlFor="customRadio1">Femme</label></div>
+                                <div className="custom-control custom-radio">
+                                    <input type="radio" id="customRadio2" className="custom-control-input" name="customRadio" />
+                                    <label className="custom-control-label" htmlFor="customRadio2">Homme</label></div>
 
-                        
-                            <Field type="radio" name="Femme" className="custom-control-input" checked=" " label="Femme" component={renderRadioChoice} />
-                            <Field type="radio" name="Homme" className="custom-control-input" label="Homme" component={renderRadioChoice} />
-
-
-                    
+                            </fieldset>
+                            </div>
+                            {/* End: Bootstrap 4's Custom Radios & Checkboxes */}
+                        </div>
+                        </div>
                         
                         <button id="btnFormDashboard" className="btn btn-light align-items-xl-start submit-button" type="button">Enregistrer</button>
                     </form>

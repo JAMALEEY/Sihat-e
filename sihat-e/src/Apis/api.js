@@ -1,17 +1,8 @@
 import axios from 'axios';
 import { TOKEN_KEY } from '../actions/types';
 
-
-    // export default axios.create(
-    //     {
-    //         // the API that I created in the backEnd using laravel to use newsletter database
-    //         baseURL: 'http://127.0.0.1:8000/api',
-    //         headers: {
-    //             'Authorization': 'Bearer ' + localStorage.getItem(TOKEN_KEY)
-    //         }
-    //     }
-    // )
-
+// new axios instance to work with inside the action creators in order to handle newletter api:
+// this is goign to be called with a list of all those different values that we entered into our form as an argument to our action creator (an asynch action creator necessite a reduxThunk)
 
 const axiosInstance = axios.create({
   baseURL: 'http://127.0.0.1:8000/api'
