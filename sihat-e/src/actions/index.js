@@ -44,7 +44,11 @@ export const createNewsletterEmail = (formValues) => {
 }
         export const signUpPatient = (formValues, token) => {
             return async (  dispatch  ) => {
-                const response = await api.post('/register')
+                const response = await api.post('/register', formValues)
+                    dispatch ({
+                        type: CREATE_PATIENT,
+                        payload: response.data
+                    });
             }
         }
 

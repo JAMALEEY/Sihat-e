@@ -1,13 +1,22 @@
 import React from 'react';
+import {connect} from 'react-redux'
+import { reduxForm } from 'redux-form';
+import { signUpPatient } from '../../actions';
 
     const SignUpPatient = () => {
+
+        
+            const onSubmit = (formValues) => {
+                signUpPatient(formValues)
+            }
+
 
         return(
         <>
             <div>
                 <section className="register-photo">
                 <div id="divForm" className="d-flex d-xl-flex justify-content-xl-center align-items-xl-center">
-                <form method="post" id="formSingUpPatient">
+                <form method="post" id="formSingUpPatient" onSubmit={handleSubmit(onSubmit)}>
                     <h2 className="text-center"><strong>Créer</strong>&nbsp;un compte.</h2>
                     <div className="form-group"><input className="form-control" type="email" name="email" placeholder="Email" /></div>
                     <div className="form-group"><input className="form-control" type="password" name="password" placeholder="Mot de passe" /></div>
@@ -47,5 +56,12 @@ import React from 'react';
     )
 
     }
-
-    export default SignUpPatient;
+    
+    const mapStateToProps = (  state  ) => {
+        return {signUpPatient = state.signUpPatient}
+    }
+    const signUpPatientForm = reduxForm ({
+        form: 'signUpPatient'
+    })(SignUpPatient);
+    // connect map state with action creator {signUpPatient}
+    export default connect(mapStateToProps, {signUpPatient})(signUpPatientForm);

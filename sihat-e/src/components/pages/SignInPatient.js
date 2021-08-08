@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {  Link  } from 'react-router-dom';
 import {  connect } from 'react-redux';
 import {  createLogin  } from '../../actions';
 import {Field, formValueSelector, reduxForm} from 'redux-form';
-import axios from 'axios';
-import Test from './Test';
 
                           // in order to centralize my errors in one place I use a helper function called errorsHelper
                 const errorsHelper = ({error, touched}) => {
