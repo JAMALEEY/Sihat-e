@@ -95,8 +95,8 @@ import api from '../Apis/api'
 
         export const createAbout = (formValues) => {
             return async (dispatch, getState) => {
-                const {token} = getState().
-                const response = await api.post('/patients', {...formValues, });
+                const {token} = getState().api
+                const response = await api.post('/patients', {...formValues, token });
                 dispatch ({
                     type: CREATE_ABOUT,
                     payload: response.data
