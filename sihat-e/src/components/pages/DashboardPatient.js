@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {  logout  } from '../../actions'
@@ -8,7 +8,7 @@ import {  logout  } from '../../actions'
     const DashboardPatient = ({logout}) => {
 
         const patientDashboarLogout = (onClick) => {
-            logout()
+            logout(onClick)
         }
 
         return(

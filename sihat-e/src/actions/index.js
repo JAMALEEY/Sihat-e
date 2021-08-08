@@ -94,7 +94,7 @@ export const logout = () => {
                 const response = await api.post('/logout');
             dispatch ({
                 type: SIGN_OUT,
-                payload: response.data
+                payload: response
             });
             history.push('/');
     
