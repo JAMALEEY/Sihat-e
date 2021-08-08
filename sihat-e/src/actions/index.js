@@ -56,7 +56,7 @@ export const createNewsletterEmail = (formValues) => {
         }
 
 
-        export const createLogin = (formValues, token) => {
+        export const createLogin = (formValues) => {
             // async function dispatch = redux thunk en rgos
             return async ( dispatch ) => {
                 const response = await api.post('/login', formValues);
@@ -68,6 +68,7 @@ export const createNewsletterEmail = (formValues) => {
                 if (response.data) {
                     if(response.status == 200 && response.data.token) {
                         localStorage.setItem(TOKEN_KEY, response.data.token);
+                        console.log(response)
                         history.push('/dashboardPatient')
 
                     } else if (response.status == 200 && response.data.status === "401") {
@@ -90,8 +91,9 @@ export const createNewsletterEmail = (formValues) => {
 
 
 export const logout = () => {
-     return async ( dispatch ) => {
-                const response = await api.get('/logout');
+    return async ( dispatch ) => {
+            const response = await api.get('/logout');
+
             dispatch ({
                 type: SIGN_OUT,
             });
