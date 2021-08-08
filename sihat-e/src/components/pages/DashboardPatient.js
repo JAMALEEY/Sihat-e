@@ -20,30 +20,28 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
             }
         }
 
-        const renderInput = ({input, meta, label, placeholder, props, name}) => {
+        const renderInput = ({input, meta, label, placeholder, name, id, type, className}) => {
             return (
                 <>
                     {   errorsHelper(meta)    }
                     <div className="col-sm-6 col-xl-7 input-column">
                         <div className="form-row form-group">
                         <label className="col-form-label d-xl-flex align-items-xl-start">{label}</label>
-                        <input {...input} autoComplete="off" 
-                        className="form-control"
+                        <input {...input}
+                        className={className}
                         autocomplete='nope' 
                         placeholder={placeholder} 
                         onChange={input.onChange} 
                         value={input.value} 
                         name={name}
+                        type={type}
+                        id={id}
                         />
                         </div>
                     </div>  
                 </>
             )
         }
-
-
-
-
 
     const DashboardPatient = ({logout}) => {
 
@@ -301,29 +299,14 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
                     <form className="custom-form" >
                         <h1 className="d-xl-flex align-items-xl-start">A propos</h1>
                         {/* Prénom */}
-                        <Field name="first_name" component={renderInput} label="Prénom" placeholder="Votre prénom" />
+                        <Field className="form-control" name="first_name" component={renderInput} label="Prénom :" placeholder="Votre prénom" />
                         {/* Nom */}
-                        <Field name="last_name" component={renderInput} label="Nom" placeholder="Votre Nom" />
+                        <Field className="form-control" name="last_name" component={renderInput} label="Nom :" placeholder="Votre Nom" />
                         {/* Adresse */}
-                        <Field name="adress" component={renderInput} label="Adresse" placeholder="Votre Adresse" />
+                        <Field className="form-control" name="adress" component={renderInput} label="Adresse :" placeholder="Votre Adresse" />
+                        {/* Date de Naissance */}
+                        <Field className="form-control date" name="birth_day" component={renderInput} label="Date de naissance :" id="birthDate" type="date" />
 
-
-                        {/* <div className="form-row form-group">
-                        <div className="col-sm-4 col-xl-12 label-column"><label className="col-form-label d-xl-flex align-items-xl-start" htmlFor="name-input-field"><strong>Nom :</strong></label></div>
-                        <div className="col-sm-6 col-xl-7 input-column"><input  className="form-control" type="text" /></div>
-                        </div>
-                        
-                        <div className="form-row form-group">
-                        <div className="col-sm-4 col-xl-12 label-column"><label className="col-form-label d-xl-flex align-items-xl-start" htmlFor="name-input-field"><strong>Adresse :</strong></label></div>
-                        <div className="col-sm-6 col-xl-7 input-column"><input autoComplete="off"  className="form-control" type="text" /></div>
-                        </div> */}
-                        <div className="form-row form-group">
-                        <div className="col-sm-4 col-xl-12 label-column">
-                            <label className="col-form-label d-xl-flex align-items-xl-start" htmlFor="name-input-field"> 
-                            <strong>Date de naissance :</strong></label>
-                            </div>
-                        <div className="col-md-6 col-xl-7"><input className="form-control date" type="date" id="birthDate" /></div>
-                        </div>
                         <div className="form-row form-group">
                         <div className="col-sm-4 col-xl-7 label-column"><label className="col-form-label d-xl-flex align-items-xl-start" htmlFor="pawssword-input-field">Genre :</label></div>
                         <div className="col-sm-6 input-column">
