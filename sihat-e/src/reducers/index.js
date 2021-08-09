@@ -3,10 +3,12 @@ import { reducer as newsletterReducer } from "redux-form";
 import { reducer as signIn } from "redux-form";
 import { reducer as signUpPatientState } from "redux-form";
 import { reducer as logout } from "redux-form";
+import { reducer as createAbout } from "redux-form";
+import {reducer as dashboardPatientForm } from 'redux-form'
 // To manage my multiple reducers to be one single reducer ill use CombineReducers that takes parameters with what ill call inside my project
 import { combineReducers } from "redux";
 import reducer from './reducer';
-import { SIGN_IN, CREATE_PATIENT, SIGN_OUT} from "../actions/types";
+import { SIGN_IN, CREATE_PATIENT, SIGN_OUT, CREATE_ABOUT} from "../actions/types";
 
 
 const signUpPatientReducer = (signUpPatientState = {}, action) => {
@@ -29,15 +31,22 @@ const signInResponseReducer = (signInResponse = {}, action) => {
     } return signInResponse;
 };
 
+const createAboutReducer = (createAbout = {}, action) => {
+    if (action.type === CREATE_ABOUT) {
+        return {...createAbout, [action.payload]: action.payload  };
+    } return createAbout;
+};
+
+
 
     // I pass in a parameter (form) of a value (reducer that I renamed to newsletterReducer) so that I can let redux-form allow the reducer flow automatization 
 export default combineReducers ({
-    form: newsletterReducer, signIn, signUpPatientState,
-    reducer: logout,
-    // signIn: reducer,
+    form: newsletterReducer, signIn, signUpPatientState, dashboardPatientForm,
+    reducer: logout, createAbout,
     signInResponse: signInResponseReducer,
     signUpPatienState: signUpPatientReducer,
-    logout: logoutReducer
+    logout: logoutReducer,
+    createAbout: createAboutReducer
 });
 
 

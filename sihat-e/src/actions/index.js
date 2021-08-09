@@ -97,6 +97,7 @@ import axios from 'axios';
         export const createAbout = (formValues) => {
             return async (dispatch) => {
                 const response = await api.post('/patient', formValues)
+
                 dispatch ({
                     type: CREATE_ABOUT,
                     payload: response.data
