@@ -25,9 +25,9 @@ const logoutReducer = (logout = {}, action) => {
 };
 
 
-const signInResponseReducer = (signInResponse = {}, action) => {
-    if (action.type === SIGN_IN) {
-        return {...signInResponse, [action.payload]: action.payload  };
+const signInResponseReducer = (signInResponse = [], action) => {
+    if (action.type === 'SIGN_IN') {
+        return [...signInResponse, action.payload];
     } return signInResponse;
 };
 
