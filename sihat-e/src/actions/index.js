@@ -3,6 +3,7 @@
 import { SIGN_IN, SIGN_OUT, CREATE_NEWSLETTER, CREATE_PATIENT, CREATE_MEDECIN, FETCH_PATIENT, FETCH_MEDECIN, DELETE_PATIENT, DELETE_MEDECIN, TOKEN_KEY, CREATE_ABOUT } from './types';
 import history from "../helpers/history";
 import api from '../Apis/api'
+import axios from 'axios';
 
 // Adding all the action creators that we might work with
 
@@ -52,7 +53,6 @@ import api from '../Apis/api'
                 if (response.data) {
                     if(response.status == 200 && response.data.token) {
                         localStorage.setItem(TOKEN_KEY, response.data.token);
-                        console.log(localStorage)
                         history.push('/dashboardPatient')
                     } else if (response.status == 200 && response.data.status === "401") {
                             console.log(response.data.status)
@@ -96,7 +96,7 @@ import api from '../Apis/api'
 
         export const createAbout = (formValues) => {
             return async (dispatch) => {
-                const response = await api.post('/patients'), {...formValues}
+                const response = await api.post('/patient', formValues)
                 dispatch ({
                     type: CREATE_ABOUT,
                     payload: response.data

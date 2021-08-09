@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {  logout  } from '../../actions'
 import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
-import {createTest} from '../../actions'
+import {createAbout} from '../../actions'
 
 
         const errorsHelper = ({error, touched}) => {
@@ -44,14 +44,16 @@ import {createTest} from '../../actions'
             )
         }
 
-    const DashboardPatient = ({logout}) => {
+    const DashboardPatient = ({logout, handleSubmit, createAbout}) => {
 
         const patientDashboarLogout = () => {
             logout()
         }
 
         const onSubmit = (formValues) => {
-            createTest(formValues)
+            console.log('im submited')
+            createAbout(formValues)
+        // alert('coucou')
         }
 
 
@@ -305,7 +307,7 @@ import {createTest} from '../../actions'
                 {/* Start: Pretty Registration Form */}
                 <div className="row register-form">
                     <div className="col-md-8 col-xl-10 offset-md-2 offset-xl-0">
-                    <form className="custom-form"  onSubmit={handleSubmit(onSubmit)} >
+                    <form className="custom-form"  method="post" onSubmit={handleSubmit(onSubmit)} >
                         <h1 className="d-xl-flex align-items-xl-start">A propos</h1>
                         {/* Prénom */}
                         <Field className="form-control" name="first_name" component={renderInput} label="Prénom :" placeholder="Votre prénom" />
@@ -338,7 +340,7 @@ import {createTest} from '../../actions'
                         </div>
                         </div>
                         
-                        <button id="btnFormDashboard" className="btn btn-light align-items-xl-start submit-button" type="button">Enregistrer</button>
+                        <button id="btnFormDashboard" className="btn btn-light align-items-xl-start submit-button" type="submit">Enregistrer</button>
                     </form>
                     </div>
                 </div>{/* End: Pretty Registration Form */}
@@ -356,19 +358,12 @@ import {createTest} from '../../actions'
     }
 
 
-    const validate = (formValues) => {
-        const errors = {};
-    }
+    
 
 
-
-
-    const formWrapper = reduxForm({
-        form: 'dashboardPatientForm',
-        validate
-    })(DashboardPatient)
 
     const mapStateToProps = (state) => {
         return {logout: state.logout}
     }
-            export default connect(mapStateToProps, {logout})(formWrapper);
+    export default reduxForm({ form: 'dashboardPatientForm'})(connect(mapStateToProps, {logout, createAbout})(DashboardPatient))
+    
