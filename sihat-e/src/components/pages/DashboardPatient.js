@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {  logout, createAbout  } from '../../actions'
 import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
+import {createAbout} from '../../actions'
 
 
 
@@ -44,15 +45,18 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
             )
         }
 
-        const DashboardPatient = ({logout, handleSubmit, createAbout}) => {
+    const DashboardPatient = ({logout, handleSubmit, createAbout}) => {
 
             const patientDashboarLogout = () => {
                 logout()
             }
 
-            const onSubmit = (formValues) => {
-                createAbout(formValues)
-            }
+        const onSubmit = (formValues) => {
+            console.log('im submited')
+            createAbout(formValues)
+        // alert('coucou')
+        }
+
 
 
         return(
@@ -305,7 +309,7 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
                 {/* Start: Pretty Registration Form */}
                 <div className="row register-form">
                     <div className="col-md-8 col-xl-10 offset-md-2 offset-xl-0">
-                    <form className="custom-form"  onSubmit={handleSubmit(onSubmit)} >
+                    <form className="custom-form"  method="post" onSubmit={handleSubmit(onSubmit)} >
                         <h1 className="d-xl-flex align-items-xl-start">A propos</h1>
                         {/* Prénom */}
                         <Field className="form-control" name="first_name" component={renderInput} label="Prénom :" placeholder="Votre prénom" />
@@ -338,7 +342,7 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
                         </div>
                         </div>
                         
-                        <button id="btnFormDashboard" className="btn btn-light align-items-xl-start submit-button" type="button">Enregistrer</button>
+                        <button id="btnFormDashboard" className="btn btn-light align-items-xl-start submit-button" type="submit">Enregistrer</button>
                     </form>
                     </div>
                 </div>{/* End: Pretty Registration Form */}
@@ -356,18 +360,13 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
     }
 
 
+    
+
+
 
     const mapStateToProps = (state) => {
-        return {
-            logout: state.logout,
-            createAbout: state.createAbout
-        }
+        return {logout: state.logout}
     }
+    export default reduxForm({ form: 'dashboardPatientForm'})(connect(mapStateToProps, {logout, createAbout})(DashboardPatient))
+    
 
-
-    const formWrapper = reduxForm({
-        form: 'dashboardPatientForm',
-        reducer: 'createAbout'
-    })(DashboardPatient)
-
-            export default connect(mapStateToProps, {logout, createAbout})(formWrapper);
