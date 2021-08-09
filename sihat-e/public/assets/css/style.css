@@ -298,6 +298,7 @@ color: var(--light);font-family: Alatsi, sans-serif;
 }
 
 #signInMainDoc {
+  overflow-x: hidden;
   position: relative;
   background-image: url("../img/drmalikablur.jpg");
   background-repeat: no-repeat;

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {  logout, createAbout  } from '../../actions'
 import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
-import {createAbout} from '../../actions'
+
 
 
 
