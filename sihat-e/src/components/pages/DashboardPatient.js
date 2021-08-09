@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import {  logout  } from '../../actions'
+import {  logout, createAbout  } from '../../actions'
 import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
 import {createAbout} from '../../actions'
+
 
 
         const errorsHelper = ({error, touched}) => {
@@ -46,15 +47,16 @@ import {createAbout} from '../../actions'
 
     const DashboardPatient = ({logout, handleSubmit, createAbout}) => {
 
-        const patientDashboarLogout = () => {
-            logout()
-        }
+            const patientDashboarLogout = () => {
+                logout()
+            }
 
         const onSubmit = (formValues) => {
             console.log('im submited')
             createAbout(formValues)
         // alert('coucou')
         }
+
 
 
         return(
@@ -367,3 +369,4 @@ import {createAbout} from '../../actions'
     }
     export default reduxForm({ form: 'dashboardPatientForm'})(connect(mapStateToProps, {logout, createAbout})(DashboardPatient))
     
+

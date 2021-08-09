@@ -26,18 +26,19 @@
 //   }
 // };
 // import { formValueSelector } from 'redux-form';
-import {
-    SIGN_IN, SIGN_OUT, CREATE_NEWSLETTER, CREATE_PATIENT, CREATE_MEDECIN, FETCH_PATIENT, FETCH_MEDECIN, DELETE_PATIENT, DELETE_MEDECIN
-} from '../actions/types'
+// import {
+//     SIGN_IN, SIGN_OUT, CREATE_NEWSLETTER, CREATE_PATIENT, CREATE_MEDECIN, FETCH_PATIENT, FETCH_MEDECIN, DELETE_PATIENT, DELETE_MEDECIN
+// } from '../actions/types'
 
-export default (state = {}, action) => {
-    switch (action.type) {
-        case SIGN_IN:
-            return { ...state, [action.payload]: action.payload };
-        default:
-            return state;
-    }
-}
+
+// export default (state = {}, action) => {
+//     switch (action.type) {
+//         case SIGN_IN:
+//             return { ...state, [action.payload]: action.payload };
+//         default:
+//             return state;
+//     }
+// }
 
         // const handleSubmit = useCallback(
         // () => sendRequest(formValues)
