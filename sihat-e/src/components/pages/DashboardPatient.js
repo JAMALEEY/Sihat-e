@@ -1,30 +1,79 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {  logout  } from '../../actions'
+import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
+import {createAbout} from '../../actions'
 
 
+        const errorsHelper = ({error, touched}) => {
+            if (touched && error) {
+                return (
+                    <>
+                        <div className='taken'>
+                            <div>
+                                <strong> &#9888; Attention &#9888; </strong> 
+                                {error} 
+                            </div>
+                        </div>
+                    </>
+                )
+            }
+        }
 
-    const DashboardPatient = ({logout}) => {
+        const renderInput = ({input, meta, label, placeholder, name, id, type, className}) => {
+            return (
+                <>
+                    {   errorsHelper(meta)    }
+                    <div className="col-sm-6 col-xl-7 input-column">
+                        <div className="form-row form-group">
+                        <label className="col-form-label d-xl-flex align-items-xl-start">{label}</label>
+                        <input {...input}
+                        className={className}
+                        autocomplete='nope' 
+                        placeholder={placeholder} 
+                        onChange={input.onChange} 
+                        value={input.value} 
+                        name={name}
+                        type={type}
+                        id={id}
+                        />
+                        </div>
+                    </div>  
+                </>
+            )
+        }
 
-        const patientDashboarLogout = (onClick) => {
+    const DashboardPatient = ({logout, handleSubmit, createAbout}) => {
+
+        const patientDashboarLogout = () => {
             logout()
         }
+
+        const onSubmit = (formValues) => {
+            console.log('im submited')
+            createAbout(formValues)
+        // alert('coucou')
+        }
+
 
         return(
 
                 <>
                 <div>
                     <div className="row" id="navRow">
-        <div className="col-md-6 col-xl-2 offset-xl-0" id="leftMenuContainer">
-            <div id="logoNavContainer">
-            <div className="d-flex d-xl-flex flex-row justify-content-between align-items-center justify-content-xl-center align-items-xl-center" id="headingNavContainer">
-                <div className="d-flex d-xl-flex justify-content-xl-center align-items-xl-center" id="logoDashboard"><img src="../sihat-e/public/assets/img/Sicon.png" /></div>
-                <h1>MON COMPTE<span><br /><strong>ACCUEIL</strong><br /><br /><br /></span></h1>
-            </div>
-            </div>
-            <div>
-            {/* Start: Sidebar */}<div id="sidebar-main" className="sidebar sidebar-default">
+                        <div className="col-md-6 col-xl-2 offset-xl-0" id="leftMenuContainer">
+                            <div id="logoNavContainer">
+                                <div className="d-flex d-xl-flex flex-row justify-content-between align-items-center justify-content-xl-center align-items-xl-center" id="headingNavContainer">
+                                    <div className="d-flex d-xl-flex justify-content-xl-center align-items-xl-center" id="logoDashboard"> 
+                                        <img src="/assets/img/Sicon.png" />
+                                    </div>
+                                    <h1>MON COMPTE<span><br /><strong>ACCUEIL</strong><br /><br /><br /></span></h1>
+                                </div>
+                            </div>
+                        <div>
+                                                {/* Start: Sidebar */}
+                        <div id="sidebar-main" className="sidebar sidebar-default">
                 <div className="sidebar-category sidebar-default">
                 <div className="category-title">
                 </div>
@@ -242,7 +291,9 @@ import {  logout  } from '../../actions'
                     <li className="nav-item dropdown no-arrow">
                         <div className="nav-item dropdown no-arrow"><a aria-expanded="false" data-toggle="dropdown" className="dropdown-toggle nav-link" href="#"><span className="d-none d-lg-inline mr-2 text-gray-600 small">Valerie Luna</span><img className="border rounded-circle img-profile" src="avatars/avatar1.jpeg" /></a>
                         <div className="dropdown-menu shadow dropdown-menu-right animated--grow-in"><a className="dropdown-item" href="#"><i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400" />&nbsp;Profile</a><a className="dropdown-item" href="#"><i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400" />&nbsp;Settings</a><a className="dropdown-item" href="#"><i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400" />&nbsp;Activity log</a>
-                            <div className="dropdown-divider" /><a className="dropdown-item" href="#"><i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400" onClick={patientDashboarLogout} />&nbsp;Logout</a>
+                            <div className="dropdown-divider"  />
+                            <a className="dropdown-item" href="#" onClick={patientDashboarLogout} >
+                                <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"/>&nbsp;Logout</a>
 
                         </div>
                         </div>
@@ -256,36 +307,40 @@ import {  logout  } from '../../actions'
                 {/* Start: Pretty Registration Form */}
                 <div className="row register-form">
                     <div className="col-md-8 col-xl-10 offset-md-2 offset-xl-0">
-                    <form className="custom-form">
+                    <form className="custom-form"  method="post" onSubmit={handleSubmit(onSubmit)} >
                         <h1 className="d-xl-flex align-items-xl-start">A propos</h1>
+                        {/* Prénom */}
+                        <Field className="form-control" name="first_name" component={renderInput} label="Prénom :" placeholder="Votre prénom" />
+                        {/* Nom */}
+                        <Field className="form-control" name="last_name" component={renderInput} label="Nom :" placeholder="Votre Nom" />
+                        {/* Adresse */}
+                        <Field className="form-control" name="adress" component={renderInput} label="Adresse :" placeholder="Votre Adresse" />
+                        {/* Date de Naissance */}
+                        <Field className="form-control date" name="birth_day" component={renderInput} label="Date de naissance :" id="birthDate" type="date" />
+
                         <div className="form-row form-group">
-                        <div className="col-sm-4 col-xl-12 label-column"><label className="col-form-label d-xl-flex align-items-xl-start" htmlFor="name-input-field"><strong>Nom &amp; prénom :</strong></label></div>
-                        <div className="col-sm-6 col-xl-7 input-column"><input className="form-control" type="text" /></div>
+                        <div className="col-sm-4 col-xl-7 label-column"><label className="col-form-label d-xl-flex align-items-xl-start" htmlFor="pawssword-input-field">Genre :</label>
                         </div>
-                        <div className="form-row form-group">
-                        <div className="col-sm-4 col-xl-12 label-column"><label className="col-form-label d-xl-flex align-items-xl-start" htmlFor="name-input-field"><strong>E-mail :</strong></label></div>
-                        <div className="col-sm-6 col-xl-7 input-column"><input className="form-control" type="text" /></div>
-                        </div>
-                        <div className="form-row form-group">
-                        <div className="col-sm-4 col-xl-12 label-column">
-                            <label className="col-form-label d-xl-flex align-items-xl-start" htmlFor="name-input-field"> 
-                            <strong>Date de naissance :</strong></label>
-                            </div>
-                        <div className="col-md-6 col-xl-7"><input className="form-control date" type="date" id="birthDate" /></div>
-                        </div>
-                        <div className="form-row form-group">
-                        <div className="col-sm-4 col-xl-7 label-column"><label className="col-form-label d-xl-flex align-items-xl-start" htmlFor="pawssword-input-field">Genre :</label></div>
                         <div className="col-sm-6 input-column">
+                            
                             {/* Start: Bootstrap 4's Custom Radios & Checkboxes */}
                             <div>
                             <fieldset>
                                 <legend />
-                                <div className="custom-control custom-radio"><input type="radio" id="customRadio1" className="custom-control-input" name="customRadio" defaultChecked /><label className="custom-control-label" htmlFor="customRadio1">Femme</label></div>
-                                <div className="custom-control custom-radio"><input type="radio" id="customRadio2" className="custom-control-input" name="customRadio" /><label className="custom-control-label" htmlFor="customRadio2">Homme</label></div>
+                                <div className="custom-control custom-radio">
+                                    <input type="radio" id="customRadio1" className="custom-control-input" name="customRadio" defaultChecked />
+                                    <label className="custom-control-label" htmlFor="customRadio1">Femme</label></div>
+                                <div className="custom-control custom-radio">
+                                    <input type="radio" id="customRadio2" className="custom-control-input" name="customRadio" />
+                                    <label className="custom-control-label" htmlFor="customRadio2">Homme</label></div>
+
                             </fieldset>
-                            </div>{/* End: Bootstrap 4's Custom Radios & Checkboxes */}
+                            </div>
+                            {/* End: Bootstrap 4's Custom Radios & Checkboxes */}
                         </div>
-                        </div><button id="btnFormDashboard" className="btn btn-light d-xl-flex align-items-xl-start submit-button" type="button">Enregistrer</button>
+                        </div>
+                        
+                        <button id="btnFormDashboard" className="btn btn-light align-items-xl-start submit-button" type="submit">Enregistrer</button>
                     </form>
                     </div>
                 </div>{/* End: Pretty Registration Form */}
@@ -301,7 +356,14 @@ import {  logout  } from '../../actions'
 
         
     }
+
+
+    
+
+
+
     const mapStateToProps = (state) => {
         return {logout: state.logout}
     }
-            export default connect(mapStateToProps, {logout})(DashboardPatient);
+    export default reduxForm({ form: 'dashboardPatientForm'})(connect(mapStateToProps, {logout, createAbout})(DashboardPatient))
+    
