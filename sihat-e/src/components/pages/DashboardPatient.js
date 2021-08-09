@@ -52,9 +52,11 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
             }
 
         const onSubmit = (formValues) => {
-            console.log('im submited')
             createAbout(formValues)
-        // alert('coucou')
+            if(createAbout) {
+                console.log('You added informations about yourself')
+            }
+
         }
 
 

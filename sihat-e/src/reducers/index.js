@@ -4,7 +4,8 @@ import { reducer as signIn } from "redux-form";
 import { reducer as signUpPatientState } from "redux-form";
 import { reducer as logout } from "redux-form";
 import { reducer as createAbout } from "redux-form";
-import {reducer as dashboardPatientForm } from 'redux-form'
+import { reducer as dashboardPatientForm } from 'redux-form'
+
 // To manage my multiple reducers to be one single reducer ill use CombineReducers that takes parameters with what ill call inside my project
 import { combineReducers } from "redux";
 import reducer from './reducer';
@@ -46,7 +47,8 @@ export default combineReducers ({
     signInResponse: signInResponseReducer,
     signUpPatienState: signUpPatientReducer,
     logout: logoutReducer,
-    createAbout: createAboutReducer
+    createAbout: createAboutReducer,
+    aboutinfos: aboutinfoReducer
 });
 
 
