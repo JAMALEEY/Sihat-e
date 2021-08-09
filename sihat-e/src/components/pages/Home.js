@@ -193,8 +193,8 @@ import {  createNewsletterEmail, isLogin } from '../../actions'
                             <div className="content-image">
                               <h1 className="text-center">JE SUIS UN MEDECIN</h1>
                               <p className="text-center">
-                                <strong>En utilisant notre plateforme&nbsp;vous économisez sur les frais d'installation,&nbsp;</strong><br /><strong>les frais administratifs et le besoin de personnel supplémentaire.
-                                </strong><br />
+                                <strong>En utilisant notre plateforme&nbsp;vous économisez sur les frais d'installation,&nbsp;</strong><strong>les frais administratifs et le besoin de personnel supplémentaire.
+                                </strong>
                               </p>
                             </div>
                             <div className="footer-image">
