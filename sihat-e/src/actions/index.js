@@ -85,7 +85,7 @@ import axios from 'axios';
 
         export const fetchLoginMsg = () => {
             return async ( dispatch ) => {
-                const response = await api.get('/');
+                const response = await api.get('/login');
                 dispatch ({
                     type: 'CREATE_LOGIN',
                     payload: response.data

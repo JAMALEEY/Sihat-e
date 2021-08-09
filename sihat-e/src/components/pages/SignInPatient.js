@@ -72,7 +72,7 @@ import {Field, formValueSelector, reduxForm} from 'redux-form';
 
 
                   let checkIfTaken = ''
-                  if ( signInResponse.length === 1 && validate(false)){
+                  if ( signInResponse.length == 1 && validate(false)){
                     checkIfTaken = 
                       <>
                       <div className="taken"> 
@@ -258,18 +258,18 @@ import {Field, formValueSelector, reduxForm} from 'redux-form';
 
 
 
-    // const approve = (state) => {
-    //           const issues = {};
-    //           if (state.signInResponse.error){
-    //               issues.email =  '   Votre E-mail / mot de passe est incorrects réessayer svp. ' 
-    //             }
-    //             return issues;
-    //         };
+              // const approve = (state) => {
+              //           const issues = {};
+              //           if (state.signInResponse.error){
+              //               issues.email =  '   Votre E-mail / mot de passe est incorrects réessayer svp. ' 
+              //             }
+              //             return issues;
+              //         };
 
 
-const mapStateToProps = (state) => {
-  return {signInResponse: state.signInResponse}
-};
+              const mapStateToProps = (state) => {
+                return {signInResponse: state.signInResponse}
+              };
 
                 
             // we Define also our Validation function called with a form values object, because this is what we are trying to look if its valide or not
@@ -299,7 +299,7 @@ const mapStateToProps = (state) => {
 
 
 
-export default reduxForm({ form: 'signIn', validate})(connect(mapStateToProps, {createLogin})(SignInPatient))
+export default reduxForm({ form: 'signIn', validate})(connect(mapStateToProps, {createLogin, signInResponse})(SignInPatient))
 
 
 // const formWrapper = reduxForm({
