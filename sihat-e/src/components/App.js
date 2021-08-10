@@ -23,6 +23,7 @@ import { connect } from 'react-redux';
 import DashboardPatient from './pages/DashboardPatient';
 import PrivateRoute from './pages/PrivateRoute';
 import PublicRoute from './pages/PublicRoute';
+import PatientDashboard from './pages/PatientDashboard';
 
 
 
@@ -46,6 +47,7 @@ const  App = (props) => {
                                 <PublicRoute path="/registerPatient" exact component={SignUpPatient} />
                                 <PublicRoute restricted={true}  path="/loginPatient" exact component={SignInPatient} />
                                 <PublicRoute path="/registerMedecin" exact component={SignUpMedecin} />
+                                <PublicRoute path="/patientLogin" exact component={PatientDashboard} />
                                 <Redirect from="*" to="/" />
     </Switch>
     </Router>
