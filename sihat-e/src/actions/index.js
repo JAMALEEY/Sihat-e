@@ -111,7 +111,7 @@ import axios from 'axios';
                 const response = await api.get('patient/fetch');
                     dispatch({
                         type: FETCH_PATIENT_ABOUT,
-                        payload: response.data
+                        payload: response.data.data
                         // payload: response.status == 200 ? response.data.data : false 
                     })
                         // if(response.status == 200 ) {

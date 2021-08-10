@@ -1,13 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchAboutInfos, logout, createAbout  } from '../../actions';
-import {Field, reduxForm, touch} from 'redux-form';
+import { Field, reduxForm, touch} from 'redux-form';
 
 
 class PatientDashboard extends React.Component{
     componentDidMount(){
+        
         this.props.fetchAboutInfos();
-        console.log(this.props.initialValues)
+        console.log(this.props.initialValues
+)
     }
     patientDashboarLogout() {
         this.props.logout();
@@ -59,7 +61,7 @@ class PatientDashboard extends React.Component{
 
 
     render() {
-        const {handleSubmit, pristine, reset, submitting} = this.props
+        const {InitialValues, handleSubmit, pristine, reset, submitting} = this.props
         return(
             <>
                 <div>
@@ -314,14 +316,14 @@ class PatientDashboard extends React.Component{
                 {/* Start: Pretty Registration Form */}
                 <div className="row register-form">
                     <div className="col-md-8 col-xl-10 offset-md-2 offset-xl-0">
-                    <form className="custom-form" method="post" onSubmit={this.props.handleSubmit(this.onSubmit)} >
+                    <form  InitialValues={this.props.InitialValues}       className="custom-form" method="post" onSubmit={this.props.handleSubmit(this.onSubmit)} >
                         <h1 className="d-xl-flex align-items-xl-start">A propos</h1>
                            {/* Prénom */}
                         <div>
                         </div>
-                        <Field className="form-control-plaintext" name="first_name" component={this.renderInput} label="Prénom :" placeholder="Votre prénom" type='text' />
+                        <Field className="form-control-plaintext" name="first_name" component={this.renderInput} label="Prénom :" placeholder="Votre prénom" type='text'  />
                         {/* Nom */}
-                        <Field className="form-control-plaintext" name="last_name" component={this.renderInput} label="Nom :" placeholder="Votre Nom"  />
+                        <Field className="form-control-plaintext" name="last_name" component={this.renderInput} label="Nom :" placeholder="Votre Nom" />
                         {/* Adresse */}
                         <Field className="form-control-plaintext" name="adress" component={this.renderInput} label="Adresse :" placeholder="Votre Adresse"  />
                         {/* Date de Naissance */} 
@@ -394,16 +396,20 @@ class PatientDashboard extends React.Component{
 
 const mapStateToProps = (state, props) => {
             return {logout: state.logout,
-            aboutInfos: state.aboutInfos.data.first_name,
+            aboutInfos: state.aboutInfos.last_name,
 
-            initialValues: state.aboutInfos,
+            initialValues:{
+                first_name : state.aboutInfos.first_name,
+                last_name : 'coucou'
+            } 
             
         }
 }
 
 
 const DecoratedComponent = connect(mapStateToProps, {logout, fetchAboutInfos})(PatientDashboard)
-export default reduxForm({ form: 'patientDashboardForm',  enableReinitialize: true})(DecoratedComponent)
+export default reduxForm({ form: 'patientDashboardForm',  enableReinitialize: true,  
+         })(DecoratedComponent)
     
     
     
