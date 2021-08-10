@@ -23,6 +23,8 @@ import { connect } from 'react-redux';
 import DashboardPatient from './pages/DashboardPatient';
 import PrivateRoute from './pages/PrivateRoute';
 import PublicRoute from './pages/PublicRoute';
+import PatientDashboard from './pages/PatientDashboard';
+import FormDashboardPatient from './pages/FormDashboardPatient';
 
 
 

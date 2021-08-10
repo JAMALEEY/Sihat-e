@@ -898,7 +898,7 @@ padding: 70px;
   border-bottom: 2px solid #6caee0;
 }
 .register-form .custom-form .form-group {
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 .register-form .custom-form .label-column {
   text-align: right;
@@ -944,7 +944,7 @@ padding: 70px;
   box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
   padding: 14px 56px;
   border: 0;
-  margin: 30px;
+  margin: -19px;
   outline: 0;
 }
 .register-photo .image-holder {
@@ -1575,7 +1575,7 @@ overflow-x: hidden;
 
 #btnFormDashboard{
   background: rgb(158,248,196);font-family: Poppins, sans-serif;color: rgb(72,139,118);border-radius: 18px;
-  margin-top: -40px;
+  margin-left: 326px;
 }
 
 #birthDate{

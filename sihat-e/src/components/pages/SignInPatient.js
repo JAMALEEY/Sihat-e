@@ -104,7 +104,6 @@ import {Field, formValueSelector, reduxForm} from 'redux-form';
                     // const [error, setError] = useState("");
 
                     const onSubmit = (formValues) => {
-                      console.log('clicked')
                       createLogin(formValues)
                     }
 
@@ -299,7 +298,7 @@ import {Field, formValueSelector, reduxForm} from 'redux-form';
 
 
 
-export default reduxForm({ form: 'signIn', validate})(connect(mapStateToProps, {createLogin, signInResponse})(SignInPatient))
+export default reduxForm({ form: 'signIn', validate})(connect(mapStateToProps, {createLogin})(SignInPatient))
 
 
 // const formWrapper = reduxForm({

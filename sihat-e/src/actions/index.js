@@ -1,6 +1,6 @@
 // in order to make requests over our newsletter API we take an instance of this API using axios to apply actions creators on it
 // import api from "../Apis/api";
-import { SIGN_IN, SIGN_OUT, CREATE_NEWSLETTER, CREATE_PATIENT, CREATE_MEDECIN, FETCH_PATIENT, FETCH_MEDECIN, DELETE_PATIENT, DELETE_MEDECIN, TOKEN_KEY, CREATE_ABOUT } from './types';
+import { SIGN_IN, SIGN_OUT, CREATE_NEWSLETTER, CREATE_PATIENT, CREATE_MEDECIN, FETCH_PATIENT, FETCH_MEDECIN, DELETE_PATIENT, DELETE_MEDECIN, TOKEN_KEY, CREATE_ABOUT, FETCH_PATIENT_ABOUT } from './types';
 import history from "../helpers/history";
 import api from '../Apis/api'
 import axios from 'axios';
@@ -96,8 +96,7 @@ import axios from 'axios';
 
         export const createAbout = (formValues) => {
             return async (dispatch) => {
-                const response = await api.post('/patient', formValues)
-
+                const response = await api.post('patient/create', formValues)
                 dispatch ({
                     type: CREATE_ABOUT,
                     payload: response.data
@@ -105,3 +104,22 @@ import axios from 'axios';
             }
         }
 
+        export const fetchAboutInfos = () => {
+            return async (dispatch) => {
+            // const {data} = getState().aboutInfos
+
+                const response = await api.get('patient/fetch');
+                    dispatch({
+                        type: FETCH_PATIENT_ABOUT,
+                        // payload: response.data.data
+                        payload: response.status == 200 ? response.data.data : false 
+                    })
+                        // if(response.status == 200 ) {
+                        //     return response.data
+                        // } else {
+                        //     return {PatientAboutInfosNotInfos: true}
+                        // }
+                    }
+
+            }
+        
