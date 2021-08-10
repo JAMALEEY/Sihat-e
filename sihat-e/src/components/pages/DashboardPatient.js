@@ -46,10 +46,13 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
             )
         }
 
-    const DashboardPatient = ({aboutInfos, logout, handleSubmit, createAbout, fetchAboutInfos, props}) => {
+    const DashboardPatient = ({aboutInfos, logout, handleSubmit, createAbout, fetchAboutInfos, props, initialValues}) => {
 
             useEffect(() => {
                 fetchAboutInfos()
+                
+                // console.log(aboutInfos[0].data) throw : {id: 7, user_id: 6, first_name: "AVC", last_name: "AAA", birth_day: null, …}
+                
             
             }, [])
 
@@ -67,7 +70,7 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
                 //     }
                 // } 
                 // console.log(Object.values(Object.values(aboutInfos[0])))
-        
+        console.log(initialValues.data)
 
                 // console.log(fetchAboutInfos())
             
@@ -339,7 +342,7 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
                 {/* Start: Pretty Registration Form */}
                 <div className="row register-form">
                     <div className="col-md-8 col-xl-10 offset-md-2 offset-xl-0">
-                    <form className="custom-form"  method="post"  initialValues={initialName} onSubmit={handleSubmit(onSubmit)} >
+                    <form className="custom-form"  method="post" onSubmit={handleSubmit(onSubmit)} >
                         <h1 className="d-xl-flex align-items-xl-start">A propos</h1>
                            {/* Prénom */}
                         <Field className="form-control-plaintext" name="first_name" component={renderInput} label="Prénom :" placeholder="Votre prénom" type='text' />
@@ -397,18 +400,16 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
     const mapStateToProps = (state) => {
         return {logout: state.logout,
             aboutInfos: state.aboutInfos,
-            initialValues: {
-                firstName: state.aboutInfos.firstName,
-                lastName: state.aboutInfos.lastName,
-                email: state.aboutInfos.email
-    }
+            initialValues: state.aboutInfos[0]
+    //         {
+    //             firstName: state.aboutInfos.first_name,
+    //             lastName: state.aboutInfos.last_name,
+    //             adress: state.aboutInfos.adress
+    // }
         
         }
 
     }
-        const initialValues = {
-        email: 'example@gmail.com'
-        }
     export default reduxForm({ form: 'dashboardPatientForm', enableReinitialize: true})(connect(mapStateToProps, {logout, createAbout, fetchAboutInfos })(DashboardPatient))
     
 
