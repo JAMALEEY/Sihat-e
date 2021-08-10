@@ -7,7 +7,7 @@ import FormDashboardPatient from "./FormDashboardPatient";
 
     class DashboardPatient extends Component {
         componentDidMount(){
-
+          this.props.fetchAboutInfos();
         }
         state = {
     name: 'React',

@@ -8,8 +8,7 @@ class PatientDashboard extends React.Component{
     componentDidMount(){
         
         this.props.fetchAboutInfos();
-        console.log(this.props.initialValues
-)
+        console.log(this.props.initialValues)
     }
     patientDashboarLogout() {
         this.props.logout();

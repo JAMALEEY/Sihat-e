@@ -3,7 +3,7 @@
         class FormDashboardPatient extends Component {
             componentDidMount(){
         }
-          state = {
+            state = {
             first_name: this.props.item.first_name,
             last_name: this.props.item.last_name,
             adress: this.props.item.adress,

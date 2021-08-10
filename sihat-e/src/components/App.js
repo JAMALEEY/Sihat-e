@@ -48,7 +48,6 @@ const  App = (props) => {
                                 <PublicRoute path="/registerPatient" exact component={SignUpPatient} />
                                 <PublicRoute restricted={true}  path="/loginPatient" exact component={SignInPatient} />
                                 <PublicRoute path="/registerMedecin" exact component={SignUpMedecin} />
-                                <PublicRoute path="/formdashboardpatient" exact component={FormDashboardPatient} />
                                 <Redirect from="*" to="/" />
     </Switch>
     </Router>
