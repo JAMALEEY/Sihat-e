@@ -34,11 +34,16 @@ const signInResponseReducer = (signInResponse = [], action) => {
     } return signInResponse;
 };
 
+
+
 const createAboutReducer = (createAbout = {}, action) => {
     if (action.type === CREATE_ABOUT) {
         return {...createAbout, [action.payload]: action.payload  };
     } return createAbout;
 };
+
+
+
 
 // const aboutInfoReducer = (aboutInfos = [], action) => {
 //     if(action.type === FETCH_PATIENT_ABOUT) {

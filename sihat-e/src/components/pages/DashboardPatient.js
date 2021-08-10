@@ -92,6 +92,7 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
                         </>
                     )
             } 
+            
             const patientDashboarLogout = () => {
                 logout()
             }
@@ -104,7 +105,6 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
             // }
             
         }
-            console.log(initialValues)
 
         return(
 
@@ -112,7 +112,8 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
                 <div>
                     <div>
                         <form>
-                            <input type='text' value='hi'  />
+                            {/* <input type='text' value='hi'  /> */}
+                            {renderList()}
                         </form>
                     </div>
                     <div className="row" id="navRow">
@@ -413,15 +414,36 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
 
     }
 
-const mapStateToProps = (state) => {
+
+    const mapStateToProps = (state) => {
         return {
-            logout: state.logout,
-            aboutInfos: state.aboutInfos,
+        logout: state.logout,
+        aboutInfos : state.aboutInfos,
             initialValues: {
-                    first_name: Object.values(state.aboutInfos)[0]
-            }
+            first_name: 'test',
+            } 
         }
-}
+
+};
+
+
+// const mapStateToProps = (state) => {
+//         const createAbout = {
+//   values: {
+//     aboutInfos: {}
+//   }
+// };
+
+
+
+//         return {
+//             logout: state.logout,
+//             aboutInfos: state.aboutInfos,
+//             initialValues: {
+//                toto: { aboutInfos: Object.values(state.aboutInfos.object ?? {}) }
+//             }
+//         }
+// }
 
     // const mapStateToProps = (state) => {
     //     return {logout: state.logout,
