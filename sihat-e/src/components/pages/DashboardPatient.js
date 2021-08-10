@@ -8,14 +8,21 @@ import FormDashboardPatient from "./FormDashboardPatient";
     class DashboardPatient extends Component {
         componentDidMount(){
           this.props.fetchAboutInfos();
+          console.log(this.props.aboutInfos);
+          
         }
+        
         state = {
-    name: 'React',
-    infos: [
-    { uId: 1, first_name: 'JAMAL EDD1441INE', last_name: 'YASSIR', adress: 'CASA', birth_day: '15/11/1997', bio_sex: ''},
-    
-    ]
-  };
+          data : [],
+            name: 'React',
+            infos: [
+            { uId: '', first_name:'', last_name: '', adress: '', birth_day: '', bio_sex: ''},
+            
+            ]
+        };
+
+
+
 
   render() {
     return (
@@ -27,12 +34,11 @@ import FormDashboardPatient from "./FormDashboardPatient";
 }
 
     const mapStateToProps = state => {
-  return {
-    streams: Object.values(state.streams),
-    currentUserId: state.auth.userId,
-    isSignedIn: state.auth.isSignedIn
-  };
-};
+      return {
+        aboutInfos: state.aboutInfos,
+        logout: state.logout
+      };
+    };
 
 
 
