@@ -99,14 +99,68 @@
 
         render() {
             return (
-            <form onSubmit={this.handleSubmit}>
-                <label>first name</label>
-                <input type="text" defaultValue={ localStorage.getItem('myData') ? JSON.parse(localStorage.getItem('myData')).first_name : ''  }></input>
-                <label>last name</label>
+                <>
+                <div className="row register-form">
+                    <div className="col-md-8 col-xl-10 offset-md-2 offset-xl-0">
+                    <form className="custom-form" onSubmit={this.handleSubmit}>
+            <h1 className="d-xl-flex align-items-xl-start">A propos</h1>
+
+                <div className="form-row form-group">
+                    <div className="col-sm-4 col-xl-12 label-column">
+                        <label className="col-form-label d-xl-flex align-items-xl-start" htmlFor="name-input-field">
+                            <strong>Nom :</strong>
+                        </label>
+                    </div>
+                    <div className="col-sm-6 col-xl-7 input-column">
+
+                        <input className="form-control" type="text" defaultValue={ localStorage.getItem('myData') ? JSON.parse(localStorage.getItem('myData')).first_name : ''  }
+                        >
+                        </input>
+                    </div> 
+                </div>
 
 
 
-                <input type="text" defaultValue={ localStorage.getItem('myData') ? JSON.parse(localStorage.getItem('myData')).last_name : ''  } ></input>
+
+
+                <div className="form-row form-group">
+                    <div className="col-sm-4 col-xl-12 label-column">
+                        <label className="col-form-label d-xl-flex align-items-xl-start" htmlFor="name-input-field">
+                            <strong>Prénom :</strong>
+                        </label>
+                    </div>
+
+                    <div className="col-sm-6 col-xl-7 input-column">
+                        <input  className="form-control" type="text" defaultValue={ localStorage.getItem('myData') ? JSON.parse(localStorage.getItem('myData')).last_name : ''  } 
+                        >
+                        </input> 
+                    </div>  
+                </div>
+
+
+
+                <div className="form-row form-group">
+                    <div className="col-sm-4 col-xl-12 label-column">
+                        <label className="col-form-label d-xl-flex align-items-xl-start" htmlFor="name-input-field"> 
+                        <strong>Date de naissance :</strong></label>
+                    </div>
+
+                    <div className="col-md-6 col-xl-7">
+                        <input className="form-control date" id="birthDate" type="date" defaultValue={ localStorage.getItem('myData') ? JSON.parse(localStorage.getItem('myData')).birth_day : ''  }
+                        >
+                        </input>
+                    </div>
+                </div>
+                        
+
+
+
+
+
+
+
+
+
                 <label>adresse </label>
                 <input type="text" defaultValue={ localStorage.getItem('myData') ? JSON.parse(localStorage.getItem('myData')).adress : ''  }></input>
 
@@ -129,6 +183,11 @@
                         <label className="col-form-label d-xl-flex align-items-xl-start" htmlFor="pawssword-input-field">Genre :
                         </label>
                     </div>
+                    <div className="col-sm-6 input-column">
+                            {/* Start: Bootstrap 4's Custom Radios & Checkboxes */}
+                            <div>
+                            <fieldset>
+                                <legend />
                     <div className="custom-control custom-radio"> 
 
                      {JSON.parse(localStorage.getItem('myData')).bio_sex == "femme" ?<input type="radio" id="customRadio1" className="custom-control-input" name="customRadio"  defaultChecked /> : <input type="radio" id="customRadio1" className="custom-control-input" name="customRadio"   /> }
@@ -138,12 +197,16 @@
                 <div className="custom-control custom-radio">
 
                      {JSON.parse(localStorage.getItem('myData')).bio_sex == "homme" ?<input type="radio" id="customRadio2" className="custom-control-input" name="customRadio"  defaultChecked  /> : <input type="radio" id="customRadio2" className="custom-control-input" name="customRadio" /> }
-                   
+                   </div>
                 <label className="custom-control-label" htmlFor="customRadio2">Homme</label></div>
+                </fieldset>
+                            </div>{/* End: Bootstrap 4's Custom Radios & Checkboxes */}
+                </div>
                 
                 </div>
                 <button  id="btnFormDashboard" className="btn btn-light d-xl-flex align-items-xl-start submit-button" type="submit" >Update</button>
             </form>
+            </>
             );
         }
         }
