@@ -172,31 +172,41 @@ render() {
         </div>
         {/* End adresse */}
 
-        {/* Start Radios */}
-        <div>
-            
-                    <div className="custom-control custom-radio">
-                        {JSON.parse(localStorage.getItem('myData')).bio_sex == "femme" ?<input type="radio" id="customRadio1" className="custom-control-input" name="customRadio"  defaultChecked /> : <input type="radio" id="customRadio1" className="custom-control-input" name="customRadio"   /> }
-
-                        <label className="custom-control-label" htmlFor="customRadio1"
-                        >
-                            Femme
-                        </label>
-                    </div>
-                    
-                    <div className="custom-control custom-radio">
-                        {JSON.parse(localStorage.getItem('myData')).bio_sex == "homme" ?<input type="radio" id="customRadio2" className="custom-control-input" name="customRadio"  defaultChecked  /> : <input type="radio" id="customRadio2" className="custom-control-input" name="customRadio" /> }
-
-                        <label className="custom-control-label" htmlFor="customRadio2">
-                            Homme
-                        </label>
-                    </div>
-                
+        <div className="form-row form-group">
+        <div className="col-sm-4 col-xl-7 label-column">
+        <label className="col-form-label d-xl-flex align-items-xl-start" htmlFor="pawssword-input-field">Genre :
+        </label>
         </div>
-        {/* End Radios */}
+        <div className="col-sm-6 input-column">
+                    {/* Start Radios */}
+        <div className="custom-control custom-radio">
+            
+            <div className="custom-control custom-radio">
+                {JSON.parse(localStorage.getItem('myData')).bio_sex == "femme" ?<input type="radio" id="customRadio1" className="custom-control-input" name="customRadio"  defaultChecked /> : <input type="radio" id="customRadio1" className="custom-control-input" name="customRadio"   /> }
+
+                <label className="custom-control-label" htmlFor="customRadio1"
+                >
+                    Femme
+                </label>
+            </div>
+            
+            <div className="custom-control custom-radio">
+                {JSON.parse(localStorage.getItem('myData')).bio_sex == "homme" ?<input type="radio" id="customRadio2" className="custom-control-input" name="customRadio"  defaultChecked  /> : <input type="radio" id="customRadio2" className="custom-control-input" name="customRadio" /> }
+
+                <label className="custom-control-label" htmlFor="customRadio2">
+                    Homme
+                </label>
+            </div>
+        
+</div>
+{/* End Radios */}
+        </div>
+
+
+
             
 
-        
+        </div>
             <button id="btnFormDashboard" className="btn btn-light d-xl-flex align-items-xl-start submit-button" type="submit">Enregistrer
             </button>
             </form>
