@@ -80,17 +80,21 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
                 // console.log(fetchAboutInfos())
             
             // if(fetchAboutInfos.PatientAboutInfosNotInfos)
-            const renderList = () => {
             
-                    // console.log(aboutInfos[0].data)
+            
+            const renderList = () => {
+                if(fetchAboutInfos() == true ) {
                     return (
                         <>
-                        <div className="item" key={aboutInfos[0].data.id}>
-                            <div className='content'> {aboutInfos[0].data.first_name} </div>
+                        <div className="item" key={props.aboutInfos[0].data.id}>
+                            <div className='content'> {props.aboutInfos[0].data.first_name} </div>
                         </div>
 
                         </>
                     )
+                }
+                    // console.log(aboutInfos[0].data)
+
             } 
             
             const patientDashboarLogout = () => {
