@@ -4,7 +4,16 @@ import { connect } from "react-redux";
 import {  logout, createAbout, fetchAboutInfos  } from '../../actions'
 import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
 
-
+const data = {  // used to populate "account" reducer when "Load" is clicked
+  firstName: 'Jane',
+  lastName: 'Doe',
+  age: '42',
+  sex: 'female',
+  employed: true,
+  favoriteColor: 'Blue',
+  bio: 'Born to write amazing Redux code.'
+}
+const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet'];
 
 
         const errorsHelper = ({error, touched}) => {
@@ -22,7 +31,8 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
             }
         }
 
-        const renderInput = ({input, value, meta, label, placeholder, name, id, type, className}) => {
+        const renderInput = (props) => {
+            const {input, value, meta, label, placeholder, name, id, type, className} = props;
             return (
                 <>
                     {   errorsHelper(meta)    }
@@ -46,15 +56,18 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
             )
         }
 
-    const DashboardPatient = ({aboutInfos, logout, handleSubmit, createAbout, fetchAboutInfos, props, initialValues}) => {
-
+    const DashboardPatient = (props) => {
+const         {aboutInfos, logout, handleSubmit, createAbout, fetchAboutInfos,  initialValues, load, pristine, reset, submitting} = props
             useEffect(() => {
                 fetchAboutInfos()
                 
                 // console.log(aboutInfos[0].data) throw : {id: 7, user_id: 6, first_name: "AVC", last_name: "AAA", birth_day: null, …}
-                
-            
             }, [])
+    //             const data = {
+    //     initialValues
+    // }
+
+    // alert(data)
 
                             // if( !aboutInfos[0]) {   ====> '' else if aboutInfos[0] {
                                 // {Response.data.valueETC}
@@ -70,30 +83,125 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
                 //     }
                 // } 
                 // console.log(Object.values(Object.values(aboutInfos[0])))
-        console.log(initialValues.data)
+        // console.log(initialValues.data)
 
                 // console.log(fetchAboutInfos())
             
             // if(fetchAboutInfos.PatientAboutInfosNotInfos)
+            const renderList = () => {
+            
+                    // console.log(aboutInfos[0].data)
+                    return (
+                        <>
+                        <div className="item" key={aboutInfos[0].data.id}>
+                            <div className='content'> {aboutInfos[0].data.first_name} </div>
+                        </div>
 
+                        </>
+                    )
+            } 
             const patientDashboarLogout = () => {
                 logout()
             }
 
         const onSubmit = (formValues) => {
-            if( !aboutInfos[0]) {
-                createAbout(formValues) 
-            } else {
-                fetchAboutInfos()
-            }
+            // if( !aboutInfos[0]) {
+            //     createAbout(formValues) 
+            // } else {
+            //     fetchAboutInfos()
+            // }
             
         }
-
-
+            console.log(initialValues)
 
         return(
 
                 <>
+                 <form onSubmit={handleSubmit}>
+      <div>
+        <button type="button" onClick={() => load(data)}>Load Account</button>
+      </div>
+      <div>
+        <label>First Name</label>
+        <div>
+          <Field
+            name="firstName"
+            component="input"
+            type="text"
+            placeholder="First Name"
+          />
+        </div>
+      </div>
+      <div>
+        <label>Last Name</label>
+        <div>
+          <Field
+            name="lastName"
+            component="input"
+            type="text"
+            placeholder="Last Name"
+          />
+        </div>
+      </div>
+      <div>
+        <label>Age</label>
+        <div>
+          <Field name="age" component="input" type="number" placeholder="Age" />
+        </div>
+      </div>
+      <div>
+        <label>Sex</label>
+        <div>
+          <label>
+            <Field name="sex" component="input" type="radio" value="male" />
+            {' '}
+            Male
+          </label>
+          <label>
+            <Field name="sex" component="input" type="radio" value="female" />
+            {' '}
+            Female
+          </label>
+        </div>
+      </div>
+      <div>
+        <label>Favorite Color</label>
+        <div>
+          <Field name="favoriteColor" component="select">
+            <option value="">Select a color...</option>
+            {colors.map(colorOption => (
+              <option value={colorOption} key={colorOption}>
+                {colorOption}
+              </option>
+            ))}
+          </Field>
+        </div>
+      </div>
+      <div>
+        <label htmlFor="employed">Employed</label>
+        <div>
+          <Field
+            name="employed"
+            id="employed"
+            component="input"
+            type="checkbox"
+          />
+        </div>
+      </div>
+      <div>
+        <label>Bio</label>
+        <div>
+          <Field name="bio" component="textarea" />
+        </div>
+      </div>
+      <div>
+        <button type="submit" disabled={pristine || submitting}>Submit</button>
+        <button type="button" disabled={pristine || submitting} onClick={reset}>
+          Undo Changes
+        </button>
+      </div>
+    </form>
+
                 <div>
                     <div className="row" id="navRow">
                         <div className="col-md-6 col-xl-2 offset-xl-0" id="leftMenuContainer">
@@ -345,6 +453,8 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
                     <form className="custom-form"  method="post" onSubmit={handleSubmit(onSubmit)} >
                         <h1 className="d-xl-flex align-items-xl-start">A propos</h1>
                            {/* Prénom */}
+                        <div>
+                        </div>
                         <Field className="form-control-plaintext" name="first_name" component={renderInput} label="Prénom :" placeholder="Votre prénom" type='text' />
                         {/* Nom */}
                         <Field className="form-control-plaintext" name="last_name" component={renderInput} label="Nom :" placeholder="Votre Nom"  />
@@ -389,24 +499,15 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
                 </>
             )
 
-        
+
     }
 
 
-    
-
-
-
+     
     const mapStateToProps = (state) => {
         return {logout: state.logout,
             aboutInfos: state.aboutInfos,
-            initialValues: state.aboutInfos[0]
-    //         {
-    //             firstName: state.aboutInfos.first_name,
-    //             lastName: state.aboutInfos.last_name,
-    //             adress: state.aboutInfos.adress
-    // }
-        
+            initialValues: Object.values(state.aboutInfos)        
         }
 
     }

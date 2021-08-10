@@ -106,6 +106,8 @@ import axios from 'axios';
 
         export const fetchAboutInfos = () => {
             return async (dispatch) => {
+            // const {data} = getState().aboutInfos
+
                 const response = await api.get('patient/fetch');
                     dispatch({
                         type: FETCH_PATIENT_ABOUT,
