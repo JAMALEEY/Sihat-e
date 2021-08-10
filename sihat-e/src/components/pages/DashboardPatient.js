@@ -419,16 +419,16 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
     }
 
 
-    const mapStateToProps = (state) => {
-        return {
-        logout: state.logout,
-        aboutInfos : state.aboutInfos,
-            initialValues: {
-            first_name: 'test',
-            } 
-        }
+//     const mapStateToProps = (state) => {
+//         return {
+//         logout: state.logout,
+//         aboutInfos : state.aboutInfos,
+//             initialValues: {
+//             first_name: ',
+//             } 
+//         }
 
-};
+// };
 
 
 // const mapStateToProps = (state) => {
@@ -465,4 +465,4 @@ const  formWrapper = reduxForm({ form: 'dashboardPatientForm', enableReinitializ
 //   adress: "1234567890"
 
 
-export default connect(mapStateToProps, {logout, createAbout, fetchAboutInfos, })(formWrapper);
+export default connect(null, {logout, createAbout, fetchAboutInfos, })(formWrapper);

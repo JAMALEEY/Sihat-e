@@ -36,7 +36,7 @@ import { FETCH_PATIENT_ABOUT } from "../actions/types";
 export default (aboutInfos = {}, action) => {
     switch (action.type) {
         case FETCH_PATIENT_ABOUT:
-            return action.payload;
+            return action.payload ;
         default:
             return aboutInfos;
     }
