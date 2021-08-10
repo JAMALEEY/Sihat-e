@@ -26,7 +26,17 @@ import FormDashboardPatient from "./FormDashboardPatient";
   }
 }
 
-    export default DashboardPatient;
+    const mapStateToProps = state => {
+  return {
+    streams: Object.values(state.streams),
+    currentUserId: state.auth.userId,
+    isSignedIn: state.auth.isSignedIn
+  };
+};
+
+
+
+    export default connect(mapStateToProps, {fetchAboutInfos})(DashboardPatient);
 
 
 
