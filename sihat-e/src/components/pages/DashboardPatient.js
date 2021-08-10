@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import {  logout, createAbout  } from '../../actions'
+import {  logout, createAbout, fetchAboutInfos  } from '../../actions'
 import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
 
 
@@ -22,19 +22,20 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
             }
         }
 
-        const renderInput = ({input, meta, label, placeholder, name, id, type, className}) => {
+        const renderInput = ({input, value, meta, label, placeholder, name, id, type, className}) => {
             return (
                 <>
                     {   errorsHelper(meta)    }
                     <div className="col-sm-6 col-xl-7 input-column">
                         <div className="form-row form-group">
-                        <label className="col-form-label d-xl-flex align-items-xl-start">{label}</label>
+                        <label className="active col-form-label d-xl-flex align-items-xl-start">{label}</label>
                         <input {...input}
                         className={className}
                         autocomplete='nope' 
                         placeholder={placeholder} 
                         onChange={input.onChange} 
-                        value={input.value} 
+                        // value={input.value} 
+                        
                         name={name}
                         type={type}
                         id={id}
@@ -45,18 +46,44 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
             )
         }
 
-    const DashboardPatient = ({logout, handleSubmit, createAbout}) => {
+    const DashboardPatient = ({aboutInfos, logout, handleSubmit, createAbout, fetchAboutInfos, props}) => {
+
+            useEffect(() => {
+                fetchAboutInfos()
+            
+            }, [])
+
+                            // if( !aboutInfos[0]) {   ====> '' else if aboutInfos[0] {
+                                // {Response.data.valueETC}
+                            // }
+
+                // const renderFetchAboutInfos = () => {
+                //     if(!aboutInfos[0]) {
+                //         return (
+                //             <>
+                            
+                //             </>
+                //         )
+                //     }
+                // } 
+                // console.log(Object.values(Object.values(aboutInfos[0])))
+        
+
+                // console.log(fetchAboutInfos())
+            
+            // if(fetchAboutInfos.PatientAboutInfosNotInfos)
 
             const patientDashboarLogout = () => {
                 logout()
             }
 
         const onSubmit = (formValues) => {
-            createAbout(formValues)
-            if(createAbout) {
-                console.log('You added informations about yourself')
+            if( !aboutInfos[0]) {
+                createAbout(formValues) 
+            } else {
+                fetchAboutInfos()
             }
-
+            
         }
 
 
@@ -217,7 +244,8 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
                     <li className="nav-item dropdown d-sm-none no-arrow"><a aria-expanded="false" data-toggle="dropdown" className="dropdown-toggle nav-link" href="#"><i className="fas fa-search" /></a>
                         <div className="dropdown-menu dropdown-menu-right p-3 animated--grow-in" aria-labelledby="searchDropdown">
                         <form className="form-inline mr-auto navbar-search w-100">
-                            <div className="input-group"><input type="text" className="bg-light form-control border-0 small" placeholder="Search for ..." />
+                            <div className="input-group">
+                                <input type="text" className="bg-light form-control border-0 small" placeholder="Search for ..." />
                             <div className="input-group-append"><button className="btn btn-primary py-0" type="button"><i className="fas fa-search" /></button></div>
                             </div>
                         </form>
@@ -311,16 +339,16 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
                 {/* Start: Pretty Registration Form */}
                 <div className="row register-form">
                     <div className="col-md-8 col-xl-10 offset-md-2 offset-xl-0">
-                    <form className="custom-form"  method="post" onSubmit={handleSubmit(onSubmit)} >
+                    <form className="custom-form"  method="post"  initialValues={initialName} onSubmit={handleSubmit(onSubmit)} >
                         <h1 className="d-xl-flex align-items-xl-start">A propos</h1>
-                        {/* Prénom */}
-                        <Field className="form-control" name="first_name" component={renderInput} label="Prénom :" placeholder="Votre prénom" />
+                           {/* Prénom */}
+                        <Field className="form-control-plaintext" name="first_name" component={renderInput} label="Prénom :" placeholder="Votre prénom" type='text' />
                         {/* Nom */}
-                        <Field className="form-control" name="last_name" component={renderInput} label="Nom :" placeholder="Votre Nom" />
+                        <Field className="form-control-plaintext" name="last_name" component={renderInput} label="Nom :" placeholder="Votre Nom"  />
                         {/* Adresse */}
-                        <Field className="form-control" name="adress" component={renderInput} label="Adresse :" placeholder="Votre Adresse" />
-                        {/* Date de Naissance */}
-                        <Field className="form-control date" name="birth_day" component={renderInput} label="Date de naissance :" id="birthDate" type="date" />
+                        <Field className="form-control-plaintext" name="adress" component={renderInput} label="Adresse :" placeholder="Votre Adresse"  />
+                        {/* Date de Naissance */} 
+                        <Field className="form-control-plaintext date" name="birth_day" component={renderInput} label="Date de naissance :" id="birthDate" type="date" />
 
                         <div className="form-row form-group">
                         <div className="col-sm-4 col-xl-7 label-column"><label className="col-form-label d-xl-flex align-items-xl-start" htmlFor="pawssword-input-field">Genre :</label>
@@ -367,8 +395,20 @@ import {Field, formValueSelector, reduxForm, touch} from 'redux-form';
 
 
     const mapStateToProps = (state) => {
-        return {logout: state.logout}
+        return {logout: state.logout,
+            aboutInfos: state.aboutInfos,
+            initialValues: {
+                firstName: state.aboutInfos.firstName,
+                lastName: state.aboutInfos.lastName,
+                email: state.aboutInfos.email
     }
-    export default reduxForm({ form: 'dashboardPatientForm'})(connect(mapStateToProps, {logout, createAbout})(DashboardPatient))
+        
+        }
+
+    }
+        const initialValues = {
+        email: 'example@gmail.com'
+        }
+    export default reduxForm({ form: 'dashboardPatientForm', enableReinitialize: true})(connect(mapStateToProps, {logout, createAbout, fetchAboutInfos })(DashboardPatient))
     
 

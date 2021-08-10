@@ -104,7 +104,6 @@ import {Field, formValueSelector, reduxForm} from 'redux-form';
                     // const [error, setError] = useState("");
 
                     const onSubmit = (formValues) => {
-                      console.log('clicked')
                       createLogin(formValues)
                     }
 

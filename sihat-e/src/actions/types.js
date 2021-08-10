@@ -9,3 +9,4 @@ export const DELETE_PATIENT = 'DELETE_PATIENT';
 export const DELETE_MEDECIN = 'DELETE_MEDECIN'; 
 export const TOKEN_KEY = 'TOKEN';
 export const CREATE_ABOUT = 'CREATE_ABOUT'; 
+export const FETCH_PATIENT_ABOUT = 'FETCH_PATIENT_ABOUT';
