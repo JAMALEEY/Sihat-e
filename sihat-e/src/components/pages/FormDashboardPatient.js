@@ -3,56 +3,18 @@ import { connect } from 'react-redux';
 import {  logout, createAbout, fetchAboutInfos  } from '../../actions'
 
 
-//  const smya = () => {
-//             return async () => {
+    class FormDashboardPatient extends Component {
+        constructor(props) {
+            super(props) 
+            this.props.fetchAboutInfos();
+            if(this.props.aboutInfos.id){
+            localStorage.setItem('myData', JSON.stringify(this.props.aboutInfos));
+            console.log(localStorage.getItem('myData'))
+            } else {
+                
+            }
+        }
         
-//                 if(count == 0){
-//                     console.log(this.props.count)
-//                   const save = await this.props.fetchAboutInfos();
-//                   count = 1
-//                     const morasave = save;
-//                     console.log(count)
-//                 }else{
-// console.log('hello')
-//                 }
-        
-        
-        
-//             }
-
-//  this.props.setState({
-//                    data : this.props.aboutInfos,
-//               first_name: this.props.aboutInfos.first_name
-//           })
-//                     console.log(this.props)
-//                      console.log(this.props.morasave)
-
-//                 this.props.fetchAboutInfos();
-//                 this.setState({
-//               first_name: this.props.aboutInfos.first_name
-//         })
-//     }
-
-
-class FormDashboardPatient extends Component {
-    constructor(props) {
-        super(props) 
-        
-    if(this.props.aboutInfos.id){
-    localStorage.setItem('myData', JSON.stringify(this.props.aboutInfos));
-    console.log(localStorage.getItem('myData'))
-    } else {
-       
-    }
-    console.log(JSON.parse(localStorage.getItem('myData')))
-    }
-    
-
-
-// this.state = {
-//         salam : JSON.parse(localStorage.getItem('myData'))
-//   }
-//   console.log(this.props.salam)
 
 
 
@@ -75,25 +37,27 @@ class FormDashboardPatient extends Component {
     
 
 
-handleChange(e) {
-    const { target}  = this.event;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const { name }  = target;
+    handleChange(e) {
+        const { target}  = this.event;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const { name }  = target;
 
-    this.setState({
-    [name]: value
-    });
-}
+        this.setState({
+        [name]: value
+        });
+    }
 
-handleSubmit(e) {
-    e.preventDefault();
+    handleSubmit(e) {
+        e.preventDefault();
 
-    const { first_name, last_name, adress,birth_day, bio_sex  } = this.state;
-    const body = {
-    first_name, last_name, adress,birth_day, bio_sex
-    };
-localStorage.removeItem('myData');
-}
+        const { first_name, last_name, adress,birth_day, bio_sex  } = this.state;
+        const body = {
+        first_name, last_name, adress, birth_day, bio_sex
+        };
+        this.props.createAbout(this.state)
+        localStorage.removeItem('myData');
+
+    }
 
 
 
@@ -182,7 +146,9 @@ render() {
         <div className="custom-control custom-radio">
             
             <div className="custom-control custom-radio">
-                {JSON.parse(localStorage.getItem('myData')).bio_sex == "femme" ?<input type="radio" id="customRadio1" className="custom-control-input" name="customRadio"  defaultChecked /> : <input type="radio" id="customRadio1" className="custom-control-input" name="customRadio"   /> }
+                {localStorage.getItem('myData') && JSON.parse(localStorage.getItem('myData')).bio_sex == "femme" ? 
+                <input type="radio" id="customRadio1" className="custom-control-input" name="customRadio"  defaultChecked /> 
+                : <input type="radio" id="customRadio1" className="custom-control-input" name="customRadio"/> }
 
                 <label className="custom-control-label" htmlFor="customRadio1"
                 >
@@ -191,7 +157,7 @@ render() {
             </div>
             
             <div className="custom-control custom-radio">
-                {JSON.parse(localStorage.getItem('myData')).bio_sex == "homme" ?<input type="radio" id="customRadio2" className="custom-control-input" name="customRadio"  defaultChecked  /> : <input type="radio" id="customRadio2" className="custom-control-input" name="customRadio" /> }
+                {localStorage.getItem('myData') && JSON.parse(localStorage.getItem('myData')).bio_sex == "homme" ?<input type="radio" id="customRadio2" className="custom-control-input" name="customRadio"  defaultChecked  /> : <input type="radio" id="customRadio2" className="custom-control-input" name="customRadio" /> }
 
                 <label className="custom-control-label" htmlFor="customRadio2">
                     Homme
