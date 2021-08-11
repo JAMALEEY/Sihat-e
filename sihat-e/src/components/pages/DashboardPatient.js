@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {  logout, createAbout, fetchAboutInfos  } from '../../actions'
 import {Field, Form, formValueSelector, reduxForm, touch} from 'redux-form';
-import FormDashboardPatient from "./FormDashboardPatient";
+import FormDashboardPatient from './FormDashboardPatient'
 
 
     class DashboardPatient extends Component {
 
             componentDidMount(){
-                
+
                 this.props.fetchAboutInfos();
 
                 console.log(this.props.aboutInfos);
@@ -179,7 +179,7 @@ import FormDashboardPatient from "./FormDashboardPatient";
                     <li className="nav-item dropdown d-sm-none no-arrow"><a aria-expanded="false" data-toggle="dropdown" className="dropdown-toggle nav-link" href="#"><i className="fas fa-search" /></a>
                         <div className="dropdown-menu dropdown-menu-right p-3 animated--grow-in" aria-labelledby="searchDropdown">
                         <form className="form-inline mr-auto navbar-search w-100">
-                            <div className="input-group"><input type="text" className="bg-light form-control border-0 small" placeholder="Search for ..." />
+                            <div className="input-group"><Link type="text" className="bg-light form-control border-0 small" placeholder="Search for ..." />
                             <div className="input-group-append"><button className="btn btn-primary py-0" type="button"><i className="fas fa-search" /></button></div>
                             </div>
                         </form>
@@ -285,9 +285,8 @@ import FormDashboardPatient from "./FormDashboardPatient";
 
 
 
-    export default connect(mapStateToProps, {fetchAboutInfos})(DashboardPatient);
 
-
+    export default reduxForm({ form: 'aboutInfosForm' })(connect(mapStateToProps, {logout, fetchAboutInfos, createAbout})(DashboardPatient))
 
 
 
@@ -361,7 +360,7 @@ import FormDashboardPatient from "./FormDashboardPatient";
         //             <div className="col-sm-6 col-xl-7 input-column">
         //                 <div className="form-row form-group">
         //                 <label className="active col-form-label d-xl-flex align-items-xl-start">{label}</label>
-        //                 <input {...input}
+        //                 <Link {...input}
         //                 className={className}
         //                 autocomplete='nope' 
         //                 placeholder={placeholder} 
