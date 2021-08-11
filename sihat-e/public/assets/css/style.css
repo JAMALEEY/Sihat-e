@@ -1588,7 +1588,7 @@ overflow-x: hidden;
 
 #btnFormDashboard{
   background: rgb(158,248,196);font-family: Poppins, sans-serif;color: rgb(72,139,118);border-radius: 18px;
-  margin-left: 326px;
+  margin-left: 76px;
 }
 
 #birthDate{
@@ -1602,7 +1602,10 @@ width: 386px;font-family: Poppins, sans-serif;}
   border-radius: 25px;width: 704.984px;
 }
 
-
+.lesbuttons{
+  justify-content: space-evenly;
+  display: flex;
+}
 
 /* the newsletter validation popup style */
 .taken {

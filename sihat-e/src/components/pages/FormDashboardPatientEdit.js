@@ -16,7 +16,25 @@ import { Field, reduxForm } from 'redux-form';
             }
         }
         
+
+
+
+
+
+
+
+
+
+    state = {
+    first_name: this.props.item.first_name,
+    last_name: this.props.item.last_name,
+    adress: this.props.item.adress,
+    birth_day: this.props.item.birth_day,
+    bio_sex: this.props.item.bio_sex
+    };
+
     handleChange = this.handleChange.bind(this);
+    // handleSubmit = this.handleSubmit.bind(this);
     
 
     renderInput ({handleSubmit, input, value, meta, label, placeholder, name, id, type, className, initialValues, defaultValue, defaultChecked, checked}) {
@@ -60,7 +78,12 @@ import { Field, reduxForm } from 'redux-form';
     onSubmit = (formValues) => {
         this.props.onSubmit(formValues);
 
-    };
+        const { first_name, last_name, adress,birth_day, bio_sex  } = this.state;
+        const body = {
+        first_name, last_name, adress, birth_day, bio_sex
+        };
+
+      };
 
 
 
@@ -101,12 +124,12 @@ render() {
         {/* date naissance */}
         <div className="form-row form-group">
 
-<div className="col-sm-6 col-xl-7 input-column">
-    <Field placeholder="Votre date" name="birth_day" label="date:" component={this.renderInput} className="form-control" type="date" 
-    >
-    </Field> 
-</div>  
-</div>
+            <div className="col-md-6 col-xl-7">
+                <Field label="Date de naissance:" component={this.renderInput} className="form-control date" id="birthDate" type="date" defaultValue={ localStorage.getItem('myData') ? JSON.parse(localStorage.getItem('myData')).birth_day : ''  }
+                >
+                </Field>
+            </div>
+        </div>
         {/* end date naissance */}
 
         {/* adresse */}
@@ -151,27 +174,21 @@ render() {
             
     <label> Femme
         {localStorage.getItem('myData') && JSON.parse(localStorage.getItem('myData')).bio_sex ==    "femme" ? 
-            <Field name="bio_sex" component={this.renderInput} type="radio" value="femme" checked={true} /> : 
-            <Field name="bio_sex" component={this.renderInput} type="radio" value="femme"  /> 
+            <Field name="Genre" component={this.renderInput} type="radio" value="femme" checked={true} /> : 
+            <Field name="Genre" component={this.renderInput} type="radio" value="femme"  /> 
         }
     </label> 
 
     <label className="hommechoice"> Homme
         {localStorage.getItem('myData') && JSON.parse(localStorage.getItem('myData')).bio_sex ==    "homme" ? 
-            <Field id="radiocheckcheck" name="bio_sex" component={this.renderInput} type="radio"  value='homme' checked={true} /> : 
-            <Field name="bio_sex" component={this.renderInput} type="radio" value='homme' /> 
+            <Field id="radiocheckcheck" name="Genre" component={this.renderInput} type="radio"  value='homme' checked={true} /> : 
+            <Field name="Genre" component={this.renderInput} type="radio" value='homme' /> 
         }
     </label>
         
     </div>
-    <div className='lesbuttons'>
-    {/* <button id="btnFormDashboard" className="btn btn-light d-xl-flex align-items-xl-start submit-button" type="submit">Enregistrer
-    </button> */}
-    <button id="btnFormDashboard" className="btn btn-light d-xl-flex align-items-xl-start submit-button" type="submit">Enregistrer
+    <button id="btnFormDashboard" className="btn btn-light d-xl-flex align-items-xl-start submit-button" type="submit"> Editer
     </button>
-    </div>
-    
-    
 </div>
         
 </div>
@@ -218,31 +235,6 @@ FormDashboardPatient = reduxForm({
   )(FormDashboardPatient)
   
   export default FormDashboardPatient
-
-
-
-
-// const mapStateToProps = state => {
-// return {
-// aboutInfos: state.aboutInfos,
-// logout: state.logout,
-
-//     initialValues: {
-//         first_name:'rrr'
-//     }
-  
-// };
-// };
-
-
-// export default reduxForm({ form: 'aboutInfosForm'})(connect(mapStateToProps, {fetchAboutInfos, createAbout})(FormDashboardPatient))
-
-
-
-
-
-
-
 
 
 

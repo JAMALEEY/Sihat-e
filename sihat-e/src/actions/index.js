@@ -1,6 +1,6 @@
 // in order to make requests over our newsletter API we take an instance of this API using axios to apply actions creators on it
 // import api from "../Apis/api";
-import { SIGN_IN, SIGN_OUT, CREATE_NEWSLETTER, CREATE_PATIENT, CREATE_MEDECIN, FETCH_PATIENT, FETCH_MEDECIN, DELETE_PATIENT, DELETE_MEDECIN, TOKEN_KEY, CREATE_ABOUT, FETCH_PATIENT_ABOUT } from './types';
+import { SIGN_IN, SIGN_OUT, CREATE_NEWSLETTER, CREATE_PATIENT, CREATE_MEDECIN, FETCH_PATIENT, FETCH_MEDECIN, DELETE_PATIENT, DELETE_MEDECIN, TOKEN_KEY, CREATE_ABOUT, FETCH_PATIENT_ABOUT, EDIT_PATIENT_ABOUT } from './types';
 import history from "../helpers/history";
 import api from '../Apis/api'
 import axios from 'axios';
@@ -102,7 +102,7 @@ import axios from 'axios';
                     payload: response.data
                 })
                 if(response.status == 200 ) {
-                    history.push('/loginPatient')
+                    history.push('/edit')
             }
         }}
 
@@ -123,4 +123,10 @@ import axios from 'axios';
                         // }
                     }
         }
+
+        export const editAboutInfos = (formValues) => async dispatch => {
+            const response = await api.put('patient/update', formValues);
+            dispatch({ type: EDIT_PATIENT_ABOUT, payload: response.data });
+            // history.push('/dashboardPatient');
+        };
         

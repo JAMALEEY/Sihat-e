@@ -1,28 +1,26 @@
+import _ from 'lodash';
+// a helper lib that allows us to pick aboutEDITS object values (first name etc) to initial values in reduxform
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import {  logout, createAbout, fetchAboutInfos  } from '../../actions'
+import {  logout, editAboutInfos, fetchAboutInfos  } from '../../actions'
 import {Field, Form, formValueSelector, reduxForm, touch} from 'redux-form';
 import FormDashboardPatient from './FormDashboardPatient';
 
-    class DashboardPatient extends Component {
+    class DashboardPatientEdit extends Component {
 
         constructor(props){
             super(props)                
-            this.state = {
-                infos: [
-                { uId: '', first_name:'', last_name: '', adress: '', birth_day: '', bio_sex: ''},
-                ]
-        };
         }
+
             componentDidMount(){
                 this.props.fetchAboutInfos();
                 // console.log(this.props.aboutInfos);              
             }
 
             onSubmit = formValues => {
-                
-                this.props.createAbout(formValues)
+                console.log(editAboutInfos);
+                this.props.editAboutInfos(formValues)
                 localStorage.removeItem('myData');
 
             };
@@ -274,9 +272,13 @@ import FormDashboardPatient from './FormDashboardPatient';
                     </li>
                     </ul>
                 </div>
-                </nav></div></div>
+                </nav></div></div> 
                 <div>
-        {this.state.infos.map(info => <FormDashboardPatient  key={info.uId} item={info} onSubmit={this.onSubmit} />)}
+        
+        <FormDashboardPatient
+        initialValues={_.pick(this.props.stream, 'first_name', 'last_name','birth_day', 'bio_sex', 'adress' )} 
+        onSubmit={this.onSubmit} 
+        />
       </div>
       </div>
       </div>
@@ -299,8 +301,8 @@ import FormDashboardPatient from './FormDashboardPatient';
 
     export default connect(
         mapStateToProps, 
-        {logout, fetchAboutInfos, createAbout} 
-        )(DashboardPatient);
+        {logout, fetchAboutInfos, editAboutInfos} 
+        )(DashboardPatientEdit);
 
 
 
