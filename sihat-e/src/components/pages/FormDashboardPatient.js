@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {  logout, createAbout, fetchAboutInfos  } from '../../actions'
+import {  logout, createAbout, fetchAboutInfos  } from '../../actions';
+import { Field, reduxForm } from 'redux-form';
 
 
     class FormDashboardPatient extends Component {
@@ -33,7 +34,7 @@ import {  logout, createAbout, fetchAboutInfos  } from '../../actions'
     };
 
     handleChange = this.handleChange.bind(this);
-    handleSubmit = this.handleSubmit.bind(this);
+    // handleSubmit = this.handleSubmit.bind(this);
     
 
 
@@ -47,17 +48,18 @@ import {  logout, createAbout, fetchAboutInfos  } from '../../actions'
         });
     }
 
-    handleSubmit(e) {
-        e.preventDefault();
+    onSubmit = formValues => {
+        this.props.onSubmit(formValues);
 
         const { first_name, last_name, adress,birth_day, bio_sex  } = this.state;
         const body = {
         first_name, last_name, adress, birth_day, bio_sex
         };
-        this.props.createAbout(this.state)
-        localStorage.removeItem('myData');
 
-    }
+        this.props.createAbout(formValues)
+        localStorage.removeItem('myData');
+      };
+
 
 
 
@@ -70,7 +72,7 @@ render() {
                         {/* Start Form */}
         <div className="row register-form">
             <div className="col-md-8 col-xl-10 offset-md-2 offset-xl-0">
-            <form className="custom-form" onSubmit={this.handleSubmit}>
+            <form className="custom-form" onSubmit={this.props.handleSubmit(this.onSubmit)}>
     <h1 className="d-xl-flex align-items-xl-start">A propos</h1>
 
         <div className="form-row form-group">
@@ -197,9 +199,13 @@ logout: state.logout
 };
 };
 
+const wrapingupTheAboutForm = reduxForm({
+    form: 'aboutInfosForm',
+  })(FormDashboardPatient);
+  
 
 
-export default connect(mapStateToProps, {fetchAboutInfos})(FormDashboardPatient);
+export default connect(mapStateToProps, {fetchAboutInfos})(wrapingupTheAboutForm);
 
 
 
