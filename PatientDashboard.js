@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchAboutInfos, logout, createAbout  } from '../../actions';
+import { fetchAboutInfos, logout, createAbout  } from './sihat-e/src/actions';
 import { Field, reduxForm, touch} from 'redux-form';
 
 

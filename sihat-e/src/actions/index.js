@@ -101,8 +101,10 @@ import axios from 'axios';
                     type: CREATE_ABOUT,
                     payload: response.data
                 })
+                if(response.status == 200 ) {
+                    history.push('/loginPatient')
             }
-        }
+        }}
 
         export const fetchAboutInfos = () => {
             return async (dispatch) => {
@@ -120,6 +122,5 @@ import axios from 'axios';
                         //     return {PatientAboutInfosNotInfos: true}
                         // }
                     }
-
-            }
+        }
         
