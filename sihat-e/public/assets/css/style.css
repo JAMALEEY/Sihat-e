@@ -876,7 +876,7 @@ i.fa.fa-spinner.fa-spin.fa-5x.fa-fw {
   outline: 0 !important;
 }
 .register-form form.custom-form {
-padding: 70px;
+padding: 40px;
     box-sizing: border-box;
     font: bold 14px sans-serif;
     text-align: center;
@@ -894,7 +894,7 @@ padding: 70px;
   font-size: 24px;
   font-weight: 700;
   padding: 0 10px 15px;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
   border-bottom: 2px solid #6caee0;
 }
 .register-form .custom-form .form-group {
@@ -936,6 +936,15 @@ padding: 70px;
   color: #333;
   opacity: 0.8;
 }
+
+.hommechoice{
+  padding-left: 30px;
+}
+
+.register-form .custom-form .input-column input  {
+  box-shadow: none;
+}
+
 .register-form .custom-form .submit-button {
   border-radius: 2px;
   background: #6caee0;
@@ -1557,7 +1566,6 @@ overflow-x: hidden;
 #rightNavContainer {
   height: 10%;width: 100%;
   background-color: #6CEFCE;
-  /* background: linear-gradient(106.1deg, rgba(69,242,143,0.52) 10.2%, rgba(14,228,175,0.61) 83.6%) */
 }
 
 #rightNavContainer2{
@@ -1566,7 +1574,12 @@ overflow-x: hidden;
 
 #formCardContainer{
   border-radius: 60px;
-  width: 37vw;height: 80vh;margin: 50px;box-shadow: 0px 0px 7px rgb(207,207,207);background: rgb(255,255,255);border-style: none;
+  width: 33vw;
+  height: 83vh;
+  margin: 38px;
+  box-shadow: 0px 0px 7px rgb(207 207 207);
+  background: rgb(255,255,255);
+  border-style: none;;
 }
 
 .custom-form h1 {

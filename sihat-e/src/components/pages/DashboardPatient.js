@@ -8,10 +8,16 @@ import FormDashboardPatient from './FormDashboardPatient'
 
     class DashboardPatient extends Component {
 
+            onSubmit = formValues => {
+                
+                this.props.createAbout(formValues)
+                localStorage.removeItem('myData');
+
+            };
+
             componentDidMount(){
 
                 this.props.fetchAboutInfos();
-
                 console.log(this.props.aboutInfos);
                 
             }
@@ -265,7 +271,7 @@ import FormDashboardPatient from './FormDashboardPatient'
                 </div>
                 </nav></div></div>
                 <div>
-        {this.state.infos.map(info => <FormDashboardPatient key={info.uId} item={info} data={this.props.location.data} />)}
+        {this.state.infos.map(info => <FormDashboardPatient  key={info.uId} item={info} data={this.props.location.data} onSubmit={this.onSubmit} />)}
       </div>
       </div>
       </div>

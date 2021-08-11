@@ -37,7 +37,7 @@ import { Field, reduxForm } from 'redux-form';
     // handleSubmit = this.handleSubmit.bind(this);
     
 
-    renderInput ({handleSubmit, input, value, meta, label, placeholder, name, id, type, className, initialValues}) {
+    renderInput ({handleSubmit, input, value, meta, label, placeholder, name, id, type, className, initialValues, defaultValue, defaultChecked, checked}) {
         return (
             <>
                 <div className="col-sm-6 col-xl-7 input-column">
@@ -45,11 +45,12 @@ import { Field, reduxForm } from 'redux-form';
                     <label className="active col-form-label d-xl-flex align-items-xl-start">{label}</label>
                     <input {...input}
                     className={className}
-                    autocomplete='nope' 
+                    autoComplete='none'
                     placeholder={placeholder} 
-                    onChange={input.onChange} 
+                    onChange={input.onChange}
+                    defaultValue={defaultValue}
                     // value={input.value} 
-                    
+                    checked={checked}
                     name={name}
                     type={type}
                     id={id}
@@ -75,7 +76,7 @@ import { Field, reduxForm } from 'redux-form';
         });
     }
 
-    onSubmit = formValues => {
+    onSubmit = (formValues) => {
         this.props.onSubmit(formValues);
 
         const { first_name, last_name, adress,birth_day, bio_sex  } = this.state;
@@ -83,8 +84,6 @@ import { Field, reduxForm } from 'redux-form';
         first_name, last_name, adress, birth_day, bio_sex
         };
 
-        this.props.createAbout(formValues)
-        localStorage.removeItem('myData');
       };
 
 
@@ -103,15 +102,8 @@ render() {
     <h1 className="d-xl-flex align-items-xl-start">A propos</h1>
 
         <div className="form-row form-group">
-            <div className="col-sm-4 col-xl-12 label-column">
-                <label className="col-form-label d-xl-flex align-items-xl-start" htmlFor="name-input-field">
-                    <strong>Nom :</strong>
-                </label>
-            </div>
             <div className="col-sm-6 col-xl-7 input-column">
-                <Field className="form-control-plaintext" name="first_name" component={this.renderInput} label="Prénom :" placeholder="Votre prénom" type='text'  />
-                
-                <Field className="form-control" type="text" defaultValue={ localStorage.getItem('myData') ? JSON.parse(localStorage.getItem('myData')).first_name : ''  }
+                <Field className="form-control-plaintext" name="first_name" component={this.renderInput} label="Prénom :" placeholder="Votre prénom" type='text' defaultValue={ localStorage.getItem('myData') ? JSON.parse(localStorage.getItem('myData')).first_name : ''  }  
                 />
             </div> 
         </div>
@@ -121,14 +113,9 @@ render() {
 
 
         <div className="form-row form-group">
-            <div className="col-sm-4 col-xl-12 label-column">
-                <label className="col-form-label d-xl-flex align-items-xl-start" htmlFor="name-input-field">
-                    <strong>Prénom :</strong>
-                </label>
-            </div>
 
             <div className="col-sm-6 col-xl-7 input-column">
-                <Field  className="form-control" type="text" defaultValue={ localStorage.getItem('myData') ? JSON.parse(localStorage.getItem('myData')).last_name : ''  } 
+                <Field placeholder="Votre nom" name="last_name" label="Nom:" component={this.renderInput} className="form-control" type="text" defaultValue={ localStorage.getItem('myData') ? JSON.parse(localStorage.getItem('myData')).last_name : ''  } 
                 >
                 </Field> 
             </div>  
@@ -137,13 +124,9 @@ render() {
 
         {/* date naissance */}
         <div className="form-row form-group">
-            <div className="col-sm-4 col-xl-12 label-column">
-                <label className="col-form-label d-xl-flex align-items-xl-start" htmlFor="name-input-field"> 
-                <strong>Date de naissance :</strong></label>
-            </div>
 
             <div className="col-md-6 col-xl-7">
-                <Field className="form-control date" id="birthDate" type="date" defaultValue={ localStorage.getItem('myData') ? JSON.parse(localStorage.getItem('myData')).birth_day : ''  }
+                <Field label="Date de naissance:" component={this.renderInput} className="form-control date" id="birthDate" type="date" defaultValue={ localStorage.getItem('myData') ? JSON.parse(localStorage.getItem('myData')).birth_day : ''  }
                 >
                 </Field>
             </div>
@@ -153,62 +136,77 @@ render() {
         {/* adresse */}
         
         <div className="form-row form-group">
-            <div className="col-sm-4 col-xl-12 label-column">
-                <label className="col-form-label d-xl-flex align-items-xl-start" htmlFor="name-input-field">
-                    <strong>Adresse :</strong>
-                </label>
-            </div>
 
             <div className="col-sm-6 col-xl-7 input-column">
-                <Field className="form-control" type="text" defaultValue={ localStorage.getItem('myData') ? JSON.parse(localStorage.getItem('myData')).adress : ''  }>
+                <Field  placeholder="Votre adresse" name="adress" label="Adresse" component={this.renderInput} className="form-control" type="text" >
                 </Field> 
             </div>  
         </div>
+        
         {/* End adresse */}
-
-        <div className="form-row form-group">
-        <div className="col-sm-4 col-xl-7 label-column">
-        <label className="col-form-label d-xl-flex align-items-xl-start" htmlFor="pawssword-input-field">Genre :
-        </label>
-        </div>
-        <div className="col-sm-6 input-column">
+        
                     {/* Start Radios */}
+        <div className="form-row form-group">
+        <div className="col-sm-6 input-column">
         <div className="custom-control custom-radio">
-            
-            <div className="custom-control custom-radio">
+            {/* <div className="custom-control custom-radio">
                 {localStorage.getItem('myData') && JSON.parse(localStorage.getItem('myData')).bio_sex == "femme" ? 
-                <Field type="radio" id="customRadio1" className="custom-control-input" name="customRadio"  defaultChecked /> 
-                : <Field type="radio" id="customRadio1" className="custom-control-input" name="customRadio"/> }
+                
+                <Field component={this.renderInput} type="radio"  className="custom-control-input" name="customRadio" value='femme'  defaultChecked /> 
+                : <Field component={this.renderInput} type="radio"  className="custom-control-input" name="customRadio" value='femme' /> }
 
-                <label className="custom-control-label" htmlFor="customRadio1"
-                >
+                <label className="custom-control-label" htmlFor="customRadio3"
+                > 
                     Femme
                 </label>
             </div>
             
             <div className="custom-control custom-radio">
-                {localStorage.getItem('myData') && JSON.parse(localStorage.getItem('myData')).bio_sex == "homme" ?<Field type="radio" id="customRadio2" className="custom-control-input" name="customRadio"  defaultChecked  /> : <Field type="radio" id="customRadio2" className="custom-control-input" name="customRadio" /> }
+                {localStorage.getItem('myData') && JSON.parse(localStorage.getItem('myData')).bio_sex == "homme" ? <Field component={this.renderInput} type="radio" className="custom-control-input" name="customRadio" value='homme' defaultChecked  /> : <Field component={this.renderInput} type="radio"  className="custom-control-input" name="customRadio" value='homme' /> }
 
                 <label className="custom-control-label" htmlFor="customRadio2">
                     Homme
                 </label>
-            </div>
+            </div> */}
+<div className="radioformbox">
+<label>Genre :</label>
+
+    <div className='leschoixradio'>
+            
+    <label> Femme
+        {localStorage.getItem('myData') && JSON.parse(localStorage.getItem('myData')).bio_sex ==    "femme" ? 
+            <Field name="Genre" component={this.renderInput} type="radio" value="femme" checked={true} /> : 
+            <Field name="Genre" component={this.renderInput} type="radio" value="femme"  /> 
+        }
+    </label> 
+
+    <label className="hommechoice"> Homme
+        {localStorage.getItem('myData') && JSON.parse(localStorage.getItem('myData')).bio_sex ==    "homme" ? 
+            <Field id="radiocheckcheck" name="Genre" component={this.renderInput} type="radio"  value='homme' checked={true} /> : 
+            <Field name="Genre" component={this.renderInput} type="radio" value='homme' /> 
+        }
+    </label>
+        
+    </div>
+    <button id="btnFormDashboard" className="btn btn-light d-xl-flex align-items-xl-start submit-button" type="submit">Enregistrer
+            </button>
+</div>
         
 </div>
-{/* End Radios */}
-        </div>
 
+</div>
+{/* End Radios */}
 
 
             
 
         </div>
-            <button id="btnFormDashboard" className="btn btn-light d-xl-flex align-items-xl-start submit-button" type="submit">Enregistrer
-            </button>
+
             </form>
             </div>
         </div>
         {/* End Form */}
+        
         </div>
     </div>
     </div>
@@ -220,15 +218,42 @@ render() {
     );
 }
 }
-const mapStateToProps = state => {
-return {
-aboutInfos: state.aboutInfos,
-logout: state.logout
-};
-};
+
+FormDashboardPatient = reduxForm({
+    form: 'aboutInfosForm' // a unique identifier for this form
+  })(FormDashboardPatient)
+  
+  // You have to connect() to any reducers that you wish to connect to yourself
+  FormDashboardPatient = connect(
+    state => ({
+       // pull initial values from account reducer
+      aboutInfos: state.aboutInfos,
+      initialValues : JSON.parse(localStorage.getItem('myData'))
+    }),
+    
+    {fetchAboutInfos, createAbout}
+
+  )(FormDashboardPatient)
+  
+  export default FormDashboardPatient
 
 
-export default reduxForm({ form: 'aboutInfosForm'})(connect(mapStateToProps, {fetchAboutInfos, createAbout})(FormDashboardPatient))
+
+
+// const mapStateToProps = state => {
+// return {
+// aboutInfos: state.aboutInfos,
+// logout: state.logout,
+
+//     initialValues: {
+//         first_name:'rrr'
+//     }
+  
+// };
+// };
+
+
+// export default reduxForm({ form: 'aboutInfosForm'})(connect(mapStateToProps, {fetchAboutInfos, createAbout})(FormDashboardPatient))
 
 
 
