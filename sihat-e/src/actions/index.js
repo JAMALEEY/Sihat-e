@@ -112,24 +112,24 @@ import axios from 'axios';
 //   }
 // }
 
-async function getSomeAsyncData(dispatch, api) {
-  try {
-    const data = await api.get('/patient/fetch').then(res => res.data)
-    dispatch({
-      type: FETCH_ABOUT,
-      data: data
-    })
-  } catch (err) {
-    dispatch({
-      type: FETCH_ABOUT,
-      data: null
-    })
-  }
-  dispatch({
-    type: FETCH_ABOUT,
-    fetching: false
-  })
-}
+// async function getSomeAsyncData(dispatch, api) {
+//   try {
+//     const data = await api.get('/patient/fetch').then(res => res.data)
+//     dispatch({
+//       type: FETCH_ABOUT,
+//       data: data
+//     })
+//   } catch (err) {
+//     dispatch({
+//       type: FETCH_ABOUT,
+//       data: null
+//     })
+//   }
+//   dispatch({
+//     type: FETCH_ABOUT,
+//     fetching: false
+//   })
+// }
 
         // export const fetchAboutInfos = () => async () => {
         //         const response = await api.get('/patient/fetch');
@@ -212,6 +212,13 @@ async function getSomeAsyncData(dispatch, api) {
             const response = await api.put('patient/update', formValues);
             
             dispatch({ type: EDIT_PATIENT_ABOUT, payload: response.data });
+            // history.push('/dashboardPatient');
+        };
+
+        export const fetchAboutInfos = () => async dispatch => {
+            const response = await api.get('patient/fetch');
+            
+            dispatch({ type: FETCH_ABOUT, payload: response.data });
             // history.push('/dashboardPatient');
         };
 
