@@ -1587,6 +1587,24 @@ overflow-x: hidden;
   width: 286px
 }
 
+.Myloader{
+  width: 9vw;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.loader h3 {
+  font-family: Poppins, sans-serif;color: rgb(72,139,118)}
+
+.loadercontainer{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 #btnFormDashboard{
   background: rgb(158,248,196);font-family: Poppins, sans-serif;color: rgb(72,139,118);border-radius: 18px;
   margin-left: 0px;

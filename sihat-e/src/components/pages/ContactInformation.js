@@ -6,12 +6,13 @@ import { connect } from "react-redux";
 import {  logout, createContactInformation  } from '../../actions'
 import {Field, Form, formValueSelector, reduxForm, touch} from 'redux-form';
 import FormDashboardPatient from './FormDashboardPatient';
-
+import Loader from './Loader';
         
 
     const renderInput = ({ input, value, meta, label, placeholder, name, id, type, className, initialValues, defaultValue, defaultChecked, checked}) => { 
         return (
             <>
+            {/* <Loader /> */}
                 <div className="col-sm-6 col-xl-7 input-column">
                     <div className="form-row form-group">
                     <label className="active col-form-label d-xl-flex align-items-xl-start">{label}</label>
@@ -323,7 +324,7 @@ import FormDashboardPatient from './FormDashboardPatient';
                 label="Mobile :"
                     name="phone"
                     type="text"
-                    placeholder="Votre numéro de téléphone"
+                    placeholder="(06 - xx xx xx xx)"
                     component={renderInput} 
                 />
             </div>  
