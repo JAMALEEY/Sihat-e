@@ -1,7 +1,7 @@
 // import { API_SUCCESS, API_ERROR } from "./actions/api";
 
 import { FETCH_PATIENT_ABOUT } from "../actions/types";
-
+import _ from 'lodash';
 
 // export default (
 //   state = {
@@ -33,14 +33,15 @@ import { FETCH_PATIENT_ABOUT } from "../actions/types";
 // } from '../../actions/types'
 
 
-export default (aboutInfos = {}, action) => {
-    switch (action.type) {
-        case FETCH_PATIENT_ABOUT:
-            return action.payload ;
-        default:
-            return aboutInfos;
-    }
-}
+// export default (aboutInfos = {}, action) => {
+//     switch (action.type) {
+//         case FETCH_PATIENT_ABOUT:
+//             // return { ...aboutInfos, ...(action.payload) }
+//             return {...aboutInfos, [action.payload]: action.payload  };
+//         default:
+//             return aboutInfos;
+//     }
+// }
 
         // const handleSubmit = useCallback(
         // () => sendRequest(formValues)

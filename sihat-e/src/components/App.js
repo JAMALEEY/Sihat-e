@@ -39,6 +39,7 @@ const  App = (props) => {
   return (
 
     <>
+    
     {/* to listen to history for changes to the URL ill be using BrowserRouter */}
     {/* the history keeps track of the adress bar in the browser */}
     <Router history={history}> 

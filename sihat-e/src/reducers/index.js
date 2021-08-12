@@ -6,11 +6,12 @@ import { reducer as logout } from "redux-form";
 import { reducer as createAbout } from "redux-form";
 import { reducer as dashboardPatientForm } from 'redux-form'
 import { reducer as aboutInfos }  from "redux-form";
-import aboutInfosReducer from './aboutInfosReducer'
+import { reducer as signInResponse }  from "redux-form";
+// import aboutInfosReducer from './aboutInfosReducer'
 
 // To manage my multiple reducers to be one single reducer ill use CombineReducers that takes parameters with what ill call inside my project
 import { combineReducers } from "redux";
-import reducer from './aboutInfosReducer';
+// import reducer from './aboutInfosReducer';
 import { SIGN_IN, CREATE_PATIENT, SIGN_OUT, CREATE_ABOUT, FETCH_PATIENT_ABOUT} from "../actions/types";
 
 
@@ -34,6 +35,30 @@ const signInResponseReducer = (signInResponse = [], action) => {
     } return signInResponse;
 };
 
+    // if (action.type === FETCH_PATIENT_ABOUT) {
+    //     return {...aboutInfos,  [action.payload]: action.payload};
+    // } return aboutInfos;
+function aboutInfosReducer (state = [], action)  {
+    switch (action.type) {
+        case FETCH_PATIENT_ABOUT:
+            return [...state,  action.payload];
+            // return {...aboutInfos, [action.payload]: action.payload  };
+        default:
+            return state;
+    }
+}
+
+
+
+// export default (aboutInfos = {}, action) => {
+//     switch (action.type) {
+//         case FETCH_PATIENT_ABOUT:
+//             // return { ...aboutInfos, ...(action.payload) }
+//             return {...aboutInfos, [action.payload]: action.payload  };
+//         default:
+//             return aboutInfos;
+//     }
+// }
 
 
 const createAboutReducer = (createAbout = {}, action) => {
@@ -59,7 +84,7 @@ const createAboutReducer = (createAbout = {}, action) => {
     // I pass in a parameter (form) of a value (reducer that I renamed to newsletterReducer) so that I can let redux-form allow the reducer flow automatization 
 export default combineReducers ({
     form: newsletterReducer, signIn, signUpPatientState, dashboardPatientForm,
-    reducer: logout, createAbout, 
+    reducer: logout, createAbout, aboutInfos,
     signInResponse: signInResponseReducer,
     signUpPatienState: signUpPatientReducer,
     logout: logoutReducer,

@@ -11,3 +11,4 @@ export const TOKEN_KEY = 'TOKEN';
 export const CREATE_ABOUT = 'CREATE_ABOUT'; 
 export const FETCH_PATIENT_ABOUT = 'FETCH_PATIENT_ABOUT';
 export const EDIT_PATIENT_ABOUT = 'EDIT_PATIENT_ABOUT';
+export const FETCH_ABOUT = 'FETCH_ABOUT'

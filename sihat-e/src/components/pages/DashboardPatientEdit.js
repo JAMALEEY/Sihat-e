@@ -8,29 +8,35 @@ import {Field, Form, formValueSelector, reduxForm, touch} from 'redux-form';
 import FormDashboardPatient from './FormDashboardPatient';
 
     class DashboardPatientEdit extends Component {
-
-        constructor(props){
-            super(props)                
+        state = {
+            showFavorites: false
         }
 
-            componentDidMount(){
-                this.props.fetchAboutInfos();
-                // console.log(this.props.aboutInfos);              
-            }
+
+        componentDidMount() {
+            this.props.fetchAboutInfos();
+            console.log(this.props.aboutInfos)
+          }
+        // constructor(props) {
+        //     super(props)
+        //     this.props.fetchAboutInfos();
+
+        // }
+            // componentDidMount(){
+            //     this.props.fetchAboutInfos();
+            //     console.log(fetchAboutInfos())
+            // }
 
             onSubmit = formValues => {
-                console.log(editAboutInfos);
                 this.props.editAboutInfos(formValues)
-                localStorage.removeItem('myData');
-
             };
 
             patientDashboarLogout = () => {
                 this.props.logout();
             }
-        
 
             render() {
+                
                 return(
                 <>
                 <div>
@@ -276,7 +282,10 @@ import FormDashboardPatient from './FormDashboardPatient';
                 <div>
         
         <FormDashboardPatient
-        initialValues={_.pick(this.props.stream, 'first_name', 'last_name','birth_day', 'bio_sex', 'adress' )} 
+        // initialValues={_.pick(this.props.aboutInfos.first_name, 'first_name')}  
+        initialValues={{ 
+            first_name : this.props.aboutInfos
+        }}  
         onSubmit={this.onSubmit} 
         />
       </div>
@@ -289,14 +298,15 @@ import FormDashboardPatient from './FormDashboardPatient';
 }
 
 
-    const mapStateToProps = state => {
-      return {
-        aboutInfos: state.aboutInfos,
-        
-      };
+    const mapStateToProps = (state) => {
+      return { aboutInfos: Object.values(state.aboutInfos) };
     };
 
-
+    // const mapDispatchToProps = (dispatch) => {
+    //     return {
+    //       something: () => dispatch(aboutInfos.fetchAboutInfos()),
+    //     };
+    //   };
 
 
     export default connect(

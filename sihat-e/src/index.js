@@ -6,8 +6,9 @@ import {Provider} from 'react-redux';
 import {createStore, applyMiddleware, compose} from 'redux';
 import reducers from './reducers';
 import reduxThunk from 'redux-thunk';
+import { fetchAboutInfos } from './actions';
 import axios from 'axios';
-import {TOKEN_KEY} from './actions/types'
+import {TOKEN_KEY} from './actions/types';
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
