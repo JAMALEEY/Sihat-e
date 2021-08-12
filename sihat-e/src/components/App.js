@@ -25,6 +25,9 @@ import PrivateRoute from './pages/PrivateRoute';
 import PublicRoute from './pages/PublicRoute';
 // import PatientDashboard from '../../../PatientDashboard';
 import FormDashboardPatient from './pages/FormDashboardPatient';
+import DashboardPatientEdit from './pages/DashboardPatientEdit';
+import ContactInformation from './pages/ContactInformation';
+import AboutList from './pages/AboutList';
 
 
 
@@ -36,7 +39,9 @@ const  App = (props) => {
     //         props.clearAlerts(); 
     // });
   return (
+
     <>
+
     {/* to listen to history for changes to the URL ill be using BrowserRouter */}
     {/* the history keeps track of the adress bar in the browser */}
     <Router history={history}> 
@@ -47,7 +52,10 @@ const  App = (props) => {
                                 <PublicRoute path="/loginMedecin" exact component={SignInMedecin} />
                                 <PublicRoute path="/registerPatient" exact component={SignUpPatient} />
                                 <PublicRoute restricted={true}  path="/loginPatient" exact component={SignInPatient} />
+                                <PublicRoute path="/edit" exact component={DashboardPatientEdit} />
                                 <PublicRoute path="/registerMedecin" exact component={SignUpMedecin} />
+                                <PublicRoute path="/contactinformation" exact component={ContactInformation} />
+                                <PublicRoute path="/aboutlist" exact component={AboutList} />
                                 <Redirect from="*" to="/" />
     </Switch>
     </Router>

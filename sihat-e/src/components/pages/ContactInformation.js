@@ -1,16 +1,48 @@
-import _ from 'lodash';
+
 // a helper lib that allows us to pick aboutEDITS object values (first name etc) to initial values in reduxform
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import {  logout, editAboutInfos, fetchAboutInfos, createAbout  } from '../../actions'
+import {  logout, createContactInformation  } from '../../actions'
 import {Field, Form, formValueSelector, reduxForm, touch} from 'redux-form';
 import FormDashboardPatient from './FormDashboardPatient';
 
-    class DashboardPatient extends Component {
-        state = {
-            showFavorites: false
+        
+
+    const renderInput = ({ input, value, meta, label, placeholder, name, id, type, className, initialValues, defaultValue, defaultChecked, checked}) => { 
+        return (
+            <>
+                <div className="col-sm-6 col-xl-7 input-column">
+                    <div className="form-row form-group">
+                    <label className="active col-form-label d-xl-flex align-items-xl-start">{label}</label>
+                    <input {...input}
+                    className={className}
+                    autoComplete='none'
+                    placeholder={placeholder} 
+                    onChange={input.onChange}
+                    value={input.value} 
+                    name={name}
+                    type={type}
+                    id={id}
+                    // normalize={normalize}
+                    />
+                    </div>
+                </div>  
+            </>
+        )
         }
+        
+    const ContactInformation = ({handleSubmit, createContactInformation, logout}) =>  {
+
+        const onSubmit = (formValues) => {
+            createContactInformation(formValues);
+
+        };
+        // const onSubmit = (formValues) => {
+        //     createLogin(formValues)
+        //   }
+    
+
 
 
         // constructor(props) {
@@ -20,18 +52,16 @@ import FormDashboardPatient from './FormDashboardPatient';
         // }
             // componentDidMount(){
             //     this.props.fetchAboutInfos();
-            //     console.log(fetchAboutInfos())
+            //     console.logfetchAboutInfos())
             // }
 
-            onSubmit = formValues => {
-                this.props.createAbout(formValues)
-            };
-
-            patientDashboarLogout = () => {
-                this.props.logout();
+            
+            function patientDashboarLogout () {
+                 logout();
+                
             }
 
-            render() {
+           
                 
                 return(
                 <>
@@ -54,16 +84,16 @@ import FormDashboardPatient from './FormDashboardPatient';
                 <div className="category-content">
                     <ul id="fruits-nav" className="nav flex-column">
                     <li className="nav-item1">
-                        <a href="#" className="nav-link active">
+                        <Link to="/edit" className="nav-link ">
                         <div className="d-xl-flex justify-content-xl-start align-items-xl-center"> 
                             <i className="active fa fa-user-circle-o fa-2x d-xl-flex align-items-xl-center " aria-hidden="true" />
                             <h5 className="lisidebar d-flex d-xl-flex flex-column justify-content-xl-center align-items-xl-center">
                             A propos.
                             </h5>
                         </div>
-                        </a>
-                    </li><li className="nav-item2">
-                        <a href="#" className="nav-link">
+                        </Link>
+                    </li><li className="nav-item2 active">
+                        <a href="#" className="nav-link active">
                         <div className="d-xl-flex justify-content-xl-start align-items-xl-center"> 
                             <i className="noactive fa fa-vcard d-xl-flex align-items-xl-center d-xl-flex align-items-xl-center fa-2x " aria-hidden="true" />
                             <h5 className="lisidebarnoactive d-flex d-xl-flex flex-column justify-content-xl-center align-items-xl-center">
@@ -266,7 +296,7 @@ import FormDashboardPatient from './FormDashboardPatient';
                         <div className="nav-item dropdown no-arrow"><a aria-expanded="false" data-toggle="dropdown" className="dropdown-toggle nav-link" href="#"><span className="d-none d-lg-inline mr-2 text-gray-600 small">Valerie Luna</span><img className="border rounded-circle img-profile" src="avatars/avatar1.jpeg" /></a>
                         <div className="dropdown-menu shadow dropdown-menu-right animated--grow-in"><a className="dropdown-item" href="#"><i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400" />&nbsp;Profile</a><a className="dropdown-item" href="#"><i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400" />&nbsp;Settings</a><a className="dropdown-item" href="#"><i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400" />&nbsp;Activity log</a>
                         <div className="dropdown-divider"  />
-                            <a className="dropdown-item" href="#" onClick={this.patientDashboarLogout} >
+                            <a className="dropdown-item" href="#" onClick={patientDashboarLogout} >
                                 <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"/>&nbsp;Logout</a>
 
                         </div>
@@ -276,11 +306,55 @@ import FormDashboardPatient from './FormDashboardPatient';
                 </div>
                 </nav></div></div> 
                 <div>
-        
-        <FormDashboardPatient
-        // initialValues={_.pick(this.props.aboutInfos.first_name, 'first_name')}  
-        onSubmit={this.onSubmit} 
-        />
+                <div className="d-xl-flex justify-content-xl-center align-items-xl-center">
+    <div id="formCardContainer">
+        <div>
+                        {/* Start Form */}
+        <div className="row register-form">
+            <div className="col-md-8 col-xl-10 offset-md-2 offset-xl-0">
+            <form className="custom-form" method='post' 
+            // onSubmit={this.props.handleSubmit(this.onSubmit)
+            onSubmit={handleSubmit(onSubmit)} >
+    <h1 className="d-xl-flex align-items-xl-start">Informations de contact</h1>
+
+            
+                <div>
+                <Field
+                label="Mobile :"
+                    name="phone"
+                    type="text"
+                    placeholder="Votre numéro de téléphone"
+                    component={renderInput} 
+                />
+            </div>  
+
+            
+            <div>
+                <Field
+                label="Ville :"
+                    name="city"
+                    type="text"
+                    placeholder="Votre ville "
+                    component={renderInput} 
+                />
+            </div>  
+
+
+
+            <button id="btnFormDashboard" className="btn btn-light d-xl-flex align-items-xl-start submit-button" type="submit">Enregistrer
+            </button>
+            
+            </form>
+            </div>
+        </div>
+        {/* End Form */}
+  
+        </div>
+    </div>
+    </div>
+
+
+
       </div>
       </div>
       </div>
@@ -288,185 +362,7 @@ import FormDashboardPatient from './FormDashboardPatient';
       </>
     );
   }
-}
 
 
-    // const mapDispatchToProps = (dispatch) => {
-    //     return {
-    //       something: () => dispatch(aboutInfos.fetchAboutInfos()),
-    //     };
-    //   };
+export default reduxForm({ form: 'ContactInformation'})(connect(null, {createContactInformation, logout})(ContactInformation))
 
-        // const mapStateToProps = state => {
-        //     return {
-        //         aboutInfos: Object.values(state.aboutInfos),
-        //     };
-        //   };
-          
-          export default connect(
-            null,
-            { fetchAboutInfos, createAbout, logout  }
-          )(DashboardPatient);
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // const errorsHelper = ({error, touched}) => {
-        //     if (touched && error) {
-        //         return (
-        //             <>
-                    
-        //                 <div className='taken'>
-        //                     <div>
-        //                         <strong> &#9888; Attention &#9888; </strong> 
-        //                         {error} 
-        //                     </div>
-        //                 </div>
-        //             </>
-        //         )
-        //     }
-        // }
-
-        // const renderInput = (props) => {
-        //     const {input, value, meta, label, placeholder, name, id, type, className, initialValues} = props;
-        //     return (
-        //         <>
-        //             {   errorsHelper(meta)    }
-        //             <div className="col-sm-6 col-xl-7 input-column">
-        //                 <div className="form-row form-group">
-        //                 <label className="active col-form-label d-xl-flex align-items-xl-start">{label}</label>
-        //                 <Link {...input}
-        //                 className={className}
-        //                 autocomplete='nope' 
-        //                 placeholder={placeholder} 
-        //                 onChange={input.onChange} 
-        //                 // value={input.value} 
-                        
-        //                 name={name}
-        //                 type={type}
-        //                 id={id}
-        //                 />
-        //                 </div>
-        //             </div>  
-        //         </>
-        //     )
-        // }
-
-    // const DashboardPatient = ( props ) => {
-    //     const {aboutInfos, logout, handleSubmit, createAbout, fetchAboutInfos,  initialValues} = props
-            // useEffect(() => {
-            //     fetchAboutInfos()
-                
-                // console.log(aboutInfos[0].data) throw : {id: 7, user_id: 6, first_name: "AVC", last_name: "AAA", birth_day: null, …}
-            // }, [])
-    //             const data = {
-    //     initialValues
-    // }
-
-    // alert(data)
-
-                            // if( !aboutInfos[0]) {   ====> '' else if aboutInfos[0] {
-                                // {Response.data.valueETC}
-                            // }
-
-                // const renderFetchAboutInfos = () => {
-                //     if(!aboutInfos[0]) {
-                //         return (
-                //             <>
-                            
-                //             </>
-                //         )
-                //     }
-                // } 
-                // console.log(Object.values(Object.values(aboutInfos[0])))
-        // console.log(initialValues.data)
-
-                // console.log(fetchAboutInfos())
-            
-            // if(fetchAboutInfos.PatientAboutInfosNotInfos)
-            
-            
-            // const renderList = () => {
-            //     if(fetchAboutInfos() == true ) {
-            //         return (
-            //             <>
-            //             <div className="item" key={props.aboutInfos[0].data.id}>
-            //                 <div className='content'> {props.aboutInfos[0].data.first_name} </div>
-            //             </div>
-
-            //             </>
-            //         )
-            //     }
-                    // console.log(aboutInfos[0].data)
-
-        //     } 
-            
-        //     const patientDashboarLogout = () => {
-        //         logout()
-        //     }
-
-        // const onSubmit = (formValues) => {
-            // if( !aboutInfos[0]) {
-            //     createAbout(formValues) 
-            // } else {
-            //     fetchAboutInfos()
-            // }
-            
-        // }
-
-        // return(
-
-        //         <>
-               
-        //         </>
-        //     )
-
-
-    // }
-
-    // mapStateToProps = (state) => {
-
-    // }
-
-
-// const  formWrapper = reduxForm({ form: 'dashboardPatientForm', enableReinitialize: true })(DashboardPatient)
-
-// export default connect(null, {logout, createAbout, fetchAboutInfos, })(formWrapper);

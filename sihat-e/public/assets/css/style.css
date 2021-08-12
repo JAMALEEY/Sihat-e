@@ -896,6 +896,7 @@ padding: 40px;
   padding: 0 10px 15px;
   margin-bottom: 20px;
   border-bottom: 2px solid #6caee0;
+  width: 330px;
 }
 .register-form .custom-form .form-group {
   margin-bottom: 20px;
@@ -950,10 +951,10 @@ padding: 40px;
   background: #6caee0;
   color: #fff;
   font-weight: 700;
-  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: 1px 2px 4px 0 rgb(0 0 0 / 8%);
   padding: 14px 56px;
   border: 0;
-  margin: -19px;
+  margin: 0px;
   outline: 0;
 }
 .register-photo .image-holder {
@@ -1588,7 +1589,7 @@ overflow-x: hidden;
 
 #btnFormDashboard{
   background: rgb(158,248,196);font-family: Poppins, sans-serif;color: rgb(72,139,118);border-radius: 18px;
-  margin-left: 326px;
+  margin-left: 0px;
 }
 
 #birthDate{
@@ -1602,7 +1603,10 @@ width: 386px;font-family: Poppins, sans-serif;}
   border-radius: 25px;width: 704.984px;
 }
 
-
+.lesbuttons{
+  justify-content: space-evenly;
+  display: flex;
+}
 
 /* the newsletter validation popup style */
 .taken {

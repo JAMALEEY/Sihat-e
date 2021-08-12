@@ -3,16 +3,54 @@ import _ from 'lodash';
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import {  logout, editAboutInfos, fetchAboutInfos, createAbout  } from '../../actions'
+import {  logout, editAboutInfos, fetchAboutInfos  } from '../../actions'
 import {Field, Form, formValueSelector, reduxForm, touch} from 'redux-form';
 import FormDashboardPatient from './FormDashboardPatient';
+import {bindActionCreators} from 'redux'
 
-    class DashboardPatient extends Component {
-        state = {
-            showFavorites: false
+    class DashboardPatientEdit extends Component {
+
+
+        rendertiwtiw (props) {
+            let jibni = ''
+            if ( this.props.aboutInfos == 1 ){
+              console.log(this.props.aboutInfos)
+              jibni = 
+                <>
+                <div className="blboula"> 
+                      <strong> &#9888; 
+                      im here !
+                      &#9888; </strong>  
+                </div>
+                </>
+              
+              // <h5 className="taken">Incorrects E-mail / mot de passe !</h5>
+            } else {
+                jibni = ''
+            }
         }
 
+        
 
+
+
+
+        // state = {
+        //     showFavorites: false
+        // }
+
+        // componentWillMount() {
+        //     //console.log(this.props.match.params.format)
+        //     this.props.fetchAboutInfos(this.props.match.params.format, this.state.aboutInfos);
+        //     // console.log(this.props.popular)
+        //     // console.log(this.getList.bind(this));
+        // }
+
+        componentDidMount() {
+            this.props.fetchAboutInfos();
+
+
+          }
         // constructor(props) {
         //     super(props)
         //     this.props.fetchAboutInfos();
@@ -24,7 +62,7 @@ import FormDashboardPatient from './FormDashboardPatient';
             // }
 
             onSubmit = formValues => {
-                this.props.createAbout(formValues)
+                this.props.editAboutInfos(formValues)
             };
 
             patientDashboarLogout = () => {
@@ -32,10 +70,25 @@ import FormDashboardPatient from './FormDashboardPatient';
             }
 
             render() {
+               console.log(this.props )
+        
+    
+              
                 
                 return(
                 <>
                 <div>
+                    
+                        {/* {this.props.aboutInfos 
+                        ? 
+                        this.props.aboutInfos.map((item)=>(
+                            <div key={item.id}>
+                                    {item.first_name}
+                                </div> )) 
+                        :null} */}
+                                
+                        
+                    
                     <div className="row" id="navRow">
             <div className="col-md-6 col-xl-2 offset-xl-0" id="leftMenuContainer">
             <div id="logoNavContainer">
@@ -63,14 +116,14 @@ import FormDashboardPatient from './FormDashboardPatient';
                         </div>
                         </a>
                     </li><li className="nav-item2">
-                        <a href="#" className="nav-link">
+                        <Link to="/contactinformation" className="nav-link">
                         <div className="d-xl-flex justify-content-xl-start align-items-xl-center"> 
                             <i className="noactive fa fa-vcard d-xl-flex align-items-xl-center d-xl-flex align-items-xl-center fa-2x " aria-hidden="true" />
                             <h5 className="lisidebarnoactive d-flex d-xl-flex flex-column justify-content-xl-center align-items-xl-center">
                             Informations de contact.
                             </h5>                    
                         </div>
-                        </a>
+                        </Link>
                     </li>
                     <li className="nav-item3">
                         <a href="#" className="nav-link">
@@ -276,20 +329,36 @@ import FormDashboardPatient from './FormDashboardPatient';
                 </div>
                 </nav></div></div> 
                 <div>
-        
+                
         <FormDashboardPatient
-        // initialValues={_.pick(this.props.aboutInfos.first_name, 'first_name')}  
+        // initialValues={_.pick(this.props.aboutInfos.first_name, 'first_name')} 
+        // initialValues={_.pick(this.props.aboutInfos, 'first_name', 'last_name', 'birth_day', 'date', 'adress', 'bio_sex'	)} 
+       
+        
+        // initialValues={{first_name: this.props.aboutInfos[0].data.first_name}}  
         onSubmit={this.onSubmit} 
         />
+        {this.rendertiwtiw()}
       </div>
       </div>
       </div>
       </div>
+      
       </>
     );
   }
 }
 
+
+    const mapStateToProps = (state) => {
+      return { aboutInfos: state.aboutInfos };
+    };
+
+    const mapDispatchToProps = (dispatch) => {
+        return bindActionCreators({
+            fetchAboutInfos
+        },dispatch)
+      };
 
     // const mapDispatchToProps = (dispatch) => {
     //     return {
@@ -297,17 +366,17 @@ import FormDashboardPatient from './FormDashboardPatient';
     //     };
     //   };
 
-        // const mapStateToProps = state => {
-        //     return {
-        //         aboutInfos: Object.values(state.aboutInfos),
-        //     };
-        //   };
-          
-          export default connect(
-            null,
-            { fetchAboutInfos, createAbout, logout  }
-          )(DashboardPatient);
-          
+
+    export default connect(
+        mapStateToProps, mapDispatchToProps)(DashboardPatientEdit);
+ 
+
+
+
+
+
+
+
 
 
 
