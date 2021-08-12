@@ -69,6 +69,11 @@ const createAboutReducer = (createAbout = {}, action) => {
 };
 
 
+const createContactInformationReducer = (state = {}, action) => {
+    if (action.type === CREATE_ABOUT) {
+        return {...state, [action.payload]: action.payload  };
+    } return state;
+};
 
 
 // const aboutInfoReducer = (aboutInfos = [], action) => {
@@ -92,7 +97,8 @@ export default combineReducers ({
     logout: logoutReducer,
     
     createAbout: createAboutReducer,
-    aboutInfos: about_reducer
+    aboutInfos: about_reducer,
+    createContactInformation :createContactInformationReducer
     
     
 });

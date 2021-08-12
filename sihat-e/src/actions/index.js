@@ -224,14 +224,14 @@ import axios from 'axios';
 
         export const creatContactInformation = (formValues) => {
             return async (dispatch) => {
-                const response = await api.post('patient/create', formValues)
+                const response = await api.post('patient/update', formValues)
                 dispatch ({
                     type: CREATE_CONTACTINFO,
                     payload: response.data
                 })
-                if(response.status == 200 ) {
-                    history.push('/edit')
-            }
+                // if(response.status == 200 ) {
+                    // history.push('/edit')
+            // }
         }}
 
         

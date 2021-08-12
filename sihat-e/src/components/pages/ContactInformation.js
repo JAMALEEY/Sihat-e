@@ -34,7 +34,7 @@ import FormDashboardPatient from './FormDashboardPatient';
         }
 
         onSubmit = (formValues) => {
-            this.props.onSubmit(formValues);
+            this.props.creatContactInformation(formValues);
     
         };
     
@@ -340,7 +340,8 @@ import FormDashboardPatient from './FormDashboardPatient';
             </div>
         </div>
         {/* End Form */}
-        
+        <button id="btnFormDashboard" className="btn btn-light d-xl-flex align-items-xl-start submit-button" type="submit">Enregistrer
+    </button>
         </div>
     </div>
     </div>
