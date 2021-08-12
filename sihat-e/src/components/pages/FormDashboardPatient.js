@@ -6,18 +6,7 @@ import { Field, reduxForm , Link } from "redux-form";
 import { first } from "lodash";
 
 class FormDashboardPatient extends Component {
-  // constructor(props) {
-  //     super(props)
-  //     this.props.fetchAboutInfos();
-  //     if(this.props.aboutInfos.id){
-  //     localStorage.setItem('myData', JSON.stringify(this.props.aboutInfos));
-  //     console.log(localStorage.getItem('myData'))
-  //     } else {
 
-  //     }
-  // }
-
-  // handleChange = this.handleChange.bind(this);
   componentDidMount() {
    this.props.fetchAboutInfos();
   }
@@ -77,10 +66,10 @@ class FormDashboardPatient extends Component {
 
   render() {
 
-    return this.props.userData.about_reducer.loading ? (
+    return this.props.patientData.about_reducer.loading ? (
         <h2>Loading</h2>
-      ) : this.props.userData.about_reducer.error ? (
-        <h2>{this.props.userData.about_reducer.error}</h2>
+      ) : this.props.patientData.about_reducer.error ? (
+        <h2>{this.props.patientData.about_reducer.error}</h2>
       ) : (
    
    
@@ -219,9 +208,7 @@ class FormDashboardPatient extends Component {
 
 const mapStateToProps = (state,props) => {
   return {
-    userData: state,
-    initialValues: { first_name : 'toto'}
-    
+    patientData: state, 
   };
 };
 

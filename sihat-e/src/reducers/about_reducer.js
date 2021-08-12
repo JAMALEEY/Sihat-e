@@ -5,25 +5,13 @@ import _ from 'lodash';
 
 const initialState = {
     loading: false,
-    users: [],
+    patients: [],
     error: ''
   }
-// export default function(state, action)
-
-
-
-// export default  (state = null, action) => {
-//     switch (action.type) {
-//         case FETCH_ABOUT:
-//         return action.payload;
-//         default :  return state;
-//     } 
-// };
-
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-      case 'FETCH_USERS_REQUEST':
+      case 'FETCH_PATIENTS_REQUEST':
         return {
           ...state,
           loading: true
@@ -31,29 +19,19 @@ const reducer = (state = initialState, action) => {
       case FETCH_ABOUT:
         return {
           loading: false,
-          users: action.payload,
+          patients: action.payload,
           error: ''
         }
-      case 'FETCH_USERS_FAILURE':
+      case 'FETCH_PATIENTS_FAILURE':
         return {
           loading: false,
-          users: [],
+          patients: [],
           error: action.payload
         }
       default: return state
     }
   }
   export default reducer
-
-// export default (state = [], action) => {
-//     switch (action.type) {
-//       case FETCH_ABOUT:
-//         return { ...state,  ...action.payload };
-//       default:
-//         return state;
-//     }
-//   };
-  
 
 
 

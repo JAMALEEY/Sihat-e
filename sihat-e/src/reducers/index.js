@@ -36,31 +36,6 @@ const signInResponseReducer = (signInResponse = [], action) => {
     } return signInResponse;
 };
 
-    // if (action.type === FETCH_PATIENT_ABOUT) {
-    //     return {...aboutInfos,  [action.payload]: action.payload};
-    // } return aboutInfos;
-// function aboutInfosReducer (state = [], action)  {
-//     switch (action.type) {
-//         case FETCH_PATIENT_ABOUT:
-//             return [...state,  action.payload];
-//             // return {...aboutInfos, [action.payload]: action.payload  };
-//         default:
-//             return state;
-//     }
-// }
-
-
-
-// export default (aboutInfos = {}, action) => {
-//     switch (action.type) {
-//         case FETCH_PATIENT_ABOUT:
-//             // return { ...aboutInfos, ...(action.payload) }
-//             return {...aboutInfos, [action.payload]: action.payload  };
-//         default:
-//             return aboutInfos;
-//     }
-// }
-
 
 const createAboutReducer = (createAbout = {}, action) => {
     if (action.type === CREATE_ABOUT) {
@@ -76,18 +51,6 @@ const createContactInformationReducer = (state = {}, action) => {
 };
 
 
-// const aboutInfoReducer = (aboutInfos = [], action) => {
-//     if(action.type === FETCH_PATIENT_ABOUT) {
-//         return [...aboutInfos, action.payload  ];
-//     } return aboutInfos;
-// }
-// const aboutInfoReducer = (aboutInfos = [], action) => {
-//     if(action.type === FETCH_PATIENT_ABOUT) {
-//         return [...aboutInfos,  action.payload];
-//     } return aboutInfos;
-// }
-
-    // I pass in a parameter (form) of a value (reducer that I renamed to newsletterReducer) so that I can let redux-form allow the reducer flow automatization 
 export default combineReducers ({
     form: newsletterReducer, signUpPatientState, dashboardPatientForm,
     reducer: logout, about_reducer,
@@ -97,7 +60,7 @@ export default combineReducers ({
     signUpPatienState: signUpPatientReducer,
     logout: logoutReducer,    
     createAbout: createAboutReducer,
-    userData: about_reducer,
+    patientData: about_reducer,
     // createContactInformation :createContactInformationReducer
     
     
