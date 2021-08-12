@@ -8,10 +8,9 @@ import {Field, Form, formValueSelector, reduxForm, touch} from 'redux-form';
 import FormDashboardPatient from './FormDashboardPatient';
 
     class ContactInformation extends Component {
-       
     
 
-    renderInput ({handleSubmit, input, value, meta, label, placeholder, name, id, type, className, initialValues, defaultValue, defaultChecked, checked}) {
+    renderInput ({normalize, handleSubmit, input, value, meta, label, placeholder, name, id, type, className, initialValues, defaultValue, defaultChecked, checked}) {
         return (
             <>
                 <div className="col-sm-6 col-xl-7 input-column">
@@ -26,6 +25,7 @@ import FormDashboardPatient from './FormDashboardPatient';
                     name={name}
                     type={type}
                     id={id}
+                    normalize={normalize}
                     />
                     </div>
                 </div>  
@@ -49,7 +49,7 @@ import FormDashboardPatient from './FormDashboardPatient';
         // }
             // componentDidMount(){
             //     this.props.fetchAboutInfos();
-            //     console.log(fetchAboutInfos())
+            //     console.logfetchAboutInfos())
             // }
 
             
@@ -311,87 +311,30 @@ import FormDashboardPatient from './FormDashboardPatient';
             <form className="custom-form" onSubmit={this.props.handleSubmit(this.onSubmit)}>
     <h1 className="d-xl-flex align-items-xl-start">Informations de contact</h1>
 
-        <div className="form-row form-group">
-            <div className="col-sm-6 col-xl-7 input-column">
-                <Field className="form-control-plaintext" name="first_name" component={this.renderInput} label="Prénom :" placeholder="Votre prénom" type='text' 
+            
+                <div>
+                <Field
+                label="Mobile :"
+                    name="phone"
+                    type="text"
+                    placeholder="Votre numéro de téléphone"
+                    component={this.renderInput} 
                 />
-            </div> 
-        </div>
-
-
-
-
-
-        <div className="form-row form-group">
-
-            <div className="col-sm-6 col-xl-7 input-column">
-                <Field placeholder="Votre nom" name="last_name" label="Nom:" component={this.renderInput} className="form-control" type="text"  
-                >
-                </Field> 
             </div>  
-        </div>
-
-
-        {/* date naissance */}
-        <div className="form-row form-group">
-
-<div className="col-sm-6 col-xl-7 input-column">
-    <Field placeholder="Votre date" name="birth_day" label="date:" component={this.renderInput} className="form-control" type="date" 
-    >
-    </Field> 
-</div>  
-</div>
-        {/* end date naissance */}
-
-        {/* adresse */}
-        
-        <div className="form-row form-group">
-
-            <div className="col-sm-6 col-xl-7 input-column">
-                <Field  placeholder="Votre adresse" name="adress" label="Adresse" component={this.renderInput} className="form-control" type="text" >
-                </Field> 
-            </div>  
-        </div>
-        
-        {/* End adresse */}
-        
-                    {/* Start Radios */}
-        <div className="form-row form-group">
-        <div className="col-sm-6 input-column">
-        <div className="custom-control custom-radio">
-<div className="radioformbox">
-<label>Genre :</label>
-
-    <div className='leschoixradio'>
-            
-    <label> Femme
-            <Field name="bio_sex" component={this.renderInput} type="radio" value="femme"  /> 
-    </label> 
-
-    <label className="hommechoice"> Homme
-            <Field id="radiocheckcheck" name="bio_sex" component={this.renderInput} type="radio"  value='homme'/> 
-    </label>
-        
-    </div>
-    <div className='lesbuttons'>
-    {/* <button id="btnFormDashboard" className="btn btn-light d-xl-flex align-items-xl-start submit-button" type="submit">Enregistrer
-    </button> */}
-    <button id="btnFormDashboard" className="btn btn-light d-xl-flex align-items-xl-start submit-button" type="submit">Enregistrer
-    </button>
-    </div>
-    
-    
-</div>
-        
-</div>
-
-</div>
-{/* End Radios */}
-
 
             
+            <div>
+                <Field
+                label="Ville :"
+                    name="city"
+                    type="text"
+                    placeholder="Votre ville "
+                    component={this.renderInput} 
+                />
+            </div>  
 
-        </div>
+
+
 
             </form>
             </div>
