@@ -1,6 +1,6 @@
 // in order to make requests over our newsletter API we take an instance of this API using axios to apply actions creators on it
 // import api from "../Apis/api";
-import { SIGN_IN, SIGN_OUT, CREATE_NEWSLETTER, CREATE_PATIENT, CREATE_MEDECIN, FETCH_PATIENT, FETCH_MEDECIN, DELETE_PATIENT, DELETE_MEDECIN, TOKEN_KEY, CREATE_ABOUT, FETCH_PATIENT_ABOUT, EDIT_PATIENT_ABOUT, FETCH_ABOUT } from './types';
+import { SIGN_IN, SIGN_OUT, CREATE_NEWSLETTER, CREATE_PATIENT, CREATE_MEDECIN, FETCH_PATIENT, FETCH_MEDECIN, DELETE_PATIENT, DELETE_MEDECIN, TOKEN_KEY, CREATE_ABOUT, FETCH_PATIENT_ABOUT, EDIT_PATIENT_ABOUT, FETCH_ABOUT, CREATE_CONTACTINFO } from './types';
 import history from "../helpers/history";
 import api from '../Apis/api'
 import axios from 'axios';
@@ -83,25 +83,58 @@ import axios from 'axios';
         }
 
 
-        export const fetchLoginMsg = () => {
-            return async ( dispatch ) => {
-                const response = await api.get('/login');
-                dispatch ({
-                    type: 'CREATE_LOGIN',
-                    payload: response.data
-            })
-        }
-        }
+        // export const fetchLoginMsg = () => {
+        //     return async ( dispatch ) => {
+        //         const response = await api.get('/login');
+        //         dispatch ({
+        //             type: 'CREATE_LOGIN',
+        //             payload: response.data
+        //     })
+        // }
+        // }
         
-        export const fetchAboutInfos = () => {
-            return async ( dispatch ) => {
-                const response = await api.get('/patient/fetch');                
-                dispatch({ 
-                    type: FETCH_PATIENT_ABOUT, 
-                    payload: response.data 
-                });
-              }}
+        // export const fetchAboutInfos = () => async dispatch => {
+        //     const response = await api.get('/patient/fetch');
+          
+        //     dispatch({ type: FETCH_ABOUT, payload: response.data });
+        //   };
 
+          
+
+
+// export const fetchAboutInfos = api => {
+//   return dispatch => {
+//     dispatch({
+//       type: FETCH_ABOUT,
+//       fetching: true
+//     })
+//     getSomeAsyncData(dispatch, api)
+//   }
+// }
+
+async function getSomeAsyncData(dispatch, api) {
+  try {
+    const data = await api.get('/patient/fetch').then(res => res.data)
+    dispatch({
+      type: FETCH_ABOUT,
+      data: data
+    })
+  } catch (err) {
+    dispatch({
+      type: FETCH_ABOUT,
+      data: null
+    })
+  }
+  dispatch({
+    type: FETCH_ABOUT,
+    fetching: false
+  })
+}
+
+        // export const fetchAboutInfos = () => async () => {
+        //         const response = await api.get('/patient/fetch');
+        //       };
+    
         // export const fetchAboutInfos = () => {
         //     const token = localStorage.getItem("TOKEN");
         //     fetch(api)
@@ -181,4 +214,17 @@ import axios from 'axios';
             dispatch({ type: EDIT_PATIENT_ABOUT, payload: response.data });
             // history.push('/dashboardPatient');
         };
+
+        export const creatContactInformation = (formValues) => {
+            return async (dispatch) => {
+                const response = await api.post('patient/create', formValues)
+                dispatch ({
+                    type: CREATE_CONTACTINFO,
+                    payload: response.data
+                })
+                if(response.status == 200 ) {
+                    history.push('/edit')
+            }
+        }}
+
         

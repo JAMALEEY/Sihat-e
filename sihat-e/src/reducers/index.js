@@ -7,12 +7,13 @@ import { reducer as createAbout } from "redux-form";
 import { reducer as dashboardPatientForm } from 'redux-form'
 import { reducer as aboutInfos }  from "redux-form";
 import { reducer as signInResponse }  from "redux-form";
-// import aboutInfosReducer from './aboutInfosReducer'
+import aboutInfosReducer from './about_reducer'
 
 // To manage my multiple reducers to be one single reducer ill use CombineReducers that takes parameters with what ill call inside my project
 import { combineReducers } from "redux";
 // import reducer from './aboutInfosReducer';
 import { SIGN_IN, CREATE_PATIENT, SIGN_OUT, CREATE_ABOUT, FETCH_PATIENT_ABOUT} from "../actions/types";
+import about_reducer from "./about_reducer";
 
 
 const signUpPatientReducer = (signUpPatientState = {}, action) => {
@@ -38,15 +39,15 @@ const signInResponseReducer = (signInResponse = [], action) => {
     // if (action.type === FETCH_PATIENT_ABOUT) {
     //     return {...aboutInfos,  [action.payload]: action.payload};
     // } return aboutInfos;
-function aboutInfosReducer (state = [], action)  {
-    switch (action.type) {
-        case FETCH_PATIENT_ABOUT:
-            return [...state,  action.payload];
-            // return {...aboutInfos, [action.payload]: action.payload  };
-        default:
-            return state;
-    }
-}
+// function aboutInfosReducer (state = [], action)  {
+//     switch (action.type) {
+//         case FETCH_PATIENT_ABOUT:
+//             return [...state,  action.payload];
+//             // return {...aboutInfos, [action.payload]: action.payload  };
+//         default:
+//             return state;
+//     }
+// }
 
 
 
@@ -84,13 +85,16 @@ const createAboutReducer = (createAbout = {}, action) => {
     // I pass in a parameter (form) of a value (reducer that I renamed to newsletterReducer) so that I can let redux-form allow the reducer flow automatization 
 export default combineReducers ({
     form: newsletterReducer, signIn, signUpPatientState, dashboardPatientForm,
-    reducer: logout, createAbout, aboutInfos,
+    reducer: logout, createAbout,
+
     signInResponse: signInResponseReducer,
     signUpPatienState: signUpPatientReducer,
     logout: logoutReducer,
     
     createAbout: createAboutReducer,
-    aboutInfos: aboutInfosReducer
+    aboutInfos: about_reducer
+    
+    
 });
 
 

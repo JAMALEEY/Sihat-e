@@ -73,6 +73,7 @@ import {Field, formValueSelector, reduxForm} from 'redux-form';
 
                   let checkIfTaken = ''
                   if ( signInResponse.length == 1 && validate(false)){
+                    console.log(signInResponse)
                     checkIfTaken = 
                       <>
                       <div className="taken"> 

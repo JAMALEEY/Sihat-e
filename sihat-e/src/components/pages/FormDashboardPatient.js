@@ -65,6 +65,7 @@ import { Field, reduxForm } from 'redux-form';
 
 
 render() {
+    
     return (
         <>
     <div className="d-xl-flex justify-content-xl-center align-items-xl-center">
