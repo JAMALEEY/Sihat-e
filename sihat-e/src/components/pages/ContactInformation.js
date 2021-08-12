@@ -1,16 +1,15 @@
-import _ from 'lodash';
+
 // a helper lib that allows us to pick aboutEDITS object values (first name etc) to initial values in reduxform
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import {  logout, creatContactInformation  } from '../../actions'
+import {  logout, createContactInformation  } from '../../actions'
 import {Field, Form, formValueSelector, reduxForm, touch} from 'redux-form';
 import FormDashboardPatient from './FormDashboardPatient';
 
-    class ContactInformation extends Component {
-    
+        
 
-    renderInput ({normalize, handleSubmit, input, value, meta, label, placeholder, name, id, type, className, initialValues, defaultValue, defaultChecked, checked}) {
+    const renderInput = ({ input, value, meta, label, placeholder, name, id, type, className, initialValues, defaultValue, defaultChecked, checked}) => { 
         return (
             <>
                 <div className="col-sm-6 col-xl-7 input-column">
@@ -21,23 +20,27 @@ import FormDashboardPatient from './FormDashboardPatient';
                     autoComplete='none'
                     placeholder={placeholder} 
                     onChange={input.onChange}
-                    // value={input.value} 
+                    value={input.value} 
                     name={name}
                     type={type}
                     id={id}
-                    normalize={normalize}
+                    // normalize={normalize}
                     />
                     </div>
                 </div>  
             </>
         )
         }
+        
+    const ContactInformation = ({handleSubmit, createContactInformation, logout}) =>  {
 
-        onSubmit = (formValues) => {
-            this.props.creatContactInformation(formValues);
-    
+        const onSubmit = (formValues) => {
+            createContactInformation(formValues);
+
         };
-    
+        // const onSubmit = (formValues) => {
+        //     createLogin(formValues)
+        //   }
     
 
 
@@ -53,11 +56,12 @@ import FormDashboardPatient from './FormDashboardPatient';
             // }
 
             
-            patientDashboarLogout = () => {
-                this.props.logout();
+            function patientDashboarLogout () {
+                 logout();
+                
             }
 
-            render() {
+           
                 
                 return(
                 <>
@@ -292,7 +296,7 @@ import FormDashboardPatient from './FormDashboardPatient';
                         <div className="nav-item dropdown no-arrow"><a aria-expanded="false" data-toggle="dropdown" className="dropdown-toggle nav-link" href="#"><span className="d-none d-lg-inline mr-2 text-gray-600 small">Valerie Luna</span><img className="border rounded-circle img-profile" src="avatars/avatar1.jpeg" /></a>
                         <div className="dropdown-menu shadow dropdown-menu-right animated--grow-in"><a className="dropdown-item" href="#"><i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400" />&nbsp;Profile</a><a className="dropdown-item" href="#"><i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400" />&nbsp;Settings</a><a className="dropdown-item" href="#"><i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400" />&nbsp;Activity log</a>
                         <div className="dropdown-divider"  />
-                            <a className="dropdown-item" href="#" onClick={this.patientDashboarLogout} >
+                            <a className="dropdown-item" href="#" onClick={patientDashboarLogout} >
                                 <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"/>&nbsp;Logout</a>
 
                         </div>
@@ -308,7 +312,9 @@ import FormDashboardPatient from './FormDashboardPatient';
                         {/* Start Form */}
         <div className="row register-form">
             <div className="col-md-8 col-xl-10 offset-md-2 offset-xl-0">
-            <form className="custom-form" onSubmit={this.props.handleSubmit(this.onSubmit)}>
+            <form className="custom-form" method='post' 
+            // onSubmit={this.props.handleSubmit(this.onSubmit)
+            onSubmit={handleSubmit(onSubmit)} >
     <h1 className="d-xl-flex align-items-xl-start">Informations de contact</h1>
 
             
@@ -318,7 +324,7 @@ import FormDashboardPatient from './FormDashboardPatient';
                     name="phone"
                     type="text"
                     placeholder="Votre numéro de téléphone"
-                    component={this.renderInput} 
+                    component={renderInput} 
                 />
             </div>  
 
@@ -329,19 +335,20 @@ import FormDashboardPatient from './FormDashboardPatient';
                     name="city"
                     type="text"
                     placeholder="Votre ville "
-                    component={this.renderInput} 
+                    component={renderInput} 
                 />
             </div>  
 
 
 
-
+            <button id="btnFormDashboard" className="btn btn-light d-xl-flex align-items-xl-start submit-button" type="submit">Enregistrer
+            </button>
+            
             </form>
             </div>
         </div>
         {/* End Form */}
-        <button id="btnFormDashboard" className="btn btn-light d-xl-flex align-items-xl-start submit-button" type="submit">Enregistrer
-    </button>
+  
         </div>
     </div>
     </div>
@@ -355,7 +362,7 @@ import FormDashboardPatient from './FormDashboardPatient';
       </>
     );
   }
-}
 
-export default reduxForm({ form: 'ContactInformation'})(connect(null, {creatContactInformation})(ContactInformation))
+
+export default reduxForm({ form: 'ContactInformation'})(connect(null, {createContactInformation, logout})(ContactInformation))
 

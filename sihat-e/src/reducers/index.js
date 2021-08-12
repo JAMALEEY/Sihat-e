@@ -1,18 +1,18 @@
 // I import reducer from the redux-form library so that this reducer manage automatically the states inside the reduxStore
 import { reducer as newsletterReducer } from "redux-form";
-import { reducer as signIn } from "redux-form";
+// import { reducer as signIn } from "redux-form";
 import { reducer as signUpPatientState } from "redux-form";
 import { reducer as logout } from "redux-form";
-import { reducer as createAbout } from "redux-form";
+// import { reducer as createAbout } from "redux-form";
 import { reducer as dashboardPatientForm } from 'redux-form'
-import { reducer as aboutInfos }  from "redux-form";
-import { reducer as signInResponse }  from "redux-form";
-import aboutInfosReducer from './about_reducer'
+// import { reducer as aboutInfos }  from "redux-form";
+// import { reducer as signInResponse }  from "redux-form";
+// import aboutInfosReducer from './about_reducer'
 
 // To manage my multiple reducers to be one single reducer ill use CombineReducers that takes parameters with what ill call inside my project
 import { combineReducers } from "redux";
 // import reducer from './aboutInfosReducer';
-import { SIGN_IN, CREATE_PATIENT, SIGN_OUT, CREATE_ABOUT, FETCH_PATIENT_ABOUT} from "../actions/types";
+import { SIGN_IN, CREATE_PATIENT, SIGN_OUT, CREATE_ABOUT, CREATE_CONTACTINFO} from "../actions/types";
 import about_reducer from "./about_reducer";
 
 
@@ -22,7 +22,6 @@ const signUpPatientReducer = (signUpPatientState = {}, action) => {
     } return signUpPatientState;
 };
 
-
 const logoutReducer = (logout = {}, action) => {
     if (action.type === SIGN_OUT) {
         return {...logout, [action.payload]: action.payload }
@@ -30,8 +29,9 @@ const logoutReducer = (logout = {}, action) => {
 };
 
 
+
 const signInResponseReducer = (signInResponse = [], action) => {
-    if (action.type === 'SIGN_IN') {
+    if (action.type === SIGN_IN) {
         return [...signInResponse, action.payload];
     } return signInResponse;
 };
@@ -70,7 +70,7 @@ const createAboutReducer = (createAbout = {}, action) => {
 
 
 const createContactInformationReducer = (state = {}, action) => {
-    if (action.type === CREATE_ABOUT) {
+    if (action.type === CREATE_CONTACTINFO) {
         return {...state, [action.payload]: action.payload  };
     } return state;
 };
@@ -89,9 +89,10 @@ const createContactInformationReducer = (state = {}, action) => {
 
     // I pass in a parameter (form) of a value (reducer that I renamed to newsletterReducer) so that I can let redux-form allow the reducer flow automatization 
 export default combineReducers ({
-    form: newsletterReducer, signIn, signUpPatientState, dashboardPatientForm,
-    reducer: logout, createAbout,
-
+    form: newsletterReducer, signUpPatientState, dashboardPatientForm,
+    reducer: logout,
+    
+    // signIn: signInReducer,
     signInResponse: signInResponseReducer,
     signUpPatienState: signUpPatientReducer,
     logout: logoutReducer,
@@ -126,67 +127,3 @@ export default combineReducers ({
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import { apiRequest } from "../actions/api";
-
-
-
-// import { API_REQUEST, apiError, apiSuccess } from "../actions/api";
-
-
-
-// nb : each reducer updates a different part of the application state in response to dispatched redux actions.
-
-
-// const SERVER_URL = `http://127.0.0.1:8000`;
-
-// export const appMiddleware = () => next => action => {
-//   next(action);
-//   switch (action.type) {
-//     case LOGIN: {
-//       next(
-//         apiRequest({
-//           url: `${SERVER_URL}/login`,
-//           method: "POST",
-//           data: action.payload
-//         })
-//       );
-//       break;
-//     }
-//     default:
-//       break;
-//   }
-// };
-
-
-
-// export const apiMiddleware = ({ dispatch }) => next => action => {
-//   next(action);
-
-//   if (action.type === API_REQUEST) {
-//     const { url, method, data } = action.meta;
-//     axios({
-//       method,
-//       url,
-//       data
-//     })
-//       .then(({ data }) => dispatch(apiSuccess({ response: data })))
-//       .catch(error => {
-//         console.log(error);
-//         dispatch(apiError({ error: error.response.data }));
-//       });
-//   }
-// };

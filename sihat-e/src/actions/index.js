@@ -1,9 +1,18 @@
 // in order to make requests over our newsletter API we take an instance of this API using axios to apply actions creators on it
 // import api from "../Apis/api";
-import { SIGN_IN, SIGN_OUT, CREATE_NEWSLETTER, CREATE_PATIENT, CREATE_MEDECIN, FETCH_PATIENT, FETCH_MEDECIN, DELETE_PATIENT, DELETE_MEDECIN, TOKEN_KEY, CREATE_ABOUT, FETCH_PATIENT_ABOUT, EDIT_PATIENT_ABOUT, FETCH_ABOUT, CREATE_CONTACTINFO } from './types';
+import {
+CREATE_NEWSLETTER,
+TOKEN_KEY,
+CREATE_PATIENT,
+SIGN_IN,
+SIGN_OUT,
+CREATE_ABOUT,
+EDIT_PATIENT_ABOUT,
+FETCH_ABOUT,
+CREATE_CONTACTINFO
+} from './types'
 import history from "../helpers/history";
 import api from '../Apis/api'
-import axios from 'axios';
 
 // Adding all the action creators that we might work with
 
@@ -80,6 +89,17 @@ import axios from 'axios';
                 type: SIGN_OUT,
             });
             }
+        }
+
+
+        export const fetchLoginMsg = () => {
+            return async ( dispatch ) => {
+                const response = await api.get('/');
+                dispatch ({
+                    type: 'CREATE_LOGIN',
+                    payload: response.data
+            })
+        }
         }
 
 
@@ -168,6 +188,7 @@ import axios from 'axios';
             }
         }}
 
+
      //       return async ( dispatch ) => {
             //     const response = await api.post('/login', formValues);
             // dispatch ({
@@ -221,10 +242,10 @@ import axios from 'axios';
             dispatch({ type: FETCH_ABOUT, payload: response.data });
             // history.push('/dashboardPatient');
         };
-
-        export const creatContactInformation = (formValues) => {
+        
+        export const createContactInformation = (formValues) => {
             return async (dispatch) => {
-                const response = await api.post('patient/update', formValues)
+                const response = await api.put('patient/update', formValues)
                 dispatch ({
                     type: CREATE_CONTACTINFO,
                     payload: response.data
