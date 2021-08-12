@@ -219,7 +219,8 @@ render() {
 }
 
 FormDashboardPatient = reduxForm({
-    form: 'aboutInfosForm' // a unique identifier for this form
+    form: 'aboutInfosForm', // a unique identifier for this form
+    enableReinitialize: true
   })(FormDashboardPatient)
   
   // You have to connect() to any reducers that you wish to connect to yourself

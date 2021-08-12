@@ -90,16 +90,15 @@ const createContactInformationReducer = (state = {}, action) => {
     // I pass in a parameter (form) of a value (reducer that I renamed to newsletterReducer) so that I can let redux-form allow the reducer flow automatization 
 export default combineReducers ({
     form: newsletterReducer, signUpPatientState, dashboardPatientForm,
-    reducer: logout,
+    reducer: logout, about_reducer,
     
     // signIn: signInReducer,
     signInResponse: signInResponseReducer,
     signUpPatienState: signUpPatientReducer,
-    logout: logoutReducer,
-    
+    logout: logoutReducer,    
     createAbout: createAboutReducer,
-    aboutInfos: about_reducer,
-    createContactInformation :createContactInformationReducer
+    userData: about_reducer,
+    // createContactInformation :createContactInformationReducer
     
     
 });

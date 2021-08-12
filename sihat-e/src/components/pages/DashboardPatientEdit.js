@@ -330,7 +330,7 @@ import {bindActionCreators} from 'redux'
                 </nav></div></div> 
                 <div>
                 
-        <FormDashboardPatient
+        <FormDashboardPatient 
         // initialValues={_.pick(this.props.aboutInfos.first_name, 'first_name')} 
         // initialValues={_.pick(this.props.aboutInfos, 'first_name', 'last_name', 'birth_day', 'date', 'adress', 'bio_sex'	)} 
        

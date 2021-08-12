@@ -3,17 +3,47 @@
 import { FETCH_ABOUT } from "../actions/types";
 import _ from 'lodash';
 
+const initialState = {
+    loading: false,
+    users: [],
+    error: ''
+  }
 // export default function(state, action)
 
 
 
-export default  (state = null, action) => {
+// export default  (state = null, action) => {
+//     switch (action.type) {
+//         case FETCH_ABOUT:
+//         return action.payload;
+//         default :  return state;
+//     } 
+// };
+
+
+const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case FETCH_ABOUT:
-        return action.payload;
-        default :  return state;
-    } 
-};
+      case 'FETCH_USERS_REQUEST':
+        return {
+          ...state,
+          loading: true
+        }
+      case FETCH_ABOUT:
+        return {
+          loading: false,
+          users: action.payload,
+          error: ''
+        }
+      case 'FETCH_USERS_FAILURE':
+        return {
+          loading: false,
+          users: [],
+          error: action.payload
+        }
+      default: return state
+    }
+  }
+  export default reducer
 
 // export default (state = [], action) => {
 //     switch (action.type) {
