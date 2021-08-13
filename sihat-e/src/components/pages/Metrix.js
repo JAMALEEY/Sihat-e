@@ -8,29 +8,6 @@ import {Field, Form, formValueSelector, reduxForm, touch} from 'redux-form';
 import FormContactInformation from './FormContactInformation';
 
         
-
-    // const renderInput = ({ input, value, meta, label, placeholder, name, id, type, className, initialValues, defaultValue, defaultChecked, checked}) => { 
-    //     return (
-    //         <>
-    //             <div className="col-sm-6 col-xl-7 input-column">
-    //                 <div className="form-row form-group">
-    //                 <label className="active col-form-label d-xl-flex align-items-xl-start">{label}</label>
-    //                 <input {...input}
-    //                 className={className}
-    //                 autoComplete='none'
-    //                 placeholder={placeholder} 
-    //                 onChange={input.onChange}
-    //                 value={input.value} 
-    //                 name={name}
-    //                 type={type}
-    //                 id={id}
-    //                 // normalize={normalize}
-    //                 />
-    //                 </div>
-    //             </div>  
-    //         </>
-    //     )
-    //     }
         
     const Metrix = ({handleSubmit, fetchAboutInfos, createContactInformation, logout, props, patientData}) =>  {
 
@@ -38,12 +15,18 @@ import FormContactInformation from './FormContactInformation';
             fetchAboutInfos();
         }, [])
 
-
-        // const onSubmit = (formValues) => {
-        //     createContactInformation(formValues);
-
-        // };
-
+        
+        const renderCreate = () => {
+            return (
+                <div style={{ textAlign: 'left' }}>
+                    <i class="fas fa-plus">
+                <Link to="/metrix/new" className="ui button primary">
+                    Create Stream
+                </Link>
+                </i>
+                </div>
+            );
+        }
             
             const patientDashboarLogout =  () => {
                 logout();
