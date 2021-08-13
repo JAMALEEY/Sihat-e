@@ -90,19 +90,6 @@ export const fetchLoginMsg = () => {
   };
 };
 
-export const createAbout = (formValues) => {
-  return async (dispatch) => {
-      const response = await api.post('patient/create', formValues)
-      dispatch ({
-          type: CREATE_ABOUT,
-          payload: response.data
-      })
-      if(response.status == 200 ) {
-          history.push('/edit')
-  }
-}}
-
-
 
 export const editAboutInfos = (formValues) => async (dispatch) => {
   const response = await api.put("patient/update", formValues);
