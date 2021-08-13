@@ -18,12 +18,9 @@ class DashboardPatient extends Component {
   };
 
   componentDidMount() {
-    // this.props.fetchAboutInfos();
+    this.props.fetchAboutInfos();
   }
 
-  onSubmit = (formValues) => {
-    this.props.createAbout(formValues);
-  };
 
   patientDashboarLogout = () => {
     this.props.logout();
@@ -69,7 +66,7 @@ class DashboardPatient extends Component {
                     <div className="category-content">
                       <ul id="fruits-nav" className="nav flex-column">
                         <li className="nav-item1">
-                          <Link to="#" className="nav-link active">
+                          <Link to="dashboardPatient" className="nav-link active">
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="active fa fa-user-circle-o fa-2x d-xl-flex align-items-xl-center "
@@ -82,7 +79,7 @@ class DashboardPatient extends Component {
                           </Link>
                         </li>
                         <li className="nav-item2">
-                          <Link to="#" className="nav-link" activeClassName="active">
+                          <Link to="/contactinformation" className="nav-link" activeClassName="active">
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fa fa-vcard d-xl-flex align-items-xl-center d-xl-flex align-items-xl-center fa-2x "
@@ -95,7 +92,7 @@ class DashboardPatient extends Component {
                           </Link>
                         </li>
                         <li className="nav-item3">
-                          <a href="#" className="nav-link">
+                          <Link to="#" className="nav-link">
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fa fa-bar-chart-o d-xl-flex align-items-xl-center fa-2x "
@@ -105,10 +102,10 @@ class DashboardPatient extends Component {
                                 Métriques de santé.
                               </h5>
                             </div>
-                          </a>
+                          </Link>
                         </li>
                         <li className="nav-item4">
-                          <a href="#" className="nav-link">
+                          <Link to="#" className="nav-link">
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fa fa-heartbeat d-xl-flex align-items-xl-center fa-2x "
@@ -118,10 +115,10 @@ class DashboardPatient extends Component {
                                 Conditions / Symptomes.
                               </h5>
                             </div>
-                          </a>
+                          </Link>
                         </li>
                         <li className="nav-item5">
-                          <a href="#" className="nav-link">
+                          <Link to="#" className="nav-link">
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fa fa-file-powerpoint-o d-xl-flex align-items-xl-center fa-2x "
@@ -131,10 +128,10 @@ class DashboardPatient extends Component {
                                 Ordonnances.
                               </h5>
                             </div>
-                          </a>
+                          </Link>
                         </li>
                         <li className="nav-item6">
-                          <a href="#" className="nav-link">
+                          <Link to="#" className="nav-link">
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fa fa-leaf d-xl-flex align-items-xl-center fa-2x "
@@ -144,10 +141,10 @@ class DashboardPatient extends Component {
                                 Médicaments.
                               </h5>
                             </div>
-                          </a>
+                          </Link>
                         </li>
                         <li className="nav-item7">
-                          <a href="#" className="nav-link">
+                          <Link to="#" className="nav-link">
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fa fa-low-vision d-xl-flex align-items-xl-center  fa-2x "
@@ -157,10 +154,10 @@ class DashboardPatient extends Component {
                                 Allergies.
                               </h5>
                             </div>
-                          </a>
+                          </Link>
                         </li>
                         <li className="nav-item8">
-                          <a href="#" className="nav-link">
+                          <Link to="#" className="nav-link">
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fa fa-stethoscope d-xl-flex align-items-xl-center fa-2x "
@@ -170,10 +167,10 @@ class DashboardPatient extends Component {
                                 Traitement / procédures.
                               </h5>
                             </div>
-                          </a>
+                          </Link>
                         </li>
                         <li className="nav-item9">
-                          <a href="#" className="nav-link">
+                          <Link to="#" className="nav-link">
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fa fa-user-md d-xl-flex align-items-xl-center fa-2x "
@@ -183,10 +180,10 @@ class DashboardPatient extends Component {
                                 Vaccinations.
                               </h5>
                             </div>
-                          </a>
+                          </Link>
                         </li>
                         <li className="nav-item10">
-                          <a href="#" className="nav-link">
+                          <Link to="#" className="nav-link">
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fa fa-flask d-xl-flex align-items-xl-center fa-2x "
@@ -196,10 +193,10 @@ class DashboardPatient extends Component {
                                 Tests de laboratoire.
                               </h5>
                             </div>
-                          </a>
+                          </Link>
                         </li>
                         <li className="nav-item11">
-                          <a href="#" className="nav-link">
+                          <Link to="#" className="nav-link">
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fa fa-grav d-xl-flex align-items-xl-center fa-2x "
@@ -209,10 +206,10 @@ class DashboardPatient extends Component {
                                 Mode de vie.
                               </h5>
                             </div>
-                          </a>
+                          </Link>
                         </li>
                         <li className="nav-item12">
-                          <a href="#" className="nav-link">
+                          <Link to="#" className="nav-link">
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fa fa-life-saver d-xl-flex align-items-xl-center fa-2x "
@@ -222,7 +219,7 @@ class DashboardPatient extends Component {
                                 Assurance.
                               </h5>
                             </div>
-                          </a>
+                          </Link>
                         </li>
                       </ul>
                     </div>
@@ -244,14 +241,14 @@ class DashboardPatient extends Component {
                     <div className="container-fluid">
                       <ul className="navbar-nav flex-nowrap ml-auto">
                         <li className="nav-item dropdown d-sm-none no-arrow">
-                          <a
+                          <Link
                             aria-expanded="false"
                             data-toggle="dropdown"
                             className="dropdown-toggle nav-link"
-                            href="#"
+                            to="#"
                           >
                             <i className="fas fa-search" />
-                          </a>
+                          </Link>
                           <div
                             className="dropdown-menu dropdown-menu-right p-3 animated--grow-in"
                             aria-labelledby="searchDropdown"
@@ -277,22 +274,22 @@ class DashboardPatient extends Component {
                         </li>
                         <li className="nav-item dropdown no-arrow mx-1">
                           <div className="nav-item dropdown no-arrow">
-                            <a
+                            <Link
                               aria-expanded="false"
                               data-toggle="dropdown"
                               className="dropdown-toggle nav-link"
-                              href="#"
+                              to="#"
                             >
                               <span className="badge badge-danger badge-counter">
                                 3+
                               </span>
                               <i className="fas fa-bell fa-fw" />
-                            </a>
+                            </Link>
                             <div className="dropdown-menu dropdown-menu-right dropdown-list animated--grow-in">
                               <h6 className="dropdown-header">alerts center</h6>
-                              <a
+                              <Link
                                 className="dropdown-item d-flex align-items-center"
-                                href="#"
+                                to="#"
                               >
                                 <div className="mr-3">
                                   <div className="bg-primary icon-circle">
@@ -307,10 +304,10 @@ class DashboardPatient extends Component {
                                     A new monthly report is ready to download!
                                   </p>
                                 </div>
-                              </a>
-                              <a
+                              </Link>
+                              <Link
                                 className="dropdown-item d-flex align-items-center"
-                                href="#"
+                                to="#"
                               >
                                 <div className="mr-3">
                                   <div className="bg-success icon-circle">
@@ -326,10 +323,10 @@ class DashboardPatient extends Component {
                                     account!
                                   </p>
                                 </div>
-                              </a>
-                              <a
+                              </Link>
+                              <Link
                                 className="dropdown-item d-flex align-items-center"
-                                href="#"
+                                to="#"
                               >
                                 <div className="mr-3">
                                   <div className="bg-warning icon-circle">
@@ -345,35 +342,35 @@ class DashboardPatient extends Component {
                                     spending for your account.
                                   </p>
                                 </div>
-                              </a>
-                              <a
+                              </Link>
+                              <Link
                                 className="dropdown-item text-center small text-gray-500"
-                                href="#"
+                                to="#"
                               >
                                 Show All Alerts
-                              </a>
+                              </Link>
                             </div>
                           </div>
                         </li>
 
                         <li className="nav-item dropdown no-arrow mx-1">
                           <div className="nav-item dropdown no-arrow">
-                            <a
+                            <Link
                               aria-expanded="false"
                               data-toggle="dropdown"
                               className="dropdown-toggle nav-link"
-                              href="#"
+                              to="#"
                             >
                               <span className="badge badge-danger badge-counter">
                                 7
                               </span>
                               <i className="fas fa-envelope fa-fw" />
-                            </a>
+                            </Link>
                             <div className="dropdown-menu dropdown-menu-right dropdown-list animated--grow-in">
                               <h6 className="dropdown-header">alerts center</h6>
-                              <a
+                              <Link
                                 className="dropdown-item d-flex align-items-center"
-                                href="#"
+                                to="#"
                               >
                                 <div className="dropdown-list-image mr-3">
                                   <img
@@ -393,10 +390,10 @@ class DashboardPatient extends Component {
                                     Emily Fowler - 58m
                                   </p>
                                 </div>
-                              </a>
-                              <a
+                              </Link>
+                              <Link
                                 className="dropdown-item d-flex align-items-center"
-                                href="#"
+                                to="#"
                               >
                                 <div className="dropdown-list-image mr-3">
                                   <img
@@ -416,10 +413,10 @@ class DashboardPatient extends Component {
                                     Jae Chun - 1d
                                   </p>
                                 </div>
-                              </a>
-                              <a
+                              </Link>
+                              <Link
                                 className="dropdown-item d-flex align-items-center"
-                                href="#"
+                                to="#"
                               >
                                 <div className="dropdown-list-image mr-3">
                                   <img
@@ -440,10 +437,10 @@ class DashboardPatient extends Component {
                                     Morgan Alvarez - 2d
                                   </p>
                                 </div>
-                              </a>
-                              <a
+                              </Link>
+                              <Link
                                 className="dropdown-item d-flex align-items-center"
-                                href="#"
+                                to="#"
                               >
                                 <div className="dropdown-list-image mr-3">
                                   <img
@@ -465,13 +462,13 @@ class DashboardPatient extends Component {
                                     Chicken the Dog · 2w
                                   </p>
                                 </div>
-                              </a>
-                              <a
+                              </Link>
+                              <Link
                                 className="dropdown-item text-center small text-gray-500"
-                                href="#"
+                                to="#"
                               >
                                 Show All Alerts
-                              </a>
+                              </Link>
                             </div>
                           </div>
                           <div
@@ -482,11 +479,11 @@ class DashboardPatient extends Component {
                         <div className="d-none d-sm-block topbar-divider" />
                         <li className="nav-item dropdown no-arrow">
                           <div className="nav-item dropdown no-arrow">
-                            <a
+                            <Link
                               aria-expanded="false"
                               data-toggle="dropdown"
                               className="dropdown-toggle nav-link"
-                              href="#"
+                              to="#"
                             >
                               <span className="d-none d-lg-inline mr-2 text-gray-600 small">
                                 Valerie Luna
@@ -495,29 +492,29 @@ class DashboardPatient extends Component {
                                 className="border rounded-circle img-profile"
                                 src="avatars/avatar1.jpeg"
                               />
-                            </a>
+                            </Link>
                             <div className="dropdown-menu shadow dropdown-menu-right animated--grow-in">
-                              <a className="dropdown-item" href="#">
+                              <Link className="dropdown-item" to="#">
                                 <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400" />
                                 &nbsp;Profile
-                              </a>
-                              <a className="dropdown-item" href="#">
+                              </Link>
+                              <Link className="dropdown-item" to="#">
                                 <i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400" />
                                 &nbsp;Settings
-                              </a>
-                              <a className="dropdown-item" href="#">
+                              </Link>
+                              <Link className="dropdown-item" to="#">
                                 <i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400" />
                                 &nbsp;Activity log
-                              </a>
+                              </Link>
                               <div className="dropdown-divider" />
-                              <a
+                              <Link
                                 className="dropdown-item"
-                                href="#"
+                                to="#"
                                 onClick={this.patientDashboarLogout}
                               >
                                 <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400" />
                                 &nbsp;Logout
-                              </a>
+                              </Link>
                             </div>
                           </div>
                         </li>
@@ -537,7 +534,7 @@ class DashboardPatient extends Component {
       */}
                 <FormDashboardPatient
                   initialValues={this.props.patientData.about_reducer.patients}
-                  onSubmit={this.onSubmit}
+                 
                 />
               </div>
             </div>
@@ -568,4 +565,5 @@ DashboardPatient = connect(
 
 export default reduxForm({
   form: "aboutInfosForm", // a unique name for this form
+  enableReinitialize: true
 })(DashboardPatient);

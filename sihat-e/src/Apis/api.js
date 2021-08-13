@@ -18,6 +18,7 @@ axiosInstance.interceptors.request.use(
     const token = localStorage.getItem(TOKEN_KEY);
     if (token) {
         config.headers.Authorization = `Bearer ${token}`;
+        // config.headers.Content-Type = 'application/json';
     } 
     return config;
   },

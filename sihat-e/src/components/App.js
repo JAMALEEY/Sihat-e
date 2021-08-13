@@ -28,7 +28,7 @@ import FormDashboardPatient from './pages/FormDashboardPatient';
 import DashboardPatientEdit from './pages/DashboardPatientEdit';
 import ContactInformation from './pages/ContactInformation';
 import AboutList from './pages/AboutList';
-
+import Metrix from './pages/Metrix';
 
 
 const  App = (props) => {
@@ -56,6 +56,7 @@ const  App = (props) => {
                                 <PublicRoute path="/registerMedecin" exact component={SignUpMedecin} />
                                 <PublicRoute path="/contactinformation" exact component={ContactInformation} />
                                 <PublicRoute path="/aboutlist" exact component={AboutList} />
+                                <PublicRoute path="/metrix" exact component={Metrix} />
                                 <Redirect from="*" to="/" />
     </Switch>
     </Router>

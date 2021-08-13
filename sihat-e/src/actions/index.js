@@ -90,9 +90,23 @@ export const fetchLoginMsg = () => {
   };
 };
 
+export const createAbout = (formValues) => {
+  return async (dispatch) => {
+    const response = await api.post("patient/create", formValues);
+    window.location.reload()    
+    
+    dispatch({
+      type: CREATE_ABOUT,
+      payload: response.data,
+    });
+
+  };
+};
+
 
 export const editAboutInfos = (formValues) => async (dispatch) => {
   const response = await api.put("patient/update", formValues);
+  window.location.reload()    
 
   dispatch({ type: EDIT_PATIENT_ABOUT, payload: response.data });
   // history.push('/dashboardPatient');

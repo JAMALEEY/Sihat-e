@@ -5,12 +5,13 @@ import { logout, createAbout, fetchAboutInfos, editAboutInfos } from "../../acti
 import { Field, reduxForm , Link } from "redux-form";
 import { first } from "lodash";
 
-class FormDashboardPatient extends Component {
+class FormContactInformation extends Component {
 
   componentDidMount() {
   //  this.props.fetchAboutInfos();
-  console.log(this.props)
+   console.log(this.props)
   //  console.log(this.props.patientData.about_reducer.patients.length)
+
   }
 
   renderInput({
@@ -76,7 +77,6 @@ class FormDashboardPatient extends Component {
 
     // alert(this.props.patientData.about_reducer.patients)
     if (typeof this.props.patientData.about_reducer.patients === 'undefined' ) {
-
       this.props.createAbout(formValues);
     } else {
       this.props.editAboutInfos(formValues);
@@ -87,6 +87,7 @@ class FormDashboardPatient extends Component {
 
 
   render() {
+    console.log(this.props)
 
     return this.props.patientData.about_reducer.loading ? (
         <h2>Loading</h2>
@@ -104,17 +105,17 @@ class FormDashboardPatient extends Component {
               <div className="row register-form">
                 <div className="col-md-8 col-xl-10 offset-md-2 offset-xl-0">
                   <form className="custom-form" method='post' onSubmit={this.props.handleSubmit(this.onSubmit)}>
-                    <h1 className="d-xl-flex align-items-xl-start">A propos</h1>
+                    <h1 className="d-xl-flex align-items-xl-start">Mes informations</h1>
 
                     <div className="form-row form-group">
                       <div className="col-sm-6 col-xl-7 input-column">
                         <Field
-                          className="form-control-plaintext"
-                          name="first_name"
-                          component={this.renderInput}
-                          label="Prénom :"
-                          placeholder="Votre prénom"
+                          className="form-control"
+                          name="city"
+                          label="Ville :"
+                          placeholder="Votre ville"
                           type="text"
+                          component={this.renderInput}
                         />
                       </div>
                     </div>
@@ -122,9 +123,10 @@ class FormDashboardPatient extends Component {
                     <div className="form-row form-group">
                       <div className="col-sm-6 col-xl-7 input-column">
                         <Field
-                          placeholder="Votre nom"
-                          name="last_name"
-                          label="Nom:"
+                        
+                          placeholder="Votre numéro de téléphone"
+                          name="phone"
+                          label="Mobile :"
                           component={this.renderInput}
                           className="form-control"
                           type="text"
@@ -134,76 +136,65 @@ class FormDashboardPatient extends Component {
 
                     {/* date naissance */}
                     <div className="form-row form-group">
-                      <div className="col-sm-6 col-xl-7 input-column">
-                        <Field
-                          placeholder="Votre date"
-                          name="birth_day"
-                          label="date:"
+                      <div  className="col-sm-6 col-xl-7 input-column">
+                        {/* <Field id='emailDisabled'
+                          name="email"
+                          label="Votre E-mail est:"
                           component={this.renderInput}
                           className="form-control"
-                          type="date"
-                        ></Field>
+                          
+                          disabled={this.pristine}
+                        //   input={{ disabled: submitting, }}
+                        ></Field> */}
+                        <div id="fetchemailabout">
+                        Votre E-mail est :
+                    <div id='emailfetched'>
+                    <p>
+                                {this.props.patientData.about_reducer.patients.email}
+                            </p>
+                    </div>
+                            
+                        </div>
                       </div>
                     </div>
                     {/* end date naissance */}
 
+                    {/* adresse */}
 
-                    {/* Start Radios */}
                     <div className="form-row form-group">
-                      <div className="col-sm-6 input-column">
-                        <div className="custom-control custom-radio">
-                          <div className="radioformboxPatienData">
-                            <label>Genre :</label>
+                      <div className="col-sm-6 col-xl-7 input-column">
+                        <Field
+                          placeholder="Votre adresse:"
+                          name="adress"
+                          label="Adresse :"
+                          component={this.renderInput}
+                          className="form-control"
+                          type="text"
+                        ></Field>
+                      </div>
+                    </div>
 
-                            <div className="leschoixradio">
-                              <label>
-                                {" "}
-                                Femme
-                                <Field
-                                  name="bio_sex"
-                                  component={this.renderInput}
-                                  type="radio"
-                                  value="femme"
-                                />
-                              </label>
+                    {/* End adresse */}
 
-                              <label className="hommechoice">
-                                {" "}
-                                Homme
-                                <Field
-                                  id="radiocheckcheck"
-                                  name="bio_sex"
-                                  component={this.renderInput}
-                                  type="radio"
-                                  value="homme"
-                                />
-                              </label>
-                            </div>
-                            <div className="lesbuttons">
-                                <br></br>
+                    <div className="lesbuttons">
                               <button
-                                id="btnFormDashboardPatient"
+                                id="btnFormDashboardContactForm"
                                 className="btn btn-light d-xl-flex align-items-xl-start submit-button"
                                 type="submit"
                               >
                                 Enregistrer
                               </button>
                             </div>
-                          </div>
-                        </div>
-                      </div>
-                      {/* End Radios */}
-                    </div>
-                  </form>
+
+                    </form>
                 </div>
-              </div>
-              {/* End Form */}
             </div>
-          </div>
         </div>
-      </>
+    </div>
+    </div>
+    </>
     );
-  }
+}
 }
 
 
@@ -226,15 +217,15 @@ const mapDispatchToProps = (dispatch, formValues) => {
   };
 };
 
-FormDashboardPatient = connect(
+FormContactInformation = connect(
     mapStateToProps,
     mapDispatchToProps
-)(FormDashboardPatient);
+)(FormContactInformation);
 
 export default reduxForm({
     form: 'aboutInfosForm', // a unique name for this form
     enableReinitialize: true
-})(FormDashboardPatient);
+})(FormContactInformation);
 
 
 

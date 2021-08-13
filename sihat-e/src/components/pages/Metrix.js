@@ -32,7 +32,7 @@ import FormContactInformation from './FormContactInformation';
     //     )
     //     }
         
-    const ContactInformation = ({handleSubmit, fetchAboutInfos, createContactInformation, logout, props, patientData}) =>  {
+    const Metrix = ({handleSubmit, fetchAboutInfos, createContactInformation, logout, props, patientData}) =>  {
 
         useEffect(() => {
             fetchAboutInfos();
@@ -79,115 +79,115 @@ import FormContactInformation from './FormContactInformation';
                             </h5>
                         </div>
                         </Link>
-                    </li><li className="nav-item2 active">
-                        <a href="#" className="nav-link active">
+                    </li><li className="nav-item2 ">
+                        <Link to="/ContactInformation" className="nav-link ">
                         <div className="d-xl-flex justify-content-xl-start align-items-xl-center"> 
                             <i className="noactive fa fa-vcard d-xl-flex align-items-xl-center d-xl-flex align-items-xl-center fa-2x " aria-hidden="true" />
                             <h5 className="lisidebarnoactive d-flex d-xl-flex flex-column justify-content-xl-center align-items-xl-center">
                             Informations de contact.
                             </h5>                    
                         </div>
-                        </a>
+                        </Link>
                     </li>
                     <li className="nav-item3">
-                        <a href="#" className="nav-link">
+                        <Link to="/metrix" className="nav-link active">
                         <div className="d-xl-flex justify-content-xl-start align-items-xl-center"> 
                             <i className="noactive fa fa-bar-chart-o d-xl-flex align-items-xl-center fa-2x " aria-hidden="true" />
                             <h5 className="lisidebarnoactive d-flex d-xl-flex flex-column justify-content-xl-center align-items-xl-center">
                             Métriques de santé.
                             </h5>                    
                         </div>
-                        </a>
+                        </Link>
                     </li>
                     <li className="nav-item4">
-                        <a href="#" className="nav-link">
+                        <Link to="#" className="nav-link">
                         <div className="d-xl-flex justify-content-xl-start align-items-xl-center"> 
                             <i className="noactive fa fa-heartbeat d-xl-flex align-items-xl-center fa-2x " aria-hidden="true" />
                             <h5 className="lisidebarnoactive d-flex d-xl-flex flex-column justify-content-xl-center align-items-xl-center">
-                            Conditions / Symptomes.
+                            Symptomes.
                             </h5>                    
                         </div>
-                        </a>
+                        </Link>
                     </li>
                     <li className="nav-item5">
-                        <a href="#" className="nav-link">
+                        <Link to="#" className="nav-link">
                         <div className="d-xl-flex justify-content-xl-start align-items-xl-center"> 
                             <i className="noactive fa fa-file-powerpoint-o d-xl-flex align-items-xl-center fa-2x " aria-hidden="true" />
                             <h5 className="lisidebarnoactive d-flex d-xl-flex flex-column justify-content-xl-center align-items-xl-center">
                             Ordonnances.
                             </h5>                    
                         </div>
-                        </a>
+                        </Link>
                     </li>
                     <li className="nav-item6">
-                        <a href="#" className="nav-link">
+                        <Link to="#" className="nav-link">
                         <div className="d-xl-flex justify-content-xl-start align-items-xl-center"> 
                             <i className="noactive fa fa-leaf d-xl-flex align-items-xl-center fa-2x " aria-hidden="true" />
                             <h5 className="lisidebarnoactive d-flex d-xl-flex flex-column justify-content-xl-center align-items-xl-center">
                             Médicaments.
                             </h5>                    
                         </div>
-                        </a>
+                        </Link>
                     </li>
                     <li className="nav-item7">
-                        <a href="#" className="nav-link">
+                        <Link to="#" className="nav-link">
                         <div className="d-xl-flex justify-content-xl-start align-items-xl-center"> 
                             <i className="noactive fa fa-low-vision d-xl-flex align-items-xl-center  fa-2x " aria-hidden="true" />
                             <h5 className="lisidebarnoactive d-flex d-xl-flex flex-column justify-content-xl-center align-items-xl-center">
                             Allergies.
                             </h5>                    
                         </div>
-                        </a>
+                        </Link>
                     </li>
                     <li className="nav-item8">
-                        <a href="#" className="nav-link">
+                        <Link to="#" className="nav-link">
                         <div className="d-xl-flex justify-content-xl-start align-items-xl-center"> 
                             <i className="noactive fa fa-stethoscope d-xl-flex align-items-xl-center fa-2x " aria-hidden="true" />
                             <h5 className="lisidebarnoactive d-flex d-xl-flex flex-column justify-content-xl-center align-items-xl-center">
                             Traitement / procédures.
                             </h5>                    
                         </div>
-                        </a>
+                        </Link>
                     </li>
                     <li className="nav-item9">
-                        <a href="#" className="nav-link">
+                        <Link to="#" className="nav-link">
                         <div className="d-xl-flex justify-content-xl-start align-items-xl-center"> 
                             <i className="noactive fa fa-user-md d-xl-flex align-items-xl-center fa-2x " aria-hidden="true" />
                             <h5 className="lisidebarnoactive d-flex d-xl-flex flex-column justify-content-xl-center align-items-xl-center">
                             Vaccinations.
                             </h5>                    
                         </div>
-                        </a>
+                        </Link>
                     </li>
                     <li className="nav-item10">
-                        <a href="#" className="nav-link">
+                        <Link to="#" className="nav-link">
                         <div className="d-xl-flex justify-content-xl-start align-items-xl-center"> 
                             <i className="noactive fa fa-flask d-xl-flex align-items-xl-center fa-2x " aria-hidden="true" />
                             <h5 className="lisidebarnoactive d-flex d-xl-flex flex-column justify-content-xl-center align-items-xl-center">
                             Tests de laboratoire.
                             </h5>                    
                         </div>
-                        </a>
+                        </Link>
                     </li>
                     <li className="nav-item11">
-                        <a href="#" className="nav-link">
+                        <Link to="#" className="nav-link">
                         <div className="d-xl-flex justify-content-xl-start align-items-xl-center"> 
                             <i className="noactive fa fa-grav d-xl-flex align-items-xl-center fa-2x " aria-hidden="true" />
                             <h5 className="lisidebarnoactive d-flex d-xl-flex flex-column justify-content-xl-center align-items-xl-center">
                             Mode de vie.
                             </h5>                    
                         </div>
-                        </a>
+                        </Link>
                     </li>
                     <li className="nav-item12">
-                        <a href="#" className="nav-link">
+                        <Link to="#" className="nav-link">
                         <div className="d-xl-flex justify-content-xl-start align-items-xl-center"> 
                             <i className="noactive fa fa-life-saver d-xl-flex align-items-xl-center fa-2x " aria-hidden="true" />
                             <h5 className="lisidebarnoactive d-flex d-xl-flex flex-column justify-content-xl-center align-items-xl-center">
                             Assurance.
                             </h5>                    
                         </div>
-                        </a>
+                        </Link>
                     </li>
                     </ul>
                 </div>
@@ -201,7 +201,7 @@ import FormContactInformation from './FormContactInformation';
                 <nav className="navbar navbar-light navbar-expand  topbar static-top">
                 <div className="container-fluid">
                     <ul className="navbar-nav flex-nowrap ml-auto">
-                    <li className="nav-item dropdown d-sm-none no-arrow"><a aria-expanded="false" data-toggle="dropdown" className="dropdown-toggle nav-link" href="#"><i className="fas fa-search" /></a>
+                    <li className="nav-item dropdown d-sm-none no-arrow"><a aria-expanded="false" data-toggle="dropdown" className="dropdown-toggle nav-link" href="#"><i className="fas fa-search" /> </a>
                         <div className="dropdown-menu dropdown-menu-right p-3 animated--grow-in" aria-labelledby="searchDropdown">
                         <form className="form-inline mr-auto navbar-search w-100">
                             <div className="input-group"><Link type="text" className="bg-light form-control border-0 small" placeholder="Search for ..." />
@@ -242,7 +242,7 @@ import FormContactInformation from './FormContactInformation';
                         <div className="nav-item dropdown no-arrow"><a aria-expanded="false" data-toggle="dropdown" className="dropdown-toggle nav-link" href="#"><span className="badge badge-danger badge-counter">7</span><i className="fas fa-envelope fa-fw" /></a>
                         <div className="dropdown-menu dropdown-menu-right dropdown-list animated--grow-in">
                             <h6 className="dropdown-header">alerts center</h6><a className="dropdown-item d-flex align-items-center" href="#">
-                            <div className="dropdown-list-image mr-3"><img className="rounded-circle" src="avatars/avatar4.jpeg" />
+                            <div className="dropdown-list-image mr-3"><img className="rounded-circle" src="avatars/Linkvatar4.jpeg" />
                                 <div className="bg-success status-indicator" />
                             </div>
                             <div className="font-weight-bold">
@@ -250,7 +250,7 @@ import FormContactInformation from './FormContactInformation';
                                 <p className="small text-gray-500 mb-0">Emily Fowler - 58m</p>
                             </div>
                             </a><a className="dropdown-item d-flex align-items-center" href="#">
-                            <div className="dropdown-list-image mr-3"><img className="rounded-circle" src="avatars/avatar2.jpeg" />
+                            <div className="dropdown-list-image mr-3"><img className="rounded-circle" src="avatars/Linkvatar2.jpeg" />
                                 <div className="status-indicator" />
                             </div>
                             <div className="font-weight-bold">
@@ -258,7 +258,7 @@ import FormContactInformation from './FormContactInformation';
                                 <p className="small text-gray-500 mb-0">Jae Chun - 1d</p>
                             </div>
                             </a><a className="dropdown-item d-flex align-items-center" href="#">
-                            <div className="dropdown-list-image mr-3"><img className="rounded-circle" src="avatars/avatar3.jpeg" />
+                            <div className="dropdown-list-image mr-3"><img className="rounded-circle" src="avatars/Linkvatar3.jpeg" />
                                 <div className="bg-warning status-indicator" />
                             </div>
                             <div className="font-weight-bold">
@@ -266,7 +266,7 @@ import FormContactInformation from './FormContactInformation';
                                 <p className="small text-gray-500 mb-0">Morgan Alvarez - 2d</p>
                             </div>
                             </a><a className="dropdown-item d-flex align-items-center" href="#">
-                            <div className="dropdown-list-image mr-3"><img className="rounded-circle" src="avatars/avatar5.jpeg" />
+                            <div className="dropdown-list-image mr-3"><img className="rounded-circle" src="avatars/Linkvatar5.jpeg" />
                                 <div className="bg-success status-indicator" />
                             </div>
                             <div className="font-weight-bold">
@@ -280,7 +280,7 @@ import FormContactInformation from './FormContactInformation';
                     </li>
                     <div className="d-none d-sm-block topbar-divider" />
                     <li className="nav-item dropdown no-arrow">
-                        <div className="nav-item dropdown no-arrow"><a aria-expanded="false" data-toggle="dropdown" className="dropdown-toggle nav-link" href="#"><span className="d-none d-lg-inline mr-2 text-gray-600 small">Valerie Luna</span><img className="border rounded-circle img-profile" src="avatars/avatar1.jpeg" /></a>
+                        <div className="nav-item dropdown no-arrow"><a aria-expanded="false" data-toggle="dropdown" className="dropdown-toggle nav-link" href="#"><span className="d-none d-lg-inline mr-2 text-gray-600 small">Valerie Luna</span><img className="border rounded-circle img-profile" src="avatars/Linkvatar1.jpeg" /></a>
                         <div className="dropdown-menu shadow dropdown-menu-right animated--grow-in"><a className="dropdown-item" href="#"><i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400" />&nbsp;Profile</a><a className="dropdown-item" href="#"><i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400" />&nbsp;Settings</a><a className="dropdown-item" href="#"><i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400" />&nbsp;Activity log</a>
                         <div className="dropdown-divider"  />
                             <a className="dropdown-item" href="#" onClick={patientDashboarLogout} >
@@ -320,12 +320,12 @@ import FormContactInformation from './FormContactInformation';
     };
   };
   
-  const ContactInformationConnect = connect(
+  const MetrixConnect = connect(
     mapStateToProps,
     mapDispatchToProps
-  )(ContactInformation);
+  )(Metrix);
   
   export default reduxForm({
     form: "aboutInfosForm", // a unique name for this form
     enableReinitialize: true
-  })(ContactInformationConnect);
+  })(MetrixConnect);

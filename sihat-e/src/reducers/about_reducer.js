@@ -25,6 +25,7 @@ const reducer = (state = initialState, action) => {
       case 'FETCH_PATIENTS_FAILURE':
         return {
           loading: false,
+          notFound : true,
           patients: [],
           error: action.payload
         }
