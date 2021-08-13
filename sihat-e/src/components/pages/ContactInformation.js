@@ -36,6 +36,7 @@ import FormContactInformation from './FormContactInformation';
 
         useEffect(() => {
             fetchAboutInfos();
+            console.log(props)
         }, [])
 
 
@@ -326,6 +327,6 @@ import FormContactInformation from './FormContactInformation';
   )(ContactInformation);
   
   export default reduxForm({
-    form: "aboutInfosForm", // a unique name for this form
+    form: "contactForm", // a unique name for this form
     enableReinitialize: true
   })(ContactInformationConnect);

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { logout, createAbout, fetchAboutInfos, editAboutInfos } from "../../actions";
 
-import { Field, reduxForm , Link } from "redux-form";
+import { Field, reduxForm , Link, formValueSelector } from "redux-form";
 import { first } from "lodash";
 
 class FormContactInformation extends Component {
@@ -73,7 +73,7 @@ class FormContactInformation extends Component {
  
 
   onSubmit = (formValues) => {
-    // console.log(this.props)
+    console.log(formValues)
 
     // alert(this.props.patientData.about_reducer.patients)
     if (typeof this.props.patientData.about_reducer.patients === 'undefined' ) {
@@ -87,7 +87,6 @@ class FormContactInformation extends Component {
 
 
   render() {
-    console.log(this.props)
 
     return this.props.patientData.about_reducer.loading ? (
         <h2>Loading</h2>
@@ -107,16 +106,20 @@ class FormContactInformation extends Component {
                   <form className="custom-form" method='post' onSubmit={this.props.handleSubmit(this.onSubmit)}>
                     <h1 className="d-xl-flex align-items-xl-start">Mes informations</h1>
 
+
+
+
                     <div className="form-row form-group">
                       <div className="col-sm-6 col-xl-7 input-column">
                         <Field
-                          className="form-control"
+                        
+                          placeholder="Votre Ville"
                           name="city"
                           label="Ville :"
-                          placeholder="Votre ville"
-                          type="text"
                           component={this.renderInput}
-                        />
+                          className="form-control"
+                          type="text"
+                        ></Field>
                       </div>
                     </div>
 
@@ -223,7 +226,7 @@ FormContactInformation = connect(
 )(FormContactInformation);
 
 export default reduxForm({
-    form: 'aboutInfosForm', // a unique name for this form
+    form: 'contactInfosForm', // a unique name for this form
     enableReinitialize: true
 })(FormContactInformation);
 

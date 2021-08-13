@@ -219,7 +219,7 @@ render() {
 }
 
 FormDashboardPatient = reduxForm({
-    form: 'aboutInfosForm', // a unique identifier for this form
+    form: 'HGDFGHFD', // a unique identifier for this form
     enableReinitialize: true
   })(FormDashboardPatient)
   

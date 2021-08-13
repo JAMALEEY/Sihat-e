@@ -72,6 +72,8 @@ class FormDashboardPatient extends Component {
  
 
   onSubmit = (formValues) => {
+    console.log(formValues)
+
     // console.log(this.props)
 
     // alert(this.props.patientData.about_reducer.patients)

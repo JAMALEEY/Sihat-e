@@ -29,6 +29,8 @@ import DashboardPatientEdit from './pages/DashboardPatientEdit';
 import ContactInformation from './pages/ContactInformation';
 import AboutList from './pages/AboutList';
 import Metrix from './pages/Metrix';
+import MetrixForm from './pages/MetrixForm';
+import FormMetrixPatient from './pages/FormMetrixPatient';
 
 
 const  App = (props) => {
@@ -57,6 +59,7 @@ const  App = (props) => {
                                 <PublicRoute path="/contactinformation" exact component={ContactInformation} />
                                 <PublicRoute path="/aboutlist" exact component={AboutList} />
                                 <PublicRoute path="/metrix" exact component={Metrix} />
+                                <PublicRoute path="/metrix/form" exact component={FormMetrixPatient} />
                                 <Redirect from="*" to="/" />
     </Switch>
     </Router>
