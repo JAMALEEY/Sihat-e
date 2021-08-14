@@ -106,7 +106,10 @@ class FormMetrixPatient extends Component {
                   
 
                     <div className="d-xl-flex align-items-xl-start" >
-                    <i class="fas fa-angle-left fa-2x"></i>
+                      <Link>
+                      <i class="fas fa-angle-left fa-2x"></i>
+                      </Link>
+
 
                                   <h5 className="retourMetrix">Taille.
                                     </h5>
@@ -120,7 +123,7 @@ class FormMetrixPatient extends Component {
               </div>
               {/* End Form */}
               <div className='metrixWrapper'>
-                    <Link to='/metrixTaille'>
+                    <div to='/metrixTaille'>
                     <div id='taillemetricyourmetric'>
                         <div>
                             <h4>
@@ -150,9 +153,33 @@ class FormMetrixPatient extends Component {
                     </div>
                    
                     <div class="login-box-seperator" id="login-box-seperator-left"></div>
-                    
-                    
-                    </Link>
+                    <div id='taillemetricyourmetric'>
+                        <div>
+                            <h5>
+                                Historique :
+                            </h5>
+                            
+                            <p>
+                            <strong>
+                                Taille
+                            </strong>
+                            </p>
+                            
+                            <p>
+                              Date ....
+                            </p>
+
+                        </div>
+
+                            <div>
+
+                            <Link>
+                            <i class="fas fa-plus"></i>                      
+                            </Link>
+                            </div>
+                    </div>
+                    <div class="login-box-seperator" id="login-box-seperator-left"></div>
+                    </div>
 
                 </div>
             </div>
