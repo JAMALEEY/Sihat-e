@@ -211,7 +211,7 @@ class MetrixTaille extends Component {
         // actions={this.renderActions()}
         // onDismiss={() => history.push('/')}
       />
-      {this.supp  = () => {  this.props.deleteTaille(this.props.key)}}
+      {/* {this.supp  = () => {  this.props.deleteTaille(this.props.thetailleData.id)}} */}
     <Link class="dropdown-item" onClick={this.showModal} >Edit</Link>
     <Link class="dropdown-item" onClick={this.supp}>Delete</Link>
 
