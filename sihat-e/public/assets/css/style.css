@@ -896,7 +896,14 @@ padding: 40px;
 {
   padding: 2px 0px 0px 14px;
 }
-
+#taillemetricyourmetric  {
+  align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 43px 0px 43px;
+height: 133px;
+  }
 
 
 

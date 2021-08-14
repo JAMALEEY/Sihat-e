@@ -108,7 +108,7 @@ class FormMetrixPatient extends Component {
                     <div className="d-xl-flex align-items-xl-start" >
                     <i class="fas fa-angle-left fa-2x"></i>
 
-                                  <h5 className="retourMetrix">Retour.
+                                  <h5 className="retourMetrix">Taille.
                                     </h5>
                                   </div>
 
@@ -121,12 +121,22 @@ class FormMetrixPatient extends Component {
               {/* End Form */}
               <div className='metrixWrapper'>
                     <Link to='/metrixTaille'>
-                    <div class="login-box-seperator" id="login-box-seperator-left"></div>
-                    <div id='onemetric'>
+                    <div id='taillemetricyourmetric'>
                         <div>
-                            <h5>
+                            <h4>
+                                Votre mesure la plus récente :
+                            </h4>
+                            
+                            <h3>
+                            <strong>
                                 Taille
+                            </strong>
+                            </h3>
+                            
+                            <h5>
+                              Date ....
                             </h5>
+
                         </div>
 
                             <div>
