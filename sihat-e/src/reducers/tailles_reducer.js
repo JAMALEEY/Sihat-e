@@ -7,6 +7,7 @@ import {
   
   const initialState = {
       loading: false,
+      recievedData: false,
       tailles: [],
       error: ''
     }
@@ -21,6 +22,7 @@ import {
         case FETCH_TAILLE_METRIX:
           return {
             loading: false,
+            recievedData: true,
             tailles: action.payload,
             error: ''
           }

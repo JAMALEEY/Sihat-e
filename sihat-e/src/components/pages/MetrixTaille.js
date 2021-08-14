@@ -12,10 +12,13 @@ class MetrixTaille extends Component {
     this.state = {
       show: false,
       show2: false,
-      modalTitleEdit: 'Modification de taille',
-      modalTitle: 'Ajouter votre Taille',
-      mesures: 'hna khas lfetch dyal mesure li khas t updata',
-      dateSelectedTaille: 'hna fin daret akhir update'
+      // modalTitleEdit: 'Modification de taille',
+      // modalTitle: 'Ajouter votre Taille',
+      // mesures: 'hna khas lfetch dyal mesure li khas t updata',
+      // dateSelectedTaille: 'hna fin daret akhir update',
+      
+      
+    
     };
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
@@ -45,6 +48,7 @@ class MetrixTaille extends Component {
   console.log(this.props)
   //  console.log(this.props.patientData.about_reducer.patients.length)
   }
+
 
   onSubmit = (formValues) => {
     this.props.createTaille(formValues);}
@@ -127,25 +131,32 @@ class MetrixTaille extends Component {
 
 
   renderList() {  
-    return this.props.tailleData.tailles_reducer.map(taille_reducer => {
+    if (this.props.tailleData.tailles_reducer.recievedData  
+      ) {
+
+      console.log(this.props.tailleData.tailles_reducer.tailles.historique)
+      
+     return this.props.tailleData.tailles_reducer.tailles.historique
+    .map(thetailleData => {
       return (
-        <div key={taille_reducer.id}>
+        <div key={thetailleData.id}>
  <div class="login-box-seperator" id="login-box-seperator-left"></div>
                     <div id='taillemetricyourmetric'>
                         <div>
-                            <h5>
-                                Historique :
-                            </h5>
+                            
                             
                             <p>
                             <strong>
-                            {taille_reducer}
+                            Ma taille est de : {thetailleData.cm} cm
                             </strong>
                             </p>
+                            <strong>
+
                             
                             <p>
-                              Date ....
+                            au : {thetailleData.date}
                             </p>
+                            </strong>
                             <Modal date={this.state.date} mesures={this.state.mesures} modalTitle={this.state.modalTitleEdit} show={this.state.show} handleClose={this.hideModal}>
                               {/* children */}
           <strong><p>Mesures :</p></strong>
@@ -200,8 +211,9 @@ class MetrixTaille extends Component {
         // actions={this.renderActions()}
         // onDismiss={() => history.push('/')}
       />
+      {this.supp  = () => {  this.props.deleteTaille(this.props.key)}}
     <Link class="dropdown-item" onClick={this.showModal} >Edit</Link>
-    <Link class="dropdown-item" to="#">Delete</Link>
+    <Link class="dropdown-item" onClick={this.supp}>Delete</Link>
 
   </div>                     
                             </div>
@@ -210,8 +222,10 @@ class MetrixTaille extends Component {
         </div>
       );
     });
-  }
+  } else {
 
+  }
+  }
 
 
 
@@ -266,7 +280,6 @@ console.log(this.props)
                   </p>
                 <i className="fas fa-plus fa-2x"></i> 
                 </Link>
-                    <div to='#'>
                     <div id='taillemetricyourmetric'>
                         <div>
                           {console.log(this.props.tailleData.tailles_reducer.tailles.last_height)}
@@ -281,26 +294,41 @@ console.log(this.props)
 
                             <h3>
                             <strong>
-                              {this.props.tailleData.tailles_reducer.tailles.last_height.cm}  Cm
+                              { this.props.tailleData.tailles_reducer.recievedData  
+    ?  this.props.tailleData.tailles_reducer.tailles.last_height.cm : 'Data failed'}
+                                Cm
                             </strong>
                             </h3>
                             
                             <p>
-                              Le {this.props.tailleData.tailles_reducer.tailles.last_height.date}
+                              
+                              { this.props.tailleData.tailles_reducer.recievedData  
+    ?  this.props.tailleData.tailles_reducer.tailles.last_height.date : 'Data failed'}
+                              
                             </p>
 
                         </div>
                       
     
                     </div>
-                   
+                    <div className='flexedHistorique'>
+                    <h5>
+                        Historique :
+                    </h5>
+                    </div>
+                    {/* { this.props.tailleData.tailles_reducer.recievedData  
+    ?  this.renderList() : 'Data failed'} */}
+    
+                    {this.renderList()}
+                    {/* <div className="ui celled list">{this.renderList()}</div> */}
                     {/* <div class="login-box-seperator" id="login-box-seperator-left"></div> */}
                     </div>
-                      {/* {this.renderList} */}
+                    
                 </div>
             </div>
+            
           </div>
-        </div>
+          
       </>
       
     );
@@ -312,9 +340,9 @@ console.log(this.props)
 
 
 
-const mapStateToProps = (state,props) => {
+const mapStateToProps = (state) => {
   return {
-    tailleData: state, 
+    tailleData: state,
   };
 };
 

@@ -8,7 +8,7 @@ import { first } from "lodash";
 class FormMetrixPatient extends Component {
 
   componentDidMount() {
-  //  this.props.fetchAboutInfos();
+   this.props.fetchAboutInfos();
   console.log(this.props)
   //  console.log(this.props.patientData.about_reducer.patients.length)
   }

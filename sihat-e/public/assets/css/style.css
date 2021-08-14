@@ -905,6 +905,11 @@ padding: 40px;
 height: 133px;
   }
 
+  #taillemetricyourmetric:hover  {
+    background: #c4e9e5;
+
+  }  
+
 
 .renderinputFlexing{
   display: flex;
@@ -923,6 +928,13 @@ height: 133px;
 
 .fasflex p {
   padding: 4px 20px 0px 0px;
+}
+.flexedHistorique{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+height: 50px;
+align-items: center;
 }
 
 @media (max-width: 400px) {

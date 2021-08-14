@@ -11,27 +11,7 @@ import {bindActionCreators} from 'redux'
     class DashboardPatientEdit extends Component {
 
 
-        rendertiwtiw (props) {
-            let jibni = ''
-            if ( this.props.aboutInfos == 1 ){
-              console.log(this.props.aboutInfos)
-              jibni = 
-                <>
-                <div className="blboula"> 
-                      <strong> &#9888; 
-                      im here !
-                      &#9888; </strong>  
-                </div>
-                </>
-              
-              // <h5 className="taken">Incorrects E-mail / mot de passe !</h5>
-            } else {
-                jibni = ''
-            }
-        }
-
-        
-
+      
 
 
 

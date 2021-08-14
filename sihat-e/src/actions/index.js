@@ -192,8 +192,8 @@ export const fetchTailleInfos = () => {
       .get("/height/fetch")
       .then((response) => {
         // response.data is the Patients
-        const fetchedData = response.data;
-        dispatch(fetchTailleInfosSuccess(fetchedData));
+        const fetchedDataTaille = response.data;
+        dispatch(fetchTailleInfosSuccess(fetchedDataTaille));
       })
       .catch((error) => {
         // error.message is the error message
@@ -211,10 +211,10 @@ export const fetchTailleInfosRequest = () => {
 };
 
 // HERE WE FETCH THE RESPONSE OF THE REQUEST
-export const fetchTailleInfosSuccess = (fetchedData) => {
+export const fetchTailleInfosSuccess = (fetchedDataTaille) => {
   return {
     type: "FETCH_TAILLE_METRIX",
-    payload: fetchedData,
+    payload: fetchedDataTaille,
   };
 };
 
