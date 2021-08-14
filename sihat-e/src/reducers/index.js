@@ -12,8 +12,18 @@ import { reducer as dashboardPatientForm } from 'redux-form'
 // To manage my multiple reducers to be one single reducer ill use CombineReducers that takes parameters with what ill call inside my project
 import { combineReducers } from "redux";
 // import reducer from './aboutInfosReducer';
-import { SIGN_IN, CREATE_PATIENT, SIGN_OUT, CREATE_ABOUT, CREATE_CONTACTINFO} from "../actions/types";
+import { 
+SIGN_IN, 
+CREATE_PATIENT, 
+SIGN_OUT, 
+CREATE_ABOUT, 
+CREATE_CONTACTINFO,  
+CREATE_TAILLE_METRIX,
+FETCH_TAILLE_METRIX,
+DELETE_TAILLE_METRIX
+} from "../actions/types";
 import about_reducer from "./about_reducer";
+import tailles_reducer from "./tailles_reducer";
 
 
 const signUpPatientReducer = (signUpPatientState = {}, action) => {
@@ -50,10 +60,16 @@ const createContactInformationReducer = (state = {}, action) => {
     } return state;
 };
 
+const createTailleReducer = (createTaille = {}, action) => {
+    if (action.type === CREATE_TAILLE_METRIX) {
+        return {...createTaille, [action.payload]: action.payload  };
+    } return createTaille;
+}
+
 
 export default combineReducers ({
     form: newsletterReducer, signUpPatientState, dashboardPatientForm,
-    reducer: logout, about_reducer,
+    reducer: logout, about_reducer, tailles_reducer,
     
     // signIn: signInReducer,
     signInResponse: signInResponseReducer,
@@ -61,6 +77,7 @@ export default combineReducers ({
     logout: logoutReducer,    
     createAbout: createAboutReducer,
     patientData: about_reducer,
+    createTaille: tailles_reducer,
     // createContactInformation :createContactInformationReducer
     
     

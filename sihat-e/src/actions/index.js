@@ -9,6 +9,11 @@ import {
   EDIT_PATIENT_ABOUT,
   FETCH_ABOUT,
   CREATE_CONTACTINFO,
+  EDIT_TAILLE_METRIX,
+  CREATE_TAILLE_METRIX,
+  FETCH_TAILLE_METRIX,
+  DELETE_TAILLE_METRIX
+
 } from "./types";
 import history from "../helpers/history";
 import api from "../Apis/api";
@@ -165,4 +170,94 @@ export const fetchPatientsFailure = (error) => {
     type: "FETCH_PATIENTS_FAILURE",
     payload: error,
   };
+};
+
+
+
+
+
+// THE TAILLE METRIX ACTION CREATORS :
+
+
+
+// FETCH
+
+
+export const fetchTailleInfos = () => {
+
+
+  return (dispatch) => {
+    dispatch(fetchTailleInfosRequest());
+    api
+      .get("/height")
+      .then((response) => {
+        // response.data is the Patients
+        const fetchedData = response.data.data;
+        dispatch(fetchTailleInfosSuccess(fetchedData));
+      })
+      .catch((error) => {
+        // error.message is the error message
+        dispatch(fetchPatientsFailure(error.message));
+      });
+  };
+};
+
+
+//  HERE WE FETCH THE REQUEST 
+export const fetchTailleInfosRequest = () => {
+  return {
+    type: "FETCH_TAILLE_REQUEST",
+  };
+};
+
+// HERE WE FETCH THE RESPONSE OF THE REQUEST
+export const fetchTailleInfosSuccess = (fetchedData) => {
+  return {
+    type: "FETCH_TAILLE",
+    payload: fetchedData,
+  };
+};
+
+// HERE WE FETCH THE ERROR OF THE REQUEST
+export const fetchTailleInfosFailure = (error) => {
+  return {
+    type: "FETCH_TAILLE_FAILURE",
+    payload: error,
+  };
+};
+
+
+// CREATION
+
+export const createTaille = (formValues) => {
+  return async (dispatch) => {
+    const response = await api.post("/height", formValues);
+    window.location.reload()    
+    
+    dispatch({
+      type: CREATE_TAILLE_METRIX,
+      payload: response.data,
+    });
+
+  };
+};
+
+// UPDATE
+
+
+export const editTaille = (id, formValues) => async dispatch => {
+  const response = await api.put(`/height/${id}`, formValues);
+
+  dispatch({ type: EDIT_TAILLE_METRIX, payload: response.data });
+  window.location.reload()    
+};
+
+
+// DELETE
+
+export const deleteTaille = id => async dispatch => {
+  await api.delete(`/height/${id}`);
+
+  dispatch({ type: DELETE_TAILLE_METRIX, payload: id });
+  window.location.reload()    
 };

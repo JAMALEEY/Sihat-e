@@ -1,7 +1,11 @@
 // import { API_SUCCESS, API_ERROR } from "./actions/api";
 
-import { FETCH_ABOUT } from "../actions/types";
-import _ from 'lodash';
+import { FETCH_ABOUT,
+  CREATE_TAILLE_METRIX,
+  FETCH_TAILLE_METRIX,
+  DELETE_TAILLE_METRIX 
+} from "../actions/types";
+// import _ from 'lodash';
 
 const initialState = {
     loading: false,

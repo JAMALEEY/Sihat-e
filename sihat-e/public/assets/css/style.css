@@ -906,6 +906,24 @@ height: 133px;
   }
 
 
+.renderinputFlexing{
+  display: flex;
+  align-items: center;
+}
+
+.renderinputFlexing span{
+  padding-left: 10px;
+}
+
+.fasflex{
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.fasflex p {
+  padding: 4px 20px 0px 0px;
+}
 
 @media (max-width: 400px) {
   .register-form form.custom-form {

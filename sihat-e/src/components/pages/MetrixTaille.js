@@ -1,22 +1,27 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { logout, createAbout, fetchAboutInfos, editAboutInfos } from "../../actions";
+import { logout, createTaille, fetchTailleInfos, editTaille, deleteTaille } from "../../actions";
 import {Link} from 'react-router-dom';
 import { Field, reduxForm } from "redux-form";
 import { first } from "lodash";
 import Modal from './Modal';
 
-class FormMetrixPatient extends Component {
+class TailleMetrix extends Component {
   constructor() {
     super();
     this.state = {
       show: false,
-      modalTitle: 'Taille',
+      show2: false,
+      modalTitleEdit: 'Modification de taille',
+      modalTitle: 'Ajouter votre Taille',
       mesures: 'hna khas lfetch dyal mesure li khas t updata',
-      date: 'hna fin daret akhir update'
+      dateSelectedTaille: 'hna fin daret akhir update'
     };
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
+
+    this.showModalCreat = this.showModalCreat.bind(this);
+    this.hideModalCreat = this.hideModalCreat.bind(this);
   }
 
   showModal = () => {
@@ -27,8 +32,16 @@ class FormMetrixPatient extends Component {
     this.setState({ show: false });
   };
 
+  showModalCreat = () => {
+    this.setState({ show2: true });
+  };
+
+  hideModalCreat = () => {
+    this.setState({ show2: false });
+  };
+
   componentDidMount() {
-  //  this.props.fetchAboutInfos();
+   this.props.fetchTailleInfos();
   console.log(this.props)
   //  console.log(this.props.patientData.about_reducer.patients.length)
   }
@@ -47,9 +60,7 @@ class FormMetrixPatient extends Component {
     type,
     className,
     initialValues,
-    defaultValue,
-    defaultChecked,
-    checked,
+    span
   }) 
   
   {
@@ -60,6 +71,7 @@ class FormMetrixPatient extends Component {
             <label className="active col-form-label d-xl-flex align-items-xl-start">
               {label}
             </label>
+            <div className='renderinputFlexing'>            
             <input
               {...input}
               className={className}
@@ -70,7 +82,10 @@ class FormMetrixPatient extends Component {
               name={name}
               type={type}
               id={id}
-            />
+            /> <span>
+            {span}
+          </span>
+          </div>
           </div>
         </div>
       </>
@@ -93,40 +108,45 @@ class FormMetrixPatient extends Component {
 
  
 
-  onSubmit = (formValues) => {
+  // onSubmit = (formValues) => {
     // console.log(this.props)
 
     // alert(this.props.patientData.about_reducer.patients)
-    if (typeof this.props.patientData.about_reducer.patients === 'undefined' ) {
+    // if (typeof this.props.createTaille.tailles_reducer.tailles === 'undefined' ) {
 
-      this.props.createAbout(formValues);
-    } else {
-      this.props.editAboutInfos(formValues);
-    }
-  }; 
+    //   this.props.createAbout(formValues);
+    // } else {
+    //   this.props.editAboutInfos(formValues);
+    // }
+  // }; 
 
 
 
 
   render() {
 
-    return this.props.patientData.about_reducer.loading ? (
-        <h2>Loading</h2>
-      ) : this.props.patientData.about_reducer.error ? (
-        <h2>{this.props.patientData.about_reducer.error}</h2>
-      ) : (
+    // return this.props.createTaille.tailles_reducer.loading ? (
+    //     <h2>Loading</h2>
+    //   ) : this.props.createTaille.tailles_reducer.error ? (
+    //     <h2>{this.props.createTaille.tailles_reducer.error}</h2>
+    //   ) : 
+    //   (
    
+
+
+
+    return(
       <>
         <div id="modal" className="d-xl-flex justify-content-xl-center align-items-xl-center">
           <div id="formCardContainer">
             <div>
               <div  className="row register-form">
                 <div className="col-md-8 col-xl-10 offset-md-2 offset-xl-0">
-                  <form id='metrixForm' className="custom-form" method='post' onSubmit={this.props.handleSubmit(this.onSubmit)}>
+                  <form id='metrixForm' className="custom-form" method='post' >
                   
 
                     <div className="d-xl-flex align-items-xl-start" >
-                      <Link>
+                      <Link to='/metrix/form'>
                       <i class="fas fa-angle-left fa-2x"></i>
                       </Link>
 
@@ -143,7 +163,14 @@ class FormMetrixPatient extends Component {
               </div>
               {/* End Form */}
               <div className='metrixWrapper'>
-                    <div to='/metrixTaille'>
+                
+                <Link  onClick={this.showModalCreat}  className='fasflex'>
+                  <p>
+                    Ajouter Votre Taille
+                  </p>
+                <i className="fas fa-plus fa-2x"></i> 
+                </Link>
+                    <div to='#'>
                     <div id='taillemetricyourmetric'>
                         <div>
                             <h4>
@@ -188,17 +215,44 @@ class FormMetrixPatient extends Component {
                             <p>
                               Date ....
                             </p>
-                            <Modal date={this.state.date} mesures={this.state.mesures} modalTitle={this.state.modalTitle} show={this.state.show} handleClose={this.hideModal}>
+                            <Modal date={this.state.date} mesures={this.state.mesures} modalTitle={this.state.modalTitleEdit} show={this.state.show} handleClose={this.hideModal}>
                               {/* children */}
-          <strong><p>Mesures</p></strong>
-          <Field
-                          className="form-control-plaintext"
-                          name="first_name"
+          <strong><p>Mesures :</p></strong>
+                      <Field
+                          className="form-control"
+                          name="MetrixTaille"
                           component={this.renderInput}
-                          label="Prénom :"
-                          placeholder="Votre prénom"
+                          label="Modifier votre taille :"
+                          placeholder="Votre taille"
                           type="text"
-                        />
+                          span='Cm'
+                        /> 
+                        <strong><p>Date de cette Mesure :</p></strong>
+                          {this.state.dateSelectedTaille}
+        </Modal>
+
+
+        {/* Creat */}
+        <Modal formValues onSubmit={this.props.handleSubmit} modalTitle={this.state.modalTitle} show2={this.state.show2} handleClose={this.hideModalCreat}>
+                              {/* children */}
+          <strong><p>Mesures :</p></strong>
+                      <Field
+                          className="form-control"
+                          name="MetrixTailleAdd"
+                          component={this.renderInput}
+                          label="Votre taille :"
+                          placeholder="Ajouter votre taille en cm"
+                          type="text"
+                          span='Cm'
+                        /> 
+                        <strong><p>Date de cette Mesure :</p></strong>
+                        <Field
+                          className="form-control"
+                          name="MetrixTailleDate"
+                          component={this.renderInput}
+                          label="La date de votre mesure :"
+                          type="date"
+                        /> 
         </Modal>
                         </div>
 
@@ -206,7 +260,7 @@ class FormMetrixPatient extends Component {
 
                             <div className='dropdown'>
                             <button role="button" type="button" class="btn" data-toggle="dropdown">
-                            <i className="fas fa-plus"></i> 
+                            <i className="far fa-edit"></i> 
                             </button>
                             
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -241,28 +295,28 @@ class FormMetrixPatient extends Component {
 
 const mapStateToProps = (state,props) => {
   return {
-    patientData: state, 
+    metrixData: state, 
   };
 };
 
-const mapDispatchToProps = (dispatch, formValues) => {
+const mapDispatchToProps = (dispatch, formValues, id) => {
   return {
-    fetchAboutInfos: () => dispatch(fetchAboutInfos()),
-    createAbout : (formValues) => dispatch(createAbout(formValues)),
-    editAboutInfos : (formValues) => dispatch(editAboutInfos(formValues)),
-
+    fetchTailleInfos: () => dispatch(fetchTailleInfos()),
+    createTaille : (formValues) => dispatch(createTaille(formValues)),
+    editTaille : (formValues, id) => dispatch(editTaille(formValues, id)),
+    deleteTaille : (id) => dispatch(deleteTaille(id)),
   };
 };
 
-FormMetrixPatient = connect(
+TailleMetrix = connect(
     mapStateToProps,
     mapDispatchToProps
-)(FormMetrixPatient);
+)(TailleMetrix);
 
 export default reduxForm({
-    form: 'MetrixForm', // a unique name for this form
+    form: 'MetrixTaille', // a unique name for this form
     enableReinitialize: true
-})(FormMetrixPatient);
+})(TailleMetrix);
 
 
 
