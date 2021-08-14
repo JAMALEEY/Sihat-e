@@ -1,30 +1,35 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import './modal.css';
 
-const Modal = props => {
-    // reference to creat portal in order to fix the Z-index callstack of ordinary modal
-  return ReactDOM.createPortal(
-    //   onClick History.push to allow click outside the modal = exit
-    <div onClick={props.onDismiss} className="ui dimmer modals visible active">
-      <div
-    //   preventing the event bubling from childs to parent  
-        onClick={e => e.stopPropagation()}
-        className="ui standard modal visible active"
-      >
-        <div className="header">
-            {/* {props.title} */}
-            </div>
-        <div className="content">
-            hi
-            {/* {props.content} */}
-            </div>
-        <div className="actions">
-            {/* {props.actions} */}
-            </div>
+ const Modal = ({ handleClose, show, children, modalTitle }) => {
+  const showHideClassName = show ? "modal display-block" : "modal display-none";
+
+  return (
+    <div className={showHideClassName}>
+      <section className="modal-main">
+      <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{modalTitle}</h5>
+        </div>
+    </div>
+        
+
+        <div class="modal-body">
+        <p>
+             {children}
+        </p>
       </div>
-    </div>,
-    document.querySelector('#modal')
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success">Modifier</button>
+        <button type="button" class="btn btn-dark"  onClick={handleClose} data-dismiss="modal">Fermer</button>
+      </div>
+
+
+       
+      </section>
+    </div>
   );
 };
 
 export default Modal;
+

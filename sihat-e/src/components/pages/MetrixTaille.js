@@ -7,12 +7,33 @@ import { first } from "lodash";
 import Modal from './Modal';
 
 class FormMetrixPatient extends Component {
+  constructor() {
+    super();
+    this.state = {
+      show: false,
+      modalTitle: 'Taille',
+      mesures: 'hna khas lfetch dyal mesure li khas t updata',
+      date: 'hna fin daret akhir update'
+    };
+    this.showModal = this.showModal.bind(this);
+    this.hideModal = this.hideModal.bind(this);
+  }
+
+  showModal = () => {
+    this.setState({ show: true });
+  };
+
+  hideModal = () => {
+    this.setState({ show: false });
+  };
 
   componentDidMount() {
   //  this.props.fetchAboutInfos();
   console.log(this.props)
   //  console.log(this.props.patientData.about_reducer.patients.length)
   }
+
+ 
 
   renderInput({
     handleSubmit,
@@ -95,10 +116,8 @@ class FormMetrixPatient extends Component {
         <h2>{this.props.patientData.about_reducer.error}</h2>
       ) : (
    
-   
-   
       <>
-        <div className="d-xl-flex justify-content-xl-center align-items-xl-center">
+        <div id="modal" className="d-xl-flex justify-content-xl-center align-items-xl-center">
           <div id="formCardContainer">
             <div>
               <div  className="row register-form">
@@ -169,7 +188,9 @@ class FormMetrixPatient extends Component {
                             <p>
                               Date ....
                             </p>
-
+                            <Modal modalTitle={this.state.modalTitle} show={this.state.show} handleClose={this.hideModal}>
+          <p>Modal</p>
+        </Modal>
                         </div>
 
                             <div>
@@ -185,7 +206,7 @@ class FormMetrixPatient extends Component {
         // actions={this.renderActions()}
         // onDismiss={() => history.push('/')}
       />
-    <Link class="dropdown-item" to="Modal">Edit</Link>
+    <Link class="dropdown-item" onClick={this.showModal} >Edit</Link>
     <Link class="dropdown-item" to="#">Delete</Link>
 
   </div>                     
