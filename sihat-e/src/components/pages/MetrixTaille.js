@@ -173,9 +173,17 @@ class FormMetrixPatient extends Component {
 
                             <div>
 
-                            <Link>
-                            <i class="fas fa-plus"></i>                      
-                            </Link>
+                            <div className='dropdown'>
+                            <button role="button" type="button" class="btn" data-toggle="dropdown">
+                            <i className="fas fa-plus"></i> 
+                            </button>
+                            
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <Link class="dropdown-item" to="#">Edit</Link>
+    <Link class="dropdown-item" to="#">Delete</Link>
+
+  </div>                     
+                            </div>
                             </div>
                     </div>
                     <div class="login-box-seperator" id="login-box-seperator-left"></div>
