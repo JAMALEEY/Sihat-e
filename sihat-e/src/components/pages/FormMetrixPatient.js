@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { logout, createAbout, fetchAboutInfos, editAboutInfos } from "../../actions";
+import { logout, fetchTailleInfos} from "../../actions";
 import {Link} from 'react-router-dom';
 import { Field, reduxForm } from "redux-form";
 import { first } from "lodash";
@@ -71,30 +71,30 @@ class FormMetrixPatient extends Component {
 
  
 
-  onSubmit = (formValues) => {
+  // onSubmit = (formValues) => {
     // console.log(this.props)
 
     // alert(this.props.patientData.about_reducer.patients)
-    if (typeof this.props.patientData.about_reducer.patients === 'undefined' ) {
+  //   if (typeof this.props.patientData.about_reducer.patients === 'undefined' ) {
 
-      this.props.createAbout(formValues);
-    } else {
-      this.props.editAboutInfos(formValues);
-    }
-  }; 
+  //     this.props.createAbout(formValues);
+  //   } else {
+  //     this.props.editAboutInfos(formValues);
+  //   }
+  // }; 
 
 
 
 
   render() {
 
-    return this.props.patientData.about_reducer.loading ? (
-        <h2>Loading</h2>
-      ) : this.props.patientData.about_reducer.error ? (
-        <h2>{this.props.patientData.about_reducer.error}</h2>
-      ) : (
+    // return this.props.patientData.about_reducer.loading ? (
+    //     <h2>Loading</h2>
+    //   ) : this.props.patientData.about_reducer.error ? (
+    //     <h2>{this.props.patientData.about_reducer.error}</h2>
+    //   ) : (
    
-   
+   return(
    
       <>
         <div className="d-xl-flex justify-content-xl-center align-items-xl-center">
@@ -242,15 +242,15 @@ class FormMetrixPatient extends Component {
 
 const mapStateToProps = (state,props) => {
   return {
-    patientData: state, 
+    taillData: state, 
   };
 };
 
 const mapDispatchToProps = (dispatch, formValues) => {
   return {
-    fetchAboutInfos: () => dispatch(fetchAboutInfos()),
-    createAbout : (formValues) => dispatch(createAbout(formValues)),
-    editAboutInfos : (formValues) => dispatch(editAboutInfos(formValues)),
+    fetchTailleInfos: () => dispatch(fetchTailleInfos()),
+    // createAbout : (formValues) => dispatch(createAbout(formValues)),
+    // editAboutInfos : (formValues) => dispatch(editAboutInfos(formValues)),
 
   };
 };

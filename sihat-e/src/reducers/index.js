@@ -77,7 +77,7 @@ export default combineReducers ({
     logout: logoutReducer,    
     createAbout: createAboutReducer,
     patientData: about_reducer,
-    createTaille: tailles_reducer,
+    tailleData: tailles_reducer,
     // createContactInformation :createContactInformationReducer
     
     

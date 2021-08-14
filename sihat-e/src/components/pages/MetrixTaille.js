@@ -46,6 +46,8 @@ class TailleMetrix extends Component {
   //  console.log(this.props.patientData.about_reducer.patients.length)
   }
 
+  onSubmit = (formValues) => {
+    this.props.createTaille(formValues);}
  
 
   renderInput({
@@ -120,22 +122,43 @@ class TailleMetrix extends Component {
     // }
   // }; 
 
+  renderList() {
+    return this.props.tailleData.tailles_reducer.map(taille_reducer => {
+      return (
+        <div  key={taille_reducer.id}>
+          <div >
+            {/* {stream.title} */}
+            <div>
+              {/* {stream.description} */}
+              </div>
+          </div>
+        </div>
+      );
+    });
+  }
+
+
+
+
+
+
+
+
+
 
 
 
   render() {
-
-    // return this.props.createTaille.tailles_reducer.loading ? (
-    //     <h2>Loading</h2>
-    //   ) : this.props.createTaille.tailles_reducer.error ? (
-    //     <h2>{this.props.createTaille.tailles_reducer.error}</h2>
-    //   ) : 
-    //   (
-   
-
-
-
-    return(
+console.log(this.props)
+    return this.props.tailleData.tailles_reducer.loading 
+    ? 
+    ( <h2>Loading</h2> ) 
+    : 
+    this.props.tailleData.tailles_reducer.error 
+    ? 
+    ( <h2>{this.props.tailleData.tailles_reducer.error}</h2> )
+    : 
+    (
       <>
         <div id="modal" className="d-xl-flex justify-content-xl-center align-items-xl-center">
           <div id="formCardContainer">
@@ -155,7 +178,6 @@ class TailleMetrix extends Component {
                                     </h5>
                                   </div>
 
-                   
                       {/* End Radios */}
                   </form>
                 </div>
@@ -173,32 +195,31 @@ class TailleMetrix extends Component {
                     <div to='#'>
                     <div id='taillemetricyourmetric'>
                         <div>
+                          {console.log(this.props.tailleData.tailles_reducer.tailles.last_height)}
                             <h4>
+                            {}
                                 Votre mesure la plus récente :
                             </h4>
-                            
+                            </div>
+                
+              
+
+                  <div>
+
                             <h3>
                             <strong>
-                                Taille
+                              {this.props.tailleData.tailles_reducer.tailles.last_height.cm}  Cm
                             </strong>
                             </h3>
                             
-                            <h5>
-                              Date ....
-                            </h5>
+                            <p>
+                              Le {this.props.tailleData.tailles_reducer.tailles.last_height.date}
+                            </p>
 
                         </div>
-
-                            <div>
-                                <p>
-                                    177cm
-                                </p>
-                                <p>
-                                    date
-                                </p>
-                            </div>
+                      
+    
                     </div>
-                   
                     <div class="login-box-seperator" id="login-box-seperator-left"></div>
                     <div id='taillemetricyourmetric'>
                         <div>
@@ -233,12 +254,12 @@ class TailleMetrix extends Component {
 
 
         {/* Creat */}
-        <Modal formValues onSubmit={this.props.handleSubmit} modalTitle={this.state.modalTitle} show2={this.state.show2} handleClose={this.hideModalCreat}>
+        <Modal submit={this.props.handleSubmit(this.onSubmit)} modalTitle={this.state.modalTitle} show2={this.state.show2} handleClose={this.hideModalCreat}>
                               {/* children */}
           <strong><p>Mesures :</p></strong>
                       <Field
                           className="form-control"
-                          name="MetrixTailleAdd"
+                          name="cm"
                           component={this.renderInput}
                           label="Votre taille :"
                           placeholder="Ajouter votre taille en cm"
@@ -248,7 +269,7 @@ class TailleMetrix extends Component {
                         <strong><p>Date de cette Mesure :</p></strong>
                         <Field
                           className="form-control"
-                          name="MetrixTailleDate"
+                          name="date"
                           component={this.renderInput}
                           label="La date de votre mesure :"
                           type="date"
@@ -284,6 +305,7 @@ class TailleMetrix extends Component {
           </div>
         </div>
       </>
+      
     );
   }
 }
@@ -295,7 +317,7 @@ class TailleMetrix extends Component {
 
 const mapStateToProps = (state,props) => {
   return {
-    metrixData: state, 
+    tailleData: state, 
   };
 };
 
@@ -314,8 +336,8 @@ TailleMetrix = connect(
 )(TailleMetrix);
 
 export default reduxForm({
-    form: 'MetrixTaille', // a unique name for this form
-    enableReinitialize: true
+    // form: 'MetrixTaille', // a unique name for this form
+    // enableReinitialize: true
 })(TailleMetrix);
 
 

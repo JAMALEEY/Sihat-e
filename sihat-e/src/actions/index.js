@@ -189,10 +189,10 @@ export const fetchTailleInfos = () => {
   return (dispatch) => {
     dispatch(fetchTailleInfosRequest());
     api
-      .get("/height")
+      .get("/height/fetch")
       .then((response) => {
         // response.data is the Patients
-        const fetchedData = response.data.data;
+        const fetchedData = response.data;
         dispatch(fetchTailleInfosSuccess(fetchedData));
       })
       .catch((error) => {
@@ -213,7 +213,7 @@ export const fetchTailleInfosRequest = () => {
 // HERE WE FETCH THE RESPONSE OF THE REQUEST
 export const fetchTailleInfosSuccess = (fetchedData) => {
   return {
-    type: "FETCH_TAILLE",
+    type: "FETCH_TAILLE_METRIX",
     payload: fetchedData,
   };
 };
@@ -231,8 +231,8 @@ export const fetchTailleInfosFailure = (error) => {
 
 export const createTaille = (formValues) => {
   return async (dispatch) => {
-    const response = await api.post("/height", formValues);
-    window.location.reload()    
+    const response = await api.post("/height/create", formValues);
+    // window.location.reload()    
     
     dispatch({
       type: CREATE_TAILLE_METRIX,

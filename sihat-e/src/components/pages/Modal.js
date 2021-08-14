@@ -1,6 +1,6 @@
 import './modal.css';
 
- const Modal = ({ handleClose, show, show2, children, modalTitle, mesures, date }) => {
+ const Modal = ({ submit, handleClose, show, show2, children, modalTitle, mesures, date }) => {
   const showHideClassName = show || show2 ? "modal display-block" : "modal display-none";
 const showButton = show2 ? 'Enregistrer' : "Modifier";
   return (
@@ -21,7 +21,7 @@ const showButton = show2 ? 'Enregistrer' : "Modifier";
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-success">{showButton}</button>
+        <button onClick={submit} type="button" class="btn btn-success">{showButton}</button>
         
         <button type="button" class="btn btn-dark"  onClick={handleClose} data-dismiss="modal">Fermer</button>
       </div>
