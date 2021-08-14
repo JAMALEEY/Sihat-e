@@ -61,7 +61,7 @@ const  App = (props) => {
                                 <PublicRoute path="/aboutlist" exact component={AboutList} />
                                 <PublicRoute path="/metrix" exact component={Metrix} />
                                 <PublicRoute path="/metrix/form" exact component={FormMetrixPatient} />
-                                <PublicRoute path="/metrixTaille" exact component={Metrix} />
+                                <PublicRoute path="/metrixTaille" exact component={MetrixTaille} />
                                 <Redirect from="*" to="/" />
     </Switch>
     </Router>
