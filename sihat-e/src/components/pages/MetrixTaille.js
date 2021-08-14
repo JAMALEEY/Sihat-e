@@ -188,8 +188,17 @@ class FormMetrixPatient extends Component {
                             <p>
                               Date ....
                             </p>
-                            <Modal modalTitle={this.state.modalTitle} show={this.state.show} handleClose={this.hideModal}>
-          <p>Modal</p>
+                            <Modal date={this.state.date} mesures={this.state.mesures} modalTitle={this.state.modalTitle} show={this.state.show} handleClose={this.hideModal}>
+                              {/* children */}
+          <strong><p>Mesures</p></strong>
+          <Field
+                          className="form-control-plaintext"
+                          name="first_name"
+                          component={this.renderInput}
+                          label="Prénom :"
+                          placeholder="Votre prénom"
+                          type="text"
+                        />
         </Modal>
                         </div>
 

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { logout, createAbout, fetchAboutInfos, editAboutInfos } from "../../actions";
-
-import { Field, reduxForm , Link } from "redux-form";
+import {Link} from 'react-router-dom';
+import { Field, reduxForm } from "redux-form";
 import { first } from "lodash";
 
 class FormDashboardPatient extends Component {

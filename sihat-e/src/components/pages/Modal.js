@@ -1,6 +1,6 @@
 import './modal.css';
 
- const Modal = ({ handleClose, show, children, modalTitle }) => {
+ const Modal = ({ handleClose, show, children, modalTitle, mesures, date }) => {
   const showHideClassName = show ? "modal display-block" : "modal display-none";
 
   return (
