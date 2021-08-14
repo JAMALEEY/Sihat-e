@@ -6,7 +6,7 @@ import { Field, reduxForm } from "redux-form";
 import { first } from "lodash";
 import Modal from './Modal';
 
-class TailleMetrix extends Component {
+class MetrixTaille extends Component {
   constructor() {
     super();
     this.state = {
@@ -122,105 +122,15 @@ class TailleMetrix extends Component {
     // }
   // }; 
 
-  renderList() {
+
+
+
+
+  renderList() {  
     return this.props.tailleData.tailles_reducer.map(taille_reducer => {
       return (
-        <div  key={taille_reducer.id}>
-          <div >
-            {/* {stream.title} */}
-            <div>
-              {/* {stream.description} */}
-              </div>
-          </div>
-        </div>
-      );
-    });
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-  render() {
-console.log(this.props)
-    return this.props.tailleData.tailles_reducer.loading 
-    ? 
-    ( <h2>Loading</h2> ) 
-    : 
-    this.props.tailleData.tailles_reducer.error 
-    ? 
-    ( <h2>{this.props.tailleData.tailles_reducer.error}</h2> )
-    : 
-    (
-      <>
-        <div id="modal" className="d-xl-flex justify-content-xl-center align-items-xl-center">
-          <div id="formCardContainer">
-            <div>
-              <div  className="row register-form">
-                <div className="col-md-8 col-xl-10 offset-md-2 offset-xl-0">
-                  <form id='metrixForm' className="custom-form" method='post' >
-                  
-
-                    <div className="d-xl-flex align-items-xl-start" >
-                      <Link to='/metrix/form'>
-                      <i class="fas fa-angle-left fa-2x"></i>
-                      </Link>
-
-
-                                  <h5 className="retourMetrix">Taille.
-                                    </h5>
-                                  </div>
-
-                      {/* End Radios */}
-                  </form>
-                </div>
-
-              </div>
-              {/* End Form */}
-              <div className='metrixWrapper'>
-                
-                <Link  onClick={this.showModalCreat}  className='fasflex'>
-                  <p>
-                    Ajouter Votre Taille
-                  </p>
-                <i className="fas fa-plus fa-2x"></i> 
-                </Link>
-                    <div to='#'>
-                    <div id='taillemetricyourmetric'>
-                        <div>
-                          {console.log(this.props.tailleData.tailles_reducer.tailles.last_height)}
-                            <h4>
-                            {}
-                                Votre mesure la plus récente :
-                            </h4>
-                            </div>
-                
-              
-
-                  <div>
-
-                            <h3>
-                            <strong>
-                              {this.props.tailleData.tailles_reducer.tailles.last_height.cm}  Cm
-                            </strong>
-                            </h3>
-                            
-                            <p>
-                              Le {this.props.tailleData.tailles_reducer.tailles.last_height.date}
-                            </p>
-
-                        </div>
-                      
-    
-                    </div>
-                    <div class="login-box-seperator" id="login-box-seperator-left"></div>
+        <div key={taille_reducer.id}>
+ <div class="login-box-seperator" id="login-box-seperator-left"></div>
                     <div id='taillemetricyourmetric'>
                         <div>
                             <h5>
@@ -229,7 +139,7 @@ console.log(this.props)
                             
                             <p>
                             <strong>
-                                Taille
+                            {taille_reducer}
                             </strong>
                             </p>
                             
@@ -297,9 +207,96 @@ console.log(this.props)
                             </div>
                             </div>
                     </div>
-                    <div class="login-box-seperator" id="login-box-seperator-left"></div>
-                    </div>
+        </div>
+      );
+    });
+  }
 
+
+
+
+
+
+
+
+  render() {
+console.log(this.props)
+    return this.props.tailleData.tailles_reducer.loading 
+    ? 
+    ( <h2>Loading</h2> ) 
+    : 
+    this.props.tailleData.tailles_reducer.error 
+    ? 
+    ( <h2>{this.props.tailleData.tailles_reducer.error}</h2> )
+    : 
+    (
+
+
+      
+      <>
+        <div id="modal" className="d-xl-flex justify-content-xl-center align-items-xl-center">
+          <div id="formCardContainer">
+            <div>
+              <div  className="row register-form">
+                <div className="col-md-8 col-xl-10 offset-md-2 offset-xl-0">
+                  <form id='metrixForm' className="custom-form" method='post' >
+                  
+
+                    <div className="d-xl-flex align-items-xl-start" >
+                      <Link to='/metrix/form'>
+                      <i class="fas fa-angle-left fa-2x"></i>
+                      </Link>
+
+
+                                  <h5 className="retourMetrix">Taille.
+                                    </h5>
+                                  </div>
+
+                      {/* End Radios */}
+                  </form>
+                </div>
+
+              </div>
+              {/* End Form */}
+              <div className='metrixWrapper'>
+                
+                <Link  onClick={this.showModalCreat}  className='fasflex'>
+                  <p>
+                    Ajouter Votre Taille
+                  </p>
+                <i className="fas fa-plus fa-2x"></i> 
+                </Link>
+                    <div to='#'>
+                    <div id='taillemetricyourmetric'>
+                        <div>
+                          {console.log(this.props.tailleData.tailles_reducer.tailles.last_height)}
+                            <h4>
+                                Votre mesure la plus récente :
+                            </h4>
+                            </div>
+                
+              
+
+                  <div>
+
+                            <h3>
+                            <strong>
+                              {this.props.tailleData.tailles_reducer.tailles.last_height.cm}  Cm
+                            </strong>
+                            </h3>
+                            
+                            <p>
+                              Le {this.props.tailleData.tailles_reducer.tailles.last_height.date}
+                            </p>
+
+                        </div>
+                      
+    
+                    </div>
+                   
+                    {/* <div class="login-box-seperator" id="login-box-seperator-left"></div> */}
+                    </div>
+                      {/* {this.renderList} */}
                 </div>
             </div>
           </div>
@@ -330,15 +327,15 @@ const mapDispatchToProps = (dispatch, formValues, id) => {
   };
 };
 
-TailleMetrix = connect(
+MetrixTaille = connect(
     mapStateToProps,
     mapDispatchToProps
-)(TailleMetrix);
+)(MetrixTaille);
 
 export default reduxForm({
-    // form: 'MetrixTaille', // a unique name for this form
-    // enableReinitialize: true
-})(TailleMetrix);
+    form: 'MetrixTailleHistoryandAdd', // a unique name for this form
+    enableReinitialize: true
+})(MetrixTaille);
 
 
 
