@@ -4,6 +4,7 @@ import { logout, createAbout, fetchAboutInfos, editAboutInfos } from "../../acti
 import {Link} from 'react-router-dom';
 import { Field, reduxForm } from "redux-form";
 import { first } from "lodash";
+import Modal from './Modal';
 
 class FormMetrixPatient extends Component {
 
@@ -179,7 +180,12 @@ class FormMetrixPatient extends Component {
                             </button>
                             
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <Link class="dropdown-item" to="#">Edit</Link>
+                            <Modal title="Modifier"
+        // content={this.renderContent()}
+        // actions={this.renderActions()}
+        // onDismiss={() => history.push('/')}
+      />
+    <Link class="dropdown-item" to="Modal">Edit</Link>
     <Link class="dropdown-item" to="#">Delete</Link>
 
   </div>                     
