@@ -7,6 +7,7 @@ const Modal = props => {
     //   onClick History.push to allow click outside the modal = exit
     <div onClick={props.onDismiss} className="ui dimmer modals visible active">
       <div
+    //   preventing the event bubling from childs to parent  
         onClick={e => e.stopPropagation()}
         className="ui standard modal visible active"
       >
