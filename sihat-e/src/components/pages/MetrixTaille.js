@@ -2,20 +2,19 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { logout, createTaille, fetchTailleInfos, editTaille, deleteTaille } from "../../actions";
 import {Link} from 'react-router-dom';
-import { Field, reduxForm } from "redux-form";
+import { Field, formValues, reduxForm } from "redux-form";
 import { first } from "lodash";
 import Modal from './Modal';
-
+import ModalUpdate from './ModalUpdate';
 class MetrixTaille extends Component {
   constructor() {
     super();
     this.state = {
       show: false,
       show2: false,
-      // modalTitleEdit: 'Modification de taille',
-      // modalTitle: 'Ajouter votre Taille',
-      // mesures: 'hna khas lfetch dyal mesure li khas t updata',
-      // dateSelectedTaille: 'hna fin daret akhir update',
+      modalTitleEdit: 'Modification de taille',
+      modalTitle: 'Ajouter votre Taille',
+   
       
       
     
@@ -45,8 +44,7 @@ class MetrixTaille extends Component {
 
   componentDidMount() {
    this.props.fetchTailleInfos();
-  console.log(this.props)
-  //  console.log(this.props.patientData.about_reducer.patients.length)
+   console.log(this.props)
   }
 
 
@@ -131,19 +129,17 @@ class MetrixTaille extends Component {
 
 
   renderList() {  
-    if (this.props.tailleData.tailles_reducer.recievedData  
-      ) {
-
-      console.log(this.props.tailleData.tailles_reducer.tailles.historique)
-      
-     return this.props.tailleData.tailles_reducer.tailles.historique
+    if (this.props.tailleData.tailles_reducer.recievedData) {
+      // const id = this.props.tailleData.tailles_reducer.tailles.historique.id;
+    return this.props.tailleData.tailles_reducer.tailles.historique
     .map(thetailleData => {
       return (
-        <div key={thetailleData.id}>
+        <div key={thetailleData.id} id={thetailleData.id}>
+
  <div class="login-box-seperator" id="login-box-seperator-left"></div>
                     <div id='taillemetricyourmetric'>
                         <div>
-                            
+                            {console.log(this.id)}
                             
                             <p>
                             <strong>
@@ -157,7 +153,7 @@ class MetrixTaille extends Component {
                             au : {thetailleData.date}
                             </p>
                             </strong>
-                            <Modal date={this.state.date} mesures={this.state.mesures} modalTitle={this.state.modalTitleEdit} show={this.state.show} handleClose={this.hideModal}>
+                            <Modal submit={this.props.handleSubmit(this.onSubmit)} modalTitle={this.state.modalTitle} show={this.state.show} handleClose={this.hideModalCreat}>
                               {/* children */}
           <strong><p>Mesures :</p></strong>
                       <Field
@@ -169,13 +165,12 @@ class MetrixTaille extends Component {
                           type="text"
                           span='Cm'
                         /> 
-                        <strong><p>Date de cette Mesure :</p></strong>
-                          {this.state.dateSelectedTaille}
+                        {/* <strong><p>Date de cette Mesure :</p></strong> */}
         </Modal>
-
-
+          {/* {this.upd = (formValues) => {this.props.editTaille(thetailleData.id, formValues)}} */}
         {/* Creat */}
-        <Modal submit={this.props.handleSubmit(this.onSubmit)} modalTitle={this.state.modalTitle} show2={this.state.show2} handleClose={this.hideModalCreat}>
+        <ModalUpdate  id={this.state.id} date={this.state.date} mesures={this.state.mesures} modalTitle={this.state.modalTitleEdit} show2={this.state.show2} handleClose={this.hideModal}>
+        
                               {/* children */}
           <strong><p>Mesures :</p></strong>
                       <Field
@@ -195,7 +190,7 @@ class MetrixTaille extends Component {
                           label="La date de votre mesure :"
                           type="date"
                         /> 
-        </Modal>
+        </ModalUpdate>
                         </div>
 
                             <div>
@@ -211,9 +206,10 @@ class MetrixTaille extends Component {
         // actions={this.renderActions()}
         // onDismiss={() => history.push('/')}
       />
+      { this.del = () => this.props.deleteTaille(thetailleData.id)} 
       {/* {this.supp  = () => {  this.props.deleteTaille(this.props.thetailleData.id)}} */}
     <Link class="dropdown-item" onClick={this.showModal} >Edit</Link>
-    <Link class="dropdown-item" onClick={this.supp}>Delete</Link>
+    <Link class="dropdown-item" onClick={this.del}>Delete</Link>
 
   </div>                     
                             </div>
@@ -234,7 +230,6 @@ class MetrixTaille extends Component {
 
 
   render() {
-console.log(this.props)
     return this.props.tailleData.tailles_reducer.loading 
     ? 
     ( <h2>Loading</h2> ) 
@@ -282,7 +277,7 @@ console.log(this.props)
                 </Link>
                     <div id='taillemetricyourmetric'>
                         <div>
-                          {console.log(this.props.tailleData.tailles_reducer.tailles.last_height)}
+                          {/* {console.log(this.props.tailleData.tailles_reducer.tailles.last_height)} */}
                             <h4>
                                 Votre mesure la plus récente :
                             </h4>

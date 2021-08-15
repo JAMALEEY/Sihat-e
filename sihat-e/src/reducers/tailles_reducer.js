@@ -1,3 +1,4 @@
+import _ from 'lodash';
 
 import { 
     CREATE_TAILLE_METRIX,
@@ -19,6 +20,8 @@ import {
             ...state,
             loading: true
           }
+        case DELETE_TAILLE_METRIX:
+          return _.omit(state, action.payload);
         case FETCH_TAILLE_METRIX:
           return {
             loading: false,

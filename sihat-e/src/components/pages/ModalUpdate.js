@@ -1,6 +1,8 @@
 import './modal.css';
- const Modal = ({ upd, submit, handleClose, show, children, modalTitle, mesures, date }) => {
-  const showHideClassName = show  ? "modal display-block" : "modal display-none";
+import {editTaille} from '../../actions'
+ const ModalUpdate = ({ upd, submit, handleClose, show2, children, modalTitle, mesures, date }) => {
+    const showHideClassName = show2  ? "modal display-block" : "modal display-none";
+
 // submit = () => {
 // alert('hi')
 // }
@@ -22,7 +24,7 @@ import './modal.css';
       </div>
 
       <div class="modal-footer">
-        <button onClick={upd} type="button" class="btn btn-success">Créer</button>
+        <button onClick={upd} type="button" class="btn btn-success">Modifier</button>
         
         <button type="button" class="btn btn-dark"  onClick={handleClose} data-dismiss="modal">Fermer</button>
       </div>
@@ -34,5 +36,5 @@ import './modal.css';
   );
 };
 
-export default Modal;
+export default ModalUpdate;
 

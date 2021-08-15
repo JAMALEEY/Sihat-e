@@ -249,15 +249,15 @@ export const editTaille = (id, formValues) => async dispatch => {
   const response = await api.put(`/height/${id}`, formValues);
 
   dispatch({ type: EDIT_TAILLE_METRIX, payload: response.data });
-  window.location.reload()    
+  // window.location.reload()    
 };
 
 
 // DELETE
 
 export const deleteTaille = id => async dispatch => {
-  await api.delete(`/height/${id}`);
+  await api.delete(`/height/delete/${id}`);
 
   dispatch({ type: DELETE_TAILLE_METRIX, payload: id });
-  window.location.reload()    
+  // window.location.reload()    
 };

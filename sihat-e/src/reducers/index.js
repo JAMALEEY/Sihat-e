@@ -66,6 +66,12 @@ const createTailleReducer = (createTaille = {}, action) => {
     } return createTaille;
 }
 
+// const deleteTailleReducer = (state = {}, action) => {
+//     if (action.type === DELETE_TAILLE_METRIX) {
+//         return _.omit(state, action.payload);
+//     } return createTaille;
+// }
+
 
 export default combineReducers ({
     form: newsletterReducer, signUpPatientState, dashboardPatientForm,
