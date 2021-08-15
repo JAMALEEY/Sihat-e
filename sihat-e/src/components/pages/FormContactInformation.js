@@ -4,7 +4,7 @@ import { logout, createAbout, fetchAboutInfos, editAboutInfos } from "../../acti
 
 import { Field, reduxForm , Link, formValueSelector } from "redux-form";
 import { first } from "lodash";
-
+import Loader  from "./Loader";
 class FormContactInformation extends Component {
 
   componentDidMount() {
@@ -89,7 +89,7 @@ class FormContactInformation extends Component {
   render() {
 
     return this.props.patientData.about_reducer.loading ? (
-        <h2>Loading</h2>
+      <Loader />
       ) : this.props.patientData.about_reducer.error ? (
         <h2>{this.props.patientData.about_reducer.error}</h2>
       ) : (

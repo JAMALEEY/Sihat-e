@@ -92,7 +92,8 @@ class FormMetrixPatient extends Component {
 
   render() {
     if (!this.props.taillData) {
-      return <div>Loading...</div>;
+      return               <Loader />
+      ;
     } else {
    
    return(

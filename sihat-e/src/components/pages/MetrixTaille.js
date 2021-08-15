@@ -6,6 +6,7 @@ import { Field, formValues, reduxForm } from "redux-form";
 import { first } from "lodash";
 import Modal from './Modal';
 import ModalUpdate from './ModalUpdate';
+import Loader from "./Loader";
 class MetrixTaille extends Component {
   constructor() {
     super();
@@ -219,7 +220,9 @@ class MetrixTaille extends Component {
   render() {
     return this.props.tailleData.tailles_reducer.loading 
     ? 
-    ( <h2>Loading</h2> ) 
+    (              
+      <Loader />
+      ) 
     : 
     this.props.tailleData.tailles_reducer.error 
     ? 
@@ -239,7 +242,7 @@ class MetrixTaille extends Component {
                   
 
                     <div className="d-xl-flex align-items-xl-start" >
-                      <Link to='/metrix/form'>
+                      <Link to='/metrix'>
                       <i class="fas fa-angle-left fa-2x"></i>
                       </Link>
 

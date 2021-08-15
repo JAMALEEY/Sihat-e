@@ -1687,6 +1687,26 @@ width: 386px;font-family: Poppins, sans-serif;}
   height: 26vh;
 }
 
+
+.Myloader{
+  width: 9vw;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.loader h3 {
+  font-family: Poppins, sans-serif;color: rgb(72,139,118)}
+
+.loadercontainer{
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
 /* the newsletter validation popup style */
 .taken {
     margin: 20px;
