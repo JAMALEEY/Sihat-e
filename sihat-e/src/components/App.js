@@ -27,7 +27,7 @@ import PublicRoute from '../helpers/PublicRoute';
 import FormDashboardPatient from './pages/Apropos/FormDashboardPatient';
 import ContactInformation from './pages/InformationContact/ContactInformation';
 import Metrix from './pages/PatientMetrix/Metrix';
-import FormMetrixPatient from './pages/PatientMetrix/Tailles/FormMetrixPatient';
+import FormMetrixPatient from './pages/PatientMetrix/FormMetrixPatient';
 import MetrixTaille from './pages/PatientMetrix/Tailles/MetrixTaille';
 // import Modal from './pages/Modal';
 

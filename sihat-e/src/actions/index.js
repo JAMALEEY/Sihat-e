@@ -261,3 +261,89 @@ export const deleteTaille = id => async dispatch => {
   dispatch({ type: DELETE_TAILLE_METRIX, payload: id });
   window.location.reload()    
 };
+
+
+// POIDS METRIX :
+
+
+// FETCH
+
+
+export const fetchPoidsInfos = () => {
+
+
+  return (dispatch) => {
+    dispatch(fetchPoidsInfosRequest());
+    api
+      .get("/height/fetch")
+      .then((response) => {
+        // response.data is the Patients
+        const fetchedDataPoids = response.data;
+        dispatch(fetchPoidsInfosSuccess(fetchedDataPoids));
+      })
+      .catch((error) => {
+        // error.message is the error message
+        dispatch(fetchPatientsFailure(error.message));
+      });
+  };
+};
+
+
+//  HERE WE FETCH THE REQUEST 
+export const fetchPoidsInfosRequest = () => {
+  return {
+    type: "FETCH_Poids_REQUEST",
+  };
+};
+
+// HERE WE FETCH THE RESPONSE OF THE REQUEST
+export const fetchPoidsInfosSuccess = (fetchedDataPoids) => {
+  return {
+    type: "FETCH_Poids_METRIX",
+    payload: fetchedDataPoids,
+  };
+};
+
+// HERE WE FETCH THE ERROR OF THE REQUEST
+export const fetchPoidsInfosFailure = (error) => {
+  return {
+    type: "FETCH_Poids_FAILURE",
+    payload: error,
+  };
+};
+
+
+// CREATION
+
+export const createPoids = (formValues) => {
+  return async (dispatch) => {
+    const response = await api.post("/height/create", formValues);
+    window.location.reload()    
+    
+    dispatch({
+      type: CREATE_Poids_METRIX,
+      payload: response.data,
+    });
+
+  };
+};
+
+// UPDATE
+
+
+export const editPoids = (id, formValues) => async dispatch => {
+  const response = await api.put(`/height/update/${id}`, formValues);
+
+  dispatch({ type: EDIT_Poids_METRIX, payload: response.data });
+  window.location.reload()    
+};
+
+
+// DELETE
+
+export const deletePoids = id => async dispatch => {
+  await api.delete(`/height/delete/${id}`);
+
+  dispatch({ type: DELETE_Poids_METRIX, payload: id });
+  window.location.reload()    
+};

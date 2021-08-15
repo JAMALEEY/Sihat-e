@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {  logout, createContactInformation, fetchAboutInfos  } from '../../../actions'
 import {Field, Form, formValueSelector, reduxForm, touch} from 'redux-form';
-import FormMetrixPatient from './Tailles/FormMetrixPatient';
+import FormMetrixPatient from './FormMetrixPatient';
 
         
         
@@ -16,17 +16,17 @@ import FormMetrixPatient from './Tailles/FormMetrixPatient';
         }, [])
 
         
-        const renderCreate = () => {
-            return (
-                <div style={{ textAlign: 'left' }}>
-                    <i class="fas fa-plus">
-                <Link to="/metrix/new" className="ui button primary">
-                    Create Stream
-                </Link>
-                </i>
-                </div>
-            );
-        }
+        // const renderCreate = () => {
+        //     return (
+        //         <div style={{ textAlign: 'left' }}>
+        //             <i class="fas fa-plus">
+        //         <Link to="/metrix/new" className="ui button primary">
+        //             Create Metrix
+        //         </Link>
+        //         </i>
+        //         </div>
+        //     );
+        // }
             
             const patientDashboarLogout =  () => {
                 logout();
@@ -277,6 +277,7 @@ import FormMetrixPatient from './Tailles/FormMetrixPatient';
                 </nav></div></div> 
                 <div>
                 <FormMetrixPatient  />
+
 
 
       </div>
