@@ -27,19 +27,19 @@ class MetrixTaille extends Component {
   }
 
   showModal = () => {
-    this.setState({ show: true });
-  };
-
-  hideModal = () => {
-    this.setState({ show: false });
-  };
-
-  showModalCreat = () => {
     this.setState({ show2: true });
   };
 
-  hideModalCreat = () => {
+  hideModal = () => {
     this.setState({ show2: false });
+  };
+
+  showModalCreat = () => {
+    this.setState({ show: true });
+  };
+
+  hideModalCreat = () => {
+    this.setState({ show: false });
   };
 
   componentDidMount() {
@@ -48,8 +48,11 @@ class MetrixTaille extends Component {
   }
 
 
-  onSubmit = (formValues) => {
+  creatTaille = (formValues) => {
     this.props.createTaille(formValues);}
+
+    editTaille = (id, formValues) => {
+      this.props.editTaille(formValues);}
  
 
   renderInput({
@@ -130,6 +133,7 @@ class MetrixTaille extends Component {
 
   renderList() {  
     if (this.props.tailleData.tailles_reducer.recievedData) {
+     
       // const id = this.props.tailleData.tailles_reducer.tailles.historique.id;
     return this.props.tailleData.tailles_reducer.tailles.historique
     .map(thetailleData => {
@@ -153,43 +157,25 @@ class MetrixTaille extends Component {
                             au : {thetailleData.date}
                             </p>
                             </strong>
-                            <Modal submit={this.props.handleSubmit(this.onSubmit)} modalTitle={this.state.modalTitle} show={this.state.show} handleClose={this.hideModalCreat}>
+ 
+          {/* {this.upd = (formValues) => {this.props.editTaille(thetailleData.id, formValues)}} */}
+        {/* Creat */}
+        { this.editTaille = (formValues) => this.props.editTaille(thetailleData.id, formValues)} 
+
+        <ModalUpdate edit={this.props.handleSubmit(this.editTaille)} id={this.state.id} date={this.state.date} mesures={this.state.mesures} modalTitle={this.state.modalTitleEdit} show2={this.state.show2} handleClose={this.hideModal}>
+        
                               {/* children */}
           <strong><p>Mesures :</p></strong>
-                      <Field
+          <Field
                           className="form-control"
-                          name="MetrixTaille"
+                          name="cm"
                           component={this.renderInput}
                           label="Modifier votre taille :"
                           placeholder="Votre taille"
                           type="text"
                           span='Cm'
                         /> 
-                        {/* <strong><p>Date de cette Mesure :</p></strong> */}
-        </Modal>
-          {/* {this.upd = (formValues) => {this.props.editTaille(thetailleData.id, formValues)}} */}
-        {/* Creat */}
-        <ModalUpdate  id={this.state.id} date={this.state.date} mesures={this.state.mesures} modalTitle={this.state.modalTitleEdit} show2={this.state.show2} handleClose={this.hideModal}>
-        
-                              {/* children */}
-          <strong><p>Mesures :</p></strong>
-                      <Field
-                          className="form-control"
-                          name="cm"
-                          component={this.renderInput}
-                          label="Votre taille :"
-                          placeholder="Ajouter votre taille en cm"
-                          type="text"
-                          span='Cm'
-                        /> 
-                        <strong><p>Date de cette Mesure :</p></strong>
-                        <Field
-                          className="form-control"
-                          name="date"
-                          component={this.renderInput}
-                          label="La date de votre mesure :"
-                          type="date"
-                        /> 
+                        Cette mesure date de: {thetailleData.date}
         </ModalUpdate>
                         </div>
 
@@ -201,11 +187,12 @@ class MetrixTaille extends Component {
                             </button>
                             
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <Modal title="Modifier"
-        // content={this.renderContent()}
+                            {/* <Modal title="Ajouter" />
+                            <ModalUpdate title="Modifier" /> */}
+        {/* // content={this.renderContent()}
         // actions={this.renderActions()}
-        // onDismiss={() => history.push('/')}
-      />
+        // onDismiss={() => history.push('/')} */}
+      
       { this.del = () => this.props.deleteTaille(thetailleData.id)} 
       {/* {this.supp  = () => {  this.props.deleteTaille(this.props.thetailleData.id)}} */}
     <Link class="dropdown-item" onClick={this.showModal} >Edit</Link>
@@ -268,6 +255,29 @@ class MetrixTaille extends Component {
               </div>
               {/* End Form */}
               <div className='metrixWrapper'>
+              <Modal submit={this.props.handleSubmit(this.creatTaille)} modalTitle={this.state.modalTitle} show={this.state.show} handleClose={this.hideModalCreat}>
+                              {/* children */}
+          <strong><p>Mesures :</p></strong>
+          <Field
+                          className="form-control"
+                          name="cm"
+                          component={this.renderInput}
+                          label="Votre taille :"
+                          placeholder="Ajouter votre taille en cm"
+                          type="text"
+                          span='Cm'
+          /> 
+                        <strong><p>Date de cette Mesure :</p></strong>
+          <Field
+                          className="form-control"
+                          name="date"
+                          component={this.renderInput}
+                          label="La date de votre mesure :"
+                          type="date"
+          /> 
+
+                        {/* <strong><p>Date de cette Mesure :</p></strong> */}
+        </Modal>
                 
                 <Link  onClick={this.showModalCreat}  className='fasflex'>
                   <p>

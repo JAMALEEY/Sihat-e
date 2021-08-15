@@ -102,12 +102,12 @@ class FormMetrixPatient extends Component {
             <div>
               <div  className="row register-form">
                 <div className="col-md-8 col-xl-10 offset-md-2 offset-xl-0">
-                  <form id='metrixForm' className="custom-form" method='post' onSubmit={this.props.handleSubmit(this.onSubmit)}>
+                  {/* <form id='metrixForm' className="custom-form" method='post' onSubmit={this.props.handleSubmit(this.onSubmit)}> */}
                     <h1 className="d-xl-flex align-items-xl-start">Mes métriques de santé.</h1>
 
                    
                       {/* End Radios */}
-                  </form>
+                  {/* </form> */}
                 </div>
 
               </div>

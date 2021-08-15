@@ -246,7 +246,7 @@ export const createTaille = (formValues) => {
 
 
 export const editTaille = (id, formValues) => async dispatch => {
-  const response = await api.put(`/height/${id}`, formValues);
+  const response = await api.put(`/height/update/${id}`, formValues);
 
   dispatch({ type: EDIT_TAILLE_METRIX, payload: response.data });
   // window.location.reload()    
