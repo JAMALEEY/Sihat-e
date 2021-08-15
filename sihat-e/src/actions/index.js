@@ -283,7 +283,7 @@ export const fetchPoidsInfos = () => {
       })
       .catch((error) => {
         // error.message is the error message
-        dispatch(fetchPatientsFailure(error.message));
+        dispatch(fetchPoidsInfosFailure(error.message));
       });
   };
 };
@@ -345,5 +345,91 @@ export const deletePoids = id => async dispatch => {
   await api.delete(`/weight/delete/${id}`);
 
   dispatch({ type: DELETE_POIDS_METRIX, payload: id });
+  window.location.reload()    
+};
+
+
+
+// BMI METRIX :
+
+
+// FETCH
+
+
+export const fetchBmiInfos = () => {
+
+
+  return (dispatch) => {
+    dispatch(fetchBmiInfosRequest());
+    api
+      .get("/BMI/fetch")
+      .then((response) => {
+        const fetchedDataBmi = response.data;
+        dispatch(fetchBmiInfosSuccess(fetchedDataBmi));
+      })
+      .catch((error) => {
+        // error.message is the error message
+        dispatch(fetchBmiInfosFailure(error.message));
+      });
+  };
+};
+
+
+//  HERE WE FETCH THE REQUEST :
+export const fetchBmiInfosRequest = () => {
+  return {
+    type: "FETCH_BMI_REQUEST",
+  };
+};
+
+// HERE WE FETCH THE RESPONSE OF THE REQUEST:
+export const fetchBmiInfosSuccess = (fetchedDataBmi) => {
+  return {
+    type: "FETCH_BMI_METRIX",
+    payload: fetchedDataBmi,
+  };
+};
+
+// HERE WE FETCH THE ERROR OF THE REQUEST:
+export const fetchBmiInfosFailure = (error) => {
+  return {
+    type: "FETCH_BMI_FAILURE",
+    payload: error,
+  };
+};
+
+
+// CREATION:
+
+export const createBmi = (formValues) => {
+  return async (dispatch) => {
+    const response = await api.post("/BMI/create", formValues);
+    window.location.reload()    
+    
+    dispatch({
+      type: "CREATE_BMI_METRIX",
+      payload: response.data,
+    });
+
+  };
+};
+
+// UPDATE:
+
+
+export const editBmi = (id, formValues) => async dispatch => {
+  const response = await api.put(`/BMI/update/${id}`, formValues);
+
+  dispatch({ type: "EDIT_BMI_METRIX", payload: response.data });
+  window.location.reload()    
+};
+
+
+// DELETE:
+
+export const deleteBmi = id => async dispatch => {
+  await api.delete(`/BMI/delete/${id}`);
+
+  dispatch({ type: "DELETE_Bmi_METRIX", payload: id });
   window.location.reload()    
 };

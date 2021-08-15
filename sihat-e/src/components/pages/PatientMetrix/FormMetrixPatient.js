@@ -107,6 +107,34 @@ defaultValue,defaultChecked,checked,})
                     </Link>
 
                     <div class="login-box-seperator" id="login-box-seperator-left"></div>
+
+                    <Link to='/metrixPoids'>
+
+    <div class="login-box-seperator" id="login-box-seperator-left"></div>
+    <div id='onemetric'>
+        <div>
+            <h5>
+                Poids
+            </h5>
+        </div>
+        <div className='d-flex flex-column'>
+                <p className='ml-auto'>
+
+                {!this.props.poidsData.poids_reducer.dataOk ? "Chargement ..." : ` ${this.props.poidsData.poids_reducer.poids.last_weight.kg} kg `} 
+                    
+                </p>
+                <p>
+                    {!this.props.poidsData.poids_reducer.dataOk ? " " : ` Le : ${this.props.poidsData.poids_reducer.poids.last_weight.date} `}
+                </p>
+            </div>
+    </div>
+    </Link>
+
+
+
+
+
+
                     <div class="login-box-seperator" id="login-box-seperator-left"></div>
                     <div id='onemetric'>
                         <div>
