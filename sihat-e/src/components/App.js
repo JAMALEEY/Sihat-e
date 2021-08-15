@@ -7,10 +7,10 @@
 import React from 'react';
 // Components Dependencies
 import Home from './pages/Home';
-import SignInMedecin from './pages/SignInMedecin';
-import SignInPatient from './pages/SignInPatient';
-import SignUpMedecin from './pages/SingUpMedecin';
-import SignUpPatient from './pages/SignUpPatient';
+import SignInMedecin from './auth/SignInMedecin/SignInMedecin';
+import SignInPatient from './auth/SignInPatient/SignInPatient';
+import SignUpMedecin from './auth/SignUpMedecin/SingUpMedecin';
+import SignUpPatient from './auth/SignUpPatient/SignUpPatient';
 // Helpers Dependencies 
 import history  from '../helpers/history';
 // Routing Dependencies 
@@ -20,19 +20,15 @@ import { connect } from 'react-redux';
 // Actions Dependencies 
 // in order to work with cleaAlerts function that clear actions on location change
 
-import DashboardPatient from './pages/DashboardPatient';
-import PrivateRoute from './pages/PrivateRoute';
-import PublicRoute from './pages/PublicRoute';
+import DashboardPatient from './pages/Apropos/DashboardPatient';
+import PrivateRoute from '../helpers/PrivateRoute';
+import PublicRoute from '../helpers/PublicRoute';
 // import PatientDashboard from '../../../PatientDashboard';
-import FormDashboardPatient from './pages/FormDashboardPatient';
-import DashboardPatientEdit from './pages/DashboardPatientEdit';
-import ContactInformation from './pages/ContactInformation';
-import AboutList from './pages/AboutList';
-import Metrix from './pages/Metrix';
-import MetrixForm from './pages/MetrixForm';
-import FormMetrixPatient from './pages/FormMetrixPatient';
-import MetrixTaille from './pages/MetrixTaille';
-import MetricTailleEdit from './pages/MetricTailleEdit';
+import FormDashboardPatient from './pages/Apropos/FormDashboardPatient';
+import ContactInformation from './pages/InformationContact/ContactInformation';
+import Metrix from './pages/PatientMetrix/Metrix';
+import FormMetrixPatient from './pages/PatientMetrix/Tailles/FormMetrixPatient';
+import MetrixTaille from './pages/PatientMetrix/Tailles/MetrixTaille';
 // import Modal from './pages/Modal';
 
 const  App = (props) => {
@@ -56,14 +52,11 @@ const  App = (props) => {
                                 <PublicRoute path="/loginMedecin" exact component={SignInMedecin} />
                                 <PublicRoute path="/registerPatient" exact component={SignUpPatient} />
                                 <PublicRoute restricted={true}  path="/loginPatient" exact component={SignInPatient} />
-                                <PublicRoute path="/edit" exact component={DashboardPatientEdit} />
                                 <PublicRoute path="/registerMedecin" exact component={SignUpMedecin} />
                                 <PublicRoute path="/contactinformation" exact component={ContactInformation} />
-                                <PublicRoute path="/aboutlist" exact component={AboutList} />
                                 <PublicRoute path="/metrix" exact component={Metrix} />
                                 <PublicRoute path="/metrix/form" exact component={FormMetrixPatient} />
                                 <PublicRoute path="/metrixTaille" exact component={MetrixTaille} />
-                                <PublicRoute path="/MetricTailleEdit" exact component={MetricTailleEdit} />
                                 
                                 {/* <PublicRoute path="/modal" exact component={Modal} /> */}
                                 <Redirect from="*" to="/" />

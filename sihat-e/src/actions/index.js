@@ -232,7 +232,7 @@ export const fetchTailleInfosFailure = (error) => {
 export const createTaille = (formValues) => {
   return async (dispatch) => {
     const response = await api.post("/height/create", formValues);
-    // window.location.reload()    
+    window.location.reload()    
     
     dispatch({
       type: CREATE_TAILLE_METRIX,
@@ -249,7 +249,7 @@ export const editTaille = (id, formValues) => async dispatch => {
   const response = await api.put(`/height/update/${id}`, formValues);
 
   dispatch({ type: EDIT_TAILLE_METRIX, payload: response.data });
-  // window.location.reload()    
+  window.location.reload()    
 };
 
 
@@ -259,5 +259,5 @@ export const deleteTaille = id => async dispatch => {
   await api.delete(`/height/delete/${id}`);
 
   dispatch({ type: DELETE_TAILLE_METRIX, payload: id });
-  // window.location.reload()    
+  window.location.reload()    
 };

@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { logout, createAbout, fetchAboutInfos, editAboutInfos } from "../../actions";
-
-import { Field, reduxForm , Link, formValueSelector } from "redux-form";
+import { logout, createAbout, fetchAboutInfos, editAboutInfos } from "../../../actions";
+import {Link} from 'react-router-dom';
+import { Field, reduxForm } from "redux-form";
 import { first } from "lodash";
-import Loader  from "./Loader";
-class FormContactInformation extends Component {
+import Loader from "../../../helpers/Loader";
+
+class FormDashboardPatient extends Component {
 
   componentDidMount() {
   //  this.props.fetchAboutInfos();
-   console.log(this.props)
+  console.log(this.props)
   //  console.log(this.props.patientData.about_reducer.patients.length)
-
   }
 
   renderInput({
@@ -75,8 +75,11 @@ class FormContactInformation extends Component {
   onSubmit = (formValues) => {
     console.log(formValues)
 
+    // console.log(this.props)
+
     // alert(this.props.patientData.about_reducer.patients)
     if (typeof this.props.patientData.about_reducer.patients === 'undefined' ) {
+
       this.props.createAbout(formValues);
     } else {
       this.props.editAboutInfos(formValues);
@@ -89,7 +92,9 @@ class FormContactInformation extends Component {
   render() {
 
     return this.props.patientData.about_reducer.loading ? (
-      <Loader />
+      <div className=''>
+              <Loader />
+      </div>
       ) : this.props.patientData.about_reducer.error ? (
         <h2>{this.props.patientData.about_reducer.error}</h2>
       ) : (
@@ -104,32 +109,27 @@ class FormContactInformation extends Component {
               <div className="row register-form">
                 <div className="col-md-8 col-xl-10 offset-md-2 offset-xl-0">
                   <form className="custom-form" method='post' onSubmit={this.props.handleSubmit(this.onSubmit)}>
-                    <h1 className="d-xl-flex align-items-xl-start">Mes informations</h1>
-
-
-
+                    <h1 className="d-xl-flex align-items-xl-start">A propos</h1>
 
                     <div className="form-row form-group">
                       <div className="col-sm-6 col-xl-7 input-column">
                         <Field
-                        
-                          placeholder="Votre Ville"
-                          name="city"
-                          label="Ville :"
+                          className="form-control-plaintext"
+                          name="first_name"
                           component={this.renderInput}
-                          className="form-control"
+                          label="Prénom :"
+                          placeholder="Votre prénom"
                           type="text"
-                        ></Field>
+                        />
                       </div>
                     </div>
 
                     <div className="form-row form-group">
                       <div className="col-sm-6 col-xl-7 input-column">
                         <Field
-                        
-                          placeholder="Votre numéro de téléphone"
-                          name="phone"
-                          label="Mobile :"
+                          placeholder="Votre nom"
+                          name="last_name"
+                          label="Nom:"
                           component={this.renderInput}
                           className="form-control"
                           type="text"
@@ -139,65 +139,76 @@ class FormContactInformation extends Component {
 
                     {/* date naissance */}
                     <div className="form-row form-group">
-                      <div  className="col-sm-6 col-xl-7 input-column">
-                        {/* <Field id='emailDisabled'
-                          name="email"
-                          label="Votre E-mail est:"
+                      <div className="col-sm-6 col-xl-7 input-column">
+                        <Field
+                          placeholder="Votre date"
+                          name="birth_day"
+                          label="date:"
                           component={this.renderInput}
                           className="form-control"
-                          
-                          disabled={this.pristine}
-                        //   input={{ disabled: submitting, }}
-                        ></Field> */}
-                        <div id="fetchemailabout">
-                        Votre E-mail est :
-                    <div id='emailfetched'>
-                    <p>
-                                {this.props.patientData.about_reducer.patients.email}
-                            </p>
-                    </div>
-                            
-                        </div>
+                          type="date"
+                        ></Field>
                       </div>
                     </div>
                     {/* end date naissance */}
 
-                    {/* adresse */}
 
+                    {/* Start Radios */}
                     <div className="form-row form-group">
-                      <div className="col-sm-6 col-xl-7 input-column">
-                        <Field
-                          placeholder="Votre adresse:"
-                          name="adress"
-                          label="Adresse :"
-                          component={this.renderInput}
-                          className="form-control"
-                          type="text"
-                        ></Field>
-                      </div>
-                    </div>
+                      <div className="col-sm-6 input-column">
+                        <div className="custom-control custom-radio">
+                          <div className="radioformboxPatienData">
+                            <label>Genre :</label>
 
-                    {/* End adresse */}
+                            <div className="leschoixradio">
+                              <label>
+                                {" "}
+                                Femme
+                                <Field
+                                  name="bio_sex"
+                                  component={this.renderInput}
+                                  type="radio"
+                                  value="femme"
+                                />
+                              </label>
 
-                    <div className="lesbuttons">
+                              <label className="hommechoice">
+                                {" "}
+                                Homme
+                                <Field
+                                  id="radiocheckcheck"
+                                  name="bio_sex"
+                                  component={this.renderInput}
+                                  type="radio"
+                                  value="homme"
+                                />
+                              </label>
+                            </div>
+                            <div className="lesbuttons">
+                                <br></br>
                               <button
-                                id="btnFormDashboardContactForm"
+                                id="btnFormDashboardPatient"
                                 className="btn btn-light d-xl-flex align-items-xl-start submit-button"
                                 type="submit"
                               >
                                 Enregistrer
                               </button>
                             </div>
-
-                    </form>
+                          </div>
+                        </div>
+                      </div>
+                      {/* End Radios */}
+                    </div>
+                  </form>
                 </div>
+              </div>
+              {/* End Form */}
             </div>
+          </div>
         </div>
-    </div>
-    </div>
-    </>
+      </>
     );
-}
+  }
 }
 
 
@@ -220,15 +231,15 @@ const mapDispatchToProps = (dispatch, formValues) => {
   };
 };
 
-FormContactInformation = connect(
+FormDashboardPatient = connect(
     mapStateToProps,
     mapDispatchToProps
-)(FormContactInformation);
+)(FormDashboardPatient);
 
 export default reduxForm({
-    form: 'contactInfosForm', // a unique name for this form
+    form: 'aboutInfosForm', // a unique name for this form
     enableReinitialize: true
-})(FormContactInformation);
+})(FormDashboardPatient);
 
 
 

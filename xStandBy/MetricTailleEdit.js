@@ -2,10 +2,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Modal from './Modal';
-import history from '../../helpers/history';
+import Modal from '../sihat-e/src/components/pages/Modals/Modal';
+import history from '../sihat-e/src/helpers/history';
 // import { fetchStream, deleteStream } from '../../actions';
-import {logout} from '../../actions';
+import {logout} from '../sihat-e/src/actions';
 
 class MetricTailleEdit extends React.Component {
   componentDidMount() {

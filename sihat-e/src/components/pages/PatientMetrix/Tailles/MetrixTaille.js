@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { logout, createTaille, fetchTailleInfos, editTaille, deleteTaille } from "../../actions";
+import { logout, createTaille, fetchTailleInfos, editTaille, deleteTaille } from "../../../../actions";
 import {Link} from 'react-router-dom';
 import { Field, formValues, reduxForm } from "redux-form";
 import { first } from "lodash";
-import Modal from './Modal';
-import ModalUpdate from './ModalUpdate';
-import Loader from "./Loader";
-import SideBar from './SideBar';
+import Modal from '../../Modals/Modal';
+import ModalUpdate from '../../Modals/ModalUpdate';
+import Loader from "../../../../helpers/Loader";
 class MetrixTaille extends Component {
   constructor() {
     super();

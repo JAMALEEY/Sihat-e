@@ -3,7 +3,7 @@
 import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import {  logout, createContactInformation, fetchAboutInfos  } from '../../actions'
+import {  logout, createContactInformation, fetchAboutInfos  } from '../../../actions'
 import {Field, Form, formValueSelector, reduxForm, touch} from 'redux-form';
 import FormContactInformation from './FormContactInformation';
 

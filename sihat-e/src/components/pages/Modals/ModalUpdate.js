@@ -1,5 +1,5 @@
-import './modal.css';
-import {editTaille} from '../../actions'
+
+import {editTaille} from '../../../actions';
  const ModalUpdate = ({  edit, handleClose, show2, children, modalTitle, mesures, date }) => {
     const showHideClassName = show2  ? "modal display-block" : "modal display-none";
 

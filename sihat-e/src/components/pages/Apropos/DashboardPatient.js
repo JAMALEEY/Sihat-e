@@ -9,7 +9,7 @@ import {
   editAboutInfos,
   fetchAboutInfos,
   createAbout,
-} from "../../actions";
+} from "../../../actions";
 import { Field, Form, formValueSelector, reduxForm, touch } from "redux-form";
 import FormDashboardPatient from "./FormDashboardPatient";
 

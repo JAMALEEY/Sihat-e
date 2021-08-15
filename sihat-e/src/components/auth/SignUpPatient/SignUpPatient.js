@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux'
 import {Field, formValueSelector, reduxForm} from 'redux-form';
 import {Link} from 'react-router-dom';
-import { signUpPatient } from '../../actions';
+import { signUpPatient } from '../../../actions';
 
 
               const errorsHelper = ({error, touched}) => {

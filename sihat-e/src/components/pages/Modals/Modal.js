@@ -1,4 +1,6 @@
-import './modal.css';
+
+
+
  const Modal = ({ submit, handleClose, show, children, modalTitle, mesures, date }) => {
   const showHideClassName = show  ? "modal display-block" : "modal display-none";
 // submit = () => {

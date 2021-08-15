@@ -3,9 +3,9 @@ import _ from 'lodash';
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import {  logout, editAboutInfos, fetchAboutInfos  } from '../../actions'
+import {  logout, editAboutInfos, fetchAboutInfos  } from '../sihat-e/src/actions'
 import {Field, Form, formValueSelector, reduxForm, touch} from 'redux-form';
-import FormDashboardPatient from './FormDashboardPatient';
+import FormDashboardPatient from '../sihat-e/src/components/pages/Apropos/FormDashboardPatient';
 import {bindActionCreators} from 'redux'
 
     class DashboardPatientEdit extends Component {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchAboutInfos } from '../../actions';
+import { fetchAboutInfos } from '../sihat-e/src/actions';
 
 class AboutList extends React.Component {
   componentDidMount() {

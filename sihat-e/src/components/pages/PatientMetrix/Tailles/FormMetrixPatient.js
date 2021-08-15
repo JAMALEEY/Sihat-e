@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { logout, fetchTailleInfos} from "../../actions";
+import { logout, fetchTailleInfos} from "../../../../actions";
 import {Link} from 'react-router-dom';
 import { Field, reduxForm } from "redux-form";
 import { first } from "lodash";
 import MetrixTaille from './MetrixTaille';
-import Loader from './Loader';
+import Loader from '../../../../helpers/Loader';
 
 class FormMetrixPatient extends Component {
 
