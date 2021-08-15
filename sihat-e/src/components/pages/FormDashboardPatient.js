@@ -4,6 +4,7 @@ import { logout, createAbout, fetchAboutInfos, editAboutInfos } from "../../acti
 import {Link} from 'react-router-dom';
 import { Field, reduxForm } from "redux-form";
 import { first } from "lodash";
+import Loader from "./Loader";
 
 class FormDashboardPatient extends Component {
 
@@ -91,7 +92,9 @@ class FormDashboardPatient extends Component {
   render() {
 
     return this.props.patientData.about_reducer.loading ? (
-        <h2>Loading</h2>
+      <div className=''>
+              <Loader />
+      </div>
       ) : this.props.patientData.about_reducer.error ? (
         <h2>{this.props.patientData.about_reducer.error}</h2>
       ) : (

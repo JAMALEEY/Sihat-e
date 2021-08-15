@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {  logout, createContactInformation, fetchAboutInfos  } from '../../actions'
 import {Field, Form, formValueSelector, reduxForm, touch} from 'redux-form';
-import FormContactInformation from './FormContactInformation';
+import FormMetrixPatient from './FormMetrixPatient';
 
         
         
@@ -276,9 +276,7 @@ import FormContactInformation from './FormContactInformation';
                 </div>
                 </nav></div></div> 
                 <div>
-                <FormContactInformation
-                  initialValues={patientData.about_reducer.patients}
-                 
+                <FormMetrixPatient                 
                 />
 
 

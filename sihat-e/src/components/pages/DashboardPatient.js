@@ -3,6 +3,7 @@ import _ from "lodash";
 import React, { Component } from "react";
 import { Link, activeClassName } from "react-router-dom";
 import { connect } from "react-redux";
+
 import {
   logout,
   editAboutInfos,
@@ -92,7 +93,7 @@ class DashboardPatient extends Component {
                           </Link>
                         </li>
                         <li className="nav-item3">
-                          <Link to="#" className="nav-link">
+                          <Link to="/Metrix" className="nav-link">
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fa fa-bar-chart-o d-xl-flex align-items-xl-center fa-2x "

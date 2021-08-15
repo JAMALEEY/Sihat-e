@@ -4,7 +4,8 @@ import { logout, fetchTailleInfos} from "../../actions";
 import {Link} from 'react-router-dom';
 import { Field, reduxForm } from "redux-form";
 import { first } from "lodash";
-import MetrixTaille from './MetrixTaille'
+import MetrixTaille from './MetrixTaille';
+import Loader from './Loader';
 
 class FormMetrixPatient extends Component {
 
@@ -126,11 +127,11 @@ class FormMetrixPatient extends Component {
                             <div className='d-flex flex-column'>
                                 <p className='ml-auto'>
 
-                                {!this.props.taillData.tailles_reducer.recievedData ? "Loading" : ` ${this.props.taillData.tailles_reducer.tailles.last_height.cm} cm `} 
+                                {!this.props.taillData.tailles_reducer.recievedData ? "Chargement ..." : ` ${this.props.taillData.tailles_reducer.tailles.last_height.cm} cm `} 
                                     
                                 </p>
                                 <p>
-                                    {!this.props.taillData.tailles_reducer.recievedData ? "Loading" : ` Le : ${this.props.taillData.tailles_reducer.tailles.last_height.date} `}
+                                    {!this.props.taillData.tailles_reducer.recievedData ? " " : ` Le : ${this.props.taillData.tailles_reducer.tailles.last_height.date} `}
                                 </p>
                             </div>
                     </div>
