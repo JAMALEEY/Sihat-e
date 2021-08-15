@@ -113,7 +113,7 @@ class DashboardPatient extends Component {
                                 aria-hidden="true"
                               />
                               <h5 className="lisidebarnoactive d-flex d-xl-flex flex-column justify-content-xl-center align-items-xl-center">
-                                Conditions / Symptomes.
+                                Symptomes.
                               </h5>
                             </div>
                           </Link>

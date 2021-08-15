@@ -276,8 +276,7 @@ import FormMetrixPatient from './FormMetrixPatient';
                 </div>
                 </nav></div></div> 
                 <div>
-                <FormMetrixPatient                 
-                />
+                <FormMetrixPatient  />
 
 
       </div>

@@ -1687,6 +1687,11 @@ width: 386px;font-family: Poppins, sans-serif;}
   height: 26vh;
 }
 
+.sideBaruh{
+  height: 100vh;
+    width: 100%;
+}
+
 
 .Myloader{
   width: 9vw;

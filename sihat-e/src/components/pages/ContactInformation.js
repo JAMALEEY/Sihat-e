@@ -91,7 +91,7 @@ import FormContactInformation from './FormContactInformation';
                         </a>
                     </li>
                     <li className="nav-item3">
-                        <a href="#" className="nav-link">
+                        <a href="/metrix" className="nav-link">
                         <div className="d-xl-flex justify-content-xl-start align-items-xl-center"> 
                             <i className="noactive fa fa-bar-chart-o d-xl-flex align-items-xl-center fa-2x " aria-hidden="true" />
                             <h5 className="lisidebarnoactive d-flex d-xl-flex flex-column justify-content-xl-center align-items-xl-center">
@@ -105,7 +105,7 @@ import FormContactInformation from './FormContactInformation';
                         <div className="d-xl-flex justify-content-xl-start align-items-xl-center"> 
                             <i className="noactive fa fa-heartbeat d-xl-flex align-items-xl-center fa-2x " aria-hidden="true" />
                             <h5 className="lisidebarnoactive d-flex d-xl-flex flex-column justify-content-xl-center align-items-xl-center">
-                            Conditions / Symptomes.
+                            Symptomes.
                             </h5>                    
                         </div>
                         </a>
