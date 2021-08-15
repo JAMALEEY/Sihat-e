@@ -4,12 +4,15 @@ import { logout, fetchTailleInfos} from "../../actions";
 import {Link} from 'react-router-dom';
 import { Field, reduxForm } from "redux-form";
 import { first } from "lodash";
+import MetrixTaille from './MetrixTaille'
 
 class FormMetrixPatient extends Component {
 
   componentDidMount() {
-   this.props.fetchAboutInfos();
-  console.log(this.props)
+    this.props.fetchTailleInfos()
+    console.log(this.props)
+
+  //  this.props.fetchAboutInfos();
   //  console.log(this.props.patientData.about_reducer.patients.length)
   }
 
@@ -87,14 +90,12 @@ class FormMetrixPatient extends Component {
 
 
   render() {
-
-    // return this.props.patientData.about_reducer.loading ? (
-    //     <h2>Loading</h2>
-    //   ) : this.props.patientData.about_reducer.error ? (
-    //     <h2>{this.props.patientData.about_reducer.error}</h2>
-    //   ) : (
+    if (!this.props.taillData) {
+      return <div>Loading...</div>;
+    } else {
    
    return(
+   
    
       <>
         <div className="d-xl-flex justify-content-xl-center align-items-xl-center">
@@ -102,12 +103,12 @@ class FormMetrixPatient extends Component {
             <div>
               <div  className="row register-form">
                 <div className="col-md-8 col-xl-10 offset-md-2 offset-xl-0">
-                  {/* <form id='metrixForm' className="custom-form" method='post' onSubmit={this.props.handleSubmit(this.onSubmit)}> */}
+                  <div id='metrixForm' className="custom-form" >
                     <h1 className="d-xl-flex align-items-xl-start">Mes métriques de santé.</h1>
 
                    
                       {/* End Radios */}
-                  {/* </form> */}
+                  </div>
                 </div>
 
               </div>
@@ -122,12 +123,14 @@ class FormMetrixPatient extends Component {
                             </h5>
                         </div>
 
-                            <div>
-                                <p>
-                                    177cm
+                            <div className='d-flex flex-column'>
+                                <p className='ml-auto'>
+
+                                {!this.props.taillData.tailles_reducer.recievedData ? "Loading" : ` ${this.props.taillData.tailles_reducer.tailles.last_height.cm} cm `} 
+                                    
                                 </p>
                                 <p>
-                                    date
+                                    {!this.props.taillData.tailles_reducer.recievedData ? "Loading" : ` Le : ${this.props.taillData.tailles_reducer.tailles.last_height.date} `}
                                 </p>
                             </div>
                     </div>
@@ -230,8 +233,8 @@ class FormMetrixPatient extends Component {
             </div>
           </div>
         </div>
-      </>
-    );
+      </> 
+    ); }
   }
 }
 

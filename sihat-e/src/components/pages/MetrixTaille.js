@@ -244,8 +244,7 @@ class MetrixTaille extends Component {
                       </Link>
 
 
-                                  <h5 className="retourMetrix">Taille.
-                                    </h5>
+                                  <h5 className="retourMetrix">Taille.</h5>
                                   </div>
 
                       {/* End Radios */}
@@ -293,7 +292,6 @@ class MetrixTaille extends Component {
                             </h4>
                             </div>
                 
-              
 
                   <div>
 
