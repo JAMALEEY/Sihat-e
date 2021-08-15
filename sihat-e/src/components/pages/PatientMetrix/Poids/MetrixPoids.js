@@ -1,20 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { logout, createTaille, fetchTailleInfos, editTaille, deleteTaille } from "../../../../actions";
+import { logout, createPoids, fetchPoidsInfos, editPoids, deletePoids } from "../../../../actions";
 import {Link} from 'react-router-dom';
 import { Field, formValues, reduxForm } from "redux-form";
 import { first } from "lodash";
 import Modal from '../../Modals/Modal';
 import ModalUpdate from '../../Modals/ModalUpdate';
 import Loader from "../../../../helpers/Loader";
-class MetrixTaille extends Component {
+class MetrixPoids extends Component {
   constructor() {
     super();
     this.state = {
       show: false,
       show2: false,
-      modalTitleEdit: 'Modification de taille',
-      modalTitle: 'Ajouter votre Taille',
+      modalTitleEdit: 'Modification de Poids',
+      modalTitle: 'Ajouter votre Poids',
    
       
       
@@ -44,16 +44,16 @@ class MetrixTaille extends Component {
   };
 
   componentDidMount() {
-   this.props.fetchTailleInfos();
+   this.props.fetchPoidsInfos();
    console.log(this.props)
   }
 
 
-  creatTaille = (formValues) => {
-    this.props.createTaille(formValues);}
+  creatPoids = (formValues) => {
+    this.props.createPoids(formValues);}
 
-    editTaille = (id, formValues) => {
-      this.props.editTaille(formValues);}
+    editPoids = (id, formValues) => {
+      this.props.editPoids(formValues);}
  
 
   renderInput({
@@ -100,83 +100,52 @@ class MetrixTaille extends Component {
     );
   }
 
-  // handleChange(e) {
-  //     const { target}  = this.event;
-  //     const value = target.type === 'checkbox' ? target.checked : target.value;
-  //     const { name }  = target;
-
-  //     this.setState({
-  //     [name]: value
-  //     });
-  // }
-  // onSubmit = (formValues) => {
-  //   this.props.onSubmit(formValues);
-  // };
-
-
- 
-
-  // onSubmit = (formValues) => {
-    // console.log(this.props)
-
-    // alert(this.props.patientData.about_reducer.patients)
-    // if (typeof this.props.createTaille.tailles_reducer.tailles === 'undefined' ) {
-
-    //   this.props.createAbout(formValues);
-    // } else {
-    //   this.props.editAboutInfos(formValues);
-    // }
-  // }; 
-
-
-
 
 
   renderList() {  
-    if (this.props.tailleData.tailles_reducer.recievedData) {
+    if (this.props.poidsData.poids_reducer.dataOk) {
      
-      // const id = this.props.tailleData.tailles_reducer.tailles.historique.id;
-    return this.props.tailleData.tailles_reducer.tailles.historique
-    .map(thetailleData => {
+      // const id = this.props.PoidsData.tailles_reducer.tailles.historique.id;
+    return this.props.poidsData.poids_reducer.poids.historique
+    .map(thepoidsData => {
       return (
-        <div key={thetailleData.id} id={thetailleData.id}>
+        <div key={thepoidsData.id} >
 
  <div class="login-box-seperator" id="login-box-seperator-left"></div>
                     <div id='taillemetricyourmetric'>
                         <div>
-                            {console.log(this.id)}
                             
                             <p>
                             <strong>
-                            Ma taille est de : {thetailleData.cm} cm
+                            Mon poids est de : {thepoidsData.kg} Kg
                             </strong>
                             </p>
                             <strong>
 
                             
                             <p>
-                            au : {thetailleData.date}
+                            au : {thepoidsData.date}
                             </p>
                             </strong>
  
-          {/* {this.upd = (formValues) => {this.props.editTaille(thetailleData.id, formValues)}} */}
+          {/* {this.upd = (formValues) => {this.props.editTaille(thepoidsData.id, formValues)}} */}
         {/* Creat */}
-        { this.editTaille = (formValues) => this.props.editTaille(thetailleData.id, formValues)} 
+        { this.editPoids = (formValues) => this.props.editPoids(thepoidsData.id, formValues)} 
 
-        <ModalUpdate edit={this.props.handleSubmit(this.editTaille)} id={this.state.id} date={this.state.date} mesures={this.state.mesures} modalTitle={this.state.modalTitleEdit} show2={this.state.show2} handleClose={this.hideModal}>
+        <ModalUpdate edit={this.props.handleSubmit(this.editPoids)} id={this.state.id} date={this.state.date} mesures={this.state.mesures} modalTitle={this.state.modalTitleEdit} show2={this.state.show2} handleClose={this.hideModal}>
         
                               {/* children */}
-          <strong><p>Mesures :</p></strong>
-          <Field
-                          className="form-control"
-                          name="cm"
-                          component={this.renderInput}
-                          label="Modifier votre taille :"
-                          placeholder="Votre taille"
-                          type="text"
-                          span='Cm'
-                        /> 
-                        Cette mesure date de: {thetailleData.date}
+        <strong><p>Poids :</p></strong>
+        <Field
+                className="form-control"
+                name="kg"
+                component={this.renderInput}
+                label="Modifier votre poids :"
+                placeholder="Votre poids"
+                type="text"
+                span='kg'
+        /> 
+                        Ce poids date de: {thepoidsData.date}
         </ModalUpdate>
                         </div>
 
@@ -188,14 +157,9 @@ class MetrixTaille extends Component {
                             </button>
                             
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            {/* <Modal title="Ajouter" />
-                            <ModalUpdate title="Modifier" /> */}
-        {/* // content={this.renderContent()}
-        // actions={this.renderActions()}
-        // onDismiss={() => history.push('/')} */}
+
       
-      { this.del = () => this.props.deleteTaille(thetailleData.id)} 
-      {/* {this.supp  = () => {  this.props.deleteTaille(this.props.thetailleData.id)}} */}
+      { this.del = () => this.props.deletePoids(thepoidsData.id)} 
     <Link class="dropdown-item" onClick={this.showModal} >Edit</Link>
     <Link class="dropdown-item" onClick={this.del}>Delete</Link>
 
@@ -218,15 +182,15 @@ class MetrixTaille extends Component {
 
 
   render() {
-    return this.props.tailleData.tailles_reducer.loading 
+    return this.props.poidsData.poids_reducer.loading 
     ? 
     (              
       <Loader />
       ) 
     : 
-    this.props.tailleData.tailles_reducer.error 
+    this.props.poidsData.poids_reducer.error 
     ? 
-    ( <h2>{this.props.tailleData.tailles_reducer.error}</h2> )
+    ( <h2>{this.props.poidsData.poids_reducer.error}</h2> )
     : 
     (
 
@@ -521,7 +485,7 @@ class MetrixTaille extends Component {
                       </Link>
 
 
-                                  <h5 className="retourMetrix">Taille.</h5>
+                                  <h5 className="retourMetrix">Poids.</h5>
                                   </div>
 
                       {/* End Radios */}
@@ -531,19 +495,19 @@ class MetrixTaille extends Component {
               </div>
               {/* End Form */}
               <div className='metrixWrapper'>
-              <Modal submit={this.props.handleSubmit(this.creatTaille)} modalTitle={this.state.modalTitle} show={this.state.show} handleClose={this.hideModalCreat}>
+              <Modal submit={this.props.handleSubmit(this.creatPoids)} modalTitle={this.state.modalTitle} show={this.state.show} handleClose={this.hideModalCreat}>
                               {/* children */}
-          <strong><p>Mesures :</p></strong>
+          <strong><p>Poids :</p></strong>
           <Field
                           className="form-control"
-                          name="cm"
+                          name="kg"
                           component={this.renderInput}
-                          label="Votre taille :"
-                          placeholder="Ajouter votre taille en cm"
+                          label="Votre poids :"
+                          placeholder="Ajouter votre poids en kg"
                           type="text"
-                          span='Cm'
+                          span='kg'
           /> 
-                        <strong><p>Date de cette Mesure :</p></strong>
+                        <strong><p>Date de ce Poids :</p></strong>
           <Field
                           className="form-control"
                           name="date"
@@ -557,15 +521,14 @@ class MetrixTaille extends Component {
                 
                 <Link  onClick={this.showModalCreat}  className='fasflex'>
                   <p>
-                    Ajouter Votre Taille
+                    Ajouter Votre Poids
                   </p>
                 <i className="fas fa-plus fa-2x"></i> 
                 </Link>
                     <div id='taillemetricyourmetric'>
                         <div>
-                          {/* {console.log(this.props.tailleData.tailles_reducer.tailles.last_height)} */}
                             <h4>
-                                Votre mesure la plus récente :
+                                Votre poids le plus récent :
                             </h4>
                             </div>
                 
@@ -574,16 +537,17 @@ class MetrixTaille extends Component {
 
                             <h3>
                             <strong>
-                              { this.props.tailleData.tailles_reducer.recievedData  
-    ?  this.props.tailleData.tailles_reducer.tailles.last_height.cm : 'Data failed'}
-                                Cm
+
+                              { this.props.poidsData.poids_reducer.dataOk 
+    ?  this.props.poidsData.poids_reducer.poids.last_weight.kg : ' '}
+                                kg
                             </strong>
                             </h3>
                             
                             <p>
                               
-                              { this.props.tailleData.tailles_reducer.recievedData  
-    ?  this.props.tailleData.tailles_reducer.tailles.last_height.date : 'Data failed'}
+                              { this.props.poidsData.poids_reducer.dataOk
+    ?  this.props.poidsData.poids_reducer.poids.last_weight.date : ' '}
                               
                             </p>
 
@@ -596,12 +560,7 @@ class MetrixTaille extends Component {
                         Historique :
                     </h5>
                     </div>
-                    {/* { this.props.tailleData.tailles_reducer.recievedData  
-    ?  this.renderList() : 'Data failed'} */}
-    
                     {this.renderList()}
-                    {/* <div className="ui celled list">{this.renderList()}</div> */}
-                    {/* <div class="login-box-seperator" id="login-box-seperator-left"></div> */}
                     </div>
                     
                 </div>
@@ -730,28 +689,28 @@ class MetrixTaille extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    tailleData: state,
+    poidsData: state,
   };
 };
 
 const mapDispatchToProps = (dispatch, formValues, id) => {
   return {
-    fetchTailleInfos: () => dispatch(fetchTailleInfos()),
-    createTaille : (formValues) => dispatch(createTaille(formValues)),
-    editTaille : (formValues, id) => dispatch(editTaille(formValues, id)),
-    deleteTaille : (id) => dispatch(deleteTaille(id)),
+    fetchPoidsInfos: () => dispatch(fetchPoidsInfos()),
+    createPoids : (formValues) => dispatch(createPoids(formValues)),
+    editPoids : (formValues, id) => dispatch(editPoids(formValues, id)),
+    deletePoids : (id) => dispatch(deletePoids(id)),
   };
 };
 
-MetrixTaille = connect(
+MetrixPoids = connect(
     mapStateToProps,
     mapDispatchToProps
-)(MetrixTaille);
+)(MetrixPoids);
 
 export default reduxForm({
-    form: 'MetrixTailleHistoryandAdd', // a unique name for this form
+    form: 'MetrixPoidsHistoryandAdd', // a unique name for this form
     enableReinitialize: true
-})(MetrixTaille);
+})(MetrixPoids);
 
 
 

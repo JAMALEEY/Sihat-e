@@ -12,21 +12,8 @@ import FormMetrixPatient from './FormMetrixPatient';
     const Metrix = ({handleSubmit, fetchAboutInfos, createContactInformation, logout, props, patientData}) =>  {
 
         useEffect(() => {
-            fetchAboutInfos();
         }, [])
 
-        
-        // const renderCreate = () => {
-        //     return (
-        //         <div style={{ textAlign: 'left' }}>
-        //             <i class="fas fa-plus">
-        //         <Link to="/metrix/new" className="ui button primary">
-        //             Create Metrix
-        //         </Link>
-        //         </i>
-        //         </div>
-        //     );
-        // }
             
             const patientDashboarLogout =  () => {
                 logout();

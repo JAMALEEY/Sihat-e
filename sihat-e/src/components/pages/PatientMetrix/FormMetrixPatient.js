@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { logout, fetchTailleInfos} from "../../../actions";
+import { logout, fetchTailleInfos, fetchPoidsInfos} from "../../../actions";
 import {Link} from 'react-router-dom';
 import { Field, reduxForm } from "redux-form";
 import { first } from "lodash";
@@ -11,6 +11,7 @@ class FormMetrixPatient extends Component {
 
   componentDidMount() {
     this.props.fetchTailleInfos()
+    this.props.fetchPoidsInfos()
     console.log(this.props)
   }
 
@@ -83,6 +84,8 @@ defaultValue,defaultChecked,checked,})
                     </Link>
 
                     <div class="login-box-seperator" id="login-box-seperator-left"></div>
+                    <Link to='/metrixPoids'>
+
                     <div class="login-box-seperator" id="login-box-seperator-left"></div>
                     <div id='onemetric'>
                         <div>
@@ -90,16 +93,19 @@ defaultValue,defaultChecked,checked,})
                                 Poids
                             </h5>
                         </div>
+                        <div className='d-flex flex-column'>
+                                <p className='ml-auto'>
 
-                            <div>
-                                <p>
-                                    177cm
+                                {!this.props.poidsData.poids_reducer.dataOk ? "Chargement ..." : ` ${this.props.poidsData.poids_reducer.poids.last_weight.kg} kg `} 
+                                    
                                 </p>
                                 <p>
-                                    date
+                                    {!this.props.poidsData.poids_reducer.dataOk ? " " : ` Le : ${this.props.poidsData.poids_reducer.poids.last_weight.date} `}
                                 </p>
                             </div>
                     </div>
+                    </Link>
+
                     <div class="login-box-seperator" id="login-box-seperator-left"></div>
                     <div class="login-box-seperator" id="login-box-seperator-left"></div>
                     <div id='onemetric'>
@@ -193,12 +199,15 @@ defaultValue,defaultChecked,checked,})
 const mapStateToProps = (state,props) => {
   return {
     taillData: state, 
+    poidsData: state,
   };
 };
 
 const mapDispatchToProps = (dispatch, formValues) => {
   return {
     fetchTailleInfos: () => dispatch(fetchTailleInfos()),
+    fetchPoidsInfos: () => dispatch(fetchPoidsInfos()),
+
     // createAbout : (formValues) => dispatch(createAbout(formValues)),
     // editAboutInfos : (formValues) => dispatch(editAboutInfos(formValues)),
 

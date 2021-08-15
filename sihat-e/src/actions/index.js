@@ -12,7 +12,7 @@ import {
   EDIT_TAILLE_METRIX,
   CREATE_TAILLE_METRIX,
   FETCH_TAILLE_METRIX,
-  DELETE_TAILLE_METRIX
+  DELETE_TAILLE_METRIX,CREATE_POIDS_METRIX,EDIT_POIDS_METRIX,DELETE_POIDS_METRIX
 
 } from "./types";
 import history from "../helpers/history";
@@ -275,7 +275,7 @@ export const fetchPoidsInfos = () => {
   return (dispatch) => {
     dispatch(fetchPoidsInfosRequest());
     api
-      .get("/height/fetch")
+      .get("/weight/fetch")
       .then((response) => {
         // response.data is the Patients
         const fetchedDataPoids = response.data;
@@ -289,61 +289,61 @@ export const fetchPoidsInfos = () => {
 };
 
 
-//  HERE WE FETCH THE REQUEST 
+//  HERE WE FETCH THE REQUEST :
 export const fetchPoidsInfosRequest = () => {
   return {
-    type: "FETCH_Poids_REQUEST",
+    type: "FETCH_POIDS_REQUEST",
   };
 };
 
-// HERE WE FETCH THE RESPONSE OF THE REQUEST
+// HERE WE FETCH THE RESPONSE OF THE REQUEST:
 export const fetchPoidsInfosSuccess = (fetchedDataPoids) => {
   return {
-    type: "FETCH_Poids_METRIX",
+    type: "FETCH_POIDS_METRIX",
     payload: fetchedDataPoids,
   };
 };
 
-// HERE WE FETCH THE ERROR OF THE REQUEST
+// HERE WE FETCH THE ERROR OF THE REQUEST:
 export const fetchPoidsInfosFailure = (error) => {
   return {
-    type: "FETCH_Poids_FAILURE",
+    type: "FETCH_POIDS_FAILURE",
     payload: error,
   };
 };
 
 
-// CREATION
+// CREATION:
 
 export const createPoids = (formValues) => {
   return async (dispatch) => {
-    const response = await api.post("/height/create", formValues);
+    const response = await api.post("/weight/create", formValues);
     window.location.reload()    
     
     dispatch({
-      type: CREATE_Poids_METRIX,
+      type: CREATE_POIDS_METRIX,
       payload: response.data,
     });
 
   };
 };
 
-// UPDATE
+// UPDATE:
 
 
 export const editPoids = (id, formValues) => async dispatch => {
-  const response = await api.put(`/height/update/${id}`, formValues);
+  const response = await api.put(`/weight/update/${id}`, formValues);
 
-  dispatch({ type: EDIT_Poids_METRIX, payload: response.data });
+  dispatch({ type: EDIT_POIDS_METRIX, payload: response.data });
   window.location.reload()    
 };
 
 
-// DELETE
+// DELETE:
 
 export const deletePoids = id => async dispatch => {
-  await api.delete(`/height/delete/${id}`);
+  await api.delete(`/weight/delete/${id}`);
 
-  dispatch({ type: DELETE_Poids_METRIX, payload: id });
+  dispatch({ type: DELETE_POIDS_METRIX, payload: id });
   window.location.reload()    
 };

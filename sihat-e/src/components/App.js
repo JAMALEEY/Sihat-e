@@ -29,6 +29,7 @@ import ContactInformation from './pages/InformationContact/ContactInformation';
 import Metrix from './pages/PatientMetrix/Metrix';
 import FormMetrixPatient from './pages/PatientMetrix/FormMetrixPatient';
 import MetrixTaille from './pages/PatientMetrix/Tailles/MetrixTaille';
+import MetrixPoids from './pages/PatientMetrix/Poids/MetrixPoids';
 // import Modal from './pages/Modal';
 
 const  App = (props) => {
@@ -57,6 +58,8 @@ const  App = (props) => {
                                 <PublicRoute path="/metrix" exact component={Metrix} />
                                 <PublicRoute path="/metrix/form" exact component={FormMetrixPatient} />
                                 <PublicRoute path="/metrixTaille" exact component={MetrixTaille} />
+                                <PublicRoute path="/metrixPoids" exact component={MetrixPoids} />
+
                                 
                                 {/* <PublicRoute path="/modal" exact component={Modal} /> */}
                                 <Redirect from="*" to="/" />
