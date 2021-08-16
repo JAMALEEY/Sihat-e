@@ -80,7 +80,7 @@ const createTailleReducer = (createTaille = {}, action) => {
 
 export default combineReducers ({
     form: newsletterReducer, signUpPatientState, dashboardPatientForm,
-    reducer: logout, about_reducer, tailles_reducer, poids_reducer, bmi_reducer,
+    reducer: logout, about_reducer, tailles_reducer, poids_reducer, bmi_reducer, tension_reducer,
     
     // signIn: signInReducer,
     signInResponse: signInResponseReducer,

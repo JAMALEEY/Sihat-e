@@ -1,6 +1,6 @@
   const tensioninitialState = {
       loading: false,
-      dataOk: false,
+      responseOk: false,
       tension: [],
       error: ''
     }
@@ -15,7 +15,7 @@
         case 'FETCH_TENSION_METRIX':
           return {
             loading: false,
-            dataOk: true,
+            responseOk: true,
             tension: action.payload,
             error: ''
           }

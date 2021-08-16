@@ -102,7 +102,7 @@ class MetrixTension extends Component {
 
 
   renderList() {  
-    if (this.props.tensionData.tension_reducer.tension.historique) {
+    if (this.props.tailleData.tailles_reducer.responseOk) {
      
       // const id = this.props.tensionData.tailles_reducer.tailles.historique.id;
     return this.props.tensionData.tension_reducer.tension.historique
@@ -116,7 +116,7 @@ class MetrixTension extends Component {
                             
                             <p>
                             <strong>
-                            Mon tension est de : {thetensionData.kg} Kg
+                            Mon tension est de : {thetensionData.blood_pressure} Kg
                             </strong>
                             </p>
                             <strong>
