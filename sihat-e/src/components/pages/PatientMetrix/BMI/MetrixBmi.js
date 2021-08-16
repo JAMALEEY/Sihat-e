@@ -43,16 +43,16 @@ class MetrixPoids extends Component {
   };
 
   componentDidMount() {
-   this.props.fetchPoidsInfos();
+   this.props.fetchBmiInfos();
    console.log(this.props)
   }
 
 
-  creatPoids = (formValues) => {
-    this.props.createPoids(formValues);}
+  createBmi = (formValues) => {
+    this.props.createBmi(formValues);}
 
-    editPoids = (id, formValues) => {
-      this.props.editPoids(formValues);}
+    editBmi = (id, formValues) => {
+      this.props.editBmi(formValues);}
  
 
   renderInput({
@@ -102,13 +102,13 @@ class MetrixPoids extends Component {
 
 
   renderList() {  
-    if (this.props.poidsData.poids_reducer.dataOk) {
+    if (this.props.bmiData.bmi_reducer.myData) {
      
       // const id = this.props.PoidsData.tailles_reducer.tailles.historique.id;
-    return this.props.poidsData.poids_reducer.poids.historique
-    .map(thepoidsData => {
+    return this.props.bmiData.bmi_reducer.bmi.historique
+    .map(thebmiData => {
       return (
-        <div key={thepoidsData.id} >
+        <div key={thebmiData.id} >
 
  <div class="login-box-seperator" id="login-box-seperator-left"></div>
                     <div id='taillemetricyourmetric'>
@@ -116,7 +116,7 @@ class MetrixPoids extends Component {
                             
                             <p>
                             <strong>
-                            Mon poids est de : {thepoidsData.kg} Kg
+                            Mon I.M.C est de : {thebmiData.kg} 
                             </strong>
                             </p>
                             <strong>
