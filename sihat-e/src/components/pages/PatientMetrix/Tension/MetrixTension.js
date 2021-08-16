@@ -137,14 +137,14 @@ class MetrixTension extends Component {
         <strong><p>Tension :</p></strong>
         <Field
                 className="form-control"
-                name="kg"
+                name="blood_pressure"
                 component={this.renderInput}
-                label="Modifier votre poids :"
-                placeholder="Votre poids"
+                label="Modifier votre tension :"
+                placeholder="Votre tension"
                 type="text"
-                span='kg'
+                span='bpm'
         /> 
-                        Ce poids date de: {thepoidsData.date}
+                        Tension métrique date de: {thetensionData.date}
         </ModalUpdate>
                         </div>
 
@@ -158,9 +158,9 @@ class MetrixTension extends Component {
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
       
-      { this.del = () => this.props.deletePoids(thepoidsData.id)} 
-    <Link class="dropdown-item" onClick={this.showModal} >Edit</Link>
-    <Link class="dropdown-item" onClick={this.del}>Delete</Link>
+      { this.del = () => this.props.deleteTension(thetensionData.id)} 
+    <Link class="dropdown-item" onClick={this.showModal} >Modifier</Link>
+    <Link class="dropdown-item" onClick={this.del}>Supprimer</Link>
 
   </div>                     
                             </div>
@@ -181,15 +181,15 @@ class MetrixTension extends Component {
 
 
   render() {
-    return this.props.poidsData.poids_reducer.loading 
+    return this.props.tensionData.tension_reducer.loading 
     ? 
     (              
       <Loader />
       ) 
     : 
-    this.props.poidsData.poids_reducer.error 
+    this.props.tensionData.tension_reducer.error 
     ? 
-    ( <h2>{this.props.poidsData.poids_reducer.error}</h2> )
+    ( <h2>{this.props.tensionData.tension_reducer.error}</h2> )
     : 
     (
 
@@ -494,19 +494,19 @@ class MetrixTension extends Component {
               </div>
               {/*  Create  */}
               <div className='metrixWrapper'>
-              <Modal submit={this.props.handleSubmit(this.creatPoids)} modalTitle={this.state.modalTitle} show={this.state.show} handleClose={this.hideModalCreat}>
+              <Modal submit={this.props.handleSubmit(this.creatTension)} modalTitle={this.state.modalTitle} show={this.state.show} handleClose={this.hideModalCreat}>
                               {/* children */}
-          <strong><p>Poids :</p></strong>
+          <strong><p>Tension :</p></strong>
           <Field
                           className="form-control"
-                          name="kg"
+                          name="blood_pressure"
                           component={this.renderInput}
-                          label="Votre poids :"
-                          placeholder="Ajouter votre poids en kg"
+                          label="Votre Tension :"
+                          placeholder="Ajouter votre Tension en bpm"
                           type="text"
-                          span='kg'
+                          span='bpm'
           /> 
-                        <strong><p>Date de ce Poids :</p></strong>
+                        <strong><p>Date de ce Tension :</p></strong>
           <Field
                           className="form-control"
                           name="date"
@@ -520,14 +520,14 @@ class MetrixTension extends Component {
                 
                 <Link  onClick={this.showModalCreat}  className='fasflex'>
                   <p>
-                    Ajouter Votre Poids
+                    Ajouter Votre Tension
                   </p>
                 <i className="fas fa-plus fa-2x"></i> 
                 </Link>
                     <div id='taillemetricyourmetric'>
                         <div>
                             <h4>
-                                Votre poids le plus récent :
+                                Votre Tension le plus récent :
                             </h4>
                             </div>
                 
@@ -537,15 +537,15 @@ class MetrixTension extends Component {
                             <h3>
                             <strong>
 
-                              { this.props.poidsData.poids_reducer.dataOk ?  this.props.poidsData.poids_reducer.poids.last_weight.kg : ' '}
-                                kg
+                              { this.props.tensionData.tension_reducer.dataOk ?  this.props.tensionData.tension_reducer.tension.last_blood_pressure.blood_pressure : ' '}
+                                bpm
                             </strong>
                             </h3>
                             
                             <p>
                               
-                              { this.props.poidsData.poids_reducer.dataOk && this.props.poidsData.poids_reducer.historique
-    ?  this.props.poidsData.poids_reducer.poids.last_weight.date : ' '}
+                              { this.props.tensionData.tension_reducer.dataOk && this.props.tensionData.tension_reducer.historique
+    ?  this.props.tensionData.tension_reducer.tension.tension.last_blood_pressure.date : ' '}
                               
                             </p>
 

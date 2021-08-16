@@ -26,6 +26,8 @@ import about_reducer from "./about_reducer";
 import tailles_reducer from "./tailles_reducer";
 import poids_reducer from "./poids_reducer";
 import bmi_reducer from "./bmi_reducer";
+import tension_reducer from "./tension_reducer";
+
 
 
 
@@ -89,6 +91,7 @@ export default combineReducers ({
     tailleData: tailles_reducer,
     poidsData: poids_reducer,
     bmiData: bmi_reducer,
+    tensionData: tension_reducer,
     // createContactInformation :createContactInformationReducer
     
     

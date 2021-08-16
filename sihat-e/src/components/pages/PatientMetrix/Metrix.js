@@ -278,13 +278,13 @@ import FormMetrixPatient from './FormMetrixPatient';
 
   const mapStateToProps = (state, props) => {
     return {
-      patientData: state,
+    //   patientData: state,
     };
   };
   
   const mapDispatchToProps = (dispatch) => {
     return {
-      fetchAboutInfos: () => dispatch(fetchAboutInfos()),
+    //   fetchAboutInfos: () => dispatch(fetchAboutInfos()),
     };
   };
   
@@ -294,6 +294,6 @@ import FormMetrixPatient from './FormMetrixPatient';
   )(Metrix);
   
   export default reduxForm({
-    form: "aboutInfosForm", // a unique name for this form
+    // form: "aboutInfosForm", // a unique name for this form
     enableReinitialize: true
   })(MetrixConnect);

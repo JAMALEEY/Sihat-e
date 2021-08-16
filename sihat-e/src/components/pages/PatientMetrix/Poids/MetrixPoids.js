@@ -160,8 +160,8 @@ class MetrixPoids extends Component {
 
       
       { this.del = () => this.props.deletePoids(thepoidsData.id)} 
-    <Link class="dropdown-item" onClick={this.showModal} >Edit</Link>
-    <Link class="dropdown-item" onClick={this.del}>Delete</Link>
+    <Link class="dropdown-item" onClick={this.showModal} >Modifier</Link>
+    <Link class="dropdown-item" onClick={this.del}>Supprimer</Link>
 
   </div>                     
                             </div>

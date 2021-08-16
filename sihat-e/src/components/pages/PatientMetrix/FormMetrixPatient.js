@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { logout, fetchTailleInfos, fetchPoidsInfos, fetchBmiInfos} from "../../../actions";
+import { logout, fetchTailleInfos, fetchPoidsInfos, fetchBmiInfos, fetchTensionInfos} from "../../../actions";
 import {Link} from 'react-router-dom';
 import { Field, reduxForm } from "redux-form";
 import { first } from "lodash";
@@ -13,6 +13,8 @@ class FormMetrixPatient extends Component {
     this.props.fetchTailleInfos()
     this.props.fetchPoidsInfos()
     this.props.fetchBmiInfos()
+    this.props.fetchTensionInfos()
+
 
     console.log(this.props)
   }
@@ -47,7 +49,7 @@ defaultValue,defaultChecked,checked,})
 
 
   render() {
-    if (!this.props.taillData && !this.props.poidsData && !this.props.bmiData ) {
+    if (!this.props.taillData && !this.props.poidsData && !this.props.bmiData && !this.props.tensionData) {
       return               <Loader />
       ;
     } else {
@@ -146,23 +148,32 @@ defaultValue,defaultChecked,checked,})
 
 
                     <div class="login-box-seperator" id="login-box-seperator-left"></div>
-                    <div class="login-box-seperator" id="login-box-seperator-left"></div>
-                    <div id='onemetric'>
-                        <div>
-                            <h5>
-                                Tension
-                            </h5>
-                        </div>
 
-                            <div>
-                                <p>
-                                    177cm
-                                </p>
-                                <p>
-                                    date
-                                </p>
-                            </div>
-                    </div>
+                    <Link to='/metrixTension'>
+
+<div class="login-box-seperator" id="login-box-seperator-left"></div>
+<div id='onemetric'>
+    <div>
+        <h5>
+            Tension
+        </h5>
+    </div>
+    <div className='d-flex flex-column'>
+            <p className='ml-auto'>
+              {/* SI LA DATA EST FETCHER ON DOIT ETRE SUR QU'ON A LES LAST RECORDS SI OUI ON AFFICHE SINON ON AFFICHE MSG AUCUN RECORD */}
+            {!this.props.tensionData.tension_reducer.dataOk ? "Chargement ..." : this.props.tensionData.tension_reducer.tension.last_blood_pressure === undefined ? " _ ": ` ${this.props.tensionData.tension_reducer.tension.last_blood_pressure.blood_pressure} bpm `} 
+                
+            </p>
+            <p>
+                {!this.props.tensionData.tension_reducer.dataOk ? " " : 
+                this.props.tensionData.tension_reducer.tension.last_blood_pressure === undefined ? "_": this.props.tensionData.tension_reducer.tension.last_blood_pressure.date}
+            </p>
+        </div>
+</div>
+</Link>
+
+
+
                     <div class="login-box-seperator" id="login-box-seperator-left"></div>
                     <div class="login-box-seperator" id="login-box-seperator-left"></div>
                     <div id='onemetric'>
@@ -222,6 +233,8 @@ const mapStateToProps = (state,props) => {
     taillData: state, 
     poidsData: state,
     bmiData: state,
+    tensionData: state,
+
 
   };
 };
@@ -231,6 +244,9 @@ const mapDispatchToProps = (dispatch, formValues) => {
     fetchTailleInfos: () => dispatch(fetchTailleInfos()),
     fetchPoidsInfos: () => dispatch(fetchPoidsInfos()),
     fetchBmiInfos: () => dispatch(fetchBmiInfos()),
+    fetchTensionInfos: () => dispatch(fetchTensionInfos()),
+
+    
 
 
     // createAbout : (formValues) => dispatch(createAbout(formValues)),
