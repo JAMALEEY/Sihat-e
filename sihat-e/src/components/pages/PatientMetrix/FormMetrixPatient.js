@@ -114,7 +114,7 @@ defaultValue,defaultChecked,checked,})
     <div id='onemetric'>
         <div>
             <h5>
-                Poids
+                I.M.C
             </h5>
         </div>
         <div className='d-flex flex-column'>
@@ -134,24 +134,6 @@ defaultValue,defaultChecked,checked,})
 
 
 
-
-                    <div class="login-box-seperator" id="login-box-seperator-left"></div>
-                    <div id='onemetric'>
-                        <div>
-                            <h5>
-                                I.M.C
-                            </h5>
-                        </div>
-
-                            <div>
-                                <p>
-                                    177cm
-                                </p>
-                                <p>
-                                    date
-                                </p>
-                            </div>
-                    </div>
                     <div class="login-box-seperator" id="login-box-seperator-left"></div>
                     <div class="login-box-seperator" id="login-box-seperator-left"></div>
                     <div id='onemetric'>

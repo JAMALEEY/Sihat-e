@@ -20,8 +20,6 @@ import {
             ...state,
             loading: true
           }
-        case DELETE_TAILLE_METRIX:
-          return _.omit(state, action.payload);
         case FETCH_TAILLE_METRIX:
           return {
             loading: false,

@@ -25,6 +25,8 @@ DELETE_TAILLE_METRIX
 import about_reducer from "./about_reducer";
 import tailles_reducer from "./tailles_reducer";
 import poids_reducer from "./poids_reducer";
+import bmi_reducer from "./bmi_reducer";
+
 
 
 const signUpPatientReducer = (signUpPatientState = {}, action) => {
@@ -76,7 +78,7 @@ const createTailleReducer = (createTaille = {}, action) => {
 
 export default combineReducers ({
     form: newsletterReducer, signUpPatientState, dashboardPatientForm,
-    reducer: logout, about_reducer, tailles_reducer, poids_reducer,
+    reducer: logout, about_reducer, tailles_reducer, poids_reducer, bmi_reducer,
     
     // signIn: signInReducer,
     signInResponse: signInResponseReducer,
@@ -86,6 +88,7 @@ export default combineReducers ({
     patientData: about_reducer,
     tailleData: tailles_reducer,
     poidsData: poids_reducer,
+    bmiData: bmi_reducer,
     // createContactInformation :createContactInformationReducer
     
     

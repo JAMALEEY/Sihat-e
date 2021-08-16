@@ -1,38 +1,36 @@
-import { 
-    CREATE_POIDS_METRIX,
-    EDIT_POIDS_METRIX,
-    DELETE_POIDS_METRIX
-  } from "../actions/types";
+
   
-  const poidsinitialState = {
+  const bmiinitialState = {
       loading: false,
-      dataOk: false,
-      poids: [],
+      myData: false,
+      bmi: [],
       error: ''
     }
   
-  const reducer = (state = poidsinitialState, action) => {
+  const reducer = (state = bmiinitialState, action) => {
       switch (action.type) {
-          case 'FETCH_POIDS_REQUEST':
+          case 'FETCH_BMI_REQUEST':
           return {
             ...state,
             loading: true
           }
-        case 'FETCH_POIDS_METRIX':
+        case 'DELETE_BMI_METRIX':
+          return (state, action.payload);
+        case 'FETCH_BMI_METRIX':
           return {
             loading: false,
-            dataOk: true,
+            myData: true,
             poids: action.payload,
             error: ''
           }
-        case 'FETCH_POIDS_FAILURE':
+        case 'FETCH_BMI_FAILURE':
           return {
             loading: false,
             notFound : true,
             poids: [],
             error: action.payload
           }
-          case DELETE_POIDS_METRIX:
+          case 'DELETE_BMI_METRIX':
             return {
               loading: false,
               poids: action.payload,
