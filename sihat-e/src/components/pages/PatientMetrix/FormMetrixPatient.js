@@ -84,7 +84,7 @@ defaultValue,defaultChecked,checked,})
                                 <p>
                                 {!this.props.taillData.tailles_reducer.recievedData ? "Chargement ..." : 
                                 this.props.taillData.tailles_reducer.tailles.last_height === undefined ?  " _ " :
-                                `Le ${this.props.taillData.tailles_reducer.tailles.last_height.date} `}
+                                ` ${this.props.taillData.tailles_reducer.tailles.last_height.date} `}
                                 </p>
                             </div>
                     </div>

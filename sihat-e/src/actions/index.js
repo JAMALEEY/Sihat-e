@@ -433,3 +433,94 @@ export const deleteBmi = id => async dispatch => {
   dispatch({ type: "DELETE_Bmi_METRIX", payload: id });
   window.location.reload()    
 };
+
+
+
+
+
+
+
+
+// TENSION METRIX :
+
+
+// FETCH
+
+
+export const fetchTensionInfos = () => {
+
+
+  return (dispatch) => {
+    dispatch(fetchTensionInfosRequest());
+    api
+      .get("/blood_presure/fetch")
+      .then((response) => {
+        const fetchedDataTension = response.data;
+        dispatch(fetchTensionInfosSuccess(fetchedDataTension));
+      })
+      .catch((error) => {
+        // error.message is the error message
+        dispatch(fetchTensionInfosFailure(error.message));
+      });
+  };
+};
+
+
+//  HERE WE FETCH THE REQUEST :
+export const fetchTensionInfosRequest = () => {
+  return {
+    type: "FETCH_TENSION_REQUEST",
+  };
+};
+
+// HERE WE FETCH THE RESPONSE OF THE REQUEST:
+export const fetchTensionInfosSuccess = (fetchedDataTension) => {
+  return {
+    type: "FETCH_TENSION_METRIX",
+    payload: fetchedDataTension,
+  };
+};
+
+// HERE WE FETCH THE ERROR OF THE REQUEST:
+export const fetchTensionInfosFailure = (error) => {
+  return {
+    type: "FETCH_TENSION_FAILURE",
+    payload: error,
+  };
+};
+
+
+// CREATION:
+
+export const createTension = (formValues) => {
+  return async (dispatch) => {
+    const response = await api.post("/blood_presure/create", formValues);
+    window.location.reload()    
+    
+    dispatch({
+      type: "CREATE_TENSION_METRIX",
+      payload: response.data,
+    });
+
+  };
+};
+
+// UPDATE:
+
+
+export const editTension = (id, formValues) => async dispatch => {
+  const response = await api.put(`/blood_presure/update/${id}`, formValues);
+
+  dispatch({ type: "EDIT_TENSION_METRIX", payload: response.data });
+  window.location.reload()    
+};
+
+
+// DELETE:
+
+export const deleteTension = id => async dispatch => {
+  await api.delete(`/blood_presure/delete/${id}`);
+
+  dispatch({ type: "DELETE_TENSION_METRIX", payload: id });
+  window.location.reload()    
+};
