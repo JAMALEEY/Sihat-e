@@ -47,7 +47,7 @@ defaultValue,defaultChecked,checked,})
 
 
   render() {
-    if (!this.props.taillData) {
+    if (!this.props.taillData && !this.props.poidsData && !this.props.bmiData ) {
       return               <Loader />
       ;
     } else {
@@ -75,11 +75,16 @@ defaultValue,defaultChecked,checked,})
                             <div className='d-flex flex-column'>
                                 <p className='ml-auto'>
 
-                                {!this.props.taillData.tailles_reducer.recievedData ? "Chargement ..." : ` ${this.props.taillData.tailles_reducer.tailles.last_height.cm} cm `} 
+                                {!this.props.taillData.tailles_reducer.recievedData ? "Chargement ..." : 
+                                this.props.taillData.tailles_reducer.tailles.last_height === undefined ?  " _ " :
+                                `${this.props.taillData.tailles_reducer.tailles.last_height.cm} cm`}
+                                
                                     
                                 </p>
                                 <p>
-                                    {!this.props.taillData.tailles_reducer.recievedData ? " " : ` Le : ${this.props.taillData.tailles_reducer.tailles.last_height.date} `}
+                                {!this.props.taillData.tailles_reducer.recievedData ? "Chargement ..." : 
+                                this.props.taillData.tailles_reducer.tailles.last_height === undefined ?  " _ " :
+                                `Le ${this.props.taillData.tailles_reducer.tailles.last_height.date} `}
                                 </p>
                             </div>
                     </div>
@@ -97,12 +102,13 @@ defaultValue,defaultChecked,checked,})
                         </div>
                         <div className='d-flex flex-column'>
                                 <p className='ml-auto'>
-
-                                {!this.props.poidsData.poids_reducer.dataOk ? "Chargement ..." : ` ${this.props.poidsData.poids_reducer.poids.last_weight.kg} kg `} 
+                                  {/* SI LA DATA EST FETCHER ON DOIT ETRE SUR QU'ON A LES LAST RECORDS SI OUI ON AFFICHE SINON ON AFFICHE MSG AUCUN RECORD */}
+                                {!this.props.poidsData.poids_reducer.dataOk ? "Chargement ..." : this.props.poidsData.poids_reducer.poids.last_weight === undefined ? " _ ": ` ${this.props.poidsData.poids_reducer.poids.last_weight.kg} kg `} 
                                     
                                 </p>
                                 <p>
-                                    {!this.props.poidsData.poids_reducer.dataOk ? " " : ` Le : ${this.props.poidsData.poids_reducer.poids.last_weight.date} `}
+                                    {!this.props.poidsData.poids_reducer.dataOk ? " " : 
+                                    this.props.poidsData.poids_reducer.poids.last_weight === undefined ? "_": this.props.poidsData.poids_reducer.poids.last_weight.date}
                                 </p>
                             </div>
                     </div>
@@ -120,15 +126,16 @@ defaultValue,defaultChecked,checked,})
             </h5>
         </div>
         <div className='d-flex flex-column'>
-                <p className='ml-auto'>
-
-                {!this.props.bmiData.bmi_reducer.myData ? "Chargement ..." : ` ${this.props.bmiData.bmi_reducer.bmi.last_BMI.BMI}  `} 
-                    
-                </p>
-                <p>
-                    {!this.props.bmiData.bmi_reducer.dataOk ? " " : ` Le : ${this.props.bmiData.bmi_reducer.bmi.last_weight.date} `}
-                </p>
-            </div>
+                                <p className='ml-auto'>
+                                  {/* SI LA DATA EST FETCHER ON DOIT ETRE SUR QU'ON A LES LAST RECORDS SI OUI ON AFFICHE SINON ON AFFICHE MSG AUCUN RECORD */}
+                                {!this.props.bmiData.bmi_reducer.myData ? "Chargement ..." : this.props.bmiData.bmi_reducer.bmi.last_BMI === undefined ? " _ ": ` ${this.props.bmiData.bmi_reducer.bmi.last_BMI.bmi}  `} 
+                                    
+                                </p>
+                                <p>
+                                    {!this.props.bmiData.bmi_reducer.myData ? " " : 
+                                    this.props.bmiData.bmi_reducer.bmi.last_BMI === undefined ? "_": this.props.bmiData.bmi_reducer.bmi.last_BMI.date}
+                                </p>
+                            </div>
     </div>
     </Link>
 

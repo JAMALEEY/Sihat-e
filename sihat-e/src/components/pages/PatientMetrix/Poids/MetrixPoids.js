@@ -103,7 +103,7 @@ class MetrixPoids extends Component {
 
 
   renderList() {  
-    if (!this.props.poidsData.poids_reducer.loading) {
+    if (this.props.poidsData.poids_reducer.poids.historique) {
      
       // const id = this.props.PoidsData.tailles_reducer.tailles.historique.id;
     return this.props.poidsData.poids_reducer.poids.historique
@@ -129,7 +129,7 @@ class MetrixPoids extends Component {
                             </strong>
  
           {/* {this.upd = (formValues) => {this.props.editTaille(thepoidsData.id, formValues)}} */}
-        {/* Creat */}
+        {/* Updtae */}
         { this.editPoids = (formValues) => this.props.editPoids(thepoidsData.id, formValues)} 
 
         <ModalUpdate edit={this.props.handleSubmit(this.editPoids)} id={this.state.id} date={this.state.date} mesures={this.state.mesures} modalTitle={this.state.modalTitleEdit} show2={this.state.show2} handleClose={this.hideModal}>
@@ -493,7 +493,7 @@ class MetrixPoids extends Component {
                 </div>
 
               </div>
-              {/* End Form */}
+              {/*  Create  */}
               <div className='metrixWrapper'>
               <Modal submit={this.props.handleSubmit(this.creatPoids)} modalTitle={this.state.modalTitle} show={this.state.show} handleClose={this.hideModalCreat}>
                               {/* children */}
@@ -538,7 +538,7 @@ class MetrixPoids extends Component {
                             <h3>
                             <strong>
 
-                              { this.props.poidsData.poids_reducer.dataOk && this.props.poidsData.poids_reducer.loading
+                              { this.props.poidsData.poids_reducer.dataOk && this.props.poidsData.poids_reducer.historique
     ?  this.props.poidsData.poids_reducer.poids.last_weight.kg : ' '}
                                 kg
                             </strong>
@@ -546,7 +546,7 @@ class MetrixPoids extends Component {
                             
                             <p>
                               
-                              { this.props.poidsData.poids_reducer.dataOk && this.props.poidsData.poids_reducer.loading
+                              { this.props.poidsData.poids_reducer.dataOk && this.props.poidsData.poids_reducer.historique
     ?  this.props.poidsData.poids_reducer.poids.last_weight.date : ' '}
                               
                             </p>
