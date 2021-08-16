@@ -12,7 +12,8 @@
           case 'FETCH_BMI_REQUEST':
           return {
             ...state,
-            loading: true
+            loading: true,
+            myData: false,
           }
         case 'DELETE_BMI_METRIX':
           return (state, action.payload);
@@ -26,6 +27,7 @@
         case 'FETCH_BMI_FAILURE':
           return {
             loading: false,
+            myData: true,
             notFound : true,
             poids: [],
             error: action.payload
@@ -33,6 +35,7 @@
           case 'DELETE_BMI_METRIX':
             return {
               loading: false,
+              myData: true,
               poids: action.payload,
               error: ''
             }

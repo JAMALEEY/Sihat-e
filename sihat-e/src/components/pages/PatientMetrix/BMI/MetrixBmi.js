@@ -8,7 +8,7 @@ import Modal from '../../Modals/Modal';
 import ModalUpdate from '../../Modals/ModalUpdate';
 import Loader from "../../../../helpers/Loader";
 
-class MetrixPoids extends Component {
+class MetrixBmi extends Component {
   constructor() {
     super();
     this.state = {
@@ -22,8 +22,8 @@ class MetrixPoids extends Component {
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
 
-    this.showModalCreat = this.showModalCreat.bind(this);
-    this.hideModalCreat = this.hideModalCreat.bind(this);
+    this.showModalCreate = this.showModalCreate.bind(this);
+    this.hideModalCreate = this.hideModalCreate.bind(this);
   }
 
   showModal = () => {
@@ -34,11 +34,11 @@ class MetrixPoids extends Component {
     this.setState({ show2: false });
   };
 
-  showModalCreat = () => {
+  showModalCreate = () => {
     this.setState({ show: true });
   };
 
-  hideModalCreat = () => {
+  hideModalCreate = () => {
     this.setState({ show: false });
   };
 
@@ -116,35 +116,35 @@ class MetrixPoids extends Component {
                             
                             <p>
                             <strong>
-                            Mon I.M.C est de : {thebmiData.kg} 
+                            Mon I.M.C est de : {thebmiData.BMI} 
                             </strong>
                             </p>
                             <strong>
 
                             
                             <p>
-                            au : {thepoidsData.date}
+                            au : {thebmiData.date}
                             </p>
                             </strong>
  
-          {/* {this.upd = (formValues) => {this.props.editTaille(thepoidsData.id, formValues)}} */}
+          {/* {this.upd = (formValues) => {this.props.editTaille(thebmiData.id, formValues)}} */}
         {/* Creat */}
-        { this.editPoids = (formValues) => this.props.editPoids(thepoidsData.id, formValues)} 
+        { this.editBmi = (formValues) => this.props.editBmi(thebmiData.id, formValues)} 
 
-        <ModalUpdate edit={this.props.handleSubmit(this.editPoids)} id={this.state.id} date={this.state.date} mesures={this.state.mesures} modalTitle={this.state.modalTitleEdit} show2={this.state.show2} handleClose={this.hideModal}>
+        <ModalUpdate edit={this.props.handleSubmit(this.editBmi)} date={this.state.date} mesures={this.state.mesures} modalTitle={this.state.modalTitleEdit} show2={this.state.show2} handleClose={this.hideModal}>
         
                               {/* children */}
-        <strong><p>Poids :</p></strong>
+        <strong><p>I.M.C :</p></strong>
         <Field
                 className="form-control"
-                name="kg"
+                name="BMI"
                 component={this.renderInput}
-                label="Modifier votre poids :"
-                placeholder="Votre poids"
+                label="Modifier votre I.M.C :"
+                placeholder="Votre I.M.C"
                 type="text"
-                span='kg'
+                span=''
         /> 
-                        Ce poids date de: {thepoidsData.date}
+                        Cet indice date de: {thebmiData.date}
         </ModalUpdate>
                         </div>
 
@@ -158,7 +158,7 @@ class MetrixPoids extends Component {
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
       
-      { this.del = () => this.props.deletePoids(thepoidsData.id)} 
+      { this.del = () => this.props.deleteBmi(thebmiData.id)} 
     <Link class="dropdown-item" onClick={this.showModal} >Edit</Link>
     <Link class="dropdown-item" onClick={this.del}>Delete</Link>
 
@@ -181,15 +181,15 @@ class MetrixPoids extends Component {
 
 
   render() {
-    return this.props.poidsData.poids_reducer.loading 
+    return this.props.bmiData.bmi_reducer.loading 
     ? 
     (              
       <Loader />
       ) 
     : 
-    this.props.poidsData.poids_reducer.error 
+    this.props.bmiData.bmi_reducer.error 
     ? 
-    ( <h2>{this.props.poidsData.poids_reducer.error}</h2> )
+    ( <h2>{this.props.bmiData.bmi_reducer.error}</h2> )
     : 
     (
 
@@ -475,7 +475,7 @@ class MetrixPoids extends Component {
             <div>
               <div  className="row register-form">
                 <div className="col-md-8 col-xl-10 offset-md-2 offset-xl-0">
-                  <form id='metrixForm' className="custom-form" method='post' >
+                  <form id='metrixForm' className="custom-form" >
                   
 
                     <div className="d-xl-flex align-items-xl-start" >
@@ -484,50 +484,48 @@ class MetrixPoids extends Component {
                       </Link>
 
 
-                                  <h5 className="retourMetrix">Poids.</h5>
+                                  <h5 className="retourMetrix">I.M.C.</h5>
                                   </div>
 
-                      {/* End Radios */}
                   </form>
                 </div>
 
               </div>
               {/* End Form */}
               <div className='metrixWrapper'>
-              <Modal submit={this.props.handleSubmit(this.creatPoids)} modalTitle={this.state.modalTitle} show={this.state.show} handleClose={this.hideModalCreat}>
+              <Modal submit={this.props.handleSubmit(this.createBmi)} modalTitle={this.state.modalTitle} show={this.state.show} handleClose={this.hideModalCreate}>
                               {/* children */}
-          <strong><p>Poids :</p></strong>
+          <strong><p>I.M.C :</p></strong>
           <Field
                           className="form-control"
-                          name="kg"
+                          name="BMI"
                           component={this.renderInput}
-                          label="Votre poids :"
-                          placeholder="Ajouter votre poids en kg"
+                          label="Votre I.M.C :"
+                          placeholder="Ajouter votre I.M.C"
                           type="text"
-                          span='kg'
+                          span=''
           /> 
-                        <strong><p>Date de ce Poids :</p></strong>
+                        <strong><p>Date de cet indice :</p></strong>
           <Field
                           className="form-control"
                           name="date"
                           component={this.renderInput}
-                          label="La date de votre mesure :"
+                          label="La date de votre I.M.C :"
                           type="date"
           /> 
 
-                        {/* <strong><p>Date de cette Mesure :</p></strong> */}
         </Modal>
                 
-                <Link  onClick={this.showModalCreat}  className='fasflex'>
+                <Link  onClick={this.showModalCreate}  className='fasflex'>
                   <p>
-                    Ajouter Votre Poids
+                    Ajouter Votre I.M.C
                   </p>
                 <i className="fas fa-plus fa-2x"></i> 
                 </Link>
                     <div id='taillemetricyourmetric'>
                         <div>
                             <h4>
-                                Votre poids le plus récent :
+                                Votre I.M.C le plus récent :
                             </h4>
                             </div>
                 
@@ -537,16 +535,16 @@ class MetrixPoids extends Component {
                             <h3>
                             <strong>
 
-                              { this.props.poidsData.poids_reducer.dataOk 
-    ?  this.props.poidsData.poids_reducer.poids.last_weight.kg : ' '}
+                              { this.props.bmiData.bmi_reducer.dataOk 
+    ?  this.props.bmiData.bmi_reducer.bmi.last_weight.kg : ' '}
                                 kg
                             </strong>
                             </h3>
                             
                             <p>
                               
-                              { this.props.poidsData.poids_reducer.dataOk
-    ?  this.props.poidsData.poids_reducer.poids.last_weight.date : ' '}
+                              { this.props.bmiData.bmi_reducer.dataOk
+    ?  this.props.bmiData.bmi_reducer.bmi.last_BMI.date : ' '}
                               
                             </p>
 
@@ -565,93 +563,22 @@ class MetrixPoids extends Component {
                 </div>
             </div>
             
-          </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        </div>
 
 
 <div>
 </div>
-      </div>
-      </div>
-      </div>
+    </div>
+    </div>
+    </div>
 {/* render end */}
 
 
 
-      </>
-      
-    );
-  }
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
+        </>
+        
+        );
+    }
 }
 
 
@@ -688,28 +615,28 @@ class MetrixPoids extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    poidsData: state,
+    bmiData: state,
   };
 };
 
 const mapDispatchToProps = (dispatch, formValues, id) => {
   return {
-    fetchPoidsInfos: () => dispatch(fetchPoidsInfos()),
-    createPoids : (formValues) => dispatch(createPoids(formValues)),
-    editPoids : (formValues, id) => dispatch(editPoids(formValues, id)),
-    deletePoids : (id) => dispatch(deletePoids(id)),
+    fetchBmiInfos: () => dispatch(fetchBmiInfos()),
+    createBmi : (formValues) => dispatch(createBmi(formValues)),
+    editBmi : (formValues, id) => dispatch(editBmi(formValues, id)),
+    deleteBmi : (id) => dispatch(deleteBmi(id)),
   };
 };
 
-MetrixPoids = connect(
+MetrixBmi = connect(
     mapStateToProps,
     mapDispatchToProps
-)(MetrixPoids);
+)(MetrixBmi);
 
 export default reduxForm({
-    form: 'MetrixPoidsHistoryandAdd', // a unique name for this form
+    form: 'MetrixBmiHistoryandAdd', // a unique name for this form
     enableReinitialize: true
-})(MetrixPoids);
+})(MetrixBmi);
 
 
 

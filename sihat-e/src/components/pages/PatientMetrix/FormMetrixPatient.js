@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { logout, fetchTailleInfos, fetchPoidsInfos} from "../../../actions";
+import { logout, fetchTailleInfos, fetchPoidsInfos, fetchBmiInfos} from "../../../actions";
 import {Link} from 'react-router-dom';
 import { Field, reduxForm } from "redux-form";
 import { first } from "lodash";
@@ -12,6 +12,8 @@ class FormMetrixPatient extends Component {
   componentDidMount() {
     this.props.fetchTailleInfos()
     this.props.fetchPoidsInfos()
+    this.props.fetchBmiInfos()
+
     console.log(this.props)
   }
 
@@ -108,7 +110,7 @@ defaultValue,defaultChecked,checked,})
 
                     <div class="login-box-seperator" id="login-box-seperator-left"></div>
 
-                    <Link to='/metrixPoids'>
+                    <Link to='/metrixBMI'>
 
     <div class="login-box-seperator" id="login-box-seperator-left"></div>
     <div id='onemetric'>
@@ -120,11 +122,11 @@ defaultValue,defaultChecked,checked,})
         <div className='d-flex flex-column'>
                 <p className='ml-auto'>
 
-                {!this.props.poidsData.poids_reducer.dataOk ? "Chargement ..." : ` ${this.props.poidsData.poids_reducer.poids.last_weight.kg} kg `} 
+                {!this.props.bmiData.bmi_reducer.myData ? "Chargement ..." : ` ${this.props.bmiData.bmi_reducer.bmi.last_BMI.BMI}  `} 
                     
                 </p>
                 <p>
-                    {!this.props.poidsData.poids_reducer.dataOk ? " " : ` Le : ${this.props.poidsData.poids_reducer.poids.last_weight.date} `}
+                    {!this.props.bmiData.bmi_reducer.dataOk ? " " : ` Le : ${this.props.bmiData.bmi_reducer.bmi.last_weight.date} `}
                 </p>
             </div>
     </div>
@@ -210,6 +212,8 @@ const mapStateToProps = (state,props) => {
   return {
     taillData: state, 
     poidsData: state,
+    bmiData: state,
+
   };
 };
 
@@ -217,6 +221,8 @@ const mapDispatchToProps = (dispatch, formValues) => {
   return {
     fetchTailleInfos: () => dispatch(fetchTailleInfos()),
     fetchPoidsInfos: () => dispatch(fetchPoidsInfos()),
+    fetchBmiInfos: () => dispatch(fetchPoidsInfos()),
+
 
     // createAbout : (formValues) => dispatch(createAbout(formValues)),
     // editAboutInfos : (formValues) => dispatch(editAboutInfos(formValues)),
