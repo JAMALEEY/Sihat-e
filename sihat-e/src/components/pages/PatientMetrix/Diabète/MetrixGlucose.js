@@ -14,8 +14,8 @@ class MetrixGlucose extends Component {
     this.state = {
       show: false,
       show2: false,
-      modalTitleEdit: 'Modification de votre I.M.C',
-      modalTitle: 'Ajouter votre I.M.C',
+      modalTitleEdit: 'Modification de votre Glycémie',
+      modalTitle: 'Ajouter votre Glycémie',
 
     
     };
@@ -119,7 +119,7 @@ class MetrixGlucose extends Component {
                             
                             <p>
                             <strong>
-                            Mon I.M.C est de : {theglucoseData.mg} 
+                            Mon Glycèmie est de : {theglucoseData.mg} 
                             </strong>
                             </p>
                             <strong>
@@ -137,7 +137,7 @@ class MetrixGlucose extends Component {
         <ModalUpdate edit={this.props.handleSubmit(this.editGlucose)} date={this.state.date} mesures={this.state.mesures} modalTitle={this.state.modalTitleEdit} show2={this.state.show2} handleClose={this.hideModal}>
         
                               {/* children */}
-        <strong><p>I.M.C :</p></strong>
+        <strong><p>Glycèmie :</p></strong>
         <Field
                 className="form-control"
                 name="mg"
@@ -487,7 +487,7 @@ class MetrixGlucose extends Component {
                       </Link>
 
 
-                                  <h5 className="retourMetrix">I.M.C.</h5>
+                                  <h5 className="retourMetrix">Glycèmie.</h5>
                                   </div>
 
                   </form>
@@ -498,7 +498,7 @@ class MetrixGlucose extends Component {
               <div className='metrixWrapper'>
               <Modal submit={this.props.handleSubmit(this.createGlucose)} modalTitle={this.state.modalTitle} show={this.state.show} handleClose={this.hideModalCreate}>
                               {/* children */}
-          <strong><p>I.M.C :</p></strong>
+          <strong><p>Glycèmie :</p></strong>
           <Field
                           className="form-control"
                           name="mg"
@@ -535,11 +535,11 @@ class MetrixGlucose extends Component {
 
                                 <h3>
                                     <strong>
-                                    {!this.props.glucoseData.glucose_reducer.myData ? ' _ ' : this.props.glucoseData.glucose_reducer.glucose.last_glucose === undefined ? " _ " : ` ${this.props.glucoseData.glucose_reducer.glucose.last_glucose.glucose} bpm `} 
+                                    {!this.props.glucoseData.glucose_reducer.recievedGlucoseData ? ' _ ' : this.props.glucoseData.glucose_reducer.glucose.last_Glucose === undefined ? " _ " : ` ${this.props.glucoseData.glucose_reducer.glucose.last_Glucose.mg} bpm `} 
                                     </strong>
                                 </h3>
                             <p>
-                                {!this.props.glucoseData.glucose_reducer.myData ? ' _ ' : this.props.glucoseData.glucose_reducer.glucose.last_glucose === undefined ? " _ " : ` ${this.props.glucoseData.glucose_reducer.glucose.last_glucose.date}  `} 
+                                {!this.props.glucoseData.glucose_reducer.recievedGlucoseData ? ' _ ' : this.props.glucoseData.glucose_reducer.glucose.last_Glucose === undefined ? " _ " : ` ${this.props.glucoseData.glucose_reducer.glucose.last_Glucose.date}  `} 
                             </p>
 
                         </div>

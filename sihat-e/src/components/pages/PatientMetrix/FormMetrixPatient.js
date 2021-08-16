@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { logout, fetchTailleInfos, fetchPoidsInfos, fetchBmiInfos, fetchTensionInfos} from "../../../actions";
+import { logout, fetchTailleInfos, fetchPoidsInfos, fetchBmiInfos, fetchTensionInfos, fetchGlucoseInfos, fetchTemperatureInfos} from "../../../actions";
 import {Link} from 'react-router-dom';
 import { Field, reduxForm } from "redux-form";
 import { first } from "lodash";
@@ -14,6 +14,8 @@ class FormMetrixPatient extends Component {
     this.props.fetchPoidsInfos()
     this.props.fetchBmiInfos()
     this.props.fetchTensionInfos()
+    this.props.fetchTemperatureInfos()
+    this.props.fetchGlucoseInfos()
 
 
     console.log(this.props)
@@ -175,41 +177,51 @@ defaultValue,defaultChecked,checked,})
 
 
                     <div class="login-box-seperator" id="login-box-seperator-left"></div>
-                    <div class="login-box-seperator" id="login-box-seperator-left"></div>
-                    <div id='onemetric'>
-                        <div>
-                            <h5>
-                                Température
-                            </h5>
-                        </div>
+                    <Link to='/metrixTemperature'>
 
-                            <div>
-                                <p>
-                                    177cm
-                                </p>
-                                <p>
-                                    date
-                                </p>
-                            </div>
-                    </div>
+<div class="login-box-seperator" id="login-box-seperator-left"></div>
+<div id='onemetric'>
+    <div>
+        <h5>
+            Température
+        </h5>
+    </div>
+    <div className='d-flex flex-column'>
+            <p className='ml-auto'>
+              {/* SI LA DATA EST FETCHER ON DOIT ETRE SUR QU'ON A LES LAST RECORDS SI OUI ON AFFICHE SINON ON AFFICHE MSG AUCUN RECORD */}
+            {!this.props.temperatureData.temperature_reducer.recievedTemperatureData ? "Chargement ..." : this.props.temperatureData.temperature_reducer.temperature.last_Temperature === undefined ? " _ ": ` ${this.props.temperatureData.temperature_reducer.temperature.last_Temperature.temperature} °C `} 
+                
+            </p>
+            <p>
+                {!this.props.temperatureData.temperature_reducer.recievedTemperatureData ? " " : 
+                this.props.temperatureData.temperature_reducer.temperature.last_Temperature === undefined ? "_": this.props.temperatureData.temperature_reducer.temperature.last_Temperature.date}
+            </p>
+        </div>
+</div>
+</Link>
                     <div class="login-box-seperator" id="login-box-seperator-left"></div>
-                    <div class="login-box-seperator" id="login-box-seperator-left"></div>
-                    <div id='onemetric'>
-                        <div>
-                            <h5>
-                                Cholesterol
-                            </h5>
-                        </div>
+                    <Link to='/metrixGlucose'>
 
-                            <div>
-                                <p>
-                                    177cm
-                                </p>
-                                <p>
-                                    date
-                                </p>
-                            </div>
-                    </div>
+<div class="login-box-seperator" id="login-box-seperator-left"></div>
+<div id='onemetric'>
+    <div>
+        <h5>
+            Glycémie
+        </h5>
+    </div>
+    <div className='d-flex flex-column'>
+            <p className='ml-auto'>
+              {/* SI LA DATA EST FETCHER ON DOIT ETRE SUR QU'ON A LES LAST RECORDS SI OUI ON AFFICHE SINON ON AFFICHE MSG AUCUN RECORD */}
+            {!this.props.glucoseData.glucose_reducer.recievedGlucoseData ? "Chargement ..." : this.props.glucoseData.glucose_reducer.glucose.last_Glucose === undefined ? " _ ": ` ${this.props.glucoseData.glucose_reducer.glucose.last_Glucose.mg} °C `} 
+                
+            </p>
+            <p>
+                {!this.props.glucoseData.glucose_reducer.recievedGlucoseData ? " " : 
+                this.props.glucoseData.glucose_reducer.glucose.last_Glucose === undefined ? "_": this.props.glucoseData.glucose_reducer.glucose.last_Glucose.date}
+            </p>
+        </div>
+</div>
+</Link>
                     <div class="login-box-seperator" id="login-box-seperator-left"></div> 
                     
                     

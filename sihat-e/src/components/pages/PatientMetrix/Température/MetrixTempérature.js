@@ -14,8 +14,8 @@ class MetrixTemperature extends Component {
     this.state = {
       show: false,
       show2: false,
-      modalTitleEdit: 'Modification de votre I.M.C',
-      modalTitle: 'Ajouter votre I.M.C',
+      modalTitleEdit: 'Modification de votre Température',
+      modalTitle: 'Ajouter votre Température',
 
     
     };
@@ -119,7 +119,7 @@ class MetrixTemperature extends Component {
                             
                             <p>
                             <strong>
-                            Mon I.M.C est de : {thetemperatureData.mg} 
+                            Ma température est de : {thetemperatureData.temperature} 
                             </strong>
                             </p>
                             <strong>
@@ -137,7 +137,7 @@ class MetrixTemperature extends Component {
         <ModalUpdate edit={this.props.handleSubmit(this.editTemperature)} date={this.state.date} mesures={this.state.mesures} modalTitle={this.state.modalTitleEdit} show2={this.state.show2} handleClose={this.hideModal}>
         
                               {/* children */}
-        <strong><p>I.M.C :</p></strong>
+        <strong><p>Température :</p></strong>
         <Field
                 className="form-control"
                 name="temperature"
@@ -487,7 +487,7 @@ class MetrixTemperature extends Component {
                       </Link>
 
 
-                                  <h5 className="retourMetrix">I.M.C.</h5>
+                                  <h5 className="retourMetrix">Température</h5>
                                   </div>
 
                   </form>
@@ -532,14 +532,14 @@ class MetrixTemperature extends Component {
                             </h5>
                             </div>
                             <div>
-
                                 <h3>
                                     <strong>
-                                    {!this.props.temperatureata.temperature_reducer.myData ? ' _ ' : this.props.temperatureata.temperature_reducer.temperature.last_temperature === undefined ? " _ " : ` ${this.props.temperatureata.temperature_reducer.temperature.last_temperature.temperature}  °C `} 
+                                        
+                                    {!this.props.temperatureData.temperature_reducer.recievedTemperatureData ? ' _ ' : this.props.temperatureData.temperature_reducer.temperature.last_Temperature === undefined ? " _ " : ` ${this.props.temperatureData.temperature_reducer.temperature.last_Temperature.temperature}  °C `} 
                                     </strong>
                                 </h3>
                             <p>
-                                {!this.props.temperatureata.temperature_reducer.myData ? ' _ ' : this.props.temperatureata.temperature_reducer.temperature.last_temperature === undefined ? " _ " : ` ${this.props.temperatureata.temperature_reducer.temperature.last_temperature.date}  `} 
+                                {!this.props.temperatureData.temperature_reducer.recievedTemperatureData ? ' _ ' : this.props.temperatureData.temperature_reducer.temperature.last_Temperature === undefined ? " _ " : ` ${this.props.temperatureData.temperature_reducer.temperature.last_Temperature.date}  `} 
                             </p>
 
                         </div>

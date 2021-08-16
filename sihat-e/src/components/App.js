@@ -63,7 +63,7 @@ const  App = (props) => {
                                 <PublicRoute path="/metrixPoids" exact component={MetrixPoids} />
                                 <PublicRoute path="/metrixBMI" exact component={MetrixBmi} />
                                 <PublicRoute path="/metrixTension" exact component={MetrixTension} />
-                                <PublicRoute path="/metrixTempérature" exact component={MetrixTempérature} />
+                                <PublicRoute path="/metrixTemperature" exact component={MetrixTempérature} />
                                 <PublicRoute path="/metrixGlucose" exact component={MetrixGlucose} />
 
 
