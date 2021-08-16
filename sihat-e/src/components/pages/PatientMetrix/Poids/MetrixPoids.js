@@ -103,7 +103,7 @@ class MetrixPoids extends Component {
 
 
   renderList() {  
-    if (this.props.poidsData.poids_reducer.dataOk) {
+    if (!this.props.poidsData.poids_reducer.loading) {
      
       // const id = this.props.PoidsData.tailles_reducer.tailles.historique.id;
     return this.props.poidsData.poids_reducer.poids.historique
@@ -538,7 +538,7 @@ class MetrixPoids extends Component {
                             <h3>
                             <strong>
 
-                              { this.props.poidsData.poids_reducer.dataOk 
+                              { this.props.poidsData.poids_reducer.dataOk && this.props.poidsData.poids_reducer.loading
     ?  this.props.poidsData.poids_reducer.poids.last_weight.kg : ' '}
                                 kg
                             </strong>
@@ -546,7 +546,7 @@ class MetrixPoids extends Component {
                             
                             <p>
                               
-                              { this.props.poidsData.poids_reducer.dataOk
+                              { this.props.poidsData.poids_reducer.dataOk && this.props.poidsData.poids_reducer.loading
     ?  this.props.poidsData.poids_reducer.poids.last_weight.date : ' '}
                               
                             </p>
