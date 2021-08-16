@@ -524,3 +524,179 @@ export const deleteTension = id => async dispatch => {
   dispatch({ type: "DELETE_TENSION_METRIX", payload: id });
   window.location.reload()    
 };
+
+
+
+
+// GLUCOSE METRIX :
+
+
+// FETCH
+
+
+export const fetchGlucoseInfos = () => {
+
+
+  return (dispatch) => {
+    dispatch(fetchGlucoseInfosRequest());
+    api
+      .get("/glucose/fetch")
+      .then((response) => {
+        // response.data is the Patients
+        const fetchedDataGlucose = response.data;
+        dispatch(fetchGlucoseInfosSuccess(fetchedDataGlucose));
+      })
+      .catch((error) => {
+        // error.message is the error message
+        dispatch(fetchGlucoseInfosFailure(error.message));
+      });
+  };
+};
+
+
+//  HERE WE FETCH THE REQUEST :
+export const fetchGlucoseInfosRequest = () => {
+  return {
+    type: "FETCH_GLUCOSE_REQUEST",
+  };
+};
+
+// HERE WE FETCH THE RESPONSE OF THE REQUEST:
+export const fetchGlucoseInfosSuccess = (fetchedDataGlucose) => {
+  return {
+    type: "FETCH_GLUCOSE_METRIX",
+    payload: fetchedDataGlucose,
+  };
+};
+
+// HERE WE FETCH THE ERROR OF THE REQUEST:
+export const fetchGlucoseInfosFailure = (error) => {
+  return {
+    type: "FETCH_GLUCOSE_FAILURE",
+    payload: error,
+  };
+};
+
+
+// CREATION:
+
+export const createGlucose = (formValues) => {
+  return async (dispatch) => {
+    const response = await api.post("/glucose/create", formValues);
+    window.location.reload()    
+    
+    dispatch({
+      type: 'CREATE_GLUCOSE_METRIX',
+      payload: response.data,
+    });
+
+  };
+};
+
+// UPDATE:
+
+
+export const editGlucose = (id, formValues) => async dispatch => {
+  const response = await api.put(`/glucose/update/${id}`, formValues);
+
+  dispatch({ type: 'EDIT_GLUCOSE_METRIX', payload: response.data });
+  window.location.reload()    
+};
+
+
+// DELETE:
+
+export const deleteGlucose = id => async dispatch => {
+  await api.delete(`/glucose/delete/${id}`);
+
+  dispatch({ type: 'DELETE_GLUCOSE_METRIX', payload: id });
+  window.location.reload()    
+};
+
+
+
+
+// Température METRIX :
+
+
+// FETCH
+
+
+export const fetchTemperatureInfos = () => {
+
+
+  return (dispatch) => {
+    dispatch(fetchTemperatureInfosRequest());
+    api
+      .get("/temperature/fetch")
+      .then((response) => {
+        // response.data is the Patients
+        const fetchedDataTemperature = response.data;
+        dispatch(fetchTemperatureInfosSuccess(fetchedDataTemperature));
+      })
+      .catch((error) => {
+        // error.message is the error message
+        dispatch(fetchTemperatureInfosFailure(error.message));
+      });
+  };
+};
+
+
+//  HERE WE FETCH THE REQUEST :
+export const fetchTemperatureInfosRequest = () => {
+  return {
+    type: "FETCH_TEMPERATURE_REQUEST",
+  };
+};
+
+// HERE WE FETCH THE RESPONSE OF THE REQUEST:
+export const fetchTemperatureInfosSuccess = (fetchedDataTemperature) => {
+  return {
+    type: "FETCH_TEMPERATURE_METRIX",
+    payload: fetchedDataTemperature,
+  };
+};
+
+// HERE WE FETCH THE ERROR OF THE REQUEST:
+export const fetchTemperatureInfosFailure = (error) => {
+  return {
+    type: "FETCH_TEMPERATURE_FAILURE",
+    payload: error,
+  };
+};
+
+
+// CREATION:
+
+export const createTemperature = (formValues) => {
+  return async (dispatch) => {
+    const response = await api.post("/temperature/create", formValues);
+    window.location.reload()    
+    
+    dispatch({
+      type: 'CREATE_TEMPERATURE_METRIX',
+      payload: response.data,
+    });
+
+  };
+};
+
+// UPDATE:
+
+
+export const editTemperature = (id, formValues) => async dispatch => {
+  const response = await api.put(`/temperature/update/${id}`, formValues);
+
+  dispatch({ type: 'EDIT_TEMPERATURE_METRIX', payload: response.data });
+  window.location.reload()    
+};
+
+
+// DELETE:
+
+export const deleteTemperature = id => async dispatch => {
+  await api.delete(`/temperature/delete/${id}`);
+
+  dispatch({ type: 'DELETE_TEMPERATURE_METRIX', payload: id });
+  window.location.reload()    
+};

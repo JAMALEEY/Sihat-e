@@ -32,8 +32,8 @@ import MetrixTaille from './pages/PatientMetrix/Tailles/MetrixTaille';
 import MetrixPoids from './pages/PatientMetrix/Poids/MetrixPoids';
 import MetrixBmi from './pages/PatientMetrix/BMI/MetrixBmi';
 import MetrixTension from './pages/PatientMetrix/Tension/MetrixTension';
-// import Modal from './pages/Modal';
-
+import MetrixTempérature from './pages/PatientMetrix/Température/MetrixTempérature';
+import MetrixGlucose from './pages/PatientMetrix/Diabète/MetrixGlucose';
 const  App = (props) => {
 
     // the history variable helper that we created from the built in function to enable redirecting users from outside React components ...
@@ -63,6 +63,8 @@ const  App = (props) => {
                                 <PublicRoute path="/metrixPoids" exact component={MetrixPoids} />
                                 <PublicRoute path="/metrixBMI" exact component={MetrixBmi} />
                                 <PublicRoute path="/metrixTension" exact component={MetrixTension} />
+                                <PublicRoute path="/metrixTempérature" exact component={MetrixTempérature} />
+                                <PublicRoute path="/metrixGlucose" exact component={MetrixGlucose} />
 
 
                                 

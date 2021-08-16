@@ -49,7 +49,7 @@ defaultValue,defaultChecked,checked,})
 
 
   render() {
-    if (!this.props.taillData && !this.props.poidsData && !this.props.bmiData && !this.props.tensionData && this.props.taillData.tailles_reducer.loading) {
+    if (!this.props.taillData && !this.props.poidsData && !this.props.bmiData && !this.props.tensionData  && !this.props.glucoseData && !this.props.temperatureData) {
       return               <Loader />
       ;
     } else {
@@ -234,6 +234,8 @@ const mapStateToProps = (state,props) => {
     poidsData: state,
     bmiData: state,
     tensionData: state,
+    glucoseData: state,
+    temperatureData: state,
 
 
   };
@@ -245,6 +247,10 @@ const mapDispatchToProps = (dispatch, formValues) => {
     fetchPoidsInfos: () => dispatch(fetchPoidsInfos()),
     fetchBmiInfos: () => dispatch(fetchBmiInfos()),
     fetchTensionInfos: () => dispatch(fetchTensionInfos()),
+    fetchGlucoseInfos: () => dispatch(fetchGlucoseInfos()),
+    fetchTemperatureInfos: () => dispatch(fetchTemperatureInfos()),
+
+
 
     
 

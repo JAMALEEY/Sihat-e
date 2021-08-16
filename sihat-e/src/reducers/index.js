@@ -27,6 +27,8 @@ import tailles_reducer from "./tailles_reducer";
 import poids_reducer from "./poids_reducer";
 import bmi_reducer from "./bmi_reducer";
 import tension_reducer from "./tension_reducer";
+import glucose_reducer from "./glucose_reducer";
+import temperature_reducer from "./temperature_reducer";
 
 
 
@@ -80,7 +82,7 @@ const createTailleReducer = (createTaille = {}, action) => {
 
 export default combineReducers ({
     form: newsletterReducer, signUpPatientState, dashboardPatientForm,
-    reducer: logout, about_reducer, tailles_reducer, poids_reducer, bmi_reducer, tension_reducer,
+    reducer: logout, about_reducer, tailles_reducer, poids_reducer, bmi_reducer, tension_reducer, glucose_reducer, temperature_reducer,
     
     // signIn: signInReducer,
     signInResponse: signInResponseReducer,
@@ -92,6 +94,8 @@ export default combineReducers ({
     poidsData: poids_reducer,
     bmiData: bmi_reducer,
     tensionData: tension_reducer,
+    glucoseData: glucose_reducer,
+    temperatureData: temperature_reducer
     // createContactInformation :createContactInformationReducer
     
     
