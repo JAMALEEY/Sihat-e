@@ -230,7 +230,7 @@ const mapDispatchToProps = (dispatch, formValues) => {
   return {
     fetchTailleInfos: () => dispatch(fetchTailleInfos()),
     fetchPoidsInfos: () => dispatch(fetchPoidsInfos()),
-    fetchBmiInfos: () => dispatch(fetchPoidsInfos()),
+    fetchBmiInfos: () => dispatch(fetchBmiInfos()),
 
 
     // createAbout : (formValues) => dispatch(createAbout(formValues)),

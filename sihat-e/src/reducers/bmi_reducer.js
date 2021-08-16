@@ -20,20 +20,20 @@
           return {
             loading: false,
             myData: true,
-            poids: action.payload,
+            bmi: action.payload,
             error: ''
           }
         case 'FETCH_BMI_FAILURE':
           return {
             loading: false,
             notFound : true,
-            poids: [],
+            bmi: [],
             error: action.payload
           }
           case 'DELETE_BMI_METRIX':
             return {
               loading: false,
-              poids: action.payload,
+              bmi: action.payload,
               error: ''
             }
         default: return state
