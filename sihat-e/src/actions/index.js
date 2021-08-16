@@ -232,7 +232,7 @@ export const fetchTailleInfosFailure = (error) => {
 export const createTaille = (formValues) => {
   return async (dispatch) => {
     const response = await api.post("/height/create", formValues);
-    window.location.reload()    
+    // window.location.reload()    
     
     dispatch({
       type: CREATE_TAILLE_METRIX,

@@ -133,13 +133,16 @@ class MetrixTaille extends Component {
 
 
   renderList() {  
-    if (this.props.tailleData.tailles_reducer.recievedData) {
+    if (!this.props.tailleData.tailles_reducer.tailles.historique) {
+        <Loader />
+    }
+    else if (this.props.tailleData.tailles_reducer.tailles.historique) { 
      
       // const id = this.props.tailleData.tailles_reducer.tailles.historique.id;
     return this.props.tailleData.tailles_reducer.tailles.historique
     .map(thetailleData => {
       return (
-        <div key={thetailleData.id} id={thetailleData.id}>
+        <div key={thetailleData.id}>
 
  <div class="login-box-seperator" id="login-box-seperator-left"></div>
                     <div id='taillemetricyourmetric'>
@@ -574,17 +577,22 @@ class MetrixTaille extends Component {
 
                             <h3>
                             <strong>
-                              { this.props.tailleData.tailles_reducer.recievedData  
-    ?  this.props.tailleData.tailles_reducer.tailles.last_height.cm : 'Data failed'}
-                                Cm
+                          
+
+
+ 
+                              {/* { this.props.tailleData.tailles_reducer.recievedData  
+    ?  this.props.tailleData.tailles_reducer.tailles.last_height.cm : 'Data failed'} */}
+    {!this.props.tailleData.tailles_reducer.recievedData ? ' _ ' : this.props.tailleData.tailles_reducer.tailles.last_height === undefined ? " _ " : ` ${this.props.tailleData.tailles_reducer.tailles.last_height.cm} cm `} 
                             </strong>
                             </h3>
                             
                             <p>
                               
-                              { this.props.tailleData.tailles_reducer.recievedData  
-    ?  this.props.tailleData.tailles_reducer.tailles.last_height.date : 'Data failed'}
-                              
+                              {/* { this.props.tailleData.tailles_reducer.recievedData  
+    ?  this.props.tailleData.tailles_reducer.tailles.last_height.date : 'Data failed'} */}
+                              {!this.props.tailleData.tailles_reducer.recievedData ? ' _ ' : this.props.tailleData.tailles_reducer.tailles.last_height === undefined ? " _ " : ` ${this.props.tailleData.tailles_reducer.tailles.last_height.date}  `} 
+
                             </p>
 
                         </div>

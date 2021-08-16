@@ -102,7 +102,10 @@ class MetrixTension extends Component {
 
 
   renderList() {  
-    if (this.props.tailleData.tailles_reducer.responseOk) {
+    if (!this.props.tensionData.tension_reducer.tension.historique) {
+        <Loader />
+    }
+    else if (this.props.tensionData.tension_reducer.recievedTensionData) {
      
       // const id = this.props.tensionData.tailles_reducer.tailles.historique.id;
     return this.props.tensionData.tension_reducer.tension.historique
@@ -116,7 +119,7 @@ class MetrixTension extends Component {
                             
                             <p>
                             <strong>
-                            Mon tension est de : {thetensionData.blood_pressure} Kg
+                            Mon tension est de : {thetensionData.blood_pressure} bpm
                             </strong>
                             </p>
                             <strong>
@@ -533,20 +536,14 @@ class MetrixTension extends Component {
                 
 
                   <div>
-
                             <h3>
                             <strong>
-
-                              { this.props.tensionData.tension_reducer.dataOk ?  this.props.tensionData.tension_reducer.tension.last_blood_pressure.blood_pressure : ' '}
-                                bpm
-                            </strong>
-                            </h3>
-                            
+                                    {!this.props.tensionData.tension_reducer.recievedTensionData ? ' _ ' : this.props.tensionData.tension_reducer.tension.last_blood_pressure === undefined ? " _ " : ` ${this.props.tensionData.tension_reducer.tension.last_blood_pressure.blood_pressure} bpm `} 
+                                    </strong>
+                                </h3>
                             <p>
-                              
-                              { this.props.tensionData.tension_reducer.dataOk && this.props.tensionData.tension_reducer.historique
-    ?  this.props.tensionData.tension_reducer.tension.tension.last_blood_pressure.date : ' '}
-                              
+                                {
+                                !this.props.tensionData.tension_reducer.recievedTensionData ? ' _ ' : this.props.tensionData.tension_reducer.tension.last_blood_pressure === undefined ? " _ " : ` ${this.props.tensionData.tension_reducer.tension.last_blood_pressure.date}  `} 
                             </p>
 
                         </div>

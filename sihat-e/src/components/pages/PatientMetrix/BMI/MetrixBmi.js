@@ -102,7 +102,10 @@ class MetrixBmi extends Component {
 
 
   renderList() {  
-    if (this.props.bmiData.bmi_reducer.bmi.historique) {
+    if (!this.props.bmiData.bmi_reducer.bmi.historique) {
+        <Loader />
+    }
+    else if  (this.props.bmiData.bmi_reducer.bmi.historique) {
      
       // const id = this.props.PoidsData.tailles_reducer.tailles.historique.id;
     return this.props.bmiData.bmi_reducer.bmi.historique
@@ -524,31 +527,23 @@ class MetrixBmi extends Component {
                 </Link>
                     <div id='taillemetricyourmetric'>
                         <div>
-                            <h4>
-                                I.M.C le plus récent :
-                            </h4>
+                            <h5>
+                            I.M.C le plus récent :
+                            </h5>
                             </div>
                             <div>
 
-                            <h3>
-                            <strong>
-
-                              { this.props.bmiData.bmi_reducer.myData 
-    ?  this.props.bmiData.bmi_reducer.bmi.last_BMI.BMI : ' '}
-
-                            </strong>
-                            </h3>
-                            
+                                <h3>
+                                    <strong>
+                                    {!this.props.bmiData.bmi_reducer.myData ? ' _ ' : this.props.bmiData.bmi_reducer.bmi.last_BMI === undefined ? " _ " : ` ${this.props.bmiData.bmi_reducer.bmi.last_BMI.BMI} bpm `} 
+                                    </strong>
+                                </h3>
                             <p>
-                              
-                              { this.props.bmiData.bmi_reducer.myData
-    ?  this.props.bmiData.bmi_reducer.bmi.last_BMI.date : ' '}
-                              
+                                {!this.props.bmiData.bmi_reducer.myData ? ' _ ' : this.props.bmiData.bmi_reducer.bmi.last_BMI === undefined ? " _ " : ` ${this.props.bmiData.bmi_reducer.bmi.last_BMI.date}  `} 
                             </p>
 
                         </div>
-                      
-    
+
                     </div>
                     <div className='flexedHistorique'>
                     <h5>

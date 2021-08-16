@@ -103,7 +103,10 @@ class MetrixPoids extends Component {
 
 
   renderList() {  
-    if (this.props.poidsData.poids_reducer.poids.historique) {
+    if (!this.props.poidsData.poids_reducer.poids.historique) {
+      <Loader />
+  }
+  else if (this.props.poidsData.poids_reducer.poids.historique) {
      
       // const id = this.props.PoidsData.tailles_reducer.tailles.historique.id;
     return this.props.poidsData.poids_reducer.poids.historique
@@ -534,20 +537,14 @@ class MetrixPoids extends Component {
                 
 
                   <div>
-
-                            <h3>
-                            <strong>
-
-                              { this.props.poidsData.poids_reducer.dataOk ?  this.props.poidsData.poids_reducer.poids.last_weight.kg : ' '}
-                                kg
-                            </strong>
-                            </h3>
-                            
+                  <h3>
+                                    <strong>
+                                    {!this.props.poidsData.poids_reducer.dataOk ? ' _ ' : this.props.poidsData.poids_reducer.poids.last_weight === undefined ? " _ " : ` ${this.props.poidsData.poids_reducer.poids.last_weight.kg} kg `} 
+                                    </strong>
+                                </h3>
                             <p>
-                              
-                              { this.props.poidsData.poids_reducer.dataOk && this.props.poidsData.poids_reducer.historique
-    ?  this.props.poidsData.poids_reducer.poids.last_weight.date : ' '}
-                              
+                                {
+                                !this.props.poidsData.poids_reducer.dataOk ? ' _ ' : this.props.poidsData.poids_reducer.poids.last_weight === undefined ? " _ " : ` ${this.props.poidsData.poids_reducer.poids.last_weight.date}  `} 
                             </p>
 
                         </div>

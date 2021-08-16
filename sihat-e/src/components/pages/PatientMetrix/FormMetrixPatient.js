@@ -49,7 +49,7 @@ defaultValue,defaultChecked,checked,})
 
 
   render() {
-    if (!this.props.taillData && !this.props.poidsData && !this.props.bmiData && !this.props.tensionData) {
+    if (!this.props.taillData && !this.props.poidsData && !this.props.bmiData && !this.props.tensionData && this.props.taillData.tailles_reducer.loading) {
       return               <Loader />
       ;
     } else {
@@ -161,11 +161,11 @@ defaultValue,defaultChecked,checked,})
     <div className='d-flex flex-column'>
             <p className='ml-auto'>
               {/* SI LA DATA EST FETCHER ON DOIT ETRE SUR QU'ON A LES LAST RECORDS SI OUI ON AFFICHE SINON ON AFFICHE MSG AUCUN RECORD */}
-            {!this.props.tensionData.tension_reducer.responseOk ? "Chargement ..." : this.props.tensionData.tension_reducer.tension.last_blood_pressure === undefined ? " _ ": ` ${this.props.tensionData.tension_reducer.tension.last_blood_pressure.blood_pressure} bpm `} 
+            {!this.props.tensionData.tension_reducer.recievedTensionData ? "Chargement ..." : this.props.tensionData.tension_reducer.tension.last_blood_pressure === undefined ? " _ ": ` ${this.props.tensionData.tension_reducer.tension.last_blood_pressure.blood_pressure} bpm `} 
                 
             </p>
             <p>
-                {!this.props.tensionData.tension_reducer.responseOk ? " " : 
+                {!this.props.tensionData.tension_reducer.recievedTensionData ? " " : 
                 this.props.tensionData.tension_reducer.tension.last_blood_pressure === undefined ? "_": this.props.tensionData.tension_reducer.tension.last_blood_pressure.date}
             </p>
         </div>
