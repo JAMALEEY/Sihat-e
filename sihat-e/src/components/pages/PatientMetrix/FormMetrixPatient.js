@@ -128,7 +128,9 @@ defaultValue,defaultChecked,checked,})
         <div className='d-flex flex-column'>
                                 <p className='ml-auto'>
                                   {/* SI LA DATA EST FETCHER ON DOIT ETRE SUR QU'ON A LES LAST RECORDS SI OUI ON AFFICHE SINON ON AFFICHE MSG AUCUN RECORD */}
-                                {!this.props.bmiData.bmi_reducer.myData ? "Chargement ..." : this.props.bmiData.bmi_reducer.bmi.last_BMI === undefined ? " _ ": ` ${this.props.bmiData.bmi_reducer.bmi.last_BMI.bmi}  `} 
+                                  {console.log(this.props.bmiData)}
+
+                                {!this.props.bmiData.bmi_reducer.myData ? "Chargement ..." : this.props.bmiData.bmi_reducer.bmi.last_BMI === undefined ? " _ " : ` ${this.props.bmiData.bmi_reducer.bmi.last_BMI.bmi}  `} 
                                     
                                 </p>
                                 <p>

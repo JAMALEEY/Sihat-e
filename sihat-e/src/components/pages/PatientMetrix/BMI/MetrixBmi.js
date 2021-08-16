@@ -102,7 +102,7 @@ class MetrixBmi extends Component {
 
 
   renderList() {  
-    if (this.props.bmiData.bmi_reducer.myData) {
+    if (this.props.bmiData.bmi_reducer.bmi.historique) {
      
       // const id = this.props.PoidsData.tailles_reducer.tailles.historique.id;
     return this.props.bmiData.bmi_reducer.bmi.historique
