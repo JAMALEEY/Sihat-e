@@ -130,7 +130,7 @@ defaultValue,defaultChecked,checked,})
                                   {/* SI LA DATA EST FETCHER ON DOIT ETRE SUR QU'ON A LES LAST RECORDS SI OUI ON AFFICHE SINON ON AFFICHE MSG AUCUN RECORD */}
                                   {console.log(this.props.bmiData)}
 
-                                {!this.props.bmiData.bmi_reducer.myData ? "Chargement ..." : this.props.bmiData.bmi_reducer.bmi.last_BMI === undefined ? " _ " : ` ${this.props.bmiData.bmi_reducer.bmi.last_BMI.bmi}  `} 
+                                {!this.props.bmiData.bmi_reducer.myData ? "Chargement ..." : this.props.bmiData.bmi_reducer.bmi.last_BMI === undefined ? " _ " : ` ${this.props.bmiData.bmi_reducer.bmi.last_BMI.BMI}  `} 
                                     
                                 </p>
                                 <p>

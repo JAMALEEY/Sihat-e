@@ -538,8 +538,7 @@ class MetrixPoids extends Component {
                             <h3>
                             <strong>
 
-                              { this.props.poidsData.poids_reducer.dataOk && this.props.poidsData.poids_reducer.historique
-    ?  this.props.poidsData.poids_reducer.poids.last_weight.kg : ' '}
+                              { this.props.poidsData.poids_reducer.dataOk ?  this.props.poidsData.poids_reducer.poids.last_weight.kg : ' '}
                                 kg
                             </strong>
                             </h3>

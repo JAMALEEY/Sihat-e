@@ -14,8 +14,8 @@ class MetrixBmi extends Component {
     this.state = {
       show: false,
       show2: false,
-      modalTitleEdit: 'Modification de Poids',
-      modalTitle: 'Ajouter votre Poids',
+      modalTitleEdit: 'Modification de votre I.M.C',
+      modalTitle: 'Ajouter votre I.M.C',
 
     
     };
@@ -137,7 +137,7 @@ class MetrixBmi extends Component {
         <strong><p>I.M.C :</p></strong>
         <Field
                 className="form-control"
-                name="BMI"
+                name="bmi"
                 component={this.renderInput}
                 label="Modifier votre I.M.C :"
                 placeholder="Votre I.M.C"
@@ -498,7 +498,7 @@ class MetrixBmi extends Component {
           <strong><p>I.M.C :</p></strong>
           <Field
                           className="form-control"
-                          name="BMI"
+                          name="bmi"
                           component={this.renderInput}
                           label="Votre I.M.C :"
                           placeholder="Ajouter votre I.M.C"
@@ -525,25 +525,23 @@ class MetrixBmi extends Component {
                     <div id='taillemetricyourmetric'>
                         <div>
                             <h4>
-                                Votre I.M.C le plus récent :
+                                I.M.C le plus récent :
                             </h4>
                             </div>
-                
-
-                  <div>
+                            <div>
 
                             <h3>
                             <strong>
 
-                              { this.props.bmiData.bmi_reducer.dataOk 
-    ?  this.props.bmiData.bmi_reducer.bmi.last_weight.kg : ' '}
-                                kg
+                              { this.props.bmiData.bmi_reducer.myData 
+    ?  this.props.bmiData.bmi_reducer.bmi.last_BMI.BMI : ' '}
+
                             </strong>
                             </h3>
                             
                             <p>
                               
-                              { this.props.bmiData.bmi_reducer.dataOk
+                              { this.props.bmiData.bmi_reducer.myData
     ?  this.props.bmiData.bmi_reducer.bmi.last_BMI.date : ' '}
                               
                             </p>
