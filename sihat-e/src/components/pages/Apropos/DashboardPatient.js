@@ -486,9 +486,12 @@ class DashboardPatient extends Component {
                               className="dropdown-toggle nav-link"
                               to="#"
                             >
-                              <span className="d-none d-lg-inline mr-2 text-gray-600 small">
-                                Valerie Luna
-                              </span>
+                              <span className="d-none d-lg-inline mr-2 text-gray-600 ">
+
+{
+  this.props.patientData.about_reducer.patients.first_name
+}                            
+  </span>
                               <img
                                 className="border rounded-circle img-profile"
                                 src="avatars/avatar1.jpeg"
