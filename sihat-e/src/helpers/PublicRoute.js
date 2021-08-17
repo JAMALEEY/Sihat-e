@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import {  isLogin } from '../../actions';
+import {  isLogin } from '../actions/index';
 
 const PublicRoute = ({component: Component, restricted, ...rest}) => {
             return (

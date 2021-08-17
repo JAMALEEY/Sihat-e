@@ -1,82 +1,35 @@
-import React from "react";
+import _ from "lodash";
+// a helper lib that allows us to pick aboutEDITS object values (first name etc) to initial values in reduxform
+import React, { Component } from "react";
+import { Link, activeClassName } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchAboutInfos, logout, createAbout } from "./sihat-e/src/actions";
-import { Field, reduxForm, touch } from "redux-form";
 
-class PatientDashboard extends React.Component {
-  componentDidMount() {
-    this.props.fetchAboutInfos();
-    console.log(this.props.initialValues);
-  }
-  patientDashboarLogout() {
-    this.props.logout();
-  }
+import {
+  logout,
+  editAboutInfos,
+  fetchAboutInfos,
+  createAbout,
+} from "../../../actions";
+import { Field, Form, formValueSelector, reduxForm, touch } from "redux-form";
+import FormDashboardPatient from "./FormDashboardPatient";
 
-  onSubmit = (formValues) => {
-    this.props.onSubmit(formValues);
+class DashboardPatient extends Component {
+  state = {
+    showFavorites: false,
   };
 
-  renderInput({
-    handleSubmit,
-    input,
-    value,
-    meta,
-    label,
-    placeholder,
-    name,
-    id,
-    type,
-    className,
-    initialValues,
-  }) {
-    return (
-      <>
-        <div className="col-sm-6 col-xl-7 input-column">
-          <div className="form-row form-group">
-            <label className="active col-form-label d-xl-flex align-items-xl-start">
-              {label}
-            </label>
-            <input
-              {...input}
-              className={className}
-              autocomplete="nope"
-              placeholder={placeholder}
-              onChange={input.onChange}
-              // value={input.value}
-
-              name={name}
-              type={type}
-              id={id}
-            />
-          </div>
-        </div>
-      </>
-    );
+  componentDidMount() {
+    this.props.fetchAboutInfos();
   }
 
-  // renderList() {
-  // return this.props.aboutInfos.map(aboutInfo => {
-  //     return (
-  //         <div className="item" key={aboutInfo.id}>
-  //         <i className="large middle aligned icon camera" />
-  //         <div className="content">
-  //             {aboutInfo.last_name}
-  //             <div className="description">{aboutInfo.first_name}</div>
-  //         </div>
-  //         </div>
-  //     );
-  // });
-  // }
+  patientDashboarLogout = () => {
+    this.props.logout();
+  };
 
   render() {
-    const { InitialValues, handleSubmit, pristine, reset, submitting } =
-      this.props;
     return (
       <>
         <div>
-          <div>
-            <form></form>
-          </div>
           <div className="row" id="navRow">
             <div
               className="col-md-6 col-xl-2 offset-xl-0"
@@ -91,7 +44,7 @@ class PatientDashboard extends React.Component {
                     className="d-flex d-xl-flex justify-content-xl-center align-items-xl-center"
                     id="logoDashboard"
                   >
-                    <img src="/assets/img/Sicon.png" />
+                    <img src="../../../assets/img/Sicon.png" />
                   </div>
                   <h1>
                     MON COMPTE
@@ -113,7 +66,10 @@ class PatientDashboard extends React.Component {
                     <div className="category-content">
                       <ul id="fruits-nav" className="nav flex-column">
                         <li className="nav-item1">
-                          <a href="#" className="nav-link active">
+                          <Link
+                            to="dashboardPatient"
+                            className="nav-link active"
+                          >
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="active fa fa-user-circle-o fa-2x d-xl-flex align-items-xl-center "
@@ -123,10 +79,14 @@ class PatientDashboard extends React.Component {
                                 A propos.
                               </h5>
                             </div>
-                          </a>
+                          </Link>
                         </li>
                         <li className="nav-item2">
-                          <a href="#" className="nav-link">
+                          <Link
+                            to="/contactinformation"
+                            className="nav-link"
+                            activeClassName="active"
+                          >
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fa fa-vcard d-xl-flex align-items-xl-center d-xl-flex align-items-xl-center fa-2x "
@@ -136,10 +96,10 @@ class PatientDashboard extends React.Component {
                                 Informations de contact.
                               </h5>
                             </div>
-                          </a>
+                          </Link>
                         </li>
                         <li className="nav-item3">
-                          <a href="#" className="nav-link">
+                          <Link to="/Metrix" className="nav-link">
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fa fa-bar-chart-o d-xl-flex align-items-xl-center fa-2x "
@@ -149,23 +109,23 @@ class PatientDashboard extends React.Component {
                                 Métriques de santé.
                               </h5>
                             </div>
-                          </a>
+                          </Link>
                         </li>
                         <li className="nav-item4">
-                          <a href="#" className="nav-link">
+                          <Link to="#" className="nav-link">
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fa fa-heartbeat d-xl-flex align-items-xl-center fa-2x "
                                 aria-hidden="true"
                               />
                               <h5 className="lisidebarnoactive d-flex d-xl-flex flex-column justify-content-xl-center align-items-xl-center">
-                                Conditions / Symptomes.
+                                Symptomes.
                               </h5>
                             </div>
-                          </a>
+                          </Link>
                         </li>
                         <li className="nav-item5">
-                          <a href="#" className="nav-link">
+                          <Link to="#" className="nav-link">
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fa fa-file-powerpoint-o d-xl-flex align-items-xl-center fa-2x "
@@ -175,10 +135,10 @@ class PatientDashboard extends React.Component {
                                 Ordonnances.
                               </h5>
                             </div>
-                          </a>
+                          </Link>
                         </li>
                         <li className="nav-item6">
-                          <a href="#" className="nav-link">
+                          <Link to="#" className="nav-link">
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fa fa-leaf d-xl-flex align-items-xl-center fa-2x "
@@ -188,10 +148,10 @@ class PatientDashboard extends React.Component {
                                 Médicaments.
                               </h5>
                             </div>
-                          </a>
+                          </Link>
                         </li>
                         <li className="nav-item7">
-                          <a href="#" className="nav-link">
+                          <Link to="#" className="nav-link">
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fa fa-low-vision d-xl-flex align-items-xl-center  fa-2x "
@@ -201,10 +161,10 @@ class PatientDashboard extends React.Component {
                                 Allergies.
                               </h5>
                             </div>
-                          </a>
+                          </Link>
                         </li>
                         <li className="nav-item8">
-                          <a href="#" className="nav-link">
+                          <Link to="#" className="nav-link">
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fa fa-stethoscope d-xl-flex align-items-xl-center fa-2x "
@@ -214,10 +174,10 @@ class PatientDashboard extends React.Component {
                                 Traitement / procédures.
                               </h5>
                             </div>
-                          </a>
+                          </Link>
                         </li>
                         <li className="nav-item9">
-                          <a href="#" className="nav-link">
+                          <Link to="#" className="nav-link">
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fa fa-user-md d-xl-flex align-items-xl-center fa-2x "
@@ -227,10 +187,10 @@ class PatientDashboard extends React.Component {
                                 Vaccinations.
                               </h5>
                             </div>
-                          </a>
+                          </Link>
                         </li>
                         <li className="nav-item10">
-                          <a href="#" className="nav-link">
+                          <Link to="#" className="nav-link">
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fa fa-flask d-xl-flex align-items-xl-center fa-2x "
@@ -240,10 +200,10 @@ class PatientDashboard extends React.Component {
                                 Tests de laboratoire.
                               </h5>
                             </div>
-                          </a>
+                          </Link>
                         </li>
                         <li className="nav-item11">
-                          <a href="#" className="nav-link">
+                          <Link to="#" className="nav-link">
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fa fa-grav d-xl-flex align-items-xl-center fa-2x "
@@ -253,10 +213,10 @@ class PatientDashboard extends React.Component {
                                 Mode de vie.
                               </h5>
                             </div>
-                          </a>
+                          </Link>
                         </li>
                         <li className="nav-item12">
-                          <a href="#" className="nav-link">
+                          <Link to="#" className="nav-link">
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fa fa-life-saver d-xl-flex align-items-xl-center fa-2x "
@@ -266,7 +226,7 @@ class PatientDashboard extends React.Component {
                                 Assurance.
                               </h5>
                             </div>
-                          </a>
+                          </Link>
                         </li>
                       </ul>
                     </div>
@@ -288,21 +248,21 @@ class PatientDashboard extends React.Component {
                     <div className="container-fluid">
                       <ul className="navbar-nav flex-nowrap ml-auto">
                         <li className="nav-item dropdown d-sm-none no-arrow">
-                          <a
+                          <Link
                             aria-expanded="false"
                             data-toggle="dropdown"
                             className="dropdown-toggle nav-link"
-                            href="#"
+                            to="#"
                           >
                             <i className="fas fa-search" />
-                          </a>
+                          </Link>
                           <div
                             className="dropdown-menu dropdown-menu-right p-3 animated--grow-in"
                             aria-labelledby="searchDropdown"
                           >
                             <form className="form-inline mr-auto navbar-search w-100">
                               <div className="input-group">
-                                <input
+                                <Link
                                   type="text"
                                   className="bg-light form-control border-0 small"
                                   placeholder="Search for ..."
@@ -310,7 +270,7 @@ class PatientDashboard extends React.Component {
                                 <div className="input-group-append">
                                   <button
                                     className="btn btn-primary py-0"
-                                    type="submit"
+                                    type="button"
                                   >
                                     <i className="fas fa-search" />
                                   </button>
@@ -321,22 +281,22 @@ class PatientDashboard extends React.Component {
                         </li>
                         <li className="nav-item dropdown no-arrow mx-1">
                           <div className="nav-item dropdown no-arrow">
-                            <a
+                            <Link
                               aria-expanded="false"
                               data-toggle="dropdown"
                               className="dropdown-toggle nav-link"
-                              href="#"
+                              to="#"
                             >
                               <span className="badge badge-danger badge-counter">
                                 3+
                               </span>
                               <i className="fas fa-bell fa-fw" />
-                            </a>
+                            </Link>
                             <div className="dropdown-menu dropdown-menu-right dropdown-list animated--grow-in">
                               <h6 className="dropdown-header">alerts center</h6>
-                              <a
+                              <Link
                                 className="dropdown-item d-flex align-items-center"
-                                href="#"
+                                to="#"
                               >
                                 <div className="mr-3">
                                   <div className="bg-primary icon-circle">
@@ -352,10 +312,10 @@ class PatientDashboard extends React.Component {
                                     être téléchargé !
                                   </p>
                                 </div>
-                              </a>
-                              <a
+                              </Link>
+                              <Link
                                 className="dropdown-item d-flex align-items-center"
-                                href="#"
+                                to="#"
                               >
                                 <div className="mr-3">
                                   <div className="bg-success icon-circle">
@@ -371,10 +331,10 @@ class PatientDashboard extends React.Component {
                                     médical.
                                   </p>
                                 </div>
-                              </a>
-                              <a
+                              </Link>
+                              <Link
                                 className="dropdown-item d-flex align-items-center"
-                                href="#"
+                                to="#"
                               >
                                 <div className="mr-3">
                                   <div className="bg-warning icon-circle">
@@ -387,34 +347,35 @@ class PatientDashboard extends React.Component {
                                   </span>
                                   <p>Votre profil est désormais à jour.</p>
                                 </div>
-                              </a>
-                              <a
+                              </Link>
+                              <Link
                                 className="dropdown-item text-center small text-gray-500"
-                                href="#"
+                                to="#"
                               >
                                 Show All Alerts
-                              </a>
+                              </Link>
                             </div>
                           </div>
                         </li>
+
                         <li className="nav-item dropdown no-arrow mx-1">
                           <div className="nav-item dropdown no-arrow">
-                            <a
+                            <Link
                               aria-expanded="false"
                               data-toggle="dropdown"
                               className="dropdown-toggle nav-link"
-                              href="#"
+                              to="#"
                             >
                               <span className="badge badge-danger badge-counter">
                                 7
                               </span>
                               <i className="fas fa-envelope fa-fw" />
-                            </a>
+                            </Link>
                             <div className="dropdown-menu dropdown-menu-right dropdown-list animated--grow-in">
                               <h6 className="dropdown-header">alerts center</h6>
-                              <a
+                              <Link
                                 className="dropdown-item d-flex align-items-center"
-                                href="#"
+                                to="#"
                               >
                                 <div className="dropdown-list-image mr-3">
                                   <img
@@ -435,10 +396,10 @@ class PatientDashboard extends React.Component {
                                     BOUBOUH Ayman - 58m
                                   </p>
                                 </div>
-                              </a>
-                              <a
+                              </Link>
+                              <Link
                                 className="dropdown-item d-flex align-items-center"
-                                href="#"
+                                to="#"
                               >
                                 <div className="dropdown-list-image mr-3">
                                   <img
@@ -458,10 +419,10 @@ class PatientDashboard extends React.Component {
                                     Dr. BENISS Meryem - 1d
                                   </p>
                                 </div>
-                              </a>
-                              <a
+                              </Link>
+                              <Link
                                 className="dropdown-item d-flex align-items-center"
-                                href="#"
+                                to="#"
                               >
                                 <div className="dropdown-list-image mr-3">
                                   <img
@@ -481,10 +442,10 @@ class PatientDashboard extends React.Component {
                                     CNSS - 2d
                                   </p>
                                 </div>
-                              </a>
-                              <a
+                              </Link>
+                              <Link
                                 className="dropdown-item d-flex align-items-center"
-                                href="#"
+                                to="#"
                               >
                                 <div className="dropdown-list-image mr-3">
                                   <img
@@ -504,13 +465,13 @@ class PatientDashboard extends React.Component {
                                     Sihat-e· 2w
                                   </p>
                                 </div>
-                              </a>
-                              <a
+                              </Link>
+                              <Link
                                 className="dropdown-item text-center small text-gray-500"
-                                href="#"
+                                to="#"
                               >
                                 Show All Alerts
-                              </a>
+                              </Link>
                             </div>
                           </div>
                           <div
@@ -521,45 +482,49 @@ class PatientDashboard extends React.Component {
                         <div className="d-none d-sm-block topbar-divider" />
                         <li className="nav-item dropdown no-arrow">
                           <div className="nav-item dropdown no-arrow">
-                            <a
+                            <Link
                               aria-expanded="false"
                               data-toggle="dropdown"
                               className="dropdown-toggle nav-link"
-                              href="#"
+                              to="#"
                             >
                               <span className="d-none d-lg-inline mr-2 text-gray-600 ">
-                                {
-                                  this.props.patientData.about_reducer.patients
-                                    .first_name
-                                }{" "}
+                                {!this.props.patientData.about_reducer
+                                  .patients[0]
+                                  ? "loading"
+                                  : this.props.patientData.about_reducer
+                                      .patients[0].email === undefined
+                                  ? " "
+                                  : this.props.patientData.about_reducer
+                                      .patients[0].email}
                               </span>
                               <img
                                 className="border rounded-circle img-profile"
                                 src="avatars/avatar1.jpeg"
                               />
-                            </a>
+                            </Link>
                             <div className="dropdown-menu shadow dropdown-menu-right animated--grow-in">
-                              <a className="dropdown-item" href="#">
+                              <Link className="dropdown-item" to="#">
                                 <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400" />
                                 &nbsp;Profile
-                              </a>
-                              <a className="dropdown-item" href="#">
+                              </Link>
+                              <Link className="dropdown-item" to="#">
                                 <i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400" />
                                 &nbsp;Settings
-                              </a>
-                              <a className="dropdown-item" href="#">
+                              </Link>
+                              <Link className="dropdown-item" to="#">
                                 <i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400" />
                                 &nbsp;Activity log
-                              </a>
+                              </Link>
                               <div className="dropdown-divider" />
-                              <a
+                              <div
                                 className="dropdown-item"
-                                href="#"
-                                onClick={this.props.patientDashboarLogout}
+                                
+                                onClick={this.patientDashboarLogout}
                               >
                                 <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400" />
                                 &nbsp;Logout
-                              </a>
+                              </div>
                             </div>
                           </div>
                         </li>
@@ -568,120 +533,21 @@ class PatientDashboard extends React.Component {
                   </nav>
                 </div>
               </div>
-              <div className="d-xl-flex justify-content-xl-center align-items-xl-center">
-                <div id="formCardContainer">
-                  <div>
-                    {/* Start: Pretty Registration Form */}
-                    <div className="row register-form">
-                      <div className="col-md-8 col-xl-10 offset-md-2 offset-xl-0">
-                        <form
-                          InitialValues={this.props.InitialValues}
-                          className="custom-form"
-                          method="post"
-                          onSubmit={this.props.handleSubmit(this.onSubmit)}
-                        >
-                          <h1 className="d-xl-flex align-items-xl-start">
-                            A propos
-                          </h1>
-                          {/* Prénom */}
-                          <div></div>
-                          <Field
-                            className="form-control-plaintext"
-                            name="first_name"
-                            component={this.renderInput}
-                            label="Prénom :"
-                            placeholder="Votre prénom"
-                            type="text"
-                          />
-                          {/* Nom */}
-                          <Field
-                            className="form-control-plaintext"
-                            name="last_name"
-                            component={this.renderInput}
-                            label="Nom :"
-                            placeholder="Votre Nom"
-                          />
-                          {/* Adresse */}
-                          <Field
-                            className="form-control-plaintext"
-                            name="adress"
-                            component={this.renderInput}
-                            label="Adresse :"
-                            placeholder="Votre Adresse"
-                          />
-                          {/* Date de Naissance */}
-                          <Field
-                            className="form-control-plaintext date"
-                            name="birth_day"
-                            component={this.renderInput}
-                            label="Date de naissance :"
-                            id="birthDate"
-                            type="date"
-                          />
+              <div>
+                {/* {this.props.userData.about_reducer.loading ? (
+        <h2>Loading</h2>
+      ) : this.props.userData.about_reducer.error ? (
+        <h2>{this.props.userData.about_reducer.error}</h2>
+      ) : (
+        
+          )}
+      */}
 
-                          <div className="form-row form-group">
-                            <div className="col-sm-4 col-xl-7 label-column">
-                              <label
-                                className="col-form-label d-xl-flex align-items-xl-start"
-                                htmlFor="pawssword-input-field"
-                              >
-                                Genre :
-                              </label>
-                            </div>
-                            <div className="col-sm-6 input-column">
-                              {/* Start: Bootstrap 4's Custom Radios & Checkboxes */}
-                              <div>
-                                <fieldset>
-                                  <legend />
-                                  <div className="custom-control custom-radio">
-                                    <input
-                                      type="radio"
-                                      id="customRadio1"
-                                      className="custom-control-input"
-                                      name="customRadio"
-                                      defaultChecked
-                                    />
-                                    <label
-                                      className="custom-control-label"
-                                      htmlFor="customRadio1"
-                                    >
-                                      Femme
-                                    </label>
-                                  </div>
-                                  <div className="custom-control custom-radio">
-                                    <input
-                                      type="radio"
-                                      id="customRadio2"
-                                      className="custom-control-input"
-                                      name="customRadio"
-                                    />
-                                    <label
-                                      className="custom-control-label"
-                                      htmlFor="customRadio2"
-                                    >
-                                      Homme
-                                    </label>
-                                  </div>
-                                </fieldset>
-                              </div>
-                              {/* End: Bootstrap 4's Custom Radios & Checkboxes */}
-                            </div>
-                          </div>
-
-                          <button
-                            id="btnFormDashboard"
-                            className="btn btn-light align-items-xl-start submit-button"
-                            type="submit"
-                            disabled={pristine || submitting}
-                          >
-                            Enregistrer
-                          </button>
-                        </form>
-                      </div>
-                    </div>
-                    {/* End: Pretty Registration Form */}
-                  </div>
-                </div>
+                <FormDashboardPatient
+                  initialValues={
+                    this.props.patientData.about_reducer.patients[0]
+                  }
+                />
               </div>
             </div>
           </div>
@@ -691,37 +557,26 @@ class PatientDashboard extends React.Component {
   }
 }
 
-// const validate = formValues => {
-//     const errors = {};
-
-//     if (!formValues.title) {
-//         errors.title = 'You must enter a title';
-//     }
-
-//     if (!formValues.description) {
-//         errors.description = 'You must enter a description';
-//     }
-
-//     return errors;
-// };
-
 const mapStateToProps = (state, props) => {
   return {
-    logout: state.logout,
-    aboutInfos: state.aboutInfos.last_name,
-
-    initialValues: {
-      first_name: state.aboutInfos.first_name,
-      last_name: "coucou",
-    },
+    patientData: state,
   };
 };
 
-const DecoratedComponent = connect(mapStateToProps, {
-  logout,
-  fetchAboutInfos,
-})(PatientDashboard);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchAboutInfos: () => dispatch(fetchAboutInfos()),
+    logout: () => dispatch(logout()),
+
+  };
+};
+
+DashboardPatient = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DashboardPatient);
+
 export default reduxForm({
-  form: "patientDashboardForm",
+  form: "aboutInfosForm", // a unique name for this form
   enableReinitialize: true,
-})(DecoratedComponent);
+})(DashboardPatient);

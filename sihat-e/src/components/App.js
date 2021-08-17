@@ -7,10 +7,10 @@
 import React from 'react';
 // Components Dependencies
 import Home from './pages/Home';
-import SignInMedecin from './pages/SignInMedecin';
-import SignInPatient from './pages/SignInPatient';
-import SignUpMedecin from './pages/SingUpMedecin';
-import SignUpPatient from './pages/SignUpPatient';
+import SignInMedecin from './auth/SignInMedecin/SignInMedecin';
+import SignInPatient from './auth/SignInPatient/SignInPatient';
+import SignUpMedecin from './auth/SignUpMedecin/SingUpMedecin';
+import SignUpPatient from './auth/SignUpPatient/SignUpPatient';
 // Helpers Dependencies 
 import history  from '../helpers/history';
 // Routing Dependencies 
@@ -20,17 +20,20 @@ import { connect } from 'react-redux';
 // Actions Dependencies 
 // in order to work with cleaAlerts function that clear actions on location change
 
-import DashboardPatient from './pages/DashboardPatient';
-import PrivateRoute from './pages/PrivateRoute';
-import PublicRoute from './pages/PublicRoute';
+import DashboardPatient from './pages/Apropos/DashboardPatient';
+import PrivateRoute from '../helpers/PrivateRoute';
+import PublicRoute from '../helpers/PublicRoute';
 // import PatientDashboard from '../../../PatientDashboard';
-import FormDashboardPatient from './pages/FormDashboardPatient';
-import DashboardPatientEdit from './pages/DashboardPatientEdit';
-import ContactInformation from './pages/ContactInformation';
-import AboutList from './pages/AboutList';
-
-
-
+import FormDashboardPatient from './pages/Apropos/FormDashboardPatient';
+import ContactInformation from './pages/InformationContact/ContactInformation';
+import Metrix from './pages/PatientMetrix/Metrix';
+import FormMetrixPatient from './pages/PatientMetrix/FormMetrixPatient';
+import MetrixTaille from './pages/PatientMetrix/Tailles/MetrixTaille';
+import MetrixPoids from './pages/PatientMetrix/Poids/MetrixPoids';
+import MetrixBmi from './pages/PatientMetrix/BMI/MetrixBmi';
+import MetrixTension from './pages/PatientMetrix/Tension/MetrixTension';
+import MetrixTempérature from './pages/PatientMetrix/Température/MetrixTempérature';
+import MetrixGlucose from './pages/PatientMetrix/Diabète/MetrixGlucose';
 const  App = (props) => {
 
     // the history variable helper that we created from the built in function to enable redirecting users from outside React components ...
@@ -52,10 +55,20 @@ const  App = (props) => {
                                 <PublicRoute path="/loginMedecin" exact component={SignInMedecin} />
                                 <PublicRoute path="/registerPatient" exact component={SignUpPatient} />
                                 <PublicRoute restricted={true}  path="/loginPatient" exact component={SignInPatient} />
-                                <PublicRoute path="/edit" exact component={DashboardPatientEdit} />
                                 <PublicRoute path="/registerMedecin" exact component={SignUpMedecin} />
                                 <PublicRoute path="/contactinformation" exact component={ContactInformation} />
-                                <PublicRoute path="/aboutlist" exact component={AboutList} />
+                                <PublicRoute path="/metrix" exact component={Metrix} />
+                                <PublicRoute path="/metrix/form" exact component={FormMetrixPatient} />
+                                <PublicRoute path="/metrixTaille" exact component={MetrixTaille} />
+                                <PublicRoute path="/metrixPoids" exact component={MetrixPoids} />
+                                <PublicRoute path="/metrixBMI" exact component={MetrixBmi} />
+                                <PublicRoute path="/metrixTension" exact component={MetrixTension} />
+                                <PublicRoute path="/metrixTemperature" exact component={MetrixTempérature} />
+                                <PublicRoute path="/metrixGlucose" exact component={MetrixGlucose} />
+
+
+                                
+                                {/* <PublicRoute path="/modal" exact component={Modal} /> */}
                                 <Redirect from="*" to="/" />
     </Switch>
     </Router>

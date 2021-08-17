@@ -883,6 +883,60 @@ padding: 40px;
     color: #333;
     width: 56vw;
 }
+#metrixForm  {
+  padding: 28px;
+      box-sizing: border-box;
+      font: bold 14px sans-serif;
+      text-align: center;
+      color: #333;
+      width: 56vw;
+  }
+
+  .retourMetrix
+{
+  padding: 2px 0px 0px 14px;
+}
+#taillemetricyourmetric  {
+  align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 43px 0px 43px;
+height: 133px;
+  }
+
+  #taillemetricyourmetric:hover  {
+    background: #c4e9e5;
+
+  }  
+
+
+.renderinputFlexing{
+  display: flex;
+  align-items: center;
+}
+
+.renderinputFlexing span{
+  padding-left: 10px;
+}
+
+.fasflex{
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.fasflex p {
+  padding: 4px 20px 0px 0px;
+}
+.flexedHistorique{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+height: 50px;
+align-items: center;
+}
+
 @media (max-width: 400px) {
   .register-form form.custom-form {
     padding: 55px 10px;
@@ -1587,15 +1641,37 @@ overflow-x: hidden;
   width: 286px
 }
 
-#btnFormDashboard{
+#btnFormDashboardPatient{
   background: rgb(158,248,196);font-family: Poppins, sans-serif;color: rgb(72,139,118);border-radius: 18px;
   margin-left: 0px;
+  margin-top: 0px;
 }
+
+#btnFormDashboardContactForm{
+  background: rgb(158,248,196);font-family: Poppins, sans-serif;color: rgb(72,139,118);border-radius: 18px;
+  margin-left: 0px;
+  margin-top: 0px;
+}
+
 
 #birthDate{
   color: #5f5f5f;box-shadow: 1px 2px 4px 0 rgb(0 0 0 / 8%);padding: 12px;border: 1px solid #dbdbdb;border-radius: 2px;height: 42px;
 }
 
+#fetchemailabout{
+  margin-left: 13px;
+}
+
+#emailfetched{
+  width: 310px;
+  background-color: rgb(236, 236, 236);
+  color: #5f5f5f;
+  padding: 8px;
+  border: 1px solid #dbdbdb;
+  border-radius: 2px;
+  height: 42px;
+  cursor: not-allowed;
+}
 #rowDashboardUpload h1{
 width: 386px;font-family: Poppins, sans-serif;}
 
@@ -1604,9 +1680,37 @@ width: 386px;font-family: Poppins, sans-serif;}
 }
 
 .lesbuttons{
-  justify-content: space-evenly;
+  justify-content: center;
   display: flex;
+  align-items: center;
+  width: 28vw;
+  height: 26vh;
 }
+
+.sideBaruh{
+  height: 100vh;
+    width: 100%;
+}
+
+
+.Myloader{
+  width: 9vw;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.loader h3 {
+  font-family: Poppins, sans-serif;color: rgb(72,139,118)}
+
+.loadercontainer{
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 
 /* the newsletter validation popup style */
 .taken {
@@ -1639,4 +1743,52 @@ width: 386px;font-family: Poppins, sans-serif;}
 /* font awesome icon */
     .fab{
       color: white;
+    }
+
+    /* metrix */
+
+    #onemetric{
+      align-items: center;
+      height: 100px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0px 43px 0px 43px;
+    }
+
+    
+    #onemetric:hover{
+ background-color: rgba(79, 206, 195, 0.068);
+    }
+
+
+
+    /* modal style */
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width:100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+    }
+    
+    .modal-main {
+      position: fixed;
+      background: white;
+      width: 60%;
+      height: auto;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      border-radius: 9px;
+    }
+    
+    .display-block {
+      display: block;
+    }
+    
+    .display-none {
+      display: none;
     }

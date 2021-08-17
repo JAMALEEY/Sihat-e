@@ -1,82 +1,64 @@
-import React from "react";
+import _ from "lodash";
+// a helper lib that allows us to pick aboutEDITS object values (first name etc) to initial values in reduxform
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchAboutInfos, logout, createAbout } from "./sihat-e/src/actions";
-import { Field, reduxForm, touch } from "redux-form";
+import {
+  logout,
+  editAboutInfos,
+  fetchAboutInfos,
+} from "../sihat-e/src/actions";
+import { Field, Form, formValueSelector, reduxForm, touch } from "redux-form";
+import FormDashboardPatient from "../sihat-e/src/components/pages/Apropos/FormDashboardPatient";
+import { bindActionCreators } from "redux";
 
-class PatientDashboard extends React.Component {
-  componentDidMount() {
-    this.props.fetchAboutInfos();
-    console.log(this.props.initialValues);
-  }
-  patientDashboarLogout() {
-    this.props.logout();
-  }
-
-  onSubmit = (formValues) => {
-    this.props.onSubmit(formValues);
-  };
-
-  renderInput({
-    handleSubmit,
-    input,
-    value,
-    meta,
-    label,
-    placeholder,
-    name,
-    id,
-    type,
-    className,
-    initialValues,
-  }) {
-    return (
-      <>
-        <div className="col-sm-6 col-xl-7 input-column">
-          <div className="form-row form-group">
-            <label className="active col-form-label d-xl-flex align-items-xl-start">
-              {label}
-            </label>
-            <input
-              {...input}
-              className={className}
-              autocomplete="nope"
-              placeholder={placeholder}
-              onChange={input.onChange}
-              // value={input.value}
-
-              name={name}
-              type={type}
-              id={id}
-            />
-          </div>
-        </div>
-      </>
-    );
-  }
-
-  // renderList() {
-  // return this.props.aboutInfos.map(aboutInfo => {
-  //     return (
-  //         <div className="item" key={aboutInfo.id}>
-  //         <i className="large middle aligned icon camera" />
-  //         <div className="content">
-  //             {aboutInfo.last_name}
-  //             <div className="description">{aboutInfo.first_name}</div>
-  //         </div>
-  //         </div>
-  //     );
-  // });
+class DashboardPatientEdit extends Component {
+  // state = {
+  //     showFavorites: false
   // }
 
+  // componentWillMount() {
+  //     //console.log(this.props.match.params.format)
+  //     this.props.fetchAboutInfos(this.props.match.params.format, this.state.aboutInfos);
+  //     // console.log(this.props.popular)
+  //     // console.log(this.getList.bind(this));
+  // }
+
+  componentDidMount() {
+    this.props.fetchAboutInfos();
+  }
+  // constructor(props) {
+  //     super(props)
+  //     this.props.fetchAboutInfos();
+
+  // }
+  // componentDidMount(){
+  //     this.props.fetchAboutInfos();
+  //     console.log(fetchAboutInfos())
+  // }
+
+  onSubmit = (formValues) => {
+    this.props.editAboutInfos(formValues);
+  };
+
+  patientDashboarLogout = () => {
+    this.props.logout();
+  };
+
   render() {
-    const { InitialValues, handleSubmit, pristine, reset, submitting } =
-      this.props;
+    console.log(this.props);
+
     return (
       <>
         <div>
-          <div>
-            <form></form>
-          </div>
+          {/* {this.props.aboutInfos 
+                        ? 
+                        this.props.aboutInfos.map((item)=>(
+                            <div key={item.id}>
+                                    {item.first_name}
+                                </div> )) 
+                        :null} */}
+
           <div className="row" id="navRow">
             <div
               className="col-md-6 col-xl-2 offset-xl-0"
@@ -91,7 +73,7 @@ class PatientDashboard extends React.Component {
                     className="d-flex d-xl-flex justify-content-xl-center align-items-xl-center"
                     id="logoDashboard"
                   >
-                    <img src="/assets/img/Sicon.png" />
+                    <img src="../../../assets/img/Sicon.png" />
                   </div>
                   <h1>
                     MON COMPTE
@@ -126,7 +108,7 @@ class PatientDashboard extends React.Component {
                           </a>
                         </li>
                         <li className="nav-item2">
-                          <a href="#" className="nav-link">
+                          <Link to="/contactinformation" className="nav-link">
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fa fa-vcard d-xl-flex align-items-xl-center d-xl-flex align-items-xl-center fa-2x "
@@ -136,7 +118,7 @@ class PatientDashboard extends React.Component {
                                 Informations de contact.
                               </h5>
                             </div>
-                          </a>
+                          </Link>
                         </li>
                         <li className="nav-item3">
                           <a href="#" className="nav-link">
@@ -302,7 +284,7 @@ class PatientDashboard extends React.Component {
                           >
                             <form className="form-inline mr-auto navbar-search w-100">
                               <div className="input-group">
-                                <input
+                                <Link
                                   type="text"
                                   className="bg-light form-control border-0 small"
                                   placeholder="Search for ..."
@@ -310,7 +292,7 @@ class PatientDashboard extends React.Component {
                                 <div className="input-group-append">
                                   <button
                                     className="btn btn-primary py-0"
-                                    type="submit"
+                                    type="button"
                                   >
                                     <i className="fas fa-search" />
                                   </button>
@@ -527,11 +509,13 @@ class PatientDashboard extends React.Component {
                               className="dropdown-toggle nav-link"
                               href="#"
                             >
-                              <span className="d-none d-lg-inline mr-2 text-gray-600 ">
-                                {
-                                  this.props.patientData.about_reducer.patients
-                                    .first_name
-                                }{" "}
+                              <span className="d-none d-lg-inline mr-2 text-gray-600 small">
+                                {!patientData.about_reducer.patients[0]
+                                  ? "loading"
+                                  : patientData.about_reducer.patients[0]
+                                      .email === undefined
+                                  ? " "
+                                  : patientData.about_reducer.patients[0].email}
                               </span>
                               <img
                                 className="border rounded-circle img-profile"
@@ -555,7 +539,7 @@ class PatientDashboard extends React.Component {
                               <a
                                 className="dropdown-item"
                                 href="#"
-                                onClick={this.props.patientDashboarLogout}
+                                onClick={this.patientDashboarLogout}
                               >
                                 <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400" />
                                 &nbsp;Logout
@@ -568,120 +552,15 @@ class PatientDashboard extends React.Component {
                   </nav>
                 </div>
               </div>
-              <div className="d-xl-flex justify-content-xl-center align-items-xl-center">
-                <div id="formCardContainer">
-                  <div>
-                    {/* Start: Pretty Registration Form */}
-                    <div className="row register-form">
-                      <div className="col-md-8 col-xl-10 offset-md-2 offset-xl-0">
-                        <form
-                          InitialValues={this.props.InitialValues}
-                          className="custom-form"
-                          method="post"
-                          onSubmit={this.props.handleSubmit(this.onSubmit)}
-                        >
-                          <h1 className="d-xl-flex align-items-xl-start">
-                            A propos
-                          </h1>
-                          {/* Prénom */}
-                          <div></div>
-                          <Field
-                            className="form-control-plaintext"
-                            name="first_name"
-                            component={this.renderInput}
-                            label="Prénom :"
-                            placeholder="Votre prénom"
-                            type="text"
-                          />
-                          {/* Nom */}
-                          <Field
-                            className="form-control-plaintext"
-                            name="last_name"
-                            component={this.renderInput}
-                            label="Nom :"
-                            placeholder="Votre Nom"
-                          />
-                          {/* Adresse */}
-                          <Field
-                            className="form-control-plaintext"
-                            name="adress"
-                            component={this.renderInput}
-                            label="Adresse :"
-                            placeholder="Votre Adresse"
-                          />
-                          {/* Date de Naissance */}
-                          <Field
-                            className="form-control-plaintext date"
-                            name="birth_day"
-                            component={this.renderInput}
-                            label="Date de naissance :"
-                            id="birthDate"
-                            type="date"
-                          />
+              <div>
+                <FormDashboardPatient
+                  // initialValues={_.pick(this.props.aboutInfos.first_name, 'first_name')}
+                  // initialValues={_.pick(this.props.aboutInfos, 'first_name', 'last_name', 'birth_day', 'date', 'adress', 'bio_sex'	)}
 
-                          <div className="form-row form-group">
-                            <div className="col-sm-4 col-xl-7 label-column">
-                              <label
-                                className="col-form-label d-xl-flex align-items-xl-start"
-                                htmlFor="pawssword-input-field"
-                              >
-                                Genre :
-                              </label>
-                            </div>
-                            <div className="col-sm-6 input-column">
-                              {/* Start: Bootstrap 4's Custom Radios & Checkboxes */}
-                              <div>
-                                <fieldset>
-                                  <legend />
-                                  <div className="custom-control custom-radio">
-                                    <input
-                                      type="radio"
-                                      id="customRadio1"
-                                      className="custom-control-input"
-                                      name="customRadio"
-                                      defaultChecked
-                                    />
-                                    <label
-                                      className="custom-control-label"
-                                      htmlFor="customRadio1"
-                                    >
-                                      Femme
-                                    </label>
-                                  </div>
-                                  <div className="custom-control custom-radio">
-                                    <input
-                                      type="radio"
-                                      id="customRadio2"
-                                      className="custom-control-input"
-                                      name="customRadio"
-                                    />
-                                    <label
-                                      className="custom-control-label"
-                                      htmlFor="customRadio2"
-                                    >
-                                      Homme
-                                    </label>
-                                  </div>
-                                </fieldset>
-                              </div>
-                              {/* End: Bootstrap 4's Custom Radios & Checkboxes */}
-                            </div>
-                          </div>
-
-                          <button
-                            id="btnFormDashboard"
-                            className="btn btn-light align-items-xl-start submit-button"
-                            type="submit"
-                            disabled={pristine || submitting}
-                          >
-                            Enregistrer
-                          </button>
-                        </form>
-                      </div>
-                    </div>
-                    {/* End: Pretty Registration Form */}
-                  </div>
-                </div>
+                  // initialValues={{first_name: this.props.aboutInfos[0].data.first_name}}
+                  onSubmit={this.onSubmit}
+                />
+                {this.rendertiwtiw()}
               </div>
             </div>
           </div>
@@ -691,37 +570,145 @@ class PatientDashboard extends React.Component {
   }
 }
 
-// const validate = formValues => {
-//     const errors = {};
-
-//     if (!formValues.title) {
-//         errors.title = 'You must enter a title';
-//     }
-
-//     if (!formValues.description) {
-//         errors.description = 'You must enter a description';
-//     }
-
-//     return errors;
-// };
-
-const mapStateToProps = (state, props) => {
-  return {
-    logout: state.logout,
-    aboutInfos: state.aboutInfos.last_name,
-
-    initialValues: {
-      first_name: state.aboutInfos.first_name,
-      last_name: "coucou",
-    },
-  };
+const mapStateToProps = (state) => {
+  return { aboutInfos: state.aboutInfos };
 };
 
-const DecoratedComponent = connect(mapStateToProps, {
-  logout,
-  fetchAboutInfos,
-})(PatientDashboard);
-export default reduxForm({
-  form: "patientDashboardForm",
-  enableReinitialize: true,
-})(DecoratedComponent);
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(
+    {
+      fetchAboutInfos,
+    },
+    dispatch
+  );
+};
+
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//       something: () => dispatch(aboutInfos.fetchAboutInfos()),
+//     };
+//   };
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DashboardPatientEdit);
+
+// const errorsHelper = ({error, touched}) => {
+//     if (touched && error) {
+//         return (
+//             <>
+
+//                 <div className='taken'>
+//                     <div>
+//                         <strong> &#9888; Attention &#9888; </strong>
+//                         {error}
+//                     </div>
+//                 </div>
+//             </>
+//         )
+//     }
+// }
+
+// const renderInput = (props) => {
+//     const {input, value, meta, label, placeholder, name, id, type, className, initialValues} = props;
+//     return (
+//         <>
+//             {   errorsHelper(meta)    }
+//             <div className="col-sm-6 col-xl-7 input-column">
+//                 <div className="form-row form-group">
+//                 <label className="active col-form-label d-xl-flex align-items-xl-start">{label}</label>
+//                 <Link {...input}
+//                 className={className}
+//                 autocomplete='nope'
+//                 placeholder={placeholder}
+//                 onChange={input.onChange}
+//                 // value={input.value}
+
+//                 name={name}
+//                 type={type}
+//                 id={id}
+//                 />
+//                 </div>
+//             </div>
+//         </>
+//     )
+// }
+
+// const DashboardPatient = ( props ) => {
+//     const {aboutInfos, logout, handleSubmit, createAbout, fetchAboutInfos,  initialValues} = props
+// useEffect(() => {
+//     fetchAboutInfos()
+
+// console.log(aboutInfos[0].data) throw : {id: 7, user_id: 6, first_name: "AVC", last_name: "AAA", birth_day: null, …}
+// }, [])
+//             const data = {
+//     initialValues
+// }
+
+// alert(data)
+
+// if( !aboutInfos[0]) {   ====> '' else if aboutInfos[0] {
+// {Response.data.valueETC}
+// }
+
+// const renderFetchAboutInfos = () => {
+//     if(!aboutInfos[0]) {
+//         return (
+//             <>
+
+//             </>
+//         )
+//     }
+// }
+// console.log(Object.values(Object.values(aboutInfos[0])))
+// console.log(initialValues.data)
+
+// console.log(fetchAboutInfos())
+
+// if(fetchAboutInfos.PatientAboutInfosNotInfos)
+
+// const renderList = () => {
+//     if(fetchAboutInfos() == true ) {
+//         return (
+//             <>
+//             <div className="item" key={props.aboutInfos[0].data.id}>
+//                 <div className='content'> {props.aboutInfos[0].data.first_name} </div>
+//             </div>
+
+//             </>
+//         )
+//     }
+// console.log(aboutInfos[0].data)
+
+//     }
+
+//     const patientDashboarLogout = () => {
+//         logout()
+//     }
+
+// const onSubmit = (formValues) => {
+// if( !aboutInfos[0]) {
+//     createAbout(formValues)
+// } else {
+//     fetchAboutInfos()
+// }
+
+// }
+
+// return(
+
+//         <>
+
+//         </>
+//     )
+
+// }
+
+// mapStateToProps = (state) => {
+
+// }
+
+// const  formWrapper = reduxForm({ form: 'dashboardPatientForm', enableReinitialize: true })(DashboardPatient)
+
+// export default connect(null, {logout, createAbout, fetchAboutInfos, })(formWrapper);

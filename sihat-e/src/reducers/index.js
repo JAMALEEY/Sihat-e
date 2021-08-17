@@ -12,8 +12,25 @@ import { reducer as dashboardPatientForm } from 'redux-form'
 // To manage my multiple reducers to be one single reducer ill use CombineReducers that takes parameters with what ill call inside my project
 import { combineReducers } from "redux";
 // import reducer from './aboutInfosReducer';
-import { SIGN_IN, CREATE_PATIENT, SIGN_OUT, CREATE_ABOUT, CREATE_CONTACTINFO} from "../actions/types";
+import { 
+SIGN_IN, 
+CREATE_PATIENT, 
+SIGN_OUT, 
+CREATE_ABOUT, 
+CREATE_CONTACTINFO,  
+CREATE_TAILLE_METRIX,
+FETCH_TAILLE_METRIX,
+DELETE_TAILLE_METRIX
+} from "../actions/types";
 import about_reducer from "./about_reducer";
+import tailles_reducer from "./tailles_reducer";
+import poids_reducer from "./poids_reducer";
+import bmi_reducer from "./bmi_reducer";
+import tension_reducer from "./tension_reducer";
+import glucose_reducer from "./glucose_reducer";
+import temperature_reducer from "./temperature_reducer";
+
+
 
 
 const signUpPatientReducer = (signUpPatientState = {}, action) => {
@@ -36,31 +53,6 @@ const signInResponseReducer = (signInResponse = [], action) => {
     } return signInResponse;
 };
 
-    // if (action.type === FETCH_PATIENT_ABOUT) {
-    //     return {...aboutInfos,  [action.payload]: action.payload};
-    // } return aboutInfos;
-// function aboutInfosReducer (state = [], action)  {
-//     switch (action.type) {
-//         case FETCH_PATIENT_ABOUT:
-//             return [...state,  action.payload];
-//             // return {...aboutInfos, [action.payload]: action.payload  };
-//         default:
-//             return state;
-//     }
-// }
-
-
-
-// export default (aboutInfos = {}, action) => {
-//     switch (action.type) {
-//         case FETCH_PATIENT_ABOUT:
-//             // return { ...aboutInfos, ...(action.payload) }
-//             return {...aboutInfos, [action.payload]: action.payload  };
-//         default:
-//             return aboutInfos;
-//     }
-// }
-
 
 const createAboutReducer = (createAbout = {}, action) => {
     if (action.type === CREATE_ABOUT) {
@@ -75,31 +67,36 @@ const createContactInformationReducer = (state = {}, action) => {
     } return state;
 };
 
+const createTailleReducer = (createTaille = {}, action) => {
+    if (action.type === CREATE_TAILLE_METRIX) {
+        return {...createTaille, [action.payload]: action.payload  };
+    } return createTaille;
+}
 
-// const aboutInfoReducer = (aboutInfos = [], action) => {
-//     if(action.type === FETCH_PATIENT_ABOUT) {
-//         return [...aboutInfos, action.payload  ];
-//     } return aboutInfos;
-// }
-// const aboutInfoReducer = (aboutInfos = [], action) => {
-//     if(action.type === FETCH_PATIENT_ABOUT) {
-//         return [...aboutInfos,  action.payload];
-//     } return aboutInfos;
+// const deleteTailleReducer = (state = {}, action) => {
+//     if (action.type === DELETE_TAILLE_METRIX) {
+//         return _.omit(state, action.payload);
+//     } return createTaille;
 // }
 
-    // I pass in a parameter (form) of a value (reducer that I renamed to newsletterReducer) so that I can let redux-form allow the reducer flow automatization 
+
 export default combineReducers ({
     form: newsletterReducer, signUpPatientState, dashboardPatientForm,
-    reducer: logout,
+    reducer: logout, about_reducer, tailles_reducer, poids_reducer, bmi_reducer, tension_reducer, glucose_reducer, temperature_reducer,
     
     // signIn: signInReducer,
     signInResponse: signInResponseReducer,
     signUpPatienState: signUpPatientReducer,
-    logout: logoutReducer,
-    
+    logout: logoutReducer,    
     createAbout: createAboutReducer,
-    aboutInfos: about_reducer,
-    createContactInformation :createContactInformationReducer
+    patientData: about_reducer,
+    tailleData: tailles_reducer,
+    poidsData: poids_reducer,
+    bmiData: bmi_reducer,
+    tensionData: tension_reducer,
+    glucoseData: glucose_reducer,
+    temperatureData: temperature_reducer
+    // createContactInformation :createContactInformationReducer
     
     
 });

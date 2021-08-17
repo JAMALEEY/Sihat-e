@@ -1,7 +1,7 @@
 import React from 'react';
 import {  Link  } from 'react-router-dom';
 import {  connect } from 'react-redux';
-import {  createLogin  } from '../../actions';
+import {  createLogin  } from '../../../actions';
 import {Field, formValueSelector, reduxForm} from 'redux-form';
 
                           // in order to centralize my errors in one place I use a helper function called errorsHelper

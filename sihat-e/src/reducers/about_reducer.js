@@ -1,29 +1,42 @@
 // import { API_SUCCESS, API_ERROR } from "./actions/api";
 
-import { FETCH_ABOUT } from "../actions/types";
-import _ from 'lodash';
+import { FETCH_ABOUT,
+  CREATE_TAILLE_METRIX,
+  FETCH_TAILLE_METRIX,
+  DELETE_TAILLE_METRIX 
+} from "../actions/types";
+// import _ from 'lodash';
 
-// export default function(state, action)
+const initialState = {
+    loading: false,
+    patients: [],
+    error: ''
+  }
 
-
-
-export default  (state = null, action) => {
+const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case FETCH_ABOUT:
-        return action.payload;
-        default :  return state;
-    } 
-};
-
-// export default (state = [], action) => {
-//     switch (action.type) {
-//       case FETCH_ABOUT:
-//         return { ...state,  ...action.payload };
-//       default:
-//         return state;
-//     }
-//   };
-  
+      case 'FETCH_PATIENTS_REQUEST':
+        return {
+          ...state,
+          loading: true
+        }
+      case FETCH_ABOUT:
+        return {
+          loading: false,
+          patients: action.payload,
+          error: ''
+        }
+      case 'FETCH_PATIENTS_FAILURE':
+        return {
+          loading: false,
+          notFound : true,
+          patients: [],
+          error: action.payload
+        }
+      default: return state
+    }
+  }
+  export default reducer
 
 
 
