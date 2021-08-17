@@ -282,8 +282,12 @@ import FormContactInformation from './FormContactInformation';
                     <div className="d-none d-sm-block topbar-divider" />
                     <li className="nav-item dropdown no-arrow">
                         <div className="nav-item dropdown no-arrow"><a aria-expanded="false" data-toggle="dropdown" className="dropdown-toggle nav-link" href="#"><span className="d-none d-lg-inline mr-2 text-gray-600 ">
-                            {patientData.about_reducer.patients.first_name
-} 
+
+                        { !patientData.about_reducer.patients[0] ? 'loading' :  patientData.about_reducer.patients[0].email === undefined ? ' ' :
+patientData.about_reducer.patients[0].email}
+
+
+                         
 
 </span><img className="border rounded-circle img-profile" src="avatars/avatar1.jpeg" /></a>
                         <div className="dropdown-menu shadow dropdown-menu-right animated--grow-in"><a className="dropdown-item" href="#"><i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400" />&nbsp;Profile</a><a className="dropdown-item" href="#"><i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400" />&nbsp;Settings</a><a className="dropdown-item" href="#"><i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400" />&nbsp;Activity log</a>
@@ -299,7 +303,7 @@ import FormContactInformation from './FormContactInformation';
                 </nav></div></div> 
                 <div>
                 <FormContactInformation
-                  initialValues={patientData.about_reducer.patients}
+                  initialValues={patientData.about_reducer.patients[0]}
                  
                 />
 

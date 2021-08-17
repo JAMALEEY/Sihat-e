@@ -153,7 +153,12 @@ class FormContactInformation extends Component {
                         Votre E-mail est :
                     <div id='emailfetched'>
                     <p>
-                                {this.props.patientData.about_reducer.patients.email}
+                      { !this.props.patientData.about_reducer.patients[0] ? 'loading' :  this.props.patientData.about_reducer.patients[0].email === undefined ? ' ' :
+                      this.props.patientData.about_reducer.patients[0].email}
+                      
+                      
+                                {/* {this.props.patientData.about_reducer.patients.email} */}
+                                {/* {this.props.patientData.about_reducer.patients[0].email} */}
                             </p>
                     </div>
                             

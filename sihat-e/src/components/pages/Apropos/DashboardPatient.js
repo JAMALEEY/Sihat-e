@@ -488,9 +488,9 @@ class DashboardPatient extends Component {
                             >
                               <span className="d-none d-lg-inline mr-2 text-gray-600 ">
 
-{
-  this.props.patientData.about_reducer.patients.first_name
-}                            
+                              { !this.props.patientData.about_reducer.patients[0] ? 'loading' :  this.props.patientData.about_reducer.patients[0].email === undefined ? ' ' :
+                      this.props.patientData.about_reducer.patients[0].email}
+                                                
   </span>
                               <img
                                 className="border rounded-circle img-profile"
@@ -536,8 +536,9 @@ class DashboardPatient extends Component {
         
           )}
       */}
+      
                 <FormDashboardPatient
-                  initialValues={this.props.patientData.about_reducer.patients}
+                  initialValues={this.props.patientData.about_reducer.patients[0]}
                  
                 />
               </div>
