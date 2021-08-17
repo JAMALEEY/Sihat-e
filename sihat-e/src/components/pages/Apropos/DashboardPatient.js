@@ -22,7 +22,6 @@ class DashboardPatient extends Component {
     this.props.fetchAboutInfos();
   }
 
-
   patientDashboarLogout = () => {
     this.props.logout();
   };
@@ -67,7 +66,10 @@ class DashboardPatient extends Component {
                     <div className="category-content">
                       <ul id="fruits-nav" className="nav flex-column">
                         <li className="nav-item1">
-                          <Link to="dashboardPatient" className="nav-link active">
+                          <Link
+                            to="dashboardPatient"
+                            className="nav-link active"
+                          >
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="active fa fa-user-circle-o fa-2x d-xl-flex align-items-xl-center "
@@ -80,7 +82,11 @@ class DashboardPatient extends Component {
                           </Link>
                         </li>
                         <li className="nav-item2">
-                          <Link to="/contactinformation" className="nav-link" activeClassName="active">
+                          <Link
+                            to="/contactinformation"
+                            className="nav-link"
+                            activeClassName="active"
+                          >
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fa fa-vcard d-xl-flex align-items-xl-center d-xl-flex align-items-xl-center fa-2x "
@@ -383,12 +389,13 @@ class DashboardPatient extends Component {
                                 <div className="font-weight-bold">
                                   <div className="text-truncate">
                                     <span>
-                                      Hi there! I am wondering if you can help
-                                      me with a problem I've been having.
+                                      Bonjour, c'est votre docteur BOUBOUH,
+                                      pouvez-vous me donner accès à votre
+                                      dossier médical ?
                                     </span>
                                   </div>
                                   <p className="small text-gray-500 mb-0">
-                                    Emily Fowler - 58m
+                                    BOUBOUH Ayman - 58m
                                   </p>
                                 </div>
                               </Link>
@@ -406,12 +413,12 @@ class DashboardPatient extends Component {
                                 <div className="font-weight-bold">
                                   <div className="text-truncate">
                                     <span>
-                                      I have the photos that you ordered last
-                                      month!
+                                      N'oubliez pas votre consultation le Lundi
+                                      prochain
                                     </span>
                                   </div>
                                   <p className="small text-gray-500 mb-0">
-                                    Jae Chun - 1d
+                                    Dr. BENISS Meryem - 1d
                                   </p>
                                 </div>
                               </Link>
@@ -429,13 +436,12 @@ class DashboardPatient extends Component {
                                 <div className="font-weight-bold">
                                   <div className="text-truncate">
                                     <span>
-                                      Last month's report looks great, I am very
-                                      happy with the progress so far, keep up
-                                      the good work!
+                                      Votre dossier CNSS nécessite votre
+                                      attention !
                                     </span>
                                   </div>
                                   <p className="small text-gray-500 mb-0">
-                                    Morgan Alvarez - 2d
+                                    CNSS - 2d
                                   </p>
                                 </div>
                               </Link>
@@ -453,14 +459,12 @@ class DashboardPatient extends Component {
                                 <div className="font-weight-bold">
                                   <div className="text-truncate">
                                     <span>
-                                      Am I a good boy? The reason I ask is
-                                      because someone told me that people say
-                                      this to all dogs, even if they aren't
-                                      good...
+                                      Avez vous oubliez de mettre à jour vos
+                                      métriques de santé ?
                                     </span>
                                   </div>
                                   <p className="small text-gray-500 mb-0">
-                                    Chicken the Dog · 2w
+                                    Sihat-e· 2w
                                   </p>
                                 </div>
                               </Link>
@@ -487,11 +491,15 @@ class DashboardPatient extends Component {
                               to="#"
                             >
                               <span className="d-none d-lg-inline mr-2 text-gray-600 ">
-
-                              { !this.props.patientData.about_reducer.patients[0] ? 'loading' :  this.props.patientData.about_reducer.patients[0].email === undefined ? ' ' :
-                      this.props.patientData.about_reducer.patients[0].email}
-                                                
-  </span>
+                                {!this.props.patientData.about_reducer
+                                  .patients[0]
+                                  ? "loading"
+                                  : this.props.patientData.about_reducer
+                                      .patients[0].email === undefined
+                                  ? " "
+                                  : this.props.patientData.about_reducer
+                                      .patients[0].email}
+                              </span>
                               <img
                                 className="border rounded-circle img-profile"
                                 src="avatars/avatar1.jpeg"
@@ -536,10 +544,11 @@ class DashboardPatient extends Component {
         
           )}
       */}
-      
+
                 <FormDashboardPatient
-                  initialValues={this.props.patientData.about_reducer.patients[0]}
-                 
+                  initialValues={
+                    this.props.patientData.about_reducer.patients[0]
+                  }
                 />
               </div>
             </div>
@@ -549,7 +558,6 @@ class DashboardPatient extends Component {
     );
   }
 }
-
 
 const mapStateToProps = (state, props) => {
   return {
@@ -570,5 +578,5 @@ DashboardPatient = connect(
 
 export default reduxForm({
   form: "aboutInfosForm", // a unique name for this form
-  enableReinitialize: true
+  enableReinitialize: true,
 })(DashboardPatient);

@@ -203,8 +203,9 @@
 //                                 <div className="bg-success status-indicator" />
 //                             </div>
 //                             <div className="font-weight-bold">
-//                                 <div className="text-truncate"><span>Hi there! I am wondering if you can help me with a problem I've been having.</span></div>
-//                                 <p className="small text-gray-500 mb-0">Emily Fowler - 58m</p>
+//                                 <div className="text-truncate"><span>Bonjour, c'est votre docteur BOUBOUH, pouvez-vous me donner accès à votre dossier médical ?
+</span></div>
+//                                 <p className="small text-gray-500 mb-0">BOUBOUH Ayman - 58m</p>
 //                             </div>
 //                             </a><a className="dropdown-item d-flex align-items-center" href="#">
 //                             <div className="dropdown-list-image mr-3"><img className="rounded-circle" src="avatars/avatar2.jpeg" />
@@ -212,7 +213,7 @@
 //                             </div>
 //                             <div className="font-weight-bold">
 //                                 <div className="text-truncate"><span>I have the photos that you ordered last month!</span></div>
-//                                 <p className="small text-gray-500 mb-0">Jae Chun - 1d</p>
+//                                 <p className="small text-gray-500 mb-0">Dr. BENISS Meryem - 1d</p>
 //                             </div>
 //                             </a><a className="dropdown-item d-flex align-items-center" href="#">
 //                             <div className="dropdown-list-image mr-3"><img className="rounded-circle" src="avatars/avatar3.jpeg" />
@@ -220,7 +221,7 @@
 //                             </div>
 //                             <div className="font-weight-bold">
 //                                 <div className="text-truncate"><span>Last month's report looks great, I am very happy with the progress so far, keep up the good work!</span></div>
-//                                 <p className="small text-gray-500 mb-0">Morgan Alvarez - 2d</p>
+//                                 <p className="small text-gray-500 mb-0">CNSS - 2d</p>
 //                             </div>
 //                             </a><a className="dropdown-item d-flex align-items-center" href="#">
 //                             <div className="dropdown-list-image mr-3"><img className="rounded-circle" src="avatars/avatar5.jpeg" />
@@ -228,7 +229,7 @@
 //                             </div>
 //                             <div className="font-weight-bold">
 //                                 <div className="text-truncate"><span>Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</span></div>
-//                                 <p className="small text-gray-500 mb-0">Chicken the Dog · 2w</p>
+//                                 <p className="small text-gray-500 mb-0">Sihat-e· 2w</p>
 //                             </div>
 //                             </a><a className="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
 //                         </div>
