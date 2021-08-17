@@ -6,6 +6,8 @@ import {
   fetchTailleInfos,
   editTaille,
   deleteTaille,
+  fetchAboutInfos,
+
 } from "../../../../actions";
 import { Link } from "react-router-dom";
 import { Field, formValues, reduxForm } from "redux-form";
@@ -47,6 +49,8 @@ class MetrixTaille extends Component {
 
   componentDidMount() {
     this.props.fetchTailleInfos();
+    this.props.fetchAboutInfos();
+
     console.log(this.props);
   }
 
@@ -56,6 +60,10 @@ class MetrixTaille extends Component {
 
   editTaille = (id, formValues) => {
     this.props.editTaille(formValues);
+  };
+
+  patientDashboarLogout = () => {
+    this.props.logout();
   };
 
   renderInput({
@@ -685,12 +693,12 @@ class MetrixTaille extends Component {
                               href="#"
                             >
                               <span className="d-none d-lg-inline mr-2 text-gray-600 small">
-                                {!patientData.about_reducer.patients[0]
+                                {!this.props.patientData.about_reducer.patients[0]
                                   ? "loading"
-                                  : patientData.about_reducer.patients[0]
+                                  : this.props.patientData.about_reducer.patients[0]
                                       .email === undefined
                                   ? " "
-                                  : patientData.about_reducer.patients[0].email}
+                                  : this.props.patientData.about_reducer.patients[0].email}
                               </span>
                               <img
                                 className="border rounded-circle img-profile"
@@ -853,6 +861,8 @@ class MetrixTaille extends Component {
 const mapStateToProps = (state) => {
   return {
     tailleData: state,
+    patientData: state,
+
   };
 };
 
@@ -862,6 +872,8 @@ const mapDispatchToProps = (dispatch, formValues, id) => {
     createTaille: (formValues) => dispatch(createTaille(formValues)),
     editTaille: (formValues, id) => dispatch(editTaille(formValues, id)),
     deleteTaille: (id) => dispatch(deleteTaille(id)),
+    fetchAboutInfos: () => dispatch(fetchAboutInfos()),
+    logout: () => dispatch(logout()),
   };
 };
 

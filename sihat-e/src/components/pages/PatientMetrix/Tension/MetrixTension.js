@@ -6,6 +6,8 @@ import {
   fetchTensionInfos,
   editTension,
   deleteTension,
+  fetchAboutInfos,
+
 } from "../../../../actions";
 import { Link } from "react-router-dom";
 import { Field, formValues, reduxForm } from "redux-form";
@@ -46,6 +48,8 @@ class MetrixTension extends Component {
 
   componentDidMount() {
     this.props.fetchTensionInfos();
+    this.props.fetchAboutInfos();
+
     console.log(this.props);
   }
 
@@ -55,6 +59,9 @@ class MetrixTension extends Component {
 
   editTension = (id, formValues) => {
     this.props.editTension(formValues);
+  };
+  patientDashboarLogout = () => {
+    this.props.logout();
   };
 
   renderInput({
@@ -652,12 +659,12 @@ class MetrixTension extends Component {
                               href="#"
                             >
                               <span className="d-none d-lg-inline mr-2 text-gray-600 small">
-                                {!patientData.about_reducer.patients[0]
+                                {!this.props.patientData.about_reducer.patients[0]
                                   ? "loading"
-                                  : patientData.about_reducer.patients[0]
+                                  : this.props.patientData.about_reducer.patients[0]
                                       .email === undefined
                                   ? " "
-                                  : patientData.about_reducer.patients[0].email}
+                                  : this.props.patientData.about_reducer.patients[0].email}
                               </span>
                               <img
                                 className="border rounded-circle img-profile"
@@ -810,6 +817,8 @@ class MetrixTension extends Component {
 const mapStateToProps = (state) => {
   return {
     tensionData: state,
+    patientData: state,
+
   };
 };
 
@@ -819,6 +828,8 @@ const mapDispatchToProps = (dispatch, formValues, id) => {
     createTension: (formValues) => dispatch(createTension(formValues)),
     editTension: (formValues, id) => dispatch(editTension(formValues, id)),
     deleteTension: (id) => dispatch(deleteTension(id)),
+    fetchAboutInfos: () => dispatch(fetchAboutInfos()),
+    logout: () => dispatch(logout()),
   };
 };
 

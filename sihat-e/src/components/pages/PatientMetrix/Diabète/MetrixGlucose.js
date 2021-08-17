@@ -6,6 +6,7 @@ import {
   fetchGlucoseInfos,
   editGlucose,
   deleteGlucose,
+  fetchAboutInfos,
 } from "../../../../actions";
 import { Link } from "react-router-dom";
 import { Field, formValues, reduxForm } from "redux-form";
@@ -48,6 +49,8 @@ class MetrixGlucose extends Component {
 
   componentDidMount() {
     this.props.fetchGlucoseInfos();
+    this.props.fetchAboutInfos();
+
     console.log(this.props);
   }
 
@@ -59,6 +62,9 @@ class MetrixGlucose extends Component {
     this.props.editGlucose(formValues);
   };
 
+  patientDashboarLogout = () => {
+    this.props.logout();
+  };
   renderInput({
     handleSubmit,
     input,
@@ -651,12 +657,12 @@ class MetrixGlucose extends Component {
                               href="#"
                             >
                               <span className="d-none d-lg-inline mr-2 text-gray-600 small">
-                                {!patientData.about_reducer.patients[0]
+                                {!this.props.patientData.about_reducer.patients[0]
                                   ? "loading"
-                                  : patientData.about_reducer.patients[0]
+                                  : this.props.patientData.about_reducer.patients[0]
                                       .email === undefined
                                   ? " "
-                                  : patientData.about_reducer.patients[0].email}
+                                  : this.props.patientData.about_reducer.patients[0].email}
                               </span>
                               <img
                                 className="border rounded-circle img-profile"
@@ -800,6 +806,7 @@ class MetrixGlucose extends Component {
 const mapStateToProps = (state) => {
   return {
     glucoseData: state,
+    patientData: state,
   };
 };
 
@@ -809,6 +816,10 @@ const mapDispatchToProps = (dispatch, formValues, id) => {
     createGlucose: (formValues) => dispatch(createGlucose(formValues)),
     editGlucose: (formValues, id) => dispatch(editGlucose(formValues, id)),
     deleteGlucose: (id) => dispatch(deleteGlucose(id)),
+    fetchAboutInfos: () => dispatch(fetchAboutInfos()),
+    logout: () => dispatch(logout()),
+
+
   };
 };
 

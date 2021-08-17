@@ -6,6 +6,8 @@ import {
   fetchTemperatureInfos,
   editTemperature,
   deleteTemperature,
+  fetchAboutInfos,
+
 } from "../../../../actions";
 import { Link } from "react-router-dom";
 import { Field, formValues, reduxForm } from "redux-form";
@@ -48,6 +50,8 @@ class MetrixTemperature extends Component {
 
   componentDidMount() {
     this.props.fetchTemperatureInfos();
+    this.props.fetchAboutInfos();
+
     console.log(this.props);
   }
 
@@ -57,6 +61,9 @@ class MetrixTemperature extends Component {
 
   editTemperature = (id, formValues) => {
     this.props.editTemperature(formValues);
+  };
+  patientDashboarLogout = () => {
+    this.props.logout();
   };
 
   renderInput({
@@ -660,12 +667,12 @@ class MetrixTemperature extends Component {
                               href="#"
                             >
                               <span className="d-none d-lg-inline mr-2 text-gray-600 small">
-                                {!patientData.about_reducer.patients[0]
+                                {!this.props.patientData.about_reducer.patients[0]
                                   ? "loading"
-                                  : patientData.about_reducer.patients[0]
+                                  : this.props.patientData.about_reducer.patients[0]
                                       .email === undefined
                                   ? " "
-                                  : patientData.about_reducer.patients[0].email}
+                                  : this.props.patientData.about_reducer.patients[0].email}
                               </span>
                               <img
                                 className="border rounded-circle img-profile"
@@ -808,7 +815,9 @@ class MetrixTemperature extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    temperatureData: state,
+    temperatureData: state,    
+    patientData: state,
+
   };
 };
 
@@ -819,6 +828,8 @@ const mapDispatchToProps = (dispatch, formValues, id) => {
     editTemperature: (formValues, id) =>
       dispatch(editTemperature(formValues, id)),
     deleteTemperature: (id) => dispatch(deleteTemperature(id)),
+    fetchAboutInfos: () => dispatch(fetchAboutInfos()),
+    logout: () => dispatch(logout()),
   };
 };
 

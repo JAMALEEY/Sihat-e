@@ -18,7 +18,10 @@ const Metrix = ({
   props,
   patientData,
 }) => {
-  useEffect(() => {}, []);
+  useEffect(() => {
+    fetchAboutInfos();
+
+  }, []);
 
   const patientDashboarLogout = () => {
     logout();
@@ -479,9 +482,12 @@ const Metrix = ({
                             href="#"
                           >
                             <span className="d-none d-lg-inline mr-2 text-gray-600 ">
-                              {/* {
-  patientData.about_reducer.patients.first_name
-}  */}
+                                {!patientData.about_reducer.patients[0]
+                                  ? "loading"
+                                  : patientData.about_reducer.patients[0]
+                                      .email === undefined
+                                  ? " "
+                                  : patientData.about_reducer.patients[0].email}
                             </span>
                             <img
                               className="border rounded-circle img-profile"
@@ -530,13 +536,15 @@ const Metrix = ({
 
 const mapStateToProps = (state, props) => {
   return {
-    //   patientData: state,
+      patientData: state,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    //   fetchAboutInfos: () => dispatch(fetchAboutInfos()),
+      fetchAboutInfos: () => dispatch(fetchAboutInfos()),
+      logout: () => dispatch(logout()),
+
   };
 };
 

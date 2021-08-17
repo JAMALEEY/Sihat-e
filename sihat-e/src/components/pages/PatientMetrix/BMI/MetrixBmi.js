@@ -6,6 +6,8 @@ import {
   fetchBmiInfos,
   editBmi,
   deleteBmi,
+  fetchAboutInfos,
+
 } from "../../../../actions";
 import { Link } from "react-router-dom";
 import { Field, formValues, reduxForm } from "redux-form";
@@ -49,6 +51,8 @@ class MetrixBmi extends Component {
   componentDidMount() {
     this.props.fetchBmiInfos();
     console.log(this.props);
+    this.props.fetchAboutInfos();
+
   }
 
   createBmi = (formValues) => {
@@ -58,6 +62,11 @@ class MetrixBmi extends Component {
   editBmi = (id, formValues) => {
     this.props.editBmi(formValues);
   };
+
+  patientDashboarLogout = () => {
+    this.props.logout();
+  };
+
 
   renderInput({
     handleSubmit,
@@ -646,11 +655,15 @@ class MetrixBmi extends Component {
                               href="#"
                             >
                               <span className="d-none d-lg-inline mr-2 text-gray-600 ">
-                                {" "}
-                                {
-                                  this.props.patientData.about_reducer.patients
-                                    .first_name
-                                }{" "}
+                                {!this.props.patientData.about_reducer.patients[0]
+
+                                  ? "loading"
+                                  
+                                  : this.props.patientData.about_reducer.patients[0]
+                                      .email === undefined
+                                  ? " "
+                                  
+                                  : this.props.patientData.about_reducer.patients[0].email}
                               </span>
                               <img
                                 className="border rounded-circle img-profile"
@@ -792,6 +805,8 @@ class MetrixBmi extends Component {
 const mapStateToProps = (state) => {
   return {
     bmiData: state,
+    patientData: state,
+
   };
 };
 
@@ -801,6 +816,8 @@ const mapDispatchToProps = (dispatch, formValues, id) => {
     createBmi: (formValues) => dispatch(createBmi(formValues)),
     editBmi: (formValues, id) => dispatch(editBmi(formValues, id)),
     deleteBmi: (id) => dispatch(deleteBmi(id)),
+    fetchAboutInfos: () => dispatch(fetchAboutInfos()),
+    logout: () => dispatch(logout()),
   };
 };
 
