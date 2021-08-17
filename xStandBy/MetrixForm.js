@@ -174,7 +174,7 @@
 //                             <div className="mr-3">
 //                                 <div className="bg-primary icon-circle"><i className="fas fa-file-alt text-white" /></div>
 //                             </div>
-//                             <div><span className="small text-gray-500">December 12, 2019</span>
+//                             <div><span className="small text-gray-500">December 12, 2021</span>
 //                                 <p>A new monthly report is ready to download!</p>
 //                             </div>
 //                             </a><a className="dropdown-item d-flex align-items-center" href="#">
@@ -238,7 +238,12 @@
 //                     </li>
 //                     <div className="d-none d-sm-block topbar-divider" />
 //                     <li className="nav-item dropdown no-arrow">
-//                         <div className="nav-item dropdown no-arrow"><a aria-expanded="false" data-toggle="dropdown" className="dropdown-toggle nav-link" href="#"><span className="d-none d-lg-inline mr-2 text-gray-600 small">Valerie Luna</span><img className="border rounded-circle img-profile" src="avatars/avatar1.jpeg" /></a>
+//                         <div className="nav-item dropdown no-arrow"><a aria-expanded="false" data-toggle="dropdown" className="dropdown-toggle nav-link" href="#"><span className="d-none d-lg-inline mr-2 text-gray-600 small">{!patientData.about_reducer.patients[0]
+                                ? "loading"
+                                : patientData.about_reducer.patients[0]
+                                    .email === undefined
+                                ? " "
+                                : patientData.about_reducer.patients[0].email}</span><img className="border rounded-circle img-profile" src="avatars/avatar1.jpeg" /></a>
 //                         <div className="dropdown-menu shadow dropdown-menu-right animated--grow-in"><a className="dropdown-item" href="#"><i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400" />&nbsp;Profile</a><a className="dropdown-item" href="#"><i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400" />&nbsp;Settings</a><a className="dropdown-item" href="#"><i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400" />&nbsp;Activity log</a>
 //                         <div className="dropdown-divider"  />
 //                             <a className="dropdown-item" href="#"  >

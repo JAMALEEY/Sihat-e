@@ -136,8 +136,11 @@ import {  createNewsletterEmail, isLogin } from '../../actions'
                 </div>
                 {/* first section end */}
                 <section id="choixSection" className="card-section-image">
-                  <h1>LOREM IPSUM</h1>
-                  <h2>LOREM IPSUMA&nbsp;LOREM IPSUMALOREM IPSUMA<br /><br /></h2>
+                  <h1>COMMENT NOUS POUVONS VOUS AIDER ?</h1>
+                  <h2>
+                  {/* <h2>Commençons par le début !&nbsp; <br> </br> <br></br> */}
+                  Êtes-vous un patient ou un praticien de la santé ?<br /><br />
+                  </h2>
                   <div className="row d-xl-flex">
                     {/* patient card choice */}
                     <div className="col-sm-6 col-md-4 offset-xl-2">

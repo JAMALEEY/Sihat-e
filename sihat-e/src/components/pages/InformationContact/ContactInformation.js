@@ -323,10 +323,11 @@ const ContactInformation = ({
                               </div>
                               <div>
                                 <span className="small text-gray-500">
-                                  December 12, 2019
+                                  December 12, 2021
                                 </span>
                                 <p>
-                                  A new monthly report is ready to download!
+                                  Votre rapport mensuel de santé est prêt à être
+                                  téléchargé !
                                 </p>
                               </div>
                             </a>
@@ -572,6 +573,8 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchAboutInfos: () => dispatch(fetchAboutInfos()),
+    logout: () => dispatch(logout()),
+
   };
 };
 

@@ -566,7 +566,7 @@
                           </div>
                           <div>
                             <span class="small text-gray-500"
-                              >December 12, 2019</span
+                              >December 12, 2021</span
                             >
                             <p>A new monthly report is ready to download!</p>
                           </div> </a
@@ -741,7 +741,10 @@
                         href="#"
                         ><span
                           class="d-none d-lg-inline mr-2 text-gray-600 small"
-                          >Valerie Luna</span
+                          >{!patientData.about_reducer.patients[0] ? "loading" :
+                          patientData.about_reducer.patients[0] .email ===
+                          undefined ? " " :
+                          patientData.about_reducer.patients[0].email}</span
                         ><img
                           class="border rounded-circle img-profile"
                           src="avatars/avatar1.jpeg"

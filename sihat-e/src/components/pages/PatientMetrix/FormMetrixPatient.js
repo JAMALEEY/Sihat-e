@@ -261,6 +261,8 @@ const mapDispatchToProps = (dispatch, formValues) => {
     fetchTensionInfos: () => dispatch(fetchTensionInfos()),
     fetchGlucoseInfos: () => dispatch(fetchGlucoseInfos()),
     fetchTemperatureInfos: () => dispatch(fetchTemperatureInfos()),
+    logout: () => dispatch(logout()),
+
 
 
 

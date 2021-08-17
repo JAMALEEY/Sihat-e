@@ -221,6 +221,8 @@ const mapDispatchToProps = (dispatch, formValues) => {
     fetchAboutInfos: () => dispatch(fetchAboutInfos()),
     createAbout : (formValues) => dispatch(createAbout(formValues)),
     editAboutInfos : (formValues) => dispatch(editAboutInfos(formValues)),
+    logout: () => dispatch(logout()),
+
 
   };
 };

@@ -327,10 +327,11 @@ class DashboardPatientEdit extends Component {
                                 </div>
                                 <div>
                                   <span className="small text-gray-500">
-                                    December 12, 2019
+                                    December 12, 2021
                                   </span>
                                   <p>
-                                    A new monthly report is ready to download!
+                                    Votre rapport mensuel de santé est prêt à
+                                    être téléchargé !
                                   </p>
                                 </div>
                               </a>
@@ -345,11 +346,11 @@ class DashboardPatientEdit extends Component {
                                 </div>
                                 <div>
                                   <span className="small text-gray-500">
-                                    December 7, 2019
+                                    December 7, 2021
                                   </span>
                                   <p>
-                                    $290.29 has been deposited into your
-                                    account!
+                                    Docteur BENGHANEM a consulté votre dossier
+                                    médical.
                                   </p>
                                 </div>
                               </a>
@@ -364,12 +365,9 @@ class DashboardPatientEdit extends Component {
                                 </div>
                                 <div>
                                   <span className="small text-gray-500">
-                                    December 2, 2019
+                                    December 2, 2021
                                   </span>
-                                  <p>
-                                    Spending Alert: We've noticed unusually high
-                                    spending for your account.
-                                  </p>
+                                  <p>Votre profil est désormais à jour.</p>
                                 </div>
                               </a>
                               <a
@@ -512,7 +510,12 @@ class DashboardPatientEdit extends Component {
                               href="#"
                             >
                               <span className="d-none d-lg-inline mr-2 text-gray-600 small">
-                                Valerie Luna
+                                {!patientData.about_reducer.patients[0]
+                                  ? "loading"
+                                  : patientData.about_reducer.patients[0]
+                                      .email === undefined
+                                  ? " "
+                                  : patientData.about_reducer.patients[0].email}
                               </span>
                               <img
                                 className="border rounded-circle img-profile"
