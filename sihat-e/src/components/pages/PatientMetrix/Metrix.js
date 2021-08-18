@@ -105,7 +105,7 @@ const Metrix = ({
                         </Link>
                       </li>
                       <li className="nav-item4">
-                        <Link to="#" className="nav-link">
+                        <Link to="Symptomes" className="nav-link">
                           <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                             <i
                               className="noactive fa fa-heartbeat d-xl-flex align-items-xl-center fa-2x "

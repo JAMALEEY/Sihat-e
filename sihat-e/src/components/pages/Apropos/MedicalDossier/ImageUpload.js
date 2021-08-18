@@ -193,7 +193,7 @@ class ImageUpload extends Component {
                           </Link>
                         </li>
                         <li className="nav-item4">
-                          <Link to="#" className="nav-link">
+                          <Link to="/symptomes" className="nav-link">
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fa fa-heartbeat d-xl-flex align-items-xl-center fa-2x "
@@ -310,7 +310,7 @@ class ImageUpload extends Component {
                           </Link>
                         </li>
                         <li className="nav-item11">
-                          <Link to="/patientUpload" className="nav-link">
+                          <Link to="/upload-image" className="nav-link">
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fas fa-folder-open d-xl-flex align-items-xl-center fa-2x "
