@@ -73,12 +73,12 @@ class FormDashboardPatient extends Component {
  
 
   onSubmit = (formValues) => {
-    console.log(formValues)
+    console.log(this.props.patientData.about_reducer.patients[0].name)
 
     // console.log(this.props)
 
     // alert(this.props.patientData.about_reducer.patients)
-    if (typeof this.props.patientData.about_reducer.patients === 'undefined' ) {
+    if (this.props.patientData.about_reducer.patients[0].name === null ) {
 
       this.props.createAbout(formValues);
     } else {
