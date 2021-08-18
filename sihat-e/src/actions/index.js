@@ -111,7 +111,7 @@ export const createAbout = (formValues) => {
 
 export const editAboutInfos = (formValues) => async (dispatch) => {
   const response = await api.put("patient/update", formValues);
-  window.location.reload()    
+  // window.location.reload()    
 
   dispatch({ type: EDIT_PATIENT_ABOUT, payload: response.data });
   // history.push('/dashboardPatient');
@@ -583,7 +583,7 @@ export const fetchGlucoseInfosFailure = (error) => {
 export const createGlucose = (formValues) => {
   return async (dispatch) => {
     const response = await api.post("/glucose/create", formValues);
-    // window.location.reload()    
+    window.location.reload()    
     
     dispatch({
       type: 'CREATE_GLUCOSE_METRIX',
@@ -671,7 +671,7 @@ export const fetchTemperatureInfosFailure = (error) => {
 export const createTemperature = (formValues) => {
   return async (dispatch) => {
     const response = await api.post("/temperature/create", formValues);
-    // window.location.reload()    
+    window.location.reload()    
     
     dispatch({
       type: 'CREATE_TEMPERATURE_METRIX',
@@ -688,7 +688,7 @@ export const editTemperature = (id, formValues) => async dispatch => {
   const response = await api.put(`/temperature/update/${id}`, formValues);
 
   dispatch({ type: 'EDIT_TEMPERATURE_METRIX', payload: response.data });
-  // window.location.reload()    
+  window.location.reload()    
 };
 
 
@@ -698,5 +698,5 @@ export const deleteTemperature = id => async dispatch => {
   await api.delete(`/temperature/delete/${id}`);
 
   dispatch({ type: 'DELETE_TEMPERATURE_METRIX', payload: id });
-  // window.location.reload()    
+  window.location.reload()    
 };

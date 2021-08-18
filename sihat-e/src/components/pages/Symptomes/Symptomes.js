@@ -1,213 +1,32 @@
 import React, { Component } from "react";
+import { Link, activeClassName } from "react-router-dom";
 import { connect } from "react-redux";
+// import api from '../../../Apis/api';
+import Search from './Search'
+
+
 import {
-  logout,
-  createTension,
-  fetchTensionInfos,
-  editTension,
-  deleteTension,
-  fetchAboutInfos,
+    logout,
+  } from "../../../actions";
 
-} from "../../../../actions";
-import { Link } from "react-router-dom";
-import { Field, formValues, reduxForm } from "redux-form";
-import Modal from "../../Modals/Modal";
-import ModalUpdate from "../../Modals/ModalUpdate";
-import Loader from "../../../../helpers/Loader";
-class MetrixTension extends Component {
-  constructor() {
-    super();
-    this.state = {
-      show: false,
-      show2: false,
-      modalTitleEdit: "Modification de Tension",
-      modalTitle: "Ajouter votre Tension",
-    };
-    this.showModal = this.showModal.bind(this);
-    this.hideModal = this.hideModal.bind(this);
+  
 
-    this.showModalCreat = this.showModalCreat.bind(this);
-    this.hideModalCreat = this.hideModalCreat.bind(this);
-  }
+class Symptomes extends Component {
 
-  showModal = () => {
-    this.setState({ show2: true });
-  };
-
-  hideModal = () => {
-    this.setState({ show2: false });
-  };
-
-  showModalCreat = () => {
-    this.setState({ show: true });
-  };
-
-  hideModalCreat = () => {
-    this.setState({ show: false });
-  };
 
   componentDidMount() {
-    this.props.fetchTensionInfos();
-    this.props.fetchAboutInfos();
-
-    console.log(this.props);
   }
 
-  creatTension = (formValues) => {
-    this.props.createTension(formValues);
-  };
-
-  editTension = (id, formValues) => {
-    this.props.editTension(formValues);
-  };
   patientDashboarLogout = () => {
     this.props.logout();
   };
 
-  renderInput({
-    handleSubmit,
-    input,
-    value,
-    meta,
-    label,
-    placeholder,
-    name,
-    id,
-    type,
-    className,
-    initialValues,
-    span,
-  }) {
-    return (
-      <>
-        <div className="col-sm-6 col-xl-7 input-column">
-          <div className="form-row form-group">
-            <label className="active col-form-label d-xl-flex align-items-xl-start">
-              {label}
-            </label>
-            <div className="renderinputFlexing">
-              <input
-                {...input}
-                className={className}
-                autoComplete="none"
-                placeholder={placeholder}
-                onChange={input.onChange}
-                value={input.value}
-                name={name}
-                type={type}
-                id={id}
-              />{" "}
-              <span>{span}</span>
-            </div>
-          </div>
-        </div>
-      </>
-    );
-  }
 
-  renderList() {
-    if (!this.props.tensionData.tension_reducer.tension.historique) {
-      <Loader />;
-    } else if (this.props.tensionData.tension_reducer.recievedTensionData) {
-      // const id = this.props.tensionData.tailles_reducer.tailles.historique.id;
-      return this.props.tensionData.tension_reducer.tension.historique.map(
-        (thetensionData) => {
-          return (
-            <div key={thetensionData.id}>
-              <div
-                class="login-box-seperator"
-                id="login-box-seperator-left"
-              ></div>
-              <div id="taillemetricyourmetric">
-                <div>
-                  <p>
-                    <strong>
-                      Mon tension est de : {thetensionData.blood_pressure} bpm
-                    </strong>
-                  </p>
-                  <strong>
-                    <p>au : {thetensionData.date}</p>
-                  </strong>
 
-                  {/* {this.upd = (formValues) => {this.props.editTaille(thepoidsData.id, formValues)}} */}
-                  {/* Updtae */}
-                  {
-                    (this.editTension = (formValues) =>
-                      this.props.editTension(thetensionData.id, formValues))
-                  }
-
-                  <ModalUpdate
-                    edit={this.props.handleSubmit(this.editTension)}
-                    id={this.state.id}
-                    date={this.state.date}
-                    mesures={this.state.mesures}
-                    modalTitle={this.state.modalTitleEdit}
-                    show2={this.state.show2}
-                    handleClose={this.hideModal}
-                  >
-                    {/* children */}
-                    <strong>
-                      <p>Tension :</p>
-                    </strong>
-                    <Field
-                      className="form-control"
-                      name="blood_pressure"
-                      component={this.renderInput}
-                      label="Modifier votre tension :"
-                      placeholder="Votre tension"
-                      type="text"
-                      span="bpm"
-                    />
-                    Tension métrique date de: {thetensionData.date}
-                  </ModalUpdate>
-                </div>
-
-                <div>
-                  <div className="dropdown">
-                    <button
-                      role="button"
-                      type="button"
-                      class="btn"
-                      data-toggle="dropdown"
-                    >
-                      <i className="far fa-edit"></i>
-                    </button>
-
-                    <div
-                      class="dropdown-menu"
-                      aria-labelledby="dropdownMenuButton"
-                    >
-                      {
-                        (this.del = () =>
-                          this.props.deleteTension(thetensionData.id))
-                      }
-                      <Link class="dropdown-item" onClick={this.showModal}>
-                        Modifier
-                      </Link>
-                      <Link class="dropdown-item" onClick={this.del}>
-                        Supprimer
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          );
-        }
-      );
-    } else {
-    }
-  }
 
   render() {
-    return this.props.tensionData.tension_reducer.loading ? (
-      <Loader />
-    ) : this.props.tensionData.tension_reducer.error ? (
-      <h2>{this.props.tensionData.tension_reducer.error}</h2>
-    ) : (
-      <>
-        {/* HERE I RENDER THE SIDEBAR/ NAVBAR ... */}
-        <div>
+    return (
+        <>
           <div className="row" id="navRow">
             <div
               className="col-md-6 col-xl-2 offset-xl-0"
@@ -244,7 +63,10 @@ class MetrixTension extends Component {
                     <div className="category-content">
                       <ul id="fruits-nav" className="nav flex-column">
                         <li className="nav-item1">
-                          <Link to="/dashboardPatient" className="nav-link ">
+                          <Link
+                            to="dashboardPatient"
+                            className="nav-link active"
+                          >
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="active fa fa-user-circle-o fa-2x d-xl-flex align-items-xl-center "
@@ -256,8 +78,12 @@ class MetrixTension extends Component {
                             </div>
                           </Link>
                         </li>
-                        <li className="nav-item2 ">
-                          <Link to="/ContactInformation" className="nav-link ">
+                        <li className="nav-item2">
+                          <Link
+                            to="/contactinformation"
+                            className="nav-link"
+                            activeClassName="active"
+                          >
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fa fa-vcard d-xl-flex align-items-xl-center d-xl-flex align-items-xl-center fa-2x "
@@ -270,7 +96,7 @@ class MetrixTension extends Component {
                           </Link>
                         </li>
                         <li className="nav-item3">
-                          <Link to="/metrix" className="nav-link active">
+                          <Link to="/Metrix" className="nav-link">
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fa fa-bar-chart-o d-xl-flex align-items-xl-center fa-2x "
@@ -399,6 +225,20 @@ class MetrixTension extends Component {
                             </div>
                           </Link>
                         </li>
+                        <li className="nav-item11">
+                          <Link to="/upload-image" className="nav-link">
+                            <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
+                              <i
+                                className="noactive fas fa-folder-open d-xl-flex align-items-xl-center fa-2x "
+                                aria-hidden="true" style={{color: '#488b76'}}
+                              />
+                              <h5 className="lisidebarnoactive d-flex d-xl-flex flex-column justify-content-xl-center align-items-xl-center" 
+                              >
+                                Mon dossier medical.
+                              </h5>
+                            </div>
+                          </Link>
+                        </li>
                       </ul>
                     </div>
                   </div>
@@ -419,14 +259,14 @@ class MetrixTension extends Component {
                     <div className="container-fluid">
                       <ul className="navbar-nav flex-nowrap ml-auto">
                         <li className="nav-item dropdown d-sm-none no-arrow">
-                          <a
+                          <Link
                             aria-expanded="false"
                             data-toggle="dropdown"
                             className="dropdown-toggle nav-link"
-                            href="#"
+                            to="#"
                           >
-                            <i className="fas fa-search" />{" "}
-                          </a>
+                            <i className="fas fa-search" />
+                          </Link>
                           <div
                             className="dropdown-menu dropdown-menu-right p-3 animated--grow-in"
                             aria-labelledby="searchDropdown"
@@ -452,22 +292,22 @@ class MetrixTension extends Component {
                         </li>
                         <li className="nav-item dropdown no-arrow mx-1">
                           <div className="nav-item dropdown no-arrow">
-                            <a
+                            <Link
                               aria-expanded="false"
                               data-toggle="dropdown"
                               className="dropdown-toggle nav-link"
-                              href="#"
+                              to="#"
                             >
                               <span className="badge badge-danger badge-counter">
                                 3+
                               </span>
                               <i className="fas fa-bell fa-fw" />
-                            </a>
+                            </Link>
                             <div className="dropdown-menu dropdown-menu-right dropdown-list animated--grow-in">
                               <h6 className="dropdown-header">alerts center</h6>
-                              <a
+                              <Link
                                 className="dropdown-item d-flex align-items-center"
-                                href="#"
+                                to="#"
                               >
                                 <div className="mr-3">
                                   <div className="bg-primary icon-circle">
@@ -483,10 +323,10 @@ class MetrixTension extends Component {
                                     être téléchargé !
                                   </p>
                                 </div>
-                              </a>
-                              <a
+                              </Link>
+                              <Link
                                 className="dropdown-item d-flex align-items-center"
-                                href="#"
+                                to="#"
                               >
                                 <div className="mr-3">
                                   <div className="bg-success icon-circle">
@@ -502,10 +342,10 @@ class MetrixTension extends Component {
                                     médical.
                                   </p>
                                 </div>
-                              </a>
-                              <a
+                              </Link>
+                              <Link
                                 className="dropdown-item d-flex align-items-center"
-                                href="#"
+                                to="#"
                               >
                                 <div className="mr-3">
                                   <div className="bg-warning icon-circle">
@@ -518,39 +358,40 @@ class MetrixTension extends Component {
                                   </span>
                                   <p>Votre profil est désormais à jour.</p>
                                 </div>
-                              </a>
-                              <a
+                              </Link>
+                              <Link
                                 className="dropdown-item text-center small text-gray-500"
-                                href="#"
+                                to="#"
                               >
                                 Show All Alerts
-                              </a>
+                              </Link>
                             </div>
                           </div>
                         </li>
+
                         <li className="nav-item dropdown no-arrow mx-1">
                           <div className="nav-item dropdown no-arrow">
-                            <a
+                            <Link
                               aria-expanded="false"
                               data-toggle="dropdown"
                               className="dropdown-toggle nav-link"
-                              href="#"
+                              to="#"
                             >
                               <span className="badge badge-danger badge-counter">
                                 7
                               </span>
                               <i className="fas fa-envelope fa-fw" />
-                            </a>
+                            </Link>
                             <div className="dropdown-menu dropdown-menu-right dropdown-list animated--grow-in">
                               <h6 className="dropdown-header">alerts center</h6>
-                              <a
+                              <Link
                                 className="dropdown-item d-flex align-items-center"
-                                href="#"
+                                to="#"
                               >
                                 <div className="dropdown-list-image mr-3">
                                   <img
                                     className="rounded-circle"
-                                    src="avatars/Linkvatar4.jpeg"
+                                    src="avatars/avatar4.jpeg"
                                   />
                                   <div className="bg-success status-indicator" />
                                 </div>
@@ -566,15 +407,15 @@ class MetrixTension extends Component {
                                     BOUBOUH Ayman - 58m
                                   </p>
                                 </div>
-                              </a>
-                              <a
+                              </Link>
+                              <Link
                                 className="dropdown-item d-flex align-items-center"
-                                href="#"
+                                to="#"
                               >
                                 <div className="dropdown-list-image mr-3">
                                   <img
                                     className="rounded-circle"
-                                    src="avatars/Linkvatar2.jpeg"
+                                    src="avatars/avatar2.jpeg"
                                   />
                                   <div className="status-indicator" />
                                 </div>
@@ -589,15 +430,15 @@ class MetrixTension extends Component {
                                     Dr. BENISS Meryem - 1d
                                   </p>
                                 </div>
-                              </a>
-                              <a
+                              </Link>
+                              <Link
                                 className="dropdown-item d-flex align-items-center"
-                                href="#"
+                                to="#"
                               >
                                 <div className="dropdown-list-image mr-3">
                                   <img
                                     className="rounded-circle"
-                                    src="avatars/Linkvatar3.jpeg"
+                                    src="avatars/avatar3.jpeg"
                                   />
                                   <div className="bg-warning status-indicator" />
                                 </div>
@@ -612,15 +453,15 @@ class MetrixTension extends Component {
                                     CNSS - 2d
                                   </p>
                                 </div>
-                              </a>
-                              <a
+                              </Link>
+                              <Link
                                 className="dropdown-item d-flex align-items-center"
-                                href="#"
+                                to="#"
                               >
                                 <div className="dropdown-list-image mr-3">
                                   <img
                                     className="rounded-circle"
-                                    src="avatars/Linkvatar5.jpeg"
+                                    src="avatars/avatar5.jpeg"
                                   />
                                   <div className="bg-success status-indicator" />
                                 </div>
@@ -635,13 +476,13 @@ class MetrixTension extends Component {
                                     Sihat-e· 2w
                                   </p>
                                 </div>
-                              </a>
-                              <a
+                              </Link>
+                              <Link
                                 className="dropdown-item text-center small text-gray-500"
-                                href="#"
+                                to="#"
                               >
                                 Show All Alerts
-                              </a>
+                              </Link>
                             </div>
                           </div>
                           <div
@@ -652,190 +493,126 @@ class MetrixTension extends Component {
                         <div className="d-none d-sm-block topbar-divider" />
                         <li className="nav-item dropdown no-arrow">
                           <div className="nav-item dropdown no-arrow">
-                            <a
+                            <Link
                               aria-expanded="false"
                               data-toggle="dropdown"
                               className="dropdown-toggle nav-link"
-                              href="#"
+                              to="#"
                             >
-                              <span className="d-none d-lg-inline mr-2 text-gray-600 small">
-                                {!this.props.patientData.about_reducer.patients[0]
+                              <span className="d-none d-lg-inline mr-2 text-gray-600 ">
+                                {!this.props.patientData.about_reducer
+                                  .patients[0]
                                   ? "loading"
-                                  : this.props.patientData.about_reducer.patients[0]
-                                      .email === undefined
+                                  : this.props.patientData.about_reducer
+                                      .patients[0].email === undefined
                                   ? " "
-                                  : this.props.patientData.about_reducer.patients[0].email}
+                                  : this.props.patientData.about_reducer
+                                      .patients[0].email}
                               </span>
                               <img
                                 className="border rounded-circle img-profile"
-                                src="avatars/Linkvatar1.jpeg"
+                                src="avatars/avatar1.jpeg"
                               />
-                            </a>
+                            </Link>
                             <div className="dropdown-menu shadow dropdown-menu-right animated--grow-in">
-                              <a className="dropdown-item" href="#">
+                              <Link className="dropdown-item" to="#">
                                 <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400" />
                                 &nbsp;Profile
-                              </a>
-                              <a className="dropdown-item" href="#">
+                              </Link>
+                              <Link className="dropdown-item" to="#">
                                 <i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400" />
                                 &nbsp;Settings
-                              </a>
-                              <a className="dropdown-item" href="#">
+                              </Link>
+                              <Link className="dropdown-item" to="#">
                                 <i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400" />
                                 &nbsp;Activity log
-                              </a>
+                              </Link>
                               <div className="dropdown-divider" />
-                              <a
+                              <div
                                 className="dropdown-item"
-                                href="#"
+                                
                                 onClick={this.patientDashboarLogout}
                               >
                                 <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400" />
                                 &nbsp;Logout
-                              </a>
+                              </div>
                             </div>
                           </div>
                         </li>
                       </ul>
                     </div>
                   </nav>
+                  
                 </div>
+                
               </div>
+              <div className="d-xl-flex justify-content-xl-center align-items-xl-center">
+          <div id="formCardContainer">
+            <div>
+              {/* Start Form */}
+              <div className="row register-form">
+                <div className="col-md-8 col-xl-10 offset-md-2 offset-xl-0">
+                  <form className="custom-form" method='post' >
+                    <h1 className="d-xl-flex align-items-xl-start">Conditions et symptômes
+</h1>
 
-              {/*  THE IMPORTANT STUFF TO RENDER */}
-              <div
-                id="modal"
-                className="d-xl-flex justify-content-xl-center align-items-xl-center"
-              >
-                <div id="formCardContainer">
-                  <div>
-                    <div className="row register-form">
-                      <div className="col-md-8 col-xl-10 offset-md-2 offset-xl-0">
-                        <form
-                          id="metrixForm"
-                          className="custom-form"
-                          method="post"
-                        >
-                          <div className="d-xl-flex align-items-xl-start">
-                            <Link to="/metrix">
-                              <i class="fas fa-angle-left fa-2x"></i>
-                            </Link>
-
-                            <h5 className="retourMetrix">Tension.</h5>
-                          </div>
-
-                          {/* End Radios */}
-                        </form>
+                    <div className="form-row form-group">
+                      <div className="col-sm-6 col-xl-7 input-column">
+                       
                       </div>
                     </div>
-                    {/*  Create  */}
-                    <div className="metrixWrapper">
-                      <Modal
-                        submit={this.props.handleSubmit(this.creatTension)}
-                        modalTitle={this.state.modalTitle}
-                        show={this.state.show}
-                        handleClose={this.hideModalCreat}
-                      >
-                        {/* children */}
-                        <strong>
-                          <p>Tension :</p>
-                        </strong>
-                        <Field
-                          className="form-control"
-                          name="blood_pressure"
-                          component={this.renderInput}
-                          label="Votre Tension :"
-                          placeholder="Ajouter votre Tension en bpm"
-                          type="text"
-                          span="bpm"
-                        />
-                        <strong>
-                          <p>Date de ce Tension :</p>
-                        </strong>
-                        <Field
-                          className="form-control"
-                          name="date"
-                          component={this.renderInput}
-                          label="La date de votre mesure :"
-                          type="date"
-                        />
 
-                        {/* <strong><p>Date de cette Mesure :</p></strong> */}
-                      </Modal>
-
-                      <Link onClick={this.showModalCreat} className="fasflex">
-                        <p>Ajouter Votre Tension</p>
-                        <i className="fas fa-plus fa-2x"></i>
-                      </Link>
-                      <div id="taillemetricyourmetric">
-                        <div>
-                          <h4>Votre Tension le plus récent :</h4>
-                        </div>
-
-                        <div>
-                          <h3>
-                            <strong>
-                              {!this.props.tensionData.tension_reducer
-                                .recievedTensionData
-                                ? " _ "
-                                : this.props.tensionData.tension_reducer.tension
-                                    .last_blood_pressure === undefined
-                                ? " _ "
-                                : ` ${this.props.tensionData.tension_reducer.tension.last_blood_pressure.blood_pressure} bpm `}
-                            </strong>
-                          </h3>
-                          <p>
-                            {!this.props.tensionData.tension_reducer
-                              .recievedTensionData
-                              ? " _ "
-                              : this.props.tensionData.tension_reducer.tension
-                                  .last_blood_pressure === undefined
-                              ? " _ "
-                              : ` ${this.props.tensionData.tension_reducer.tension.last_blood_pressure.date}  `}
-                          </p>
-                        </div>
+                    <div className="form-row form-group">
+                      <div className="col-sm-6 col-xl-7 input-column">
+                        
                       </div>
-                      <div className="flexedHistorique">
-                        <h5>Historique :</h5>
-                      </div>
-                      {this.renderList()}
                     </div>
-                  </div>
+
+                    {/* date naissance */}
+                    <div className="form-row form-group">
+                      <div className="col-sm-6 col-xl-7 input-column">
+                        
+                      </div>
+                    </div>
+
+                    <Search />
+
+
+                  </form>
                 </div>
               </div>
-
-              <div></div>
             </div>
           </div>
         </div>
-        {/* render end */}
+              </div>
+              </div>
+
+
+
+
+       
+
       </>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    tensionData: state,
-    patientData: state,
 
+const mapStateToProps = (state, props) => {
+    return {
+      patientData: state,
+    };
   };
-};
-
-const mapDispatchToProps = (dispatch, formValues, id) => {
-  return {
-    fetchTensionInfos: () => dispatch(fetchTensionInfos()),
-    createTension: (formValues) => dispatch(createTension(formValues)),
-    editTension: (formValues, id) => dispatch(editTension(formValues, id)),
-    deleteTension: (id) => dispatch(deleteTension(id)),
-    fetchAboutInfos: () => dispatch(fetchAboutInfos()),
-    logout: () => dispatch(logout()),
+  
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      logout: () => dispatch(logout()),
+  
+    };
   };
-};
-
-MetrixTension = connect(mapStateToProps, mapDispatchToProps)(MetrixTension);
-
-export default reduxForm({
-  form: "MetrixTensionHistoryandAdd", // a unique name for this form
-  enableReinitialize: true,
-})(MetrixTension);
+  
+  export default Symptomes = connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Symptomes);
+  

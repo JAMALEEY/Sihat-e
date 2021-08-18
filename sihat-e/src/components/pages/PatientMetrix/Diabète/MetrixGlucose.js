@@ -122,7 +122,7 @@ class MetrixGlucose extends Component {
               <div id="taillemetricyourmetric">
                 <div>
                   <p>
-                    <strong>Mon Glycèmie est de : {theglucoseData.mg}</strong>
+                    <strong>Mon Glycèmie est de : {theglucoseData.mg} mg</strong>
                   </p>
                   <strong>
                     <p>au : {theglucoseData.date}</p>
@@ -770,7 +770,7 @@ class MetrixGlucose extends Component {
                                 : this.props.glucoseData.glucose_reducer.glucose
                                     .last_Glucose === undefined
                                 ? " _ "
-                                : ` ${this.props.glucoseData.glucose_reducer.glucose.last_Glucose.mg} bpm `}
+                                : ` ${this.props.glucoseData.glucose_reducer.glucose.last_Glucose.mg} mg `}
                             </strong>
                           </h3>
                           <p>

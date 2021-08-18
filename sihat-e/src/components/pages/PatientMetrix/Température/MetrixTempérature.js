@@ -774,21 +774,17 @@ class MetrixTemperature extends Component {
                         <div>
                           <h3>
                             <strong>
-                              {!this.props.temperatureData.temperature_reducer
-                                .recievedTemperatureData
+                              {!this.props.temperatureData.temperature_reducer.recievedTemperatureData
                                 ? " _ "
-                                : this.props.temperatureData.temperature_reducer
-                                    .temperature.last_Temperature === undefined
+                                : this.props.temperatureData.temperature_reducer.temperature.last_Temperature === undefined
                                 ? " _ "
                                 : ` ${this.props.temperatureData.temperature_reducer.temperature.last_Temperature.temperature}  °C `}
                             </strong>
                           </h3>
                           <p>
-                            {!this.props.temperatureData.temperature_reducer
-                              .recievedTemperatureData
+                            {!this.props.temperatureData.temperature_reducer.recievedTemperatureData
                               ? " _ "
-                              : this.props.temperatureData.temperature_reducer
-                                  .temperature.last_Temperature === undefined
+                              : this.props.temperatureData.temperature_reducer.temperature.last_Temperature === undefined
                               ? " _ "
                               : ` ${this.props.temperatureData.temperature_reducer.temperature.last_Temperature.date}  `}
                           </p>
