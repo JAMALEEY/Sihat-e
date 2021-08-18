@@ -73,13 +73,15 @@ class FormContactInformation extends Component {
  
 
   onSubmit = (formValues) => {
-    console.log(formValues)
+
 
     // alert(this.props.patientData.about_reducer.patients)
     if (typeof this.props.patientData.about_reducer.patients === 'undefined' ) {
       this.props.createAbout(formValues);
     } else {
+      console.log(formValues)
       this.props.editAboutInfos(formValues);
+      
     }
   }; 
 
@@ -137,37 +139,23 @@ class FormContactInformation extends Component {
                       </div>
                     </div>
 
-                    {/* date naissance */}
                     <div className="form-row form-group">
                       <div  className="col-sm-6 col-xl-7 input-column">
-                        {/* <Field id='emailDisabled'
-                          name="email"
-                          label="Votre E-mail est:"
-                          component={this.renderInput}
-                          className="form-control"
-                          
-                          disabled={this.pristine}
-                        //   input={{ disabled: submitting, }}
-                        ></Field> */}
                         <div id="fetchemailabout">
                         Votre E-mail est :
                     <div id='emailfetched'>
                     <p>
                       { !this.props.patientData.about_reducer.patients[0] ? 'loading' :  this.props.patientData.about_reducer.patients[0].email === undefined ? ' ' :
                       this.props.patientData.about_reducer.patients[0].email}
-                      
-                      
-                                {/* {this.props.patientData.about_reducer.patients.email} */}
-                                {/* {this.props.patientData.about_reducer.patients[0].email} */}
-                            </p>
+
+                    </p>
+
                     </div>
                             
                         </div>
                       </div>
                     </div>
-                    {/* end date naissance */}
 
-                    {/* adresse */}
 
                     <div className="form-row form-group">
                       <div className="col-sm-6 col-xl-7 input-column">

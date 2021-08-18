@@ -877,7 +877,7 @@ const mapDispatchToProps = (dispatch, formValues, id) => {
   };
 };
 
-MetrixTaille = connect(mapStateToProps, mapDispatchToProps)(MetrixTaille);
+ MetrixTaille = connect(mapStateToProps, mapDispatchToProps)(MetrixTaille);
 
 export default reduxForm({
   form: "MetrixTailleHistoryandAdd", // a unique name for this form

@@ -193,7 +193,9 @@ class FormDashboardPatient extends Component {
                               >
                                 Enregistrer
                               </button>
+                              
                             </div>
+                            
                           </div>
                         </div>
                       </div>

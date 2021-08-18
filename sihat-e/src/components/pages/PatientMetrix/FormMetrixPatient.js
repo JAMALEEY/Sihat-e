@@ -212,7 +212,7 @@ defaultValue,defaultChecked,checked,})
     <div className='d-flex flex-column'>
             <p className='ml-auto'>
               {/* SI LA DATA EST FETCHER ON DOIT ETRE SUR QU'ON A LES LAST RECORDS SI OUI ON AFFICHE SINON ON AFFICHE MSG AUCUN RECORD */}
-            {!this.props.glucoseData.glucose_reducer.recievedGlucoseData ? "Chargement ..." : this.props.glucoseData.glucose_reducer.glucose.last_Glucose === undefined ? " _ ": ` ${this.props.glucoseData.glucose_reducer.glucose.last_Glucose.mg} °C `} 
+            {!this.props.glucoseData.glucose_reducer.recievedGlucoseData ? "Chargement ..." : this.props.glucoseData.glucose_reducer.glucose.last_Glucose === undefined ? " _ ": ` ${this.props.glucoseData.glucose_reducer.glucose.last_Glucose.mg} mg `} 
                 
             </p>
             <p>
@@ -276,15 +276,10 @@ const mapDispatchToProps = (dispatch, formValues) => {
   };
 };
 
-FormMetrixPatient = connect(
+export default FormMetrixPatient = connect(
     mapStateToProps,
     mapDispatchToProps
 )(FormMetrixPatient);
-
-export default reduxForm({
-    // form: 'MetrixForm', // a unique name for this form
-    enableReinitialize: true
-})(FormMetrixPatient);
 
 
 

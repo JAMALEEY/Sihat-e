@@ -1,213 +1,116 @@
 import React, { Component } from "react";
+import Images from "./Images";
+import api from '../../../../Apis/api';
+import { Link, activeClassName } from "react-router-dom";
 import { connect } from "react-redux";
 import {
-  logout,
-  createTension,
-  fetchTensionInfos,
-  editTension,
-  deleteTension,
-  fetchAboutInfos,
+    logout,
+    editAboutInfos,
+    fetchAboutInfos,
+    createAbout,
+  } from "../../../../actions";
+  import { Field, Form, formValueSelector, reduxForm, touch } from "redux-form";
+  import FormDashboardPatient from "../FormDashboardPatient";
+  
 
-} from "../../../../actions";
-import { Link } from "react-router-dom";
-import { Field, formValues, reduxForm } from "redux-form";
-import Modal from "../../Modals/Modal";
-import ModalUpdate from "../../Modals/ModalUpdate";
-import Loader from "../../../../helpers/Loader";
-class MetrixTension extends Component {
-  constructor() {
-    super();
+class ImageUpload extends Component {
+  constructor(props) {
+    super(props);
+
     this.state = {
-      show: false,
-      show2: false,
-      modalTitleEdit: "Modification de Tension",
-      modalTitle: "Ajouter votre Tension",
+      image: "",
+      responseMsg: {
+        status: "",
+        message: "",
+        error: "",
+      },
     };
-    this.showModal = this.showModal.bind(this);
-    this.hideModal = this.hideModal.bind(this);
-
-    this.showModalCreat = this.showModalCreat.bind(this);
-    this.hideModalCreat = this.hideModalCreat.bind(this);
   }
-
-  showModal = () => {
-    this.setState({ show2: true });
-  };
-
-  hideModal = () => {
-    this.setState({ show2: false });
-  };
-
-  showModalCreat = () => {
-    this.setState({ show: true });
-  };
-
-  hideModalCreat = () => {
-    this.setState({ show: false });
-  };
 
   componentDidMount() {
-    this.props.fetchTensionInfos();
     this.props.fetchAboutInfos();
-
-    console.log(this.props);
   }
 
-  creatTension = (formValues) => {
-    this.props.createTension(formValues);
-  };
-
-  editTension = (id, formValues) => {
-    this.props.editTension(formValues);
-  };
   patientDashboarLogout = () => {
     this.props.logout();
   };
 
-  renderInput({
-    handleSubmit,
-    input,
-    value,
-    meta,
-    label,
-    placeholder,
-    name,
-    id,
-    type,
-    className,
-    initialValues,
-    span,
-  }) {
-    return (
-      <>
-        <div className="col-sm-6 col-xl-7 input-column">
-          <div className="form-row form-group">
-            <label className="active col-form-label d-xl-flex align-items-xl-start">
-              {label}
-            </label>
-            <div className="renderinputFlexing">
-              <input
-                {...input}
-                className={className}
-                autoComplete="none"
-                placeholder={placeholder}
-                onChange={input.onChange}
-                value={input.value}
-                name={name}
-                type={type}
-                id={id}
-              />{" "}
-              <span>{span}</span>
-            </div>
-          </div>
-        </div>
-      </>
-    );
-  }
 
-  renderList() {
-    if (!this.props.tensionData.tension_reducer.tension.historique) {
-      <Loader />;
-    } else if (this.props.tensionData.tension_reducer.recievedTensionData) {
-      // const id = this.props.tensionData.tailles_reducer.tailles.historique.id;
-      return this.props.tensionData.tension_reducer.tension.historique.map(
-        (thetensionData) => {
-          return (
-            <div key={thetensionData.id}>
-              <div
-                class="login-box-seperator"
-                id="login-box-seperator-left"
-              ></div>
-              <div id="taillemetricyourmetric">
-                <div>
-                  <p>
-                    <strong>
-                      Mon tension est de : {thetensionData.blood_pressure} bpm
-                    </strong>
-                  </p>
-                  <strong>
-                    <p>au : {thetensionData.date}</p>
-                  </strong>
 
-                  {/* {this.upd = (formValues) => {this.props.editTaille(thepoidsData.id, formValues)}} */}
-                  {/* Updtae */}
-                  {
-                    (this.editTension = (formValues) =>
-                      this.props.editTension(thetensionData.id, formValues))
-                  }
+  // image onchange hander
+  handleChange = (e) => {
+    const imagesArray = [];
+    let isValid = "";
 
-                  <ModalUpdate
-                    edit={this.props.handleSubmit(this.editTension)}
-                    id={this.state.id}
-                    date={this.state.date}
-                    mesures={this.state.mesures}
-                    modalTitle={this.state.modalTitleEdit}
-                    show2={this.state.show2}
-                    handleClose={this.hideModal}
-                  >
-                    {/* children */}
-                    <strong>
-                      <p>Tension :</p>
-                    </strong>
-                    <Field
-                      className="form-control"
-                      name="blood_pressure"
-                      component={this.renderInput}
-                      label="Modifier votre tension :"
-                      placeholder="Votre tension"
-                      type="text"
-                      span="bpm"
-                    />
-                    Tension métrique date de: {thetensionData.date}
-                  </ModalUpdate>
-                </div>
-
-                <div>
-                  <div className="dropdown">
-                    <button
-                      role="button"
-                      type="button"
-                      class="btn"
-                      data-toggle="dropdown"
-                    >
-                      <i className="far fa-edit"></i>
-                    </button>
-
-                    <div
-                      class="dropdown-menu"
-                      aria-labelledby="dropdownMenuButton"
-                    >
-                      {
-                        (this.del = () =>
-                          this.props.deleteTension(thetensionData.id))
-                      }
-                      <Link class="dropdown-item" onClick={this.showModal}>
-                        Modifier
-                      </Link>
-                      <Link class="dropdown-item" onClick={this.del}>
-                        Supprimer
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          );
-        }
-      );
-    } else {
+    for (let i = 0; i < e.target.files.length; i++) {
+      isValid = this.fileValidate(e.target.files[i]);
+      imagesArray.push(e.target.files[i]);
     }
-  }
+    this.setState({
+      image: imagesArray,
+    });
+  };
+
+  // submit handler
+  submitHandler = (e) => {
+    e.preventDefault();
+    const data = new FormData();
+    for (let i = 0; i < this.state.image.length; i++) {
+      data.append("images[]", this.state.image[i]);
+    }
+
+    api.post("http://localhost:8000/api/images", data)
+      .then((response) => {
+        if (response.status === 200) {
+          this.setState({
+            responseMsg: {
+              status: response.data.status,
+              message: response.data.message,
+            },
+          });
+          setTimeout(() => {
+            this.setState({
+              image: "",
+              responseMsg: "",
+            });
+          }, 100000);
+
+          document.querySelector("#imageForm").reset();
+          // getting uploaded images
+          this.refs.child.getImages();
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  // file validation
+  fileValidate = (file) => {
+    if (
+      file.type === "image/png" ||
+      file.type === "image/jpg" ||
+      file.type === "image/jpeg"
+    ) {
+      this.setState({
+        responseMsg: {
+          error: "",
+        },
+      });
+      return true;
+    } else {
+      this.setState({
+        responseMsg: {
+          error: "File type allowed only jpg, png, jpeg",
+        },
+      });
+      return false;
+    }
+  };
 
   render() {
-    return this.props.tensionData.tension_reducer.loading ? (
-      <Loader />
-    ) : this.props.tensionData.tension_reducer.error ? (
-      <h2>{this.props.tensionData.tension_reducer.error}</h2>
-    ) : (
-      <>
-        {/* HERE I RENDER THE SIDEBAR/ NAVBAR ... */}
-        <div>
+    return (
+        <>
           <div className="row" id="navRow">
             <div
               className="col-md-6 col-xl-2 offset-xl-0"
@@ -244,7 +147,10 @@ class MetrixTension extends Component {
                     <div className="category-content">
                       <ul id="fruits-nav" className="nav flex-column">
                         <li className="nav-item1">
-                          <Link to="/dashboardPatient" className="nav-link ">
+                          <Link
+                            to="dashboardPatient"
+                            className="nav-link active"
+                          >
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="active fa fa-user-circle-o fa-2x d-xl-flex align-items-xl-center "
@@ -256,8 +162,12 @@ class MetrixTension extends Component {
                             </div>
                           </Link>
                         </li>
-                        <li className="nav-item2 ">
-                          <Link to="/ContactInformation" className="nav-link ">
+                        <li className="nav-item2">
+                          <Link
+                            to="/contactinformation"
+                            className="nav-link"
+                            activeClassName="active"
+                          >
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fa fa-vcard d-xl-flex align-items-xl-center d-xl-flex align-items-xl-center fa-2x "
@@ -270,7 +180,7 @@ class MetrixTension extends Component {
                           </Link>
                         </li>
                         <li className="nav-item3">
-                          <Link to="/metrix" className="nav-link active">
+                          <Link to="/Metrix" className="nav-link">
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fa fa-bar-chart-o d-xl-flex align-items-xl-center fa-2x "
@@ -399,6 +309,20 @@ class MetrixTension extends Component {
                             </div>
                           </Link>
                         </li>
+                        <li className="nav-item11">
+                          <Link to="/patientUpload" className="nav-link">
+                            <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
+                              <i
+                                className="noactive fas fa-folder-open d-xl-flex align-items-xl-center fa-2x "
+                                aria-hidden="true" style={{color: '#488b76'}}
+                              />
+                              <h5 className="lisidebarnoactive d-flex d-xl-flex flex-column justify-content-xl-center align-items-xl-center" 
+                              >
+                                Mon dossier medical.
+                              </h5>
+                            </div>
+                          </Link>
+                        </li>
                       </ul>
                     </div>
                   </div>
@@ -419,14 +343,14 @@ class MetrixTension extends Component {
                     <div className="container-fluid">
                       <ul className="navbar-nav flex-nowrap ml-auto">
                         <li className="nav-item dropdown d-sm-none no-arrow">
-                          <a
+                          <Link
                             aria-expanded="false"
                             data-toggle="dropdown"
                             className="dropdown-toggle nav-link"
-                            href="#"
+                            to="#"
                           >
-                            <i className="fas fa-search" />{" "}
-                          </a>
+                            <i className="fas fa-search" />
+                          </Link>
                           <div
                             className="dropdown-menu dropdown-menu-right p-3 animated--grow-in"
                             aria-labelledby="searchDropdown"
@@ -452,22 +376,22 @@ class MetrixTension extends Component {
                         </li>
                         <li className="nav-item dropdown no-arrow mx-1">
                           <div className="nav-item dropdown no-arrow">
-                            <a
+                            <Link
                               aria-expanded="false"
                               data-toggle="dropdown"
                               className="dropdown-toggle nav-link"
-                              href="#"
+                              to="#"
                             >
                               <span className="badge badge-danger badge-counter">
                                 3+
                               </span>
                               <i className="fas fa-bell fa-fw" />
-                            </a>
+                            </Link>
                             <div className="dropdown-menu dropdown-menu-right dropdown-list animated--grow-in">
                               <h6 className="dropdown-header">alerts center</h6>
-                              <a
+                              <Link
                                 className="dropdown-item d-flex align-items-center"
-                                href="#"
+                                to="#"
                               >
                                 <div className="mr-3">
                                   <div className="bg-primary icon-circle">
@@ -483,10 +407,10 @@ class MetrixTension extends Component {
                                     être téléchargé !
                                   </p>
                                 </div>
-                              </a>
-                              <a
+                              </Link>
+                              <Link
                                 className="dropdown-item d-flex align-items-center"
-                                href="#"
+                                to="#"
                               >
                                 <div className="mr-3">
                                   <div className="bg-success icon-circle">
@@ -502,10 +426,10 @@ class MetrixTension extends Component {
                                     médical.
                                   </p>
                                 </div>
-                              </a>
-                              <a
+                              </Link>
+                              <Link
                                 className="dropdown-item d-flex align-items-center"
-                                href="#"
+                                to="#"
                               >
                                 <div className="mr-3">
                                   <div className="bg-warning icon-circle">
@@ -518,39 +442,40 @@ class MetrixTension extends Component {
                                   </span>
                                   <p>Votre profil est désormais à jour.</p>
                                 </div>
-                              </a>
-                              <a
+                              </Link>
+                              <Link
                                 className="dropdown-item text-center small text-gray-500"
-                                href="#"
+                                to="#"
                               >
                                 Show All Alerts
-                              </a>
+                              </Link>
                             </div>
                           </div>
                         </li>
+
                         <li className="nav-item dropdown no-arrow mx-1">
                           <div className="nav-item dropdown no-arrow">
-                            <a
+                            <Link
                               aria-expanded="false"
                               data-toggle="dropdown"
                               className="dropdown-toggle nav-link"
-                              href="#"
+                              to="#"
                             >
                               <span className="badge badge-danger badge-counter">
                                 7
                               </span>
                               <i className="fas fa-envelope fa-fw" />
-                            </a>
+                            </Link>
                             <div className="dropdown-menu dropdown-menu-right dropdown-list animated--grow-in">
                               <h6 className="dropdown-header">alerts center</h6>
-                              <a
+                              <Link
                                 className="dropdown-item d-flex align-items-center"
-                                href="#"
+                                to="#"
                               >
                                 <div className="dropdown-list-image mr-3">
                                   <img
                                     className="rounded-circle"
-                                    src="avatars/Linkvatar4.jpeg"
+                                    src="avatars/avatar4.jpeg"
                                   />
                                   <div className="bg-success status-indicator" />
                                 </div>
@@ -566,15 +491,15 @@ class MetrixTension extends Component {
                                     BOUBOUH Ayman - 58m
                                   </p>
                                 </div>
-                              </a>
-                              <a
+                              </Link>
+                              <Link
                                 className="dropdown-item d-flex align-items-center"
-                                href="#"
+                                to="#"
                               >
                                 <div className="dropdown-list-image mr-3">
                                   <img
                                     className="rounded-circle"
-                                    src="avatars/Linkvatar2.jpeg"
+                                    src="avatars/avatar2.jpeg"
                                   />
                                   <div className="status-indicator" />
                                 </div>
@@ -589,15 +514,15 @@ class MetrixTension extends Component {
                                     Dr. BENISS Meryem - 1d
                                   </p>
                                 </div>
-                              </a>
-                              <a
+                              </Link>
+                              <Link
                                 className="dropdown-item d-flex align-items-center"
-                                href="#"
+                                to="#"
                               >
                                 <div className="dropdown-list-image mr-3">
                                   <img
                                     className="rounded-circle"
-                                    src="avatars/Linkvatar3.jpeg"
+                                    src="avatars/avatar3.jpeg"
                                   />
                                   <div className="bg-warning status-indicator" />
                                 </div>
@@ -612,15 +537,15 @@ class MetrixTension extends Component {
                                     CNSS - 2d
                                   </p>
                                 </div>
-                              </a>
-                              <a
+                              </Link>
+                              <Link
                                 className="dropdown-item d-flex align-items-center"
-                                href="#"
+                                to="#"
                               >
                                 <div className="dropdown-list-image mr-3">
                                   <img
                                     className="rounded-circle"
-                                    src="avatars/Linkvatar5.jpeg"
+                                    src="avatars/avatar5.jpeg"
                                   />
                                   <div className="bg-success status-indicator" />
                                 </div>
@@ -635,13 +560,13 @@ class MetrixTension extends Component {
                                     Sihat-e· 2w
                                   </p>
                                 </div>
-                              </a>
-                              <a
+                              </Link>
+                              <Link
                                 className="dropdown-item text-center small text-gray-500"
-                                href="#"
+                                to="#"
                               >
                                 Show All Alerts
-                              </a>
+                              </Link>
                             </div>
                           </div>
                           <div
@@ -652,47 +577,49 @@ class MetrixTension extends Component {
                         <div className="d-none d-sm-block topbar-divider" />
                         <li className="nav-item dropdown no-arrow">
                           <div className="nav-item dropdown no-arrow">
-                            <a
+                            <Link
                               aria-expanded="false"
                               data-toggle="dropdown"
                               className="dropdown-toggle nav-link"
-                              href="#"
+                              to="#"
                             >
-                              <span className="d-none d-lg-inline mr-2 text-gray-600 small">
-                                {!this.props.patientData.about_reducer.patients[0]
+                              <span className="d-none d-lg-inline mr-2 text-gray-600 ">
+                                {!this.props.patientData.about_reducer
+                                  .patients[0]
                                   ? "loading"
-                                  : this.props.patientData.about_reducer.patients[0]
-                                      .email === undefined
+                                  : this.props.patientData.about_reducer
+                                      .patients[0].email === undefined
                                   ? " "
-                                  : this.props.patientData.about_reducer.patients[0].email}
+                                  : this.props.patientData.about_reducer
+                                      .patients[0].email}
                               </span>
                               <img
                                 className="border rounded-circle img-profile"
-                                src="avatars/Linkvatar1.jpeg"
+                                src="avatars/avatar1.jpeg"
                               />
-                            </a>
+                            </Link>
                             <div className="dropdown-menu shadow dropdown-menu-right animated--grow-in">
-                              <a className="dropdown-item" href="#">
+                              <Link className="dropdown-item" to="#">
                                 <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400" />
                                 &nbsp;Profile
-                              </a>
-                              <a className="dropdown-item" href="#">
+                              </Link>
+                              <Link className="dropdown-item" to="#">
                                 <i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400" />
                                 &nbsp;Settings
-                              </a>
-                              <a className="dropdown-item" href="#">
+                              </Link>
+                              <Link className="dropdown-item" to="#">
                                 <i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400" />
                                 &nbsp;Activity log
-                              </a>
+                              </Link>
                               <div className="dropdown-divider" />
-                              <a
+                              <div
                                 className="dropdown-item"
-                                href="#"
+                                
                                 onClick={this.patientDashboarLogout}
                               >
                                 <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400" />
                                 &nbsp;Logout
-                              </a>
+                              </div>
                             </div>
                           </div>
                         </li>
@@ -701,141 +628,80 @@ class MetrixTension extends Component {
                   </nav>
                 </div>
               </div>
+      <div className="container py-5">
+        <div className="row">
+          <div className="col-xl-6 col-lg-8 col-md-8 col-sm-12 m-auto">
+            <form onSubmit={this.submitHandler} encType="multipart/form-data" id="imageForm">
+              <div className="card shadow">
+                {this.state.responseMsg.status === "successs" ? (
+                  <div className="alert alert-success">
+                    {this.state.responseMsg.message}
+                  </div>
+                ) : this.state.responseMsg.status === "failed" ? (
+                  <div className="alert alert-danger">
+                    {this.state.responseMsg.message}
+                  </div>
+                ) : (
+                  ""
+                )}
+                <div className="card-header">
+                  <h4 className="card-title fw-bold">
+Téléchargez votre dossier médical                   </h4>
+                </div>
 
-              {/*  THE IMPORTANT STUFF TO RENDER */}
-              <div
-                id="modal"
-                className="d-xl-flex justify-content-xl-center align-items-xl-center"
-              >
-                <div id="formCardContainer">
-                  <div>
-                    <div className="row register-form">
-                      <div className="col-md-8 col-xl-10 offset-md-2 offset-xl-0">
-                        <form
-                          id="metrixForm"
-                          className="custom-form"
-                          method="post"
-                        >
-                          <div className="d-xl-flex align-items-xl-start">
-                            <Link to="/metrix">
-                              <i class="fas fa-angle-left fa-2x"></i>
-                            </Link>
-
-                            <h5 className="retourMetrix">Tension.</h5>
-                          </div>
-
-                          {/* End Radios */}
-                        </form>
-                      </div>
-                    </div>
-                    {/*  Create  */}
-                    <div className="metrixWrapper">
-                      <Modal
-                        submit={this.props.handleSubmit(this.creatTension)}
-                        modalTitle={this.state.modalTitle}
-                        show={this.state.show}
-                        handleClose={this.hideModalCreat}
-                      >
-                        {/* children */}
-                        <strong>
-                          <p>Tension :</p>
-                        </strong>
-                        <Field
-                          className="form-control"
-                          name="blood_pressure"
-                          component={this.renderInput}
-                          label="Votre Tension :"
-                          placeholder="Ajouter votre Tension en bpm"
-                          type="text"
-                          span="bpm"
-                        />
-                        <strong>
-                          <p>Date de ce Tension :</p>
-                        </strong>
-                        <Field
-                          className="form-control"
-                          name="date"
-                          component={this.renderInput}
-                          label="La date de votre mesure :"
-                          type="date"
-                        />
-
-                        {/* <strong><p>Date de cette Mesure :</p></strong> */}
-                      </Modal>
-
-                      <Link onClick={this.showModalCreat} className="fasflex">
-                        <p>Ajouter Votre Tension</p>
-                        <i className="fas fa-plus fa-2x"></i>
-                      </Link>
-                      <div id="taillemetricyourmetric">
-                        <div>
-                          <h4>Votre Tension le plus récent :</h4>
-                        </div>
-
-                        <div>
-                          <h3>
-                            <strong>
-                              {!this.props.tensionData.tension_reducer
-                                .recievedTensionData
-                                ? " _ "
-                                : this.props.tensionData.tension_reducer.tension
-                                    .last_blood_pressure === undefined
-                                ? " _ "
-                                : ` ${this.props.tensionData.tension_reducer.tension.last_blood_pressure.blood_pressure} bpm `}
-                            </strong>
-                          </h3>
-                          <p>
-                            {!this.props.tensionData.tension_reducer
-                              .recievedTensionData
-                              ? " _ "
-                              : this.props.tensionData.tension_reducer.tension
-                                  .last_blood_pressure === undefined
-                              ? " _ "
-                              : ` ${this.props.tensionData.tension_reducer.tension.last_blood_pressure.date}  `}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="flexedHistorique">
-                        <h5>Historique :</h5>
-                      </div>
-                      {this.renderList()}
-                    </div>
+                <div className="card-body">
+                  <div className="form-group py-2">
+                    <label htmlFor="images">Importez votre dossier médical</label>
+                    <input
+                      type="file"
+                      name="image"
+                      multiple
+                      onChange={this.handleChange}
+                      className="form-control"
+                    />
+                    <span className="text-danger">
+                      {this.state.responseMsg.error}
+                    </span>
                   </div>
                 </div>
-              </div>
 
-              <div></div>
-            </div>
+                <div className="card-footer">
+                  <button type="submit" className="btn btn-success">
+                    Télécharger
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
-        {/* render end */}
+
+        <Images ref="child" />
+        </div>
+        </div>
+        </div>
+
       </>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    tensionData: state,
-    patientData: state,
 
+const mapStateToProps = (state, props) => {
+    return {
+      patientData: state,
+    };
   };
-};
-
-const mapDispatchToProps = (dispatch, formValues, id) => {
-  return {
-    fetchTensionInfos: () => dispatch(fetchTensionInfos()),
-    createTension: (formValues) => dispatch(createTension(formValues)),
-    editTension: (formValues, id) => dispatch(editTension(formValues, id)),
-    deleteTension: (id) => dispatch(deleteTension(id)),
-    fetchAboutInfos: () => dispatch(fetchAboutInfos()),
-    logout: () => dispatch(logout()),
+  
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      fetchAboutInfos: () => dispatch(fetchAboutInfos()),
+      logout: () => dispatch(logout()),
+  
+    };
   };
-};
-
-MetrixTension = connect(mapStateToProps, mapDispatchToProps)(MetrixTension);
-
-export default reduxForm({
-  form: "MetrixTensionHistoryandAdd", // a unique name for this form
-  enableReinitialize: true,
-})(MetrixTension);
+  
+  export default ImageUpload = connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ImageUpload);
+  

@@ -12,6 +12,7 @@ import {
 } from "../../../actions";
 import { Field, Form, formValueSelector, reduxForm, touch } from "redux-form";
 import FormDashboardPatient from "./FormDashboardPatient";
+import UploadDashboardPatient from "./UploadDashboardPatient";
 
 class DashboardPatient extends Component {
   state = {
@@ -112,7 +113,7 @@ class DashboardPatient extends Component {
                           </Link>
                         </li>
                         <li className="nav-item4">
-                          <Link to="#" className="nav-link">
+                          <Link to="symptomes" className="nav-link">
                             <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
                               <i
                                 className="noactive fa fa-heartbeat d-xl-flex align-items-xl-center fa-2x "
@@ -228,6 +229,21 @@ class DashboardPatient extends Component {
                             </div>
                           </Link>
                         </li>
+                        <li className="nav-item11">
+                          <Link to="/upload-image" className="nav-link">
+                            <div className="d-xl-flex justify-content-xl-start align-items-xl-center">
+                              <i
+                                className="noactive fas fa-folder-open d-xl-flex align-items-xl-center fa-2x "
+                                aria-hidden="true" style={{color: '#488b76'}}
+                              />
+                              <h5 className="lisidebarnoactive d-flex d-xl-flex flex-column justify-content-xl-center align-items-xl-center" 
+                              >
+                                Mon dossier medical.
+                              </h5>
+                            </div>
+                          </Link>
+                        </li>
+
                       </ul>
                     </div>
                   </div>
@@ -541,7 +557,7 @@ class DashboardPatient extends Component {
       ) : (
         
           )}
-      */}
+      */} 
 
                 <FormDashboardPatient
                   initialValues={
@@ -552,6 +568,7 @@ class DashboardPatient extends Component {
             </div>
           </div>
         </div>
+  
       </>
     );
   }

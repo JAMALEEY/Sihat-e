@@ -34,6 +34,11 @@ import MetrixBmi from './pages/PatientMetrix/BMI/MetrixBmi';
 import MetrixTension from './pages/PatientMetrix/Tension/MetrixTension';
 import MetrixTempérature from './pages/PatientMetrix/Température/MetrixTempérature';
 import MetrixGlucose from './pages/PatientMetrix/Diabète/MetrixGlucose';
+import UploadDashboardPatient from './pages/Apropos/UploadDashboardPatient';
+import ImageUpload from './pages/Apropos/MedicalDossier/ImageUpload';
+import Symptomes from './pages/Symptomes/Symptomes';
+
+
 const  App = (props) => {
 
     // the history variable helper that we created from the built in function to enable redirecting users from outside React components ...
@@ -56,15 +61,22 @@ const  App = (props) => {
                                 <PublicRoute path="/registerPatient" exact component={SignUpPatient} />
                                 <PublicRoute restricted={true}  path="/loginPatient" exact component={SignInPatient} />
                                 <PublicRoute path="/registerMedecin" exact component={SignUpMedecin} />
-                                <PublicRoute path="/contactinformation" exact component={ContactInformation} />
-                                <PublicRoute path="/metrix" exact component={Metrix} />
-                                <PublicRoute path="/metrix/form" exact component={FormMetrixPatient} />
-                                <PublicRoute path="/metrixTaille" exact component={MetrixTaille} />
-                                <PublicRoute path="/metrixPoids" exact component={MetrixPoids} />
-                                <PublicRoute path="/metrixBMI" exact component={MetrixBmi} />
-                                <PublicRoute path="/metrixTension" exact component={MetrixTension} />
-                                <PublicRoute path="/metrixTemperature" exact component={MetrixTempérature} />
-                                <PublicRoute path="/metrixGlucose" exact component={MetrixGlucose} />
+                                <PrivateRoute path="/contactinformation" exact component={ContactInformation} />
+                                <PrivateRoute path="/metrix" exact component={Metrix} />
+                                <PrivateRoute path="/metrix/form" exact component={FormMetrixPatient} />
+                                <PrivateRoute path="/metrixTaille" exact component={MetrixTaille} />
+                                <PrivateRoute path="/metrixPoids" exact component={MetrixPoids} />
+                                <PrivateRoute path="/metrixBMI" exact component={MetrixBmi} />
+                                <PrivateRoute path="/metrixTension" exact component={MetrixTension} />
+                                <PrivateRoute path="/metrixTemperature" exact component={MetrixTempérature} />
+                                <PrivateRoute path="/metrixGlucose" exact component={MetrixGlucose} />
+                                {/* <PrivateRoute path="/patientUpload" exact component={UploadDashboardPatient} /> */}
+                                <PrivateRoute path="/symptomes" exact component={Symptomes} />
+                                
+
+                                <Route path="/upload-image" component={ ImageUpload }/>
+
+
 
 
                                 
