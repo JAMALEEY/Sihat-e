@@ -28,6 +28,7 @@ class ImageUpload extends Component {
   }
 
   componentDidMount() {
+    // every time we render we fetch the about informations
     this.props.fetchAboutInfos();
   }
 
