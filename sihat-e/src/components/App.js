@@ -69,7 +69,7 @@ const  App = (props) => {
                                 <PrivateRoute path="/metrixBMI" exact component={MetrixBmi} />
                                 <PrivateRoute path="/metrixTension" exact component={MetrixTension} />
                                 <PrivateRoute path="/metrixTemperature" exact component={MetrixTempérature} />
-                                <PrivateRoute path="/metrixGlucose" exact component={MetrixGlucose} />
+                                <PrivateRoute path="/metrixGlucose" exact component={MetrixGlucose}  extra="" />
                                 {/* <PrivateRoute path="/patientUpload" exact component={UploadDashboardPatient} /> */}
                                 <PrivateRoute path="/symptomes" exact component={Symptomes} />
                                 
