@@ -15,7 +15,6 @@ export default class Search extends React.Component {
       search : '',
       count : 0,
       width: 0,
-      myInput : 'coucou',
     };
 
     this.handleSearch = this.handleSearch.bind(this);
@@ -65,7 +64,7 @@ export default class Search extends React.Component {
         this.getPosts();
         return;
       }
-         
+
       this.selectPost(e.keyCode);
     } else {
       this.getPosts();
@@ -83,10 +82,10 @@ export default class Search extends React.Component {
       api.post("/search/create",{
           search : this.state.search
       })
-     .then( (response) => {
+      .then( (response) => {
         this.setState(() => ({ posts : response.data }));
       })
-     .catch( (error) => {
+      .catch( (error) => {
           console.log(error);
       });  
     }
@@ -119,13 +118,13 @@ export default class Search extends React.Component {
 
 
 
-   handleClick = (e) => {
+    handleClick = (e) => {
     const monSymptom = document.getElementById("thesearch").innerHTML;
 
     api.post('symptom/store', {
         name: monSymptom
     }
-     )
+      )
         
   };
   
